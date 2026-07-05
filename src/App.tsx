@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import { spaceObjects } from './data';
 import { SpaceObject, SpaceObjectCategory } from './types';
 import CelestialGallery from './components/CelestialGallery';
@@ -1347,6 +1348,9 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
 
     </div>
   );
