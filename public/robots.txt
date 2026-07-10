@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://space-verse-alpha.vercel.app/sitemap.xml
