@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Search, Layers, Globe, ShieldAlert, Image } from 'lucide-react';
+import { Compass, Search, Layers, Globe, ShieldAlert, Image, CircleDot } from 'lucide-react';
 import { SpaceObjectCategory } from '../types';
 
 interface NavbarProps {
@@ -31,7 +31,7 @@ export default function Navbar({
     { value: 'all', label: 'All Cosmos', icon: <Compass className="w-4 h-4" /> },
     { value: 'galaxy', label: 'Galaxies', icon: <Layers className="w-4 h-4" /> },
     { value: 'stellar-system', label: 'Stellar Systems', icon: <Globe className="w-4 h-4" /> },
-    { value: 'black-hole', label: 'Black Holes', icon: <Orbit className="w-4 h-4" /> },
+    { value: 'black-hole', label: 'Black Holes', icon: <CircleDot className="w-4 h-4" /> },
     { value: 'gallery', label: 'High-Res Gallery', icon: <Image className="w-4 h-4" /> },
   ];
 
@@ -41,25 +41,16 @@ export default function Navbar({
         <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Logo Section */}
-<div
-  className="flex items-center gap-3 flex-shrink-0 cursor-pointer"
-  onClick={() => setActiveCategory('all')}
->
-  <img
-    src="/logo.png"
-    alt="SpaceVerse Logo"
-    className="w-11 h-11 object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.7)]"
-  />
+          <div
+            className="flex items-center gap-3 flex-shrink-0 cursor-pointer"
+            onClick={() => setActiveCategory('all')}
+          >
+            <img
+              src="/logo.png"
+              alt="SpaceVerse Logo"
+              className="w-11 h-11 object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.7)]"
+            />
 
-  <div>
-    <span className="font-sans font-semibold text-lg tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-      SPACEVERSE
-    </span>
-    <span className="block text-[9px] text-cyan-400 font-mono tracking-widest leading-none">
-      ENCYCLOPEDIA
-    </span>
-  </div>
-  </div>
             <div>
               <span className="font-sans font-semibold text-lg tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
                 SPACEVERSE
