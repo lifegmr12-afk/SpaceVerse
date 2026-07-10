@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Search, Layers, Globe, ShieldAlert, Image } from 'lucide-react';
+import { Compass, Search, Layers, Globe, ShieldAlert, Image, Orbit } from 'lucide-react';
 import { SpaceObjectCategory } from '../types';
 
 interface NavbarProps {
@@ -41,25 +41,15 @@ export default function Navbar({
         <div className="flex items-center justify-between h-16 gap-4">
           
           {/* Logo Section */}
-<div
-  className="flex items-center gap-3 flex-shrink-0 cursor-pointer"
-  onClick={() => setActiveCategory('all')}
->
-  <img
-    src="/logo.png"
-    alt="SpaceVerse Logo"
-    className="w-11 h-11 object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.7)]"
-  />
-
-  <div>
-    <span className="font-sans font-semibold text-lg tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-      SPACEVERSE
-    </span>
-    <span className="block text-[9px] text-cyan-400 font-mono tracking-widest leading-none">
-      ENCYCLOPEDIA
-    </span>
-  </div>
-  </div>
+          <div
+            className="flex items-center gap-3 flex-shrink-0 cursor-pointer"
+            onClick={() => setActiveCategory('all')}
+          >
+            <img
+              src="/logo.png"
+              alt="SpaceVerse Logo"
+              className="w-11 h-11 object-contain drop-shadow-[0_0_10px_rgba(59,130,246,0.7)]"
+            />
             <div>
               <span className="font-sans font-semibold text-lg tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
                 SPACEVERSE
