@@ -39,7 +39,7 @@ export const spaceObjects: SpaceObject[] = [
     name: 'The Solar System',
     category: 'stellar-system',
     categoryLabel: 'Stellar System',
-    embedPath: '/solar_system.html',
+    embedPath: '/solar-system.html',
     distance: '0 light-years (Our Home)',
     mass: '1.0014 Solar Masses (Total)',
     constellation: 'Not Applicable',
