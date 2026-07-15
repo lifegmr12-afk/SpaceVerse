@@ -1338,9 +1338,66 @@ Our platform allows visitors to explore planets, stars, galaxies, black holes, n
 </div>
 
 </div>
+<div className="mt-14 rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8">
 
-                  {/* Physics & Formulas */}
-                  <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
+<h2 className="text-3xl font-bold text-white mb-6">
+🚀 Our Mission
+</h2>
+
+<p className="text-slate-300 leading-8">
+Our mission is to make astronomy accessible to everyone through immersive
+3D technology, scientifically accurate information, and engaging educational
+experiences. We believe learning about the universe should be inspiring,
+interactive, and free for everyone.
+</p>
+
+</div>
+<div className="mt-8 rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🌌 Our Vision
+</h2>
+
+<p className="text-slate-300 leading-8">
+SpaceVerse aims to become one of the world's leading interactive astronomy
+platforms by combining modern technology with reliable scientific knowledge.
+Our vision is to inspire curiosity about the universe and make space education
+accessible to students, educators, researchers, and enthusiasts worldwide.
+</p>
+
+</div>
+
+ </div>
+
+{/* ================= SEO CONTENT START ================= */}
+
+<div className="mt-10 p-6 rounded-3xl bg-slate-900/40 border border-cyan-500/20">
+  <h2 className="text-2xl font-bold text-white mb-4">
+    Explore the Universe with SpaceVerse
+  </h2>
+
+  <p className="text-slate-300 leading-8">
+    SpaceVerse is a next-generation interactive astronomy encyclopedia and
+    3D universe simulator designed for students, educators, researchers,
+    and space enthusiasts. It features realistic Solar System models,
+    galaxies, exoplanets, black holes, nebulae, stars, and space missions,
+    combining scientifically accurate information with immersive 3D
+    visualization.
+  </p>
+
+  <p className="text-slate-400 mt-4 leading-8">
+    Visitors can explore the Solar System, Milky Way Galaxy, Alpha
+    Centauri, TRAPPIST-1, Kepler-90, Sagittarius A*, Phoenix A, TON 618,
+    Gaia BH1, and thousands of confirmed exoplanets while learning about
+    astronomy through interactive simulations, educational articles, NASA
+    discoveries, ESA missions, and modern astrophysics.
+  </p>
+</div>
+
+{/* ================= SEO CONTENT END ================= */}
+
+                          {/* Physics & Formulas */}
+                      <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
                     <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">PHYSICAL FORMULAS</span>
                     <h3 className="text-lg font-bold text-white mt-1 mb-4">Gravity & Accretion Geometry</h3>
                     
