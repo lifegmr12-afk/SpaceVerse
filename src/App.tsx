@@ -1316,23 +1316,23 @@ Our platform allows visitors to explore planets, stars, galaxies, black holes, n
 <div className="grid md:grid-cols-4 gap-6 mt-10">
 
 <div className="rounded-xl bg-slate-900/40 p-5 text-center">
-<h2 className="text-3xl font-bold text-cyan-400">10+</h2>
-<p className="text-slate-400 mt-2">Interactive Models</p>
+<h2 className="text-3xl font-bold text-cyan-400">20+</h2>
+<p className="text-slate-400 mt-2">Interactive Simulations</p>
 </div>
 
 <div className="rounded-xl bg-slate-900/40 p-5 text-center">
-<h2 className="text-3xl font-bold text-cyan-400">500+</h2>
-<p className="text-slate-400 mt-2">Astronomy Facts</p>
+<h2 className="text-3xl font-bold text-cyan-400">5656+</h2>
+<p className="text-slate-400 mt-2">Confirmed Exoplanets</p>
 </div>
 
 <div className="rounded-xl bg-slate-900/40 p-5 text-center">
 <h2 className="text-3xl font-bold text-cyan-400">8+</h2>
-<p className="text-slate-400 mt-2">Space Categories</p>
+<p className="text-slate-400 mt-2">Scientific Categories</p>
 </div>
 
 <div className="rounded-xl bg-slate-900/40 p-5 text-center">
 <h2 className="text-3xl font-bold text-cyan-400">100%</h2>
-<p className="text-slate-400 mt-2">Free Learning</p>
+<p className="text-slate-400 mt-2">Educational Content</p>
 </div>
 
 </div>
@@ -1359,26 +1359,31 @@ interactive, and free for everyone.
 </h2>
 
 <p className="text-slate-300 leading-8">
-SpaceVerse aims to become one of the world's leading interactive astronomy
-platforms by combining modern technology with reliable scientific knowledge.
-Our vision is to inspire curiosity about the universe and make space education
-accessible to students, educators, researchers, and enthusiasts worldwide.
+Our vision is to become one of the world's largest interactive
+astronomy platforms by bringing together immersive 3D visualization,
+scientifically accurate information, and educational content for
+students, educators, researchers, and space enthusiasts worldwide.
 </p>
 
 </div>
 
 <div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
-  <h2 className="text-3xl font-bold text-white mb-5">
-    🚀 Why SpaceVerse?
-  </h2>
+  <h2 className="text-4xl font-bold text-white mb-6">
+🚀 Why Choose SpaceVerse?
+</h2>
 
-  <p className="text-slate-300 leading-8">
-    SpaceVerse combines interactive 3D visualizations, scientific accuracy,
-    and educational content into one astronomy platform.
-    Instead of reading plain articles, visitors can explore planets,
-    galaxies, black holes, star systems, and exoplanets through immersive
-    simulations built for students, educators, and space enthusiasts.
-  </p>
+<p className="text-slate-300 leading-8">
+
+Unlike traditional astronomy websites, SpaceVerse combines
+interactive 3D simulations, verified scientific information,
+beautiful visual design, and educational articles into one
+modern learning platform.
+
+Whether you're a student, educator, researcher, or simply curious
+about the universe, SpaceVerse makes complex astronomy easy
+to understand through immersive visualization.
+
+</p>
 </div>
 <div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
 
@@ -1405,6 +1410,47 @@ accessible to students, educators, researchers, and enthusiasts worldwide.
 </ul>
 
 </div>
+<div className="rounded-3xl bg-cyan-950/30 border border-cyan-500/20 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white">
+📚 Educational Purpose
+</h2>
+
+<p className="text-slate-300 mt-5 leading-8">
+
+SpaceVerse is built to make astronomy accessible to everyone.
+All educational articles are based on publicly available
+scientific information from recognized space agencies and
+astronomical research organizations.
+
+Our goal is to inspire curiosity while presenting accurate,
+easy-to-understand knowledge about the universe.
+
+</p>
+
+</div>
+<div className="rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🌠 Did You Know?
+</h2>
+
+<ul className="space-y-4 text-slate-300">
+
+<li>⭐ The Milky Way contains over 100 billion stars.</li>
+
+<li>🪐 More than 5,656 exoplanets have been confirmed.</li>
+
+<li>🌌 The observable universe spans about 93 billion light-years.</li>
+
+<li>🕳 Sagittarius A* is the supermassive black hole at the center of our galaxy.</li>
+
+<li>🚀 New space discoveries are made every year using advanced telescopes.</li>
+
+</ul>
+
+</div>
+
                           {/* Physics & Formulas */}
   <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
 
