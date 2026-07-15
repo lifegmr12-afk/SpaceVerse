@@ -1380,6 +1380,31 @@ accessible to students, educators, researchers, and enthusiasts worldwide.
     simulations built for students, educators, and space enthusiasts.
   </p>
 </div>
+<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white mb-5">
+⭐ What Makes SpaceVerse Unique?
+</h2>
+
+<ul className="space-y-3 text-slate-300">
+
+<li>✔ Interactive 3D Solar System</li>
+
+<li>✔ Realistic Galaxy Models</li>
+
+<li>✔ Black Hole Visualizations</li>
+
+<li>✔ Verified Scientific Information</li>
+
+<li>✔ Educational Astronomy Articles</li>
+
+<li>✔ Responsive Across All Devices</li>
+
+<li>✔ Constantly Updated Space Data</li>
+
+</ul>
+
+</div>
                           {/* Physics & Formulas */}
                       <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
                     <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">PHYSICAL FORMULAS</span>
