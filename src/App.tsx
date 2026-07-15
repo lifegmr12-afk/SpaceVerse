@@ -1278,9 +1278,14 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   <div className="mt-6 max-w-5xl">
 
-<p className="text-slate-300 text-lg leading-8">
-SpaceVerse is an interactive astronomy encyclopedia designed to make exploring the universe engaging, educational, and visually immersive. Through realistic 3D simulations, interactive space models, and scientifically accurate information, SpaceVerse transforms complex astronomical concepts into experiences anyone can understand.
+<p className="text-slate-400 mt-3 max-w-4xl leading-relaxed">
+SpaceVerse is a next-generation interactive astronomy encyclopedia and 3D universe simulator built for students, educators, researchers, and space enthusiasts. Explore scientifically accurate models of the Solar System, galaxies, black holes, nebulae, exoplanets, and space missions through immersive 3D visualization, verified astronomical data, and educational articles that make complex space science easy to understand.
 </p>
+<div className="mt-6 p-5 rounded-2xl bg-cyan-500/5 border border-cyan-500/20">
+  <p className="text-sm leading-8 text-slate-300">
+    <strong className="text-cyan-300">SpaceVerse</strong> is a next-generation interactive 3D astronomy platform designed to explore the universe through immersive scientific visualization. The website features realistic simulations of the Solar System, Milky Way Galaxy, black holes, exoplanets, nebulae, star systems, and space missions using modern web technologies and accurate astronomical information.
+  </p>
+</div>
 
 <p className="text-slate-400 mt-6 leading-8">
 Our platform allows visitors to explore planets, stars, galaxies, black holes, nebulae, exoplanets, and space missions using modern web technologies. Every article combines educational content, interactive visualization, and verified scientific knowledge to inspire curiosity about the cosmos.
