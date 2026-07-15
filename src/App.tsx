@@ -1410,25 +1410,7 @@ to understand through immersive visualization.
 </ul>
 
 </div>
-<div className="rounded-3xl bg-cyan-950/30 border border-cyan-500/20 p-8 mt-8">
 
-<h2 className="text-3xl font-bold text-white">
-📚 Educational Purpose
-</h2>
-
-<p className="text-slate-300 mt-5 leading-8">
-
-SpaceVerse is built to make astronomy accessible to everyone.
-All educational articles are based on publicly available
-scientific information from recognized space agencies and
-astronomical research organizations.
-
-Our goal is to inspire curiosity while presenting accurate,
-easy-to-understand knowledge about the universe.
-
-</p>
-
-</div>
 <div className="rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8 mt-8">
 
 <h2 className="text-3xl font-bold text-white mb-6">
