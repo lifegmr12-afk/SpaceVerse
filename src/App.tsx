@@ -1406,38 +1406,41 @@ accessible to students, educators, researchers, and enthusiasts worldwide.
 
 </div>
                           {/* Physics & Formulas */}
-                      <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
-                    <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">PHYSICAL FORMULAS</span>
-                    <h3 className="text-lg font-bold text-white mt-1 mb-4">Gravity & Accretion Geometry</h3>
-                    
-                    <div className="space-y-5">
-                      <div className="p-3.5 rounded-xl bg-slate-950/40 border border-white/5 font-mono text-xs">
-                        <div className="flex items-center justify-between mb-1.5 text-[10px] text-slate-400">
-                          <span>1. SCHWARZSCHILD RADIUS</span>
-                          <span className="text-rose-400 font-semibold">Singularity scale</span>
-                        </div>
-                        <div className="text-center py-2 text-sm text-cyan-300">
-                          Rs = 2GM / c²
-                        </div>
-                        <p className="text-[10px] text-slate-500 leading-relaxed mt-1.5">
-                          Calculates the boundary event horizon scale where light escape velocity equals speed of light c, depending entirely on black hole mass M and gravitational constant G.
-                        </p>
-                      </div>
+  <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
 
-                      <div className="p-3.5 rounded-xl bg-slate-950/40 border border-white/5 font-mono text-xs">
-                        <div className="flex items-center justify-between mb-1.5 text-[10px] text-slate-400">
-                          <span>2. KEPLER'S THIRD LAW OF ORBITS</span>
-                          <span className="text-amber-400 font-semibold">Orbital periods</span>
-                        </div>
-                        <div className="text-center py-2 text-sm text-cyan-300">
-                          T² = (4π² / G(M1 + M2)) * a³
-                        </div>
-                        <p className="text-[10px] text-slate-500 leading-relaxed mt-1.5">
-                          Dictates that the square of orbital period T is proportional to the cube of semi-major axis orbital distance a, used directly to calculate Kepler-90 and TRAPPIST-1 simulated planet timelines.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
+        TRUSTED SOURCES
+    </span>
+
+    <h3 className="text-3xl font-bold text-white mt-2 mb-6">
+        Scientific Sources We Trust
+    </h3>
+
+    <div className="space-y-4">
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🚀 NASA — Space missions, astronomy and planetary science
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🌍 ESA — European Space Agency research
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🔭 Hubble Space Telescope
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            ✨ James Webb Space Telescope
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🌌 International Astronomical Union (IAU)
+        </div>
+
+    </div>
+
+</div>
                 </div>
               </motion.div>
             )}
