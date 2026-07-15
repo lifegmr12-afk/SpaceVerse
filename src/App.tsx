@@ -1293,27 +1293,21 @@ Our platform allows visitors to explore planets, stars, galaxies, black holes, n
 
 <div className="mt-8 rounded-2xl border border-cyan-500/20 bg-slate-900/50 p-6">
 
-<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
+<h3 className="text-2xl font-bold text-cyan-300">
+🚀 What You'll Discover
+</h3>
 
-<h2 className="text-3xl font-bold text-white mb-5">
-⭐ What Makes SpaceVerse Unique?
-</h2>
+<ul className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-slate-300">
 
-<ul className="space-y-3 text-slate-300">
-
-<li>🌍 Interactive 3D Solar System</li>
-
-<li>🌌 Realistic Galaxy Models</li>
-
-<li>🕳 Black Hole Visualizations</li>
-
-<li>ℹ️ Verified Scientific Information</li>
-
-<li>📚 Educational Astronomy Articles</li>
-
-<li>📲 Responsive Across All Devices</li>
-
-<li>📚 Constantly Updated Space Data</li>
+<li>🌍 Solar System</li>
+<li>🌌 Milky Way Galaxy</li>
+<li>⭐ Stars</li>
+<li>🪐 Exoplanets</li>
+<li>🕳 Black Holes</li>
+<li>☄️ Comets</li>
+<li>🌠 Nebulae</li>
+<li>🚀 Space Missions</li>
+<li>📚 Astronomy Articles</li>
 
 </ul>
 
@@ -1385,24 +1379,6 @@ accessible to students, educators, researchers, and enthusiasts worldwide.
     galaxies, black holes, star systems, and exoplanets through immersive
     simulations built for students, educators, and space enthusiasts.
   </p>
-  
-</div>
-<div className="rounded-3xl bg-cyan-950/30 border border-cyan-500/20 p-7 mt-8">
-
-<h2 className="text-2xl font-bold text-white">
-Educational Purpose
-</h2>
-
-<p className="text-slate-300 mt-4 leading-8">
-
-SpaceVerse is built to make astronomy accessible to everyone.
-All educational articles are based on publicly available scientific
-research from recognized space agencies and astronomical observations.
-Our goal is to inspire curiosity while presenting accurate and
-easy-to-understand space knowledge.
-
-</p>
-
 </div>
                           {/* Physics & Formulas */}
                       <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
