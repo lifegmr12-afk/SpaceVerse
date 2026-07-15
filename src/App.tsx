@@ -1367,35 +1367,6 @@ accessible to students, educators, researchers, and enthusiasts worldwide.
 
 </div>
 
- </div>
-
-{/* ================= SEO CONTENT START ================= */}
-
-<div className="mt-10 p-6 rounded-3xl bg-slate-900/40 border border-cyan-500/20">
-  <h2 className="text-2xl font-bold text-white mb-4">
-    Explore the Universe with SpaceVerse
-  </h2>
-
-  <p className="text-slate-300 leading-8">
-    SpaceVerse is a next-generation interactive astronomy encyclopedia and
-    3D universe simulator designed for students, educators, researchers,
-    and space enthusiasts. It features realistic Solar System models,
-    galaxies, exoplanets, black holes, nebulae, stars, and space missions,
-    combining scientifically accurate information with immersive 3D
-    visualization.
-  </p>
-
-  <p className="text-slate-400 mt-4 leading-8">
-    Visitors can explore the Solar System, Milky Way Galaxy, Alpha
-    Centauri, TRAPPIST-1, Kepler-90, Sagittarius A*, Phoenix A, TON 618,
-    Gaia BH1, and thousands of confirmed exoplanets while learning about
-    astronomy through interactive simulations, educational articles, NASA
-    discoveries, ESA missions, and modern astrophysics.
-  </p>
-</div>
-
-{/* ================= SEO CONTENT END ================= */}
-
                           {/* Physics & Formulas */}
                       <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
                     <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">PHYSICAL FORMULAS</span>
