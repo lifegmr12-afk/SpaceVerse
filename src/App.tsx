@@ -1266,22 +1266,73 @@ export default function App() {
                 className="space-y-8"
               >
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-white">SpaceVerse Mathematical Foundations</h2>
-                  <p className="text-slate-500 text-xs mt-1">Read the astrophysical formulas, orbital laws, and rendering mechanics supporting our 3D web simulators.</p>
+             <h2 className="text-4xl font-extrabold tracking-tight text-white">
+                    About SpaceVerse
+            </h2>
+
+                  <p className="text-cyan-400 text-sm uppercase tracking-[0.25em] mt-2">
+                 Interactive Astronomy • Space Encyclopedia • 3D Universe Simulator
+                </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* SpaceVerse Mission Card */}
-                  <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
-                    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">OUR MISSION</span>
-                    <h3 className="text-lg font-bold text-white mt-1 mb-3">Public-Access Astrophysics</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                      SpaceVerse aims to bring high-precision mathematical simulations out of scientific labs and place them inside beautiful, interactive, high-fidelity browser engines. We believe that visual comprehension is the fastest catalyst for scientific curiosity.
-                    </p>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      By integrating vector gravitational calculations, light refraction models, and multispectral wavelength charts, SpaceVerse provides a dual laboratory for both recreational stargazers and advanced physics students.
-                    </p>
-                  </div>
+                  <div className="mt-6 max-w-5xl">
+
+<p className="text-slate-300 text-lg leading-8">
+SpaceVerse is an interactive astronomy encyclopedia designed to make exploring the universe engaging, educational, and visually immersive. Through realistic 3D simulations, interactive space models, and scientifically accurate information, SpaceVerse transforms complex astronomical concepts into experiences anyone can understand.
+</p>
+
+<p className="text-slate-400 mt-6 leading-8">
+Our platform allows visitors to explore planets, stars, galaxies, black holes, nebulae, exoplanets, and space missions using modern web technologies. Every article combines educational content, interactive visualization, and verified scientific knowledge to inspire curiosity about the cosmos.
+</p>
+
+<div className="mt-8 rounded-2xl border border-cyan-500/20 bg-slate-900/50 p-6">
+
+<h3 className="text-2xl font-bold text-cyan-300">
+🚀 What You'll Discover
+</h3>
+
+<ul className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-slate-300">
+
+<li>🌍 Solar System</li>
+<li>🌌 Milky Way Galaxy</li>
+<li>⭐ Stars</li>
+<li>🪐 Exoplanets</li>
+<li>🕳 Black Holes</li>
+<li>☄️ Comets</li>
+<li>🌠 Nebulae</li>
+<li>🚀 Space Missions</li>
+<li>📚 Astronomy Articles</li>
+
+</ul>
+
+</div>
+
+<div className="grid md:grid-cols-4 gap-6 mt-10">
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">10+</h2>
+<p className="text-slate-400 mt-2">Interactive Models</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">500+</h2>
+<p className="text-slate-400 mt-2">Astronomy Facts</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">8+</h2>
+<p className="text-slate-400 mt-2">Space Categories</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">100%</h2>
+<p className="text-slate-400 mt-2">Free Learning</p>
+</div>
+
+</div>
+
+</div>
 
                   {/* Physics & Formulas */}
                   <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
