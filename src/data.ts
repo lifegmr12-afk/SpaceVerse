@@ -35,38 +35,188 @@ export const spaceObjects: SpaceObject[] = [
     scientificSignificance: 'Studying the Milky Way allows us to understand galactic evolution, spiral arm formation, dark matter distribution, and planetary habitability from within a highly detailed laboratory.'
   },
   {
-    id: 'solar-system',
-    name: 'The Solar System',
-    category: 'stellar-system',
-    categoryLabel: 'Stellar System',
-    embedPath: '/solar-system.html',
-    distance: '0 light-years (Our Home)',
-    mass: '1.0014 Solar Masses (Total)',
-    constellation: 'Not Applicable',
-    oneLiner: 'Our localized planetary system centered around a G-type main-sequence star.',
-    description: 'The Solar System consists of our star, the Sun, and everything bound to it by gravity—the planets Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune; dwarf planets such as Pluto; dozens of moons; and millions of asteroids, comets, and meteoroids. It formed 4.57 billion years ago from the gravitational collapse of a giant interstellar molecular cloud.',
-    quickStats: [
-      { label: 'Central Star', value: 'The Sun (G2V Class)' },
-      { label: 'Major Planets', value: '8 (4 Terrestrial, 4 Giants)' },
-      { label: 'Known Moons', value: '290+' },
-      { label: 'Age', value: '4.57 Billion Years' },
-      { label: 'Heliopause Distance', value: '120+ Astronomical Units' }
-    ],
-    trivia: [
-      { label: '99% Sun', value: 'The Sun contains 99.86% of all the mass in the entire Solar System.' },
-      { label: 'Saturn Rings', value: 'Saturn\'s ring particles are made almost entirely of water ice, varying from tiny dust grains to mountain-sized chunks.' },
-      { label: 'Asteroid Belt', value: 'The total mass of the asteroid belt between Mars and Jupiter is less than 4% of the Moon\'s mass.' }
-    ].map(t => t.value),
-    themeColor: 'amber',
-    bgGradient: 'from-amber-500/10 to-yellow-500/10',
-    interactiveFeatures: [
-      '8 major planets orbiting in real-time',
-      'Realistic Saturn ring rendering',
-      'Sun spot activity simulator',
-      'Individual Orbit & Label Controls'
-    ],
-    scientificSignificance: 'The Solar System serves as our baseline of truth for physical astronomy, geology, climate systems, and astro-biology. Understanding our planets helps us interpret exoplanet data and assess distant life prospects.'
-  },
+  id: 'solar-system',
+  name: 'The Solar System',
+  category: 'stellar-system',
+  categoryLabel: 'Stellar System',
+  embedPath: '/solar-system.html',
+
+  distance: '0 Light-years (Our Home)',
+  mass: '1.0014 Solar Masses (Total)',
+  constellation: 'Not Applicable',
+
+  oneLiner:
+    'The Solar System is our home planetary system centered around the Sun, containing eight planets, hundreds of moons, dwarf planets, asteroids, comets, and countless smaller objects bound together by gravity.',
+
+  description:
+    'The Solar System formed approximately 4.57 billion years ago when a giant molecular cloud collapsed under its own gravity. At its center lies the Sun, a G-type main-sequence star that contains 99.86% of the system’s total mass. Orbiting the Sun are eight major planets divided into terrestrial worlds (Mercury, Venus, Earth, and Mars) and giant planets (Jupiter, Saturn, Uranus, and Neptune). Beyond the planets lie dwarf planets such as Pluto, Eris, Haumea, Makemake, and Ceres, along with thousands of moons, millions of asteroids, billions of comets, icy Kuiper Belt objects, and the distant Oort Cloud. The Solar System extends far beyond Neptune into interstellar space, where the solar wind eventually meets the interstellar medium at the heliopause.',
+
+  quickStats: [
+    { label: 'Central Star', value: 'The Sun (G2V Yellow Dwarf)' },
+    { label: 'Age', value: '4.57 Billion Years' },
+    { label: 'Major Planets', value: '8' },
+    { label: 'Terrestrial Planets', value: '4' },
+    { label: 'Giant Planets', value: '4 (2 Gas, 2 Ice Giants)' },
+    { label: 'Recognized Dwarf Planets', value: '5' },
+    { label: 'Known Natural Moons', value: '290+' },
+    { label: 'Asteroid Belt', value: 'Between Mars & Jupiter' },
+    { label: 'Kuiper Belt', value: '30–55 AU' },
+    { label: 'Heliopause', value: '≈120 AU from the Sun' },
+    { label: 'Estimated Oort Cloud', value: 'Up to 100,000 AU' },
+    { label: 'Sun Mass Fraction', value: '99.86%' }
+  ],
+
+  planets: [
+    {
+      name: 'Mercury',
+      type: 'Terrestrial Planet',
+      diameter: '4,879 km',
+      orbit: '88 Earth Days',
+      moons: 0,
+      fact: 'Closest planet to the Sun and the smallest major planet.'
+    },
+    {
+      name: 'Venus',
+      type: 'Terrestrial Planet',
+      diameter: '12,104 km',
+      orbit: '225 Earth Days',
+      moons: 0,
+      fact: 'Hottest planet due to an extreme greenhouse effect.'
+    },
+    {
+      name: 'Earth',
+      type: 'Terrestrial Planet',
+      diameter: '12,742 km',
+      orbit: '365.25 Days',
+      moons: 1,
+      fact: 'The only known planet to support life.'
+    },
+    {
+      name: 'Mars',
+      type: 'Terrestrial Planet',
+      diameter: '6,779 km',
+      orbit: '687 Earth Days',
+      moons: 2,
+      fact: 'Home to Olympus Mons, the tallest volcano in the Solar System.'
+    },
+    {
+      name: 'Jupiter',
+      type: 'Gas Giant',
+      diameter: '139,820 km',
+      orbit: '11.86 Years',
+      moons: '95+',
+      fact: 'Largest planet with the Great Red Spot storm.'
+    },
+    {
+      name: 'Saturn',
+      type: 'Gas Giant',
+      diameter: '116,460 km',
+      orbit: '29.45 Years',
+      moons: '140+',
+      fact: 'Famous for its spectacular ring system.'
+    },
+    {
+      name: 'Uranus',
+      type: 'Ice Giant',
+      diameter: '50,724 km',
+      orbit: '84 Years',
+      moons: 28,
+      fact: 'Rotates on its side with an axial tilt of 98°.'
+    },
+    {
+      name: 'Neptune',
+      type: 'Ice Giant',
+      diameter: '49,244 km',
+      orbit: '164.8 Years',
+      moons: 16,
+      fact: 'Strongest winds measured in the Solar System.'
+    }
+  ],
+
+  dwarfPlanets: [
+    'Ceres',
+    'Pluto',
+    'Haumea',
+    'Makemake',
+    'Eris'
+  ],
+
+  regions: [
+    'Inner Solar System',
+    'Asteroid Belt',
+    'Outer Solar System',
+    'Kuiper Belt',
+    'Scattered Disc',
+    'Heliosphere',
+    'Heliopause',
+    'Oort Cloud'
+  ],
+
+  majorObjects: [
+    'The Sun',
+    '8 Major Planets',
+    '290+ Natural Moons',
+    'Millions of Asteroids',
+    'Billions of Comets',
+    'Meteoroids',
+    'Trans-Neptunian Objects',
+    'Interplanetary Dust'
+  ],
+
+  trivia: [
+    'The Sun contains 99.86% of all the mass in the Solar System.',
+    'Jupiter is more than twice as massive as all the other planets combined.',
+    'One year on Neptune lasts nearly 165 Earth years.',
+    'Venus spins backward compared to most planets.',
+    'Olympus Mons on Mars is the tallest known volcano in the Solar System.',
+    'Saturn could float in water because its average density is lower than water.',
+    'The asteroid belt contains millions of rocky bodies, but its total mass is less than 4% of the Moon’s mass.',
+    'Comets are often called "dirty snowballs" because they contain ice, rock, and dust.',
+    'The Solar System travels around the center of the Milky Way at about 828,000 km/h.',
+    'It takes roughly 230 million Earth years for the Solar System to complete one galactic orbit.'
+  ],
+
+  interactiveFeatures: [
+    'Real-time planetary orbits',
+    'Accurate orbital speed simulation',
+    'Planet labels with live data',
+    'Zoom from Sun to Oort Cloud',
+    'Scale comparison mode',
+    'Distance measurement tool',
+    'Realistic Saturn rings',
+    'Sunspot activity simulation',
+    'Asteroid Belt visualization',
+    'Kuiper Belt explorer',
+    'Orbit trail animation',
+    'Planet rotation controls',
+    'Time acceleration controls',
+    'Moon orbit visualization'
+  ],
+
+  scientificSignificance:
+    'The Solar System is humanity’s natural laboratory for studying planetary formation, stellar evolution, geology, atmospheric science, magnetism, orbital mechanics, climate systems, and the origin of life. Every spacecraft mission—from Apollo to Voyager, Cassini, Juno, New Horizons, Perseverance, and Parker Solar Probe—has expanded our understanding of how planetary systems form and evolve. Knowledge gained from our Solar System serves as the foundation for interpreting thousands of exoplanets discovered across the Milky Way.',
+
+  explorationHighlights: [
+    'Apollo missions landed humans on the Moon.',
+    'Voyager 1 became the first spacecraft to enter interstellar space.',
+    'Cassini explored Saturn for 13 years.',
+    'New Horizons performed the first flyby of Pluto.',
+    'Juno continues studying Jupiter’s interior.',
+    'Perseverance searches for signs of ancient life on Mars.',
+    'Parker Solar Probe is the closest spacecraft ever sent to the Sun.'
+  ],
+
+  futureMissions: [
+    'Europa Clipper',
+    'Dragonfly (Titan)',
+    'JUICE',
+    'Artemis Moon Program',
+    'Mars Sample Return (planned)'
+  ],
+
+  themeColor: 'amber',
+  bgGradient: 'from-amber-500/10 to-yellow-500/10'
+},
   {
     id: 'alpha-centauri',
     name: 'Alpha Centauri System',
