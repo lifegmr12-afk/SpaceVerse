@@ -2,38 +2,144 @@ import { SpaceObject } from './types';
 
 export const spaceObjects: SpaceObject[] = [
   {
-    id: 'milky-way',
-    name: 'Milky Way Galaxy',
-    category: 'galaxy',
-    categoryLabel: 'Galaxy',
-    embedPath: '/milky-way.html',
-    distance: '0 light-years',
-    mass: '1.5 trillion solar masses',
-    constellation: 'Sagittarius (Galactic Center)',
-    oneLiner: 'Our home barred spiral galaxy, housing over 100 billion stars.',
-    description: 'The Milky Way is a massive barred spiral galaxy that contains our Solar System, along with billions of other planetary systems. Estimations suggest it stretches between 100,000 and 120,000 light-years in diameter. It is characterized by a central stellar bar, multiple spiral arms rich with gas, dust, and young star clusters, and a vast halo containing ancient globular clusters.',
-    quickStats: [
-      { label: 'Galaxy Type', value: 'Barred Spiral (SBbc)' },
-      { label: 'Stellar Count', value: '100 – 400 Billion' },
-      { label: 'Diameter', value: '100,000 – 120,000 ly' },
-      { label: 'Age', value: '13.6 Billion Years' },
-      { label: 'Rotational Speed', value: '220 km/s (Orbit of Sun)' }
+  id: 'milky-way',
+  name: 'Milky Way Galaxy',
+  category: 'galaxy',
+  categoryLabel: 'Galaxy',
+  embedPath: '/milky-way.html',
+
+  distance: '0 Light-years (Our Home Galaxy)',
+  mass: '1–1.5 Trillion Solar Masses',
+  constellation: 'Sagittarius (Galactic Center)',
+
+  oneLiner:
+    'A giant barred spiral galaxy containing hundreds of billions of stars, thousands of nebulae, countless planetary systems, and our own Solar System.',
+
+  description:
+    'The Milky Way is the galaxy that contains our Solar System and is one of the largest galaxies in the Local Group. It is a barred spiral galaxy with a bright central bulge crossed by a stellar bar and surrounded by several magnificent spiral arms. The galaxy contains between 100 and 400 billion stars, vast clouds of gas and dust, thousands of star-forming nebulae, globular clusters, open star clusters, stellar remnants, black holes, neutron stars, and enormous amounts of dark matter. At its heart lies Sagittarius A*, a supermassive black hole with a mass of approximately 4.15 million Suns. The Milky Way has been evolving for more than 13.6 billion years through mergers with smaller galaxies and continuous star formation. Our Solar System is located within the Orion Arm, about 26,700 light-years from the Galactic Center, orbiting the center once every 225–250 million years.',
+
+  quickStats: [
+    { label: 'Galaxy Type', value: 'Barred Spiral (SBbc)' },
+    { label: 'Age', value: '13.6 Billion Years' },
+    { label: 'Diameter', value: '100,000–120,000 Light-years' },
+    { label: 'Thickness', value: '≈1,000 Light-years (Disk)' },
+    { label: 'Total Mass', value: '1–1.5 Trillion Solar Masses' },
+    { label: 'Visible Stars', value: '100–400 Billion' },
+    { label: 'Estimated Planets', value: '100–400 Billion+' },
+    { label: 'Known Spiral Arms', value: '4 Major Arms' },
+    { label: 'Central Black Hole', value: 'Sagittarius A*' },
+    { label: 'Black Hole Mass', value: '4.15 Million Solar Masses' },
+    { label: 'Distance to Galactic Center', value: '26,700 Light-years' },
+    { label: 'Solar System Location', value: 'Orion Arm (Local Spur)' },
+    { label: 'Sun Orbital Speed', value: '220 km/s' },
+    { label: 'Galactic Rotation Period', value: '225–250 Million Years' },
+    { label: 'Dark Matter', value: '≈85% of Total Mass' }
+  ],
+
+  trivia: [
+    'The Milky Way contains between 100 and 400 billion stars.',
+    'Our Solar System has completed only about 20 orbits around the galaxy since its formation.',
+    'The Milky Way and the Andromeda Galaxy are expected to merge in about 4.5 billion years.',
+    'Sagittarius A* is a supermassive black hole weighing over four million Suns.',
+    'Most of the galaxy\'s mass is invisible dark matter.',
+    'Light takes more than 100,000 years to travel across the galaxy.',
+    'The Milky Way contains thousands of nebulae where new stars are born.',
+    'More than 180 globular clusters orbit the galaxy.',
+    'The oldest stars in the Milky Way formed shortly after the Big Bang.',
+    'Every star visible in the night sky without a telescope belongs to the Milky Way.',
+    'The Milky Way is moving through space at over 2 million km/h relative to the cosmic microwave background.',
+    'Scientists estimate there may be billions of Earth-sized planets within the galaxy.'
+  ],
+
+  themeColor: 'purple',
+
+  bgGradient:
+    'from-indigo-600/10 via-purple-600/10 to-blue-600/10',
+
+  interactiveFeatures: [
+    '3D Spiral Arm Explorer',
+    'Galactic Rotation Simulator',
+    'Star Density Visualization',
+    'Nebula Explorer',
+    'Supermassive Black Hole Viewer',
+    'Dark Matter Halo Display',
+    'Solar System Location Marker',
+    'Zoom from Solar System to Galactic Scale',
+    'Globular Cluster Map',
+    'Open Cluster Explorer',
+    'Variable Star Animation',
+    'Supernova Remnant Viewer',
+    'Interstellar Dust Toggle',
+    'Realistic Stellar Population',
+    'Galaxy Evolution Timeline',
+    'Collision Simulation with Andromeda',
+    'Constellation Overlay',
+    'Distance Measurement Tool',
+    'Galactic Coordinate Grid',
+    'Educational Information Panels'
+  ],
+
+  scientificSignificance:
+    'The Milky Way is one of the most extensively studied galaxies because humanity observes it from within. Research on its stars, nebulae, gas clouds, dark matter, star clusters, black holes, and stellar populations provides fundamental insights into galaxy formation, stellar evolution, planetary systems, cosmology, and the large-scale structure of the Universe.',
+
+  structure: {
+    galaxyType: 'Barred Spiral Galaxy',
+    centralBulge: 'Dense concentration of old stars',
+    stellarBar: '≈27,000 Light-years Long',
+    spiralArms: [
+      'Perseus Arm',
+      'Scutum–Centaurus Arm',
+      'Sagittarius Arm',
+      'Outer Arm'
     ],
-    trivia: [
-      { label: 'The local group', value: 'The Milky Way is part of the Local Group of galaxies and is on a collision course with the Andromeda Galaxy in about 4.5 billion years.' },
-      { label: 'Supermassive center', value: 'Almost all spiral galaxies host a supermassive black hole at their center; ours is Sagittarius A*, weighing 4 million solar masses.' },
-      { label: 'Ancient stars', value: 'The oldest stars in the Milky Way halo are nearly as old as the Universe itself.' }
-    ].map(t => t.value),
-    themeColor: 'purple',
-    bgGradient: 'from-indigo-500/10 to-purple-500/10',
-    interactiveFeatures: [
-      'Stellar Population Controls',
-      'Nebula & Interstellar Dust Toggles',
-      'Real-time Twinkle Modulation',
-      'Variable Speed Orbit Simulator'
-    ],
-    scientificSignificance: 'Studying the Milky Way allows us to understand galactic evolution, spiral arm formation, dark matter distribution, and planetary habitability from within a highly detailed laboratory.'
+    localArm: 'Orion Arm (Local Spur)',
+    halo: 'Contains ancient stars, globular clusters, and dark matter',
+    disk: 'Contains most stars, gas, dust, and spiral arms'
   },
+
+  objects: {
+    stars: '100–400 Billion',
+    planets: '100–400 Billion+',
+    nebulae: 'Thousands',
+    globularClusters: '180+',
+    openClusters: 'Thousands',
+    blackHoles: 'Millions (Estimated)',
+    neutronStars: 'Hundreds of Millions',
+    whiteDwarfs: 'Billions',
+    molecularClouds: 'Thousands'
+  },
+
+  notableObjects: [
+    'Sagittarius A*',
+    'Orion Nebula',
+    'Eagle Nebula',
+    'Lagoon Nebula',
+    'Crab Nebula',
+    'Omega Nebula',
+    'Carina Nebula',
+    'Pillars of Creation',
+    'Pleiades',
+    'Hyades',
+    'Rho Ophiuchi Cloud Complex',
+    'Cygnus X Star-forming Region'
+  ],
+
+  neighboringGalaxies: [
+    'Andromeda Galaxy (M31)',
+    'Triangulum Galaxy (M33)',
+    'Large Magellanic Cloud',
+    'Small Magellanic Cloud',
+    'Sagittarius Dwarf Spheroidal Galaxy',
+    'Canis Major Dwarf Galaxy'
+  ],
+
+  futureEvents: [
+    'Continuous star formation',
+    'Gradual consumption of interstellar gas',
+    'Merger with the Andromeda Galaxy in about 4.5 billion years',
+    'Formation of a giant elliptical galaxy after the merger'
+  ]
+},
   {
   id: 'solar-system',
   name: 'The Solar System',
