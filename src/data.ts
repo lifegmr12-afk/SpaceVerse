@@ -340,7 +340,7 @@ export const spaceObjects: SpaceObject[] = [
   description:
     'The Alpha Centauri System is the nearest stellar system to our Solar System, located approximately 4.37 light-years away in the southern constellation Centaurus. It is a gravitationally bound triple-star system consisting of Alpha Centauri A, Alpha Centauri B, and Proxima Centauri (Alpha Centauri C). Alpha Centauri A is a Sun-like G-type main-sequence star, while Alpha Centauri B is a slightly smaller and cooler K-type main-sequence star. These two stars orbit each other every 79.91 years. Proxima Centauri, the smallest and faintest member, is a red dwarf located about 13,000 AU from the central pair and is currently the closest individual star to Earth at 4.24 light-years. Several exoplanets have been confirmed around Proxima Centauri, including Proxima Centauri b, one of the nearest potentially habitable rocky worlds known. Due to its proximity, the Alpha Centauri System is considered humanity's most promising destination for future robotic and possibly crewed interstellar exploration.',
 
-  quickStats: [
+  quickStats: ['
     { label: 'System Type', value: 'Triple Star System' },
     { label: 'Distance from Earth', value: '4.37 Light-years' },
     { label: 'Closest Star', value: 'Proxima Centauri (4.24 ly)' },
@@ -355,8 +355,8 @@ export const spaceObjects: SpaceObject[] = [
     { label: 'Stellar Classes', value: 'G2V • K1V • M5.5Ve' },
     { label: 'Approximate Age', value: '5–6 Billion Years' },
     { label: 'Constellation', value: 'Centaurus' },
-    { label: 'Visible to Naked Eye', value: 'Yes (Southern Hemisphere)' }
-  ],
+    { label: 'Visible to Naked Eye', value: 'Yes (Southern Hemisphere)' },
+  '],
 
   trivia: [
     'Alpha Centauri is the closest stellar system to our Solar System.',
