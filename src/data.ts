@@ -499,224 +499,222 @@ export const spaceObjects: SpaceObject[] = [
     'Its chemical composition is remarkably similar to that of the Sun.'
   ]
 },
+{
+    id: 'trappist-1',
+    name: 'TRAPPIST-1 System',
+    category: 'stellar-system',
+    categoryLabel: 'Stellar System',
+    embedPath: '/trappist-1.html',
+    distance: '40.7 light-years',
+    mass: '0.09 Solar Masses (Star)',
+    constellation: 'Aquarius',
+    oneLiner: 'An ultra-cool red dwarf star system featuring seven rocky, Earth-sized planets.',
+    description: 'TRAPPIST-1 is a cold, low-mass M-dwarf star orbited by an extraordinary chain of seven terrestrial exoplanets, all similar in size to Earth. Because the red dwarf emits very little light and heat compared to our Sun, all seven planets orbit extremely close to the star—closer than Mercury\'s orbit to our Sun. Three of these planets lie squarely within the star\'s habitable zone.',
+    quickStats: [
+      { label: 'Star Type', value: 'Ultra-cool Red Dwarf (M8V)' },
+      { label: 'Rocky Planets', value: '7 (TRAPPIST-1b through h)' },
+      { label: 'Habitable Zone', value: '3 Planets (1e, 1f, 1g)' },
+      { label: 'Star Diameter', value: '12% of the Sun (size of Jupiter)' },
+      { label: 'Orbital Resonances', value: 'Perfect orbital harmony (laplace chains)' }
+    ],
+    trivia: [
+      { label: 'Compact system', value: 'The entire TRAPPIST-1 planetary system could easily fit inside the orbit of Mercury.' },
+      { label: 'Close neighbors', value: 'If you stood on the surface of TRAPPIST-1f, neighboring planets would appear as large as our Moon in the sky.' },
+      { label: 'Tidally locked', value: 'All seven planets are likely tidally locked, meaning they have a permanent day side and a permanent night side.' }
+    ].map(t => t.value),
+    themeColor: 'rose',
+    bgGradient: 'from-rose-500/10 to-red-500/10',
+    interactiveFeatures: [
+      '7 tightly-packed orbits simulating true orbital ratios',
+      'Ultra-cool red dwarf plasma solar shader',
+      'Simulated atmospheric scattering on exoplanets',
+      'Label controls and high-precision screenshot tool'
+    ],
+    scientificSignificance: 'TRAPPIST-1 offers the most promising environment for the James Webb Space Telescope (JWST) to characterize atmospheres of terrestrial planets and search for potential biosignatures outside our solar system.'
+  },
   {
-  id: 'trappist-1',
+  id: 'kepler-90',
 
-  name: 'TRAPPIST-1 System',
+  name: 'Kepler-90 System',
 
   category: 'stellar-system',
 
   categoryLabel: 'Stellar System',
 
-  embedPath: '/trappist-1.html',
+  embedPath: '/kepler-90.html',
 
-  distance: '40.66 Light-years',
+  distance: '2,840 Light-years',
 
-  mass: '0.0898 Solar Masses (Star)',
+  mass: '≈1.2 Solar Masses (Host Star)',
 
-  constellation: 'Aquarius',
+  constellation: 'Draco',
 
   oneLiner:
-    'A remarkable planetary system centered on an ultra-cool red dwarf, hosting seven Earth-sized rocky planets, several of which orbit within the habitable zone.',
+    'A remarkable planetary system containing eight known planets—the first exoplanetary system discovered to equal our Solar System in planet count.',
 
   description:
-    'TRAPPIST-1 is one of the most extraordinary planetary systems ever discovered. Located approximately 40.66 light-years from Earth in the constellation Aquarius, the system is centered on an ultra-cool M8V red dwarf star only slightly larger than Jupiter. Orbiting this tiny star are seven known rocky exoplanets, designated TRAPPIST-1b through TRAPPIST-1h. All seven planets are similar in size to Earth and orbit much closer to their star than Mercury orbits the Sun. Despite their compact orbits, the star's low luminosity allows several planets to receive Earth-like amounts of stellar energy. At least three planets—TRAPPIST-1e, TRAPPIST-1f, and TRAPPIST-1g—orbit within or near the system's habitable zone where liquid water could potentially exist under suitable atmospheric conditions. The planets are locked in a remarkable orbital resonance chain that keeps the system dynamically stable. TRAPPIST-1 has become one of astronomy's highest-priority targets for studying rocky exoplanets, atmospheric evolution, and the search for extraterrestrial life.',
+    'The Kepler-90 System is a fascinating planetary system located approximately 2,840 light-years from Earth in the constellation Draco. At its center is Kepler-90, a G0V main-sequence star that is slightly larger, hotter, and more massive than the Sun. The system gained worldwide attention in 2017 when the discovery of Kepler-90i increased its known planet count to eight, matching the Solar System. Unlike our Solar System, however, all eight planets orbit much closer to their host star than Earth orbits the Sun, making Kepler-90 one of the most compact multiple-planet systems ever discovered. The system contains a diverse collection of rocky super-Earths, mini-Neptunes, and giant gas planets, providing astronomers with valuable insights into planetary migration, orbital stability, and the formation of complex planetary systems.',
 
   quickStats: [
     { label: 'System Type', value: 'Planetary System' },
-    { label: 'Host Star', value: 'TRAPPIST-1' },
-    { label: 'Star Type', value: 'Ultra-cool Red Dwarf (M8V)' },
-    { label: 'Distance from Earth', value: '40.66 Light-years' },
-    { label: 'Age', value: '≈7.6 Billion Years' },
-    { label: 'Star Mass', value: '0.0898 Solar Masses' },
-    { label: 'Star Radius', value: '0.121 Solar Radii' },
-    { label: 'Surface Temperature', value: '≈2,566 K' },
-    { label: 'Luminosity', value: '0.00055 Suns' },
-    { label: 'Known Planets', value: '7 Rocky Worlds' },
-    { label: 'Earth-sized Planets', value: '7' },
-    { label: 'Habitable Zone Planets', value: '1e, 1f, 1g' },
-    { label: 'Largest Planet', value: 'TRAPPIST-1g' },
-    { label: 'Smallest Planet', value: 'TRAPPIST-1d' },
-    { label: 'Orbital Resonance', value: 'Near Laplace Resonance Chain' }
-  ]
+    { label: 'Host Star', value: 'Kepler-90' },
+    { label: 'Star Type', value: 'G0V Main-Sequence Star' },
+    { label: 'Distance from Earth', value: '2,840 Light-years' },
+    { label: 'Constellation', value: 'Draco' },
+    { label: 'Known Planets', value: '8' },
+    { label: 'Star Mass', value: '≈1.2 Solar Masses' },
+    { label: 'Star Radius', value: '≈1.2 Solar Radii' },
+    { label: 'Star Temperature', value: '≈6,080 K' },
+    { label: 'Estimated Age', value: '≈2 Billion Years' },
+    { label: 'Discovery Mission', value: 'NASA Kepler Space Telescope' },
+    { label: 'Primary Detection Method', value: 'Transit Photometry' },
+    { label: 'AI-Assisted Discovery', value: 'Kepler-90i (2017)' },
+    { label: 'Planetary Layout', value: 'Highly Compact' },
+    { label: 'Galaxy', value: 'Milky Way' }
+  ],
 
   trivia: [
-    'TRAPPIST-1 has the largest known family of Earth-sized planets in a single system.',
-    'All seven planets could fit inside Mercury’s orbit around the Sun.',
-    'The star is only slightly larger than Jupiter.',
-    'The system is more than 7 billion years old.',
-    'The planets likely formed farther from the star before migrating inward.',
-    'Several neighboring planets would appear larger than our Moon in each other’s skies.',
-    'All seven planets are believed to be tidally locked.',
-    'The star occasionally produces energetic stellar flares.',
-    'TRAPPIST-1e is currently considered one of the best potentially habitable exoplanets.',
-    'The James Webb Space Telescope is actively studying this system.',
-    'Scientists continue searching for atmospheres on the planets.',
-    'The system's orbital resonance makes it one of the most dynamically stable planetary systems known.'
-  ]
+    'Kepler-90 was the first known exoplanetary system to match the Solar System with eight confirmed planets.',
+    'The eighth planet, Kepler-90i, was discovered using artificial intelligence developed by Google and NASA.',
+    'All eight planets orbit closer to their star than Earth orbits the Sun.',
+    'The system is much more compact than our Solar System.',
+    'Several planets are likely too hot to support Earth-like life.',
+    'The Kepler Space Telescope discovered thousands of exoplanets, including the Kepler-90 system.',
+    'The planets likely formed farther from their star before migrating inward.',
+    'Kepler-90 demonstrates that complex planetary systems are common throughout the Milky Way.',
+    'The system contains both rocky planets and giant gas planets.',
+    'Even the outermost giant planet receives much more stellar radiation than Jupiter.',
+    'Machine learning played a historic role in identifying one of the system’s planets.',
+    'Kepler-90 continues to be an important target for studies of planetary formation.'
+  ],
 
-  themeColor: 'rose',
+  themeColor: 'emerald',
 
   bgGradient:
-    'from-rose-500/10 via-red-500/10 to-orange-500/10',
+    'from-emerald-500/10 via-teal-500/10 to-cyan-500/10',
 
   interactiveFeatures: [
-    'True Orbital Resonance Simulator',
-    'Real-Time Planetary Motion',
-    'Ultra-Cool Red Dwarf Renderer',
-    'Habitable Zone Visualization',
+    'Interactive 8-Planet Orbit Simulator',
+    'Compact System Scale Comparison',
     'Planet Size Comparison',
-    'Distance Scale Explorer',
-    'Surface Temperature Comparison',
-    'Planet Composition Viewer',
-    'Atmosphere Simulation',
-    'Transit Detection Animation',
-    'James Webb Observation Mode',
-    'Day/Night Hemisphere Viewer',
-    'Tidal Lock Visualization',
-    'Neighbor Planet Sky View',
-    'Planet Information Cards',
-    'Interactive Orbit Labels',
-    'Radiation Environment Display',
-    'System Scale Toggle',
-    '3D Free Camera',
-    'Educational Guided Tour'
-  ]
+    'Orbital Speed Animation',
+    'Transit Detection Demonstration',
+    'Artificial Intelligence Discovery Timeline',
+    'Habitable Zone Display',
+    'Star Temperature Visualization',
+    'Planet Temperature Comparison',
+    'Dynamic Camera Flythrough',
+    'Planet Information Panels',
+    'Distance Scale Toggle',
+    'Orbital Resonance Visualization',
+    'System Evolution Timeline',
+    '3D Planet Models',
+    'Transit Light Curve Simulator',
+    'Solar System Comparison Mode',
+    'Educational Labels',
+    'Free Camera Controls',
+    'Real-Time Orbit Speed Controls'
+  ],
 
   scientificSignificance:
-    'The TRAPPIST-1 System is one of the most important laboratories for exoplanet science. Its seven Earth-sized rocky planets allow astronomers to compare multiple terrestrial worlds that formed around the same star. Because the host star is small and relatively dim, planetary transits produce strong observational signals, making the system ideal for measuring planetary masses, densities, atmospheres, climates, and potential biosignatures using modern observatories such as the James Webb Space Telescope.',
+    'The Kepler-90 System transformed scientists’ understanding of planetary systems by demonstrating that stars beyond the Sun can host large families of planets. Its compact architecture provides strong evidence that planetary migration plays a major role in shaping planetary systems. The AI-assisted discovery of Kepler-90i also marked one of the first major scientific breakthroughs achieved using machine learning in astronomy.',
 
-  star: {
-    name: 'TRAPPIST-1',
-    spectralType: 'M8V Ultra-Cool Red Dwarf',
-    mass: '0.0898 Solar Masses',
-    radius: '0.121 Solar Radii',
-    diameter: '≈168,000 km',
-    luminosity: '0.00055 Suns',
-    temperature: '≈2,566 K',
-    age: '≈7.6 Billion Years',
-    rotationPeriod: '≈3.3 Days',
-    notes:
-      'One of the smallest stars capable of sustaining hydrogen fusion. Despite its tiny size, it hosts seven known terrestrial planets.'
+  hostStar: {
+    name: 'Kepler-90',
+    spectralType: 'G0V Yellow Main-Sequence Star',
+    mass: '≈1.2 Solar Masses',
+    radius: '≈1.2 Solar Radii',
+    temperature: '≈6,080 K',
+    luminosity: '≈1.5 Suns',
+    age: '≈2 Billion Years',
+    metallicity: 'Higher than the Sun',
+    notes: 'A young Sun-like star that is hotter, brighter, and slightly larger than our Sun.'
   },
 
   planets: [
     {
-      name: 'TRAPPIST-1b',
-      type: 'Rocky',
-      orbitalPeriod: '1.51 Days',
-      radius: '1.12 Earth',
-      habitability: 'Too Hot'
+      name: 'Kepler-90b',
+      type: 'Rocky Super-Earth',
+      orbitalPeriod: '7.0 Days'
     },
     {
-      name: 'TRAPPIST-1c',
-      type: 'Rocky',
-      orbitalPeriod: '2.42 Days',
-      radius: '1.10 Earth',
-      habitability: 'Too Hot'
+      name: 'Kepler-90c',
+      type: 'Rocky Planet',
+      orbitalPeriod: '8.7 Days'
     },
     {
-      name: 'TRAPPIST-1d',
-      type: 'Rocky',
-      orbitalPeriod: '4.05 Days',
-      radius: '0.79 Earth',
-      habitability: 'Inner Edge'
+      name: 'Kepler-90i',
+      type: 'Super-Earth',
+      orbitalPeriod: '14.4 Days',
+      discovery: 'Discovered using Artificial Intelligence'
     },
     {
-      name: 'TRAPPIST-1e',
-      type: 'Rocky',
-      orbitalPeriod: '6.10 Days',
-      radius: '0.92 Earth',
-      habitability: 'Habitable Zone'
+      name: 'Kepler-90d',
+      type: 'Mini-Neptune',
+      orbitalPeriod: '59 Days'
     },
     {
-      name: 'TRAPPIST-1f',
-      type: 'Rocky',
-      orbitalPeriod: '9.21 Days',
-      radius: '1.05 Earth',
-      habitability: 'Habitable Zone'
+      name: 'Kepler-90e',
+      type: 'Mini-Neptune',
+      orbitalPeriod: '92 Days'
     },
     {
-      name: 'TRAPPIST-1g',
-      type: 'Rocky',
-      orbitalPeriod: '12.35 Days',
-      radius: '1.13 Earth',
-      habitability: 'Outer Habitable Zone'
+      name: 'Kepler-90f',
+      type: 'Gas Giant',
+      orbitalPeriod: '125 Days'
     },
     {
-      name: 'TRAPPIST-1h',
-      type: 'Rocky',
-      orbitalPeriod: '18.77 Days',
-      radius: '0.77 Earth',
-      habitability: 'Too Cold'
+      name: 'Kepler-90g',
+      type: 'Gas Giant',
+      orbitalPeriod: '211 Days'
+    },
+    {
+      name: 'Kepler-90h',
+      type: 'Gas Giant',
+      orbitalPeriod: '331 Days'
     }
-  ]
+  ],
 
-  exploration: [
-    'TRAPPIST Telescope',
-    'Spitzer Space Telescope',
-    'Hubble Space Telescope',
-    'James Webb Space Telescope',
-    'Very Large Telescope',
-    'SPECULOOS Observatory',
-    'CHEOPS Space Telescope'
-  ]
+  discoveryHistory: [
+    '2009 — NASA launches the Kepler Space Telescope.',
+    '2013 — Seven planets around Kepler-90 are confirmed.',
+    '2017 — Kepler-90i becomes the eighth confirmed planet.',
+    '2017 — Google AI identifies the weak transit signal missed by traditional analysis.',
+    'Kepler-90 becomes the first exoplanetary system known with eight confirmed planets.'
+  ],
 
-  currentResearch: [
-    'Atmospheric composition',
-    'Search for biosignatures',
-    'Water vapor detection',
-    'Climate modeling',
-    'Planet formation history',
-    'Orbital stability',
-    'Magnetic field studies',
-    'Habitability assessment'
-  ]
+  explorationMissions: [
+    'NASA Kepler Space Telescope',
+    'Google AI Neural Network Analysis',
+    'NASA Exoplanet Archive',
+    'Gaia Space Observatory',
+    'James Webb Space Telescope (Follow-up Studies)',
+    'PLATO Mission (Future)',
+    'Nancy Grace Roman Space Telescope (Future)'
+  ],
+
+  futureResearch: [
+    'Search for additional undiscovered planets',
+    'Measure planetary atmospheres',
+    'Study orbital stability',
+    'Understand planetary migration',
+    'Compare with the Solar System',
+    'Improve AI-based planet detection',
+    'Search for exomoons',
+    'Investigate planetary compositions'
+  ],
 
   interestingFacts: [
-    'The system was announced in 2017 and immediately became one of astronomy’s biggest discoveries.',
-    'TRAPPIST stands for TRAnsiting Planets and PlanetesImals Small Telescope.',
-    'Every known planet is terrestrial rather than a gas giant.',
-    'The star emits mostly infrared light instead of visible light.',
-    'A year on TRAPPIST-1b lasts only about 36 Earth hours.',
-    'The planets repeatedly eclipse one another because of their compact arrangement.',
-    'The system is one of the best places to search for extraterrestrial life.',
-    'Its planets provide an unprecedented opportunity to compare multiple Earth-sized worlds within a single planetary system.'
+    'The entire planetary system fits inside the orbit of Earth.',
+    'The planets orbit much faster than those in our Solar System.',
+    'The discovery of Kepler-90i demonstrated the power of artificial intelligence in astronomy.',
+    'The host star is slightly hotter and brighter than the Sun.',
+    'The system likely formed very differently from our own Solar System.',
+    'Several planets are larger than Earth but smaller than Neptune.',
+    'Its compact architecture challenges traditional models of planetary formation.',
+    'Kepler-90 is one of the best-studied multiple-planet systems discovered by the Kepler mission.'
   ]
 },
-  {
-    id: 'kepler-90',
-    name: 'Kepler-90 System',
-    category: 'stellar-system',
-    categoryLabel: 'Stellar System',
-    embedPath: '/kepler-90.html',
-    distance: '2,840 light-years',
-    mass: '1.2 Solar Masses (Star)',
-    constellation: 'Draco',
-    oneLiner: 'The first exoplanetary system found to match our Solar System in planet count.',
-    description: 'Kepler-90 is a G-type main-sequence star, slightly larger and hotter than our Sun, located in the constellation Draco. In 2017, the discovery of Kepler-90i using Google machine learning models confirmed that the system has eight orbiting planets, establishing a tie with our own Solar System. The planets are arranged in a highly compact configuration, with all eight orbiting within 1.0 Astronomical Unit of their star.',
-    quickStats: [
-      { label: 'Star Type', value: 'G0V Main Sequence Star' },
-      { label: 'Known Planets', value: '8 (Kepler-90b through i)' },
-      { label: 'Compact Boundary', value: 'All 8 planets orbit within 1.0 AU' },
-      { label: 'Outer Planet', value: 'Kepler-90h (Gas Giant)' },
-      { label: 'Discovery Method', value: 'Kepler Transit Photometry + AI' }
-    ],
-    trivia: [
-      { label: 'AI discovery', value: 'Kepler-90i, the eighth planet, was discovered by a neural network analyzing weak transit signals that human scientists had missed.' },
-      { label: 'Hot worlds', value: 'Even the outermost planet, Kepler-90h, orbits at a distance similar to Earth but receives significant heat from its larger star.' },
-      { label: 'Compact orbits', value: 'The orbits are extremely crowded; the inner six planets range from rocky super-Earths to mini-Neptunes, all close to their star.' }
-    ].map(t => t.value),
-    themeColor: 'emerald',
-    bgGradient: 'from-emerald-500/10 to-teal-500/10',
-    interactiveFeatures: [
-      '8 concentric planet orbits visualizer',
-      'G-type star atmospheric rayleigh scattering glow',
-      'Detailed procedural planet textures',
-      'Fast-loading OrbitControls canvas with post-processing bloom'
-    ],
-    scientificSignificance: 'Kepler-90 proves that highly crowded planetary systems with multiple orbital rings are common in the galaxy, providing crucial data for testing theories of planetary migration and system dynamics.'
-  },
   {
     id: 'sagittarius-a',
     name: 'Sagittarius A*',
