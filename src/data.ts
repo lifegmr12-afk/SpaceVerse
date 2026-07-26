@@ -499,54 +499,216 @@ export const spaceObjects: SpaceObject[] = [
     'Its chemical composition is remarkably similar to that of the Sun.'
   ]
 },
-{
-    id: 'trappist-1',
-    name: 'TRAPPIST-1 System',
-    category: 'stellar-system',
-    categoryLabel: 'Stellar System',
-    embedPath: '/trappist-1.html',
-    distance: '40.7 light-years',
-    mass: '0.09 Solar Masses (Star)',
-    constellation: 'Aquarius',
-    oneLiner: 'An ultra-cool red dwarf star system featuring seven rocky, Earth-sized planets.',
-    description: 'TRAPPIST-1 is a cold, low-mass M-dwarf star orbited by an extraordinary chain of seven terrestrial exoplanets, all similar in size to Earth. Because the red dwarf emits very little light and heat compared to our Sun, all seven planets orbit extremely close to the star—closer than Mercury\'s orbit to our Sun. Three of these planets lie squarely within the star\'s habitable zone.',
-    quickStats: [
-      { label: 'Star Type', value: 'Ultra-cool Red Dwarf (M8V)' },
-      { label: 'Rocky Planets', value: '7 (TRAPPIST-1b through h)' },
-      { label: 'Habitable Zone', value: '3 Planets (1e, 1f, 1g)' },
-      { label: 'Star Diameter', value: '12% of the Sun (size of Jupiter)' },
-      { label: 'Orbital Resonances', value: 'Perfect orbital harmony (laplace chains)' }
-    ],
-    trivia: [
-      { label: 'Compact system', value: 'The entire TRAPPIST-1 planetary system could easily fit inside the orbit of Mercury.' },
-      { label: 'Close neighbors', value: 'If you stood on the surface of TRAPPIST-1f, neighboring planets would appear as large as our Moon in the sky.' },
-      { label: 'Tidally locked', value: 'All seven planets are likely tidally locked, meaning they have a permanent day side and a permanent night side.' }
-    ].map(t => t.value),
-    themeColor: 'rose',
-    bgGradient: 'from-rose-500/10 to-red-500/10',
-    interactiveFeatures: [
-      '7 tightly-packed orbits simulating true orbital ratios',
-      'Ultra-cool red dwarf plasma solar shader',
-      'Simulated atmospheric scattering on exoplanets',
-      'Label controls and high-precision screenshot tool'
-    ],
-    scientificSignificance: 'TRAPPIST-1 offers the most promising environment for the James Webb Space Telescope (JWST) to characterize atmospheres of terrestrial planets and search for potential biosignatures outside our solar system.'
-  },
   {
-  id: 'kepler-90',
+  id: 'trappist-1',
 
-  name: 'Kepler-90 System',
+  name: 'TRAPPIST-1 System',
 
   category: 'stellar-system',
 
   categoryLabel: 'Stellar System',
 
+  embedPath: '/trappist-1.html',
+
+  distance: '40.7 Light-years',
+
+  mass: '0.089 Solar Masses (Host Star)',
+
+  constellation: 'Aquarius',
+
+  oneLiner:
+    'An extraordinary ultra-cool red dwarf system containing seven Earth-sized rocky planets, several of which orbit within the habitable zone.',
+
+  description:
+    'The TRAPPIST-1 System is one of the most remarkable planetary systems ever discovered. Located approximately 40.7 light-years away in the constellation Aquarius, it is centered on an ultra-cool red dwarf star known as TRAPPIST-1. The system contains seven known rocky planets, all similar in size to Earth, making it the largest known collection of Earth-sized planets around a single star. Every planet orbits extremely close to its faint host star, allowing the entire planetary system to fit comfortably within Mercury’s orbit in our Solar System. Three planets—TRAPPIST-1e, TRAPPIST-1f, and TRAPPIST-1g—orbit within or near the star’s habitable zone, where temperatures may allow liquid water under suitable atmospheric conditions. Because of its proximity, compact architecture, and Earth-sized worlds, TRAPPIST-1 has become one of the highest-priority targets in the search for extraterrestrial life.',
+
+  quickStats: [
+    { label: 'System Type', value: 'Planetary System' },
+    { label: 'Host Star', value: 'TRAPPIST-1' },
+    { label: 'Star Type', value: 'Ultra-cool Red Dwarf (M8V)' },
+    { label: 'Distance from Earth', value: '40.7 Light-years' },
+    { label: 'Constellation', value: 'Aquarius' },
+    { label: 'Known Planets', value: '7 Rocky Worlds' },
+    { label: 'Habitable Zone Planets', value: 'TRAPPIST-1e, f, g' },
+    { label: 'Star Mass', value: '0.089 Solar Masses' },
+    { label: 'Star Radius', value: '0.121 Solar Radii' },
+    { label: 'Star Temperature', value: '≈2,566 K' },
+    { label: 'Estimated Age', value: '7–9 Billion Years' },
+    { label: 'Star Luminosity', value: '≈0.05% of the Sun' },
+    { label: 'Discovery Year', value: '2016–2017' },
+    { label: 'Discovery Telescope', value: 'TRAPPIST & Spitzer' },
+    { label: 'Galaxy', value: 'Milky Way' }
+  ],
+
+  trivia: [
+    'The entire TRAPPIST-1 planetary system fits inside Mercury’s orbit around the Sun.',
+    'All seven planets are approximately Earth-sized.',
+    'Three planets orbit within the star’s habitable zone.',
+    'The planets are locked in an intricate orbital resonance chain.',
+    'All seven planets are likely tidally locked, with permanent day and night sides.',
+    'The host star is only slightly larger than Jupiter.',
+    'TRAPPIST-1 is much cooler than the Sun, glowing deep red.',
+    'Neighboring planets would appear enormous in each other’s skies.',
+    'The star may remain stable for trillions of years—far longer than the Sun.',
+    'Frequent stellar flares may influence planetary atmospheres.',
+    'James Webb Space Telescope is studying the atmospheres of these planets.',
+    'TRAPPIST-1 is among the most promising systems in the search for extraterrestrial life.'
+  ],
+
+  themeColor: 'rose',
+
+  bgGradient:
+    'from-rose-500/10 via-red-500/10 to-pink-500/10',
+
+  interactiveFeatures: [
+    'Interactive Seven-Planet Orbit Simulator',
+    'Orbital Resonance Animation',
+    'Habitable Zone Visualization',
+    'Planet Size Comparison',
+    'Planet Temperature Comparison',
+    'Tidal Lock Demonstration',
+    'Neighbor Planet Sky View',
+    'Ultra-cool Red Dwarf Animation',
+    'Atmospheric Simulation',
+    'Planet Information Cards',
+    'Real-Time Orbit Controls',
+    'Distance Scale Toggle',
+    'Solar System Comparison',
+    'Transit Detection Simulator',
+    'James Webb Observation Mode',
+    'Potential Ocean World Visualization',
+    'Planet Surface Explorer',
+    'Educational Labels',
+    '3D Camera Flythrough',
+    'Free Navigation Controls'
+  ],
+
+  scientificSignificance:
+    'The TRAPPIST-1 System represents one of the greatest opportunities for studying potentially habitable rocky planets beyond the Solar System. Because the planets frequently transit their small host star, astronomers can analyze their atmospheres using transit spectroscopy. Observations from the James Webb Space Telescope are helping scientists search for water vapor, carbon dioxide, methane, oxygen, and other possible biosignatures while improving our understanding of planetary evolution around red dwarf stars.',
+
+  hostStar: {
+    name: 'TRAPPIST-1',
+    spectralType: 'M8V Ultra-cool Red Dwarf',
+    mass: '0.089 Solar Masses',
+    radius: '0.121 Solar Radii',
+    temperature: '≈2,566 K',
+    luminosity: '≈0.0005 Suns',
+    age: '7–9 Billion Years',
+    rotationPeriod: '≈3.3 Days',
+    notes: 'A very small, cool red dwarf that emits only a tiny fraction of the Sun’s energy and is expected to live for trillions of years.'
+  },
+
+  planets: [
+    {
+      name: 'TRAPPIST-1b',
+      type: 'Rocky Planet',
+      orbitalPeriod: '1.51 Days',
+      radius: '1.12 Earth',
+      habitable: 'No'
+    },
+    {
+      name: 'TRAPPIST-1c',
+      type: 'Rocky Planet',
+      orbitalPeriod: '2.42 Days',
+      radius: '1.10 Earth',
+      habitable: 'No'
+    },
+    {
+      name: 'TRAPPIST-1d',
+      type: 'Rocky Planet',
+      orbitalPeriod: '4.05 Days',
+      radius: '0.79 Earth',
+      habitable: 'Near Inner Edge'
+    },
+    {
+      name: 'TRAPPIST-1e',
+      type: 'Rocky Earth-like Planet',
+      orbitalPeriod: '6.10 Days',
+      radius: '0.92 Earth',
+      habitable: 'Yes'
+    },
+    {
+      name: 'TRAPPIST-1f',
+      type: 'Rocky Planet',
+      orbitalPeriod: '9.21 Days',
+      radius: '1.05 Earth',
+      habitable: 'Yes'
+    },
+    {
+      name: 'TRAPPIST-1g',
+      type: 'Rocky Planet',
+      orbitalPeriod: '12.35 Days',
+      radius: '1.13 Earth',
+      habitable: 'Yes'
+    },
+    {
+      name: 'TRAPPIST-1h',
+      type: 'Rocky Planet',
+      orbitalPeriod: '18.77 Days',
+      radius: '0.77 Earth',
+      habitable: 'Too Cold'
+    }
+  ],
+
+  discoveryHistory: [
+    '2015 — Initial planets detected by the TRAPPIST telescope.',
+    '2016 — Three Earth-sized planets confirmed.',
+    '2017 — NASA announces the complete seven-planet system.',
+    '2018–2024 — Continued observations refine planetary masses and densities.',
+    '2023–2026 — James Webb Space Telescope begins detailed atmospheric studies.'
+  ],
+
+  explorationMissions: [
+    'TRAPPIST Telescope',
+    'NASA Spitzer Space Telescope',
+    'Hubble Space Telescope',
+    'James Webb Space Telescope',
+    'ESO Very Large Telescope',
+    'CHEOPS',
+    'PLATO (Future)',
+    'Nancy Grace Roman Space Telescope (Future)'
+  ],
+
+  futureResearch: [
+    'Search for atmospheric water vapor',
+    'Detect carbon dioxide',
+    'Search for methane',
+    'Search for oxygen and ozone',
+    'Study planetary climates',
+    'Measure atmospheric pressure',
+    'Search for oceans',
+    'Study stellar flare impacts',
+    'Improve planetary mass measurements',
+    'Search for biosignatures'
+  ],
+
+  orbitalResonance: {
+    type: 'Near Laplace Resonance Chain',
+    description: 'The seven planets orbit in a synchronized gravitational rhythm, making the system one of the most dynamically stable planetary systems known.'
+  },
+
+  interestingFacts: [
+    'The host star is only about the size of Jupiter.',
+    'TRAPPIST-1 emits less than one-thousandth of the Sun’s visible light.',
+    'A year on TRAPPIST-1b lasts only 36 hours.',
+    'The planets are so close together that neighboring worlds would dominate each other’s skies.',
+    'Scientists estimate some planets may contain more water than Earth.',
+    'The system is over a billion years older than our Solar System.',
+    'TRAPPIST-1 may survive for several trillion years.',
+    'This is one of the best planetary systems for studying Earth-sized exoplanets.',
+    'The planets likely formed farther from the star before migrating inward.',
+    'The James Webb Space Telescope continues to search for atmospheric gases that could indicate habitability.'
+  ]
+},
+  {
+  id: 'kepler-90',
+  name: 'Kepler-90 System',
+  category: 'stellar-system',
+  categoryLabel: 'Stellar System',
   embedPath: '/kepler-90.html',
 
   distance: '2,840 Light-years',
-
   mass: '≈1.2 Solar Masses (Host Star)',
-
   constellation: 'Draco',
 
   oneLiner:
