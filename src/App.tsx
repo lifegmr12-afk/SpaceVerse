@@ -1479,16 +1479,27 @@ to understand through immersive visualization.
 
         {/* Global Footer */}
         <footer className={`border-t ${isDarkMode ? 'border-white/5 bg-[#010207]' : 'border-slate-200 bg-slate-50'} py-8 text-center text-slate-500 text-xs transition-colors duration-300`}>
-          <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="font-sans font-normal">&copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.</p>
-            <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
-              <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
-            </p>
-          </div>
-        </footer>
+  <div className="max-w-7xl mx-auto px-6 flex flex-col gap-4">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p className="font-sans font-normal">
+        &copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.
+      </p>
 
-      </div>
+      <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+        <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
+      </p>
+    </div>
+
+    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] uppercase tracking-widest">
+      <a href="/privacy-policy.html" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+      <a href="/terms.html" className="hover:text-cyan-400 transition-colors">Terms</a>
+      <a href="/contact.html" className="hover:text-cyan-400 transition-colors">Contact</a>
+      <a href="/disclaimer.html" className="hover:text-cyan-400 transition-colors">Disclaimer</a>
+    </div>
+     </div>
+     </footer>
+     </div>
 
       {/* FULL-SCREEN IMMERSIVE 3D SIMULATOR CANVAS MODAL */}
       <AnimatePresence>
