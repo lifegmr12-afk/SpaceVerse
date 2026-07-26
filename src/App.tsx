@@ -1478,53 +1478,17 @@ to understand through immersive visualization.
         </main>
 
         {/* Global Footer */}
-        <footer className={`mt-12 border-t ${isDarkMode ? 'border-white/10' : 'border-slate-200'} pt-8 pb-6`}>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div>
-      <h3 className="text-lg font-bold text-white">SpaceVerse</h3>
-      <p className="text-sm text-slate-400 mt-3 leading-7">
-        Interactive astronomy encyclopedia and 3D universe simulator for students,
-        educators, researchers, and space enthusiasts.
-      </p>
-    </div>
+        <footer className={`border-t ${isDarkMode ? 'border-white/5 bg-[#010207]' : 'border-slate-200 bg-slate-50'} py-8 text-center text-slate-500 text-xs transition-colors duration-300`}>
+          <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="font-sans font-normal">&copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.</p>
+            <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+              <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
+            </p>
+          </div>
+        </footer>
 
-    <div>
-      <h3 className="text-sm font-semibold text-cyan-300 uppercase tracking-widest">
-        Legal
-      </h3>
-      <div className="mt-4 flex flex-col gap-3 text-sm">
-        <a href="/privacy-policy.html" className="text-slate-400 hover:text-cyan-300 transition-colors">
-          Privacy Policy
-        </a>
-        <a href="/terms.html" className="text-slate-400 hover:text-cyan-300 transition-colors">
-          Terms & Conditions
-        </a>
-        <a href="/disclaimer.html" className="text-slate-400 hover:text-cyan-300 transition-colors">
-          Disclaimer
-        </a>
       </div>
-    </div>
-
-    <div>
-      <h3 className="text-sm font-semibold text-cyan-300 uppercase tracking-widest">
-        Contact
-      </h3>
-      <div className="mt-4 flex flex-col gap-3 text-sm">
-        <a href="/contact.html" className="text-slate-400 hover:text-cyan-300 transition-colors">
-          Contact Us
-        </a>
-        <a href="mailto:spaceverse@example.com" className="text-slate-400 hover:text-cyan-300 transition-colors">
-          spaceverse@example.com
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500">
-    <p>© 2026 SpaceVerse. All rights reserved.</p>
-    <p>Built for space lovers worldwide.</p>
-  </div>
-</footer>
 
       {/* FULL-SCREEN IMMERSIVE 3D SIMULATOR CANVAS MODAL */}
       <AnimatePresence>
