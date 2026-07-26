@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact SpaceVerse for questions, feedback, or support." />
+  <meta name="robots" content="index, follow" />
+  <title>Contact | SpaceVerse</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --card: rgba(10, 16, 30, 0.92);
+      --text: #d7e0ef;
+      --muted: #9db0cc;
+      --line: rgba(120, 170, 255, 0.16);
+      --accent: #31d6ff;
+      --accent-2: #7c5cff;
+      --input: rgba(255,255,255,0.04);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(49, 214, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(124, 92, 255, 0.10), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0 0 28px;
+      font-size: 0.98rem;
+    }
+
+    h2 {
+      margin-top: 34px;
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+      color: #ffffff;
+    }
+
+    p, li, label {
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    @media (max-width: 840px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 14px;
+      background: var(--input);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #7f93b2;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(49, 214, 255, 0.55);
+      box-shadow: 0 0 0 3px rgba(49, 214, 255, 0.12);
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 18px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #031019;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      opacity: 0.95;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent-2);
+      background: rgba(124, 92, 255, 0.08);
+      border-radius: 12px;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding-left: 18px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="eyebrow">SpaceVerse</div>
+      <h1>Contact Us</h1>
+      <p class="updated">Last updated: July 16, 2026</p>
+
+      <p>
+        We’d love to hear from you. Contact SpaceVerse for feedback, questions, collaboration ideas, correction requests, or support related to the website.
+      </p>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>Send a Message</h2>
+
+          <!-- Replace the mailto address with your real email -->
+          <form class="form" action="mailto:spaceverse@example.com" method="post" enctype="text/plain">
+            <div class="field">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div class="field">
+              <label for="email">Your Email</label>
+              <input id="email" name="email" type="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="What is this about?" required />
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+
+          <div class="note">
+            Replace <strong>ddon09876567890@gmail.com</strong> with your real email address before publishing.
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>Contact Details</h2>
+          <ul class="contact-list">
+            <li>Email: <a href="mailto:ddon09876567890@gmail.com">ddon09876567890@gmail.com</a></li>
+            <li>Website: <a href="https://space-verse-alpha.vercel.app/">SpaceVerse</a></li>
+            <li>Location: Online / Global</li>
+          </ul>
+
+          <h2>What You Can Contact Us About</h2>
+          <ul class="contact-list">
+            <li>Website feedback</li>
+            <li>Content corrections</li>
+            <li>Partnership or collaboration ideas</li>
+            <li>Technical issues</li>
+            <li>General questions about SpaceVerse</li>
+          </ul>
+
+          <h2>Response Time</h2>
+          <p>
+            We try to respond as soon as possible, but response times may vary depending on the number of messages we receive.
+          </p>
+        </aside>
+      </div>
+
+      <div class="footer">
+        © 2026 SpaceVerse. All rights reserved.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
