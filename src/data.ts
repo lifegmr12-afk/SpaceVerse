@@ -324,38 +324,168 @@ export const spaceObjects: SpaceObject[] = [
   bgGradient: 'from-amber-500/10 to-yellow-500/10'
 },
   {
-    id: 'alpha-centauri',
-    name: 'Alpha Centauri System',
-    category: 'stellar-system',
-    categoryLabel: 'Stellar System',
-    embedPath: '/alpha-centauri-system.html',
-    distance: '4.37 light-years',
-    mass: '2.0 Solar Masses (Combined)',
-    constellation: 'Centaurus',
-    oneLiner: 'The closest stellar system to Earth, consisting of three stars.',
-    description: 'Alpha Centauri is a triple star system. It consists of three stars: Alpha Centauri A (a G-type star similar to our Sun), Alpha Centauri B (a slightly cooler K-type star), and Proxima Centauri (an M-type red dwarf). Proxima Centauri is the closest individual star to our Sun at 4.24 light-years, and hosts Proxima Centauri b, a planet in its habitable zone.',
-    quickStats: [
-      { label: 'Star Count', value: '3 (Binary A/B + Dwarf C)' },
-      { label: 'Closest Star', value: 'Proxima Centauri (4.24 ly)' },
-      { label: 'Known Exoplanets', value: '3 (Around Proxima Centauri)' },
-      { label: 'Stellar Classes', value: 'G2V, K1V, M6Ve' },
-      { label: 'Orbital Period A/B', value: '79.91 Years' }
-    ],
-    trivia: [
-      { label: 'Breakthrough Starshot', value: 'Alpha Centauri is the target of the Breakthrough Starshot initiative, which aims to send laser-sail microprobes traveling at 20% the speed of light to capture close-up images.' },
-      { label: 'Proxima b', value: 'Proxima b is a rocky planet 1.17 times the mass of Earth that orbits within Proxima\'s habitable zone every 11.2 days.' },
-      { label: 'Three-body orbit', value: 'Proxima Centauri orbits the central binary pair at an immense distance, taking approximately 550,000 years to complete one orbit.' }
-    ].map(t => t.value),
-    themeColor: 'cyan',
-    bgGradient: 'from-cyan-500/10 to-blue-500/10',
-    interactiveFeatures: [
-      'Stellar orbit visualization of Binary A & B',
-      'Orbit path representation for Proxima Centauri',
-      'Spectral star plasma rendering',
-      'Damping-controlled camera flythroughs'
-    ],
-    scientificSignificance: 'As our nearest neighbor, Alpha Centauri is the primary target for future interstellar exploration missions and represents our best opportunity to obtain high-resolution direct data from another star system.'
-  },
+  id: 'alpha-centauri',
+  name: 'Alpha Centauri System',
+  category: 'stellar-system',
+  categoryLabel: 'Stellar System',
+  embedPath: '/alpha-centauri-system.html',
+
+  distance: '4.37 Light-years',
+  mass: '≈2.17 Solar Masses (Combined)',
+  constellation: 'Centaurus',
+
+  oneLiner:
+    'The closest known stellar system to the Solar System, composed of three stars and multiple confirmed exoplanets.',
+
+  description:
+    'The Alpha Centauri System is the nearest stellar system to our Solar System, located approximately 4.37 light-years away in the southern constellation Centaurus. It is a gravitationally bound triple-star system consisting of Alpha Centauri A, Alpha Centauri B, and Proxima Centauri (Alpha Centauri C). Alpha Centauri A is a Sun-like G-type main-sequence star, while Alpha Centauri B is a slightly smaller and cooler K-type main-sequence star. These two stars orbit each other every 79.91 years. Proxima Centauri, the smallest and faintest member, is a red dwarf located about 13,000 AU from the central pair and is currently the closest individual star to Earth at 4.24 light-years. Several exoplanets have been confirmed around Proxima Centauri, including Proxima Centauri b, one of the nearest potentially habitable rocky worlds known. Due to its proximity, the Alpha Centauri System is considered humanity's most promising destination for future robotic and possibly crewed interstellar exploration.',
+
+  quickStats: [
+    { label: 'System Type', value: 'Triple Star System' },
+    { label: 'Distance from Earth', value: '4.37 Light-years' },
+    { label: 'Closest Star', value: 'Proxima Centauri (4.24 ly)' },
+    { label: 'Total Stars', value: '3' },
+    { label: 'Combined Mass', value: '≈2.17 Solar Masses' },
+    { label: 'Primary Stars', value: 'Alpha Centauri A & B' },
+    { label: 'Orbital Period (A/B)', value: '79.91 Years' },
+    { label: 'Maximum Separation', value: '≈35 AU' },
+    { label: 'Minimum Separation', value: '≈11 AU' },
+    { label: 'Known Exoplanets', value: '3 Confirmed (Proxima System)' },
+    { label: 'Brightest Star', value: 'Alpha Centauri A' },
+    { label: 'Stellar Classes', value: 'G2V • K1V • M5.5Ve' },
+    { label: 'Approximate Age', value: '5–6 Billion Years' },
+    { label: 'Constellation', value: 'Centaurus' },
+    { label: 'Visible to Naked Eye', value: 'Yes (Southern Hemisphere)' }
+  ],
+
+  trivia: [
+    'Alpha Centauri is the closest stellar system to our Solar System.',
+    'Proxima Centauri is the closest individual star to the Sun.',
+    'Alpha Centauri A closely resembles our Sun in temperature, size, and luminosity.',
+    'The binary stars orbit each other every 79.91 Earth years.',
+    'Proxima Centauri takes roughly 550,000 years to orbit Alpha Centauri A and B.',
+    'The system is one of the brightest stars visible in the night sky.',
+    'Proxima Centauri is a flare star capable of producing powerful stellar eruptions.',
+    'Proxima Centauri b lies within the star’s habitable zone.',
+    'The Alpha Centauri system is the primary target of the Breakthrough Starshot project.',
+    'Light from Alpha Centauri takes about 4.37 years to reach Earth.',
+    'The stars were first cataloged by European astronomers in the 17th century.',
+    'No confirmed planets have yet been discovered around Alpha Centauri A or B, although several candidates have been investigated.'
+  ],
+
+  themeColor: 'cyan',
+
+  bgGradient:
+    'from-cyan-500/10 via-sky-500/10 to-blue-500/10',
+
+  interactiveFeatures: [
+    'Real-time Binary Orbit Simulator',
+    '3D Triple-Star System',
+    'Proxima Centauri Orbit Animation',
+    'Planetary Orbit Explorer',
+    'Habitable Zone Visualization',
+    'Star Size Comparison',
+    'Temperature Comparison',
+    'Luminosity Comparison',
+    'Distance Scale Explorer',
+    'Spectral Color Simulation',
+    'Stellar Evolution Timeline',
+    'Orbit Speed Controls',
+    'Gravity Simulation',
+    'Interstellar Travel Calculator',
+    'Light Travel Time Animation',
+    'Breakthrough Starshot Flight Simulation',
+    'Exoplanet Information Panels',
+    '3D Camera Flythrough',
+    'Planet Surface Visualization',
+    'Educational Labels Toggle'
+  ],
+
+  scientificSignificance:
+    'As the nearest stellar system to Earth, Alpha Centauri serves as the most important natural laboratory for studying nearby stars, exoplanets, stellar evolution, and the possibility of life beyond the Solar System. It is the leading candidate for humanity’s first true interstellar mission and plays a central role in future exploration concepts, including laser-powered spacecraft and advanced astronomical observations.',
+
+  stars: [
+    {
+      name: 'Alpha Centauri A',
+      type: 'Yellow Main-Sequence Star',
+      spectralClass: 'G2V',
+      mass: '1.10 Solar Masses',
+      radius: '1.22 Solar Radii',
+      luminosity: '1.52 Suns',
+      surfaceTemperature: '5,790 K',
+      age: '≈5.3 Billion Years',
+      notes: 'Very similar to the Sun and the brightest member of the system.'
+    },
+    {
+      name: 'Alpha Centauri B',
+      type: 'Orange Main-Sequence Star',
+      spectralClass: 'K1V',
+      mass: '0.91 Solar Masses',
+      radius: '0.86 Solar Radii',
+      luminosity: '0.50 Suns',
+      surfaceTemperature: '5,260 K',
+      age: '≈5.3 Billion Years',
+      notes: 'Cooler and slightly smaller than the Sun.'
+    },
+    {
+      name: 'Proxima Centauri',
+      type: 'Red Dwarf',
+      spectralClass: 'M5.5Ve',
+      mass: '0.122 Solar Masses',
+      radius: '0.154 Solar Radii',
+      luminosity: '0.0017 Suns',
+      surfaceTemperature: '3,050 K',
+      age: '≈4.8 Billion Years',
+      notes: 'Closest known star to the Solar System and an active flare star.'
+    }
+  ],
+
+  confirmedPlanets: [
+    {
+      name: 'Proxima Centauri b',
+      type: 'Rocky Exoplanet',
+      mass: '≈1.17 Earth Masses',
+      orbitalPeriod: '11.2 Days',
+      location: 'Habitable Zone',
+      discovery: '2016'
+    },
+    {
+      name: 'Proxima Centauri d',
+      type: 'Sub-Earth Exoplanet',
+      mass: '≈0.26 Earth Masses',
+      orbitalPeriod: '5.1 Days',
+      discovery: '2022'
+    },
+    {
+      name: 'Proxima Centauri c',
+      type: 'Super-Earth Candidate',
+      mass: '≈7 Earth Masses',
+      orbitalPeriod: '5.2 Years',
+      discovery: '2020'
+    }
+  ],
+
+  explorationProjects: [
+    'Breakthrough Starshot',
+    'ESO Very Large Telescope',
+    'James Webb Space Telescope',
+    'European Southern Observatory',
+    'Gaia Space Observatory',
+    'Extremely Large Telescope (ELT)',
+    'Hubble Space Telescope'
+  ],
+
+  futureResearch: [
+    'Direct imaging of Earth-sized exoplanets',
+    'Search for atmospheric biosignatures',
+    'Laser-sail interstellar probes',
+    'Characterization of Proxima b',
+    'Search for planets around Alpha Centauri A',
+    'Search for planets around Alpha Centauri B',
+    'High-resolution spectroscopy',
+    'Interstellar communication studies'
+  ]
+},
   {
     id: 'trappist-1',
     name: 'TRAPPIST-1 System',
