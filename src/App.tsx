@@ -552,8 +552,8 @@ export default function App() {
       )}
 
       {/* MAIN RIGHT COLUMN CONTAINER */}
-      < className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto pt-16 lg:pt-0 relative z-10">
-        
+      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto pt-16 lg:pt-0 relative z-10">
+       </div> 
         {/* DESKTOP TOP BAR */}
         <header className={`sticky top-0 z-30 h-16 border-b ${isDarkMode ? 'bg-[#03050c]/85 border-white/5' : 'bg-white/85 border-slate-200'} backdrop-blur-xl px-6 lg:px-8 flex items-center justify-between gap-4 transition-colors duration-300`}>
           {/* Universal Search */}
