@@ -110,9 +110,31 @@
       color: var(--muted);
       font-size: 0.95rem;
     }
+    .back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  color: #00d4ff;
+  background: rgba(10, 15, 30, 0.9);
+  border: 1px solid #00d4ff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  transition: 0.3s;
+  z-index: 9999;
+}
+
+.back-btn:hover {
+  background: #00d4ff;
+  color: #000;
+}
   </style>
 </head>
 <body>
+
+<a href="/" class="back-btn">← Back to Home</a>
   <main class="wrap">
     <section class="card">
       <div class="eyebrow">SpaceVerse</div>
