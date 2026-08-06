@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Saturn | SpaceVerse</title>
+
+<meta name="description"
+content="Explore Saturn through SpaceVerse's interactive encyclopedia. Discover Saturn's magnificent rings, Titan, Enceladus, atmosphere, moons, Cassini mission, and scientific discoveries.">
+
+<meta name="keywords"
+content="Saturn,Rings,Titan,Enceladus,Cassini,Gas Giant,SpaceVerse">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/saturn.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:#050507;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ================================= */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("images/stars.jpg") center/cover;
+
+opacity:.30;
+
+z-index:-2;
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+color:#ffe08a;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ffe08a;
+
+}
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:140px 8% 80px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(255,224,138,.12);
+
+border:1px solid rgba(255,224,138,.25);
+
+color:#ffe08a;
+
+margin-bottom:20px;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:78px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+margin-bottom:40px;
+
+}
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.primary-btn{
+
+padding:15px 35px;
+
+background:linear-gradient(135deg,#ffe08a,#d9a441);
+
+border:none;
+
+border-radius:12px;
+
+color:#111;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:0 0 35px rgba(255,224,138,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 45px rgba(255,224,138,.65);
+
+}
+
+.secondary-btn{
+
+padding:15px 35px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:12px;
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+backdrop-filter:blur(12px);
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:580px;
+
+max-width:100%;
+
+filter:drop-shadow(0 0 80px rgba(255,224,138,.45));
+
+animation:saturnFloat 10s ease-in-out infinite;
+
+}
+
+@keyframes saturnFloat{
+
+0%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+50%{
+
+transform:translateY(-18px) rotate(.7deg);
+
+}
+
+100%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+}
+
+/* ================================= */
+
+.quick-stats{
+
+padding:80px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,224,138,.18);
+
+border-radius:18px;
+
+padding:30px;
+
+backdrop-filter:blur(16px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ffe08a;
+
+box-shadow:0 0 35px rgba(255,224,138,.30);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#ffe08a;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#d8d8d8;
+
+}
+
+/* ================================= */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#ffe08a;
+
+margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d7d7d7;
+
+margin-bottom:45px;
+
+}
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#111215;
+
+padding:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,224,138,.15);
+
+transition:.35s;
+
+}
+
+.telemetry-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#ffe08a;
+
+}
+
+.telemetry-card h4{
+
+color:#ffe08a;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+color:#d6d6d6;
+
+}
+
+.telemetry-card li:last-child{
+
+border:none;
+
+}
+
+/* ================================= */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:350px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#future">Future</a>
+
+</nav>
+
+</header>
+
+<!-- ========================================================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Sixth Planet from the Sun
+
+</span>
+
+<h1>
+
+Saturn
+
+</h1>
+
+<p>
+
+Saturn is the second-largest planet in the Solar System and is renowned for its magnificent ring system. This gas giant is composed mainly of hydrogen and helium and is surrounded by thousands of icy ring particles along with an extraordinary collection of moons, including Titan and Enceladus. Saturn remains one of the most beautiful and scientifically important worlds explored by humanity.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore Saturn
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/saturn.png"
+
+alt="Planet Saturn">
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>120,536 km</h2>
+
+<p>
+
+Saturn is the second-largest planet in the Solar System, exceeded only by Jupiter.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>10.44 m/s²</h2>
+
+<p>
+
+Despite its enormous size, Saturn's surface gravity is only slightly stronger than Earth's.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Length of Year</h3>
+
+<h2>29.45 Years</h2>
+
+<p>
+
+Saturn requires nearly thirty Earth years to complete one orbit around the Sun.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Known Moons</h3>
+
+<h2>146+</h2>
+
+<p>
+
+Saturn possesses the largest confirmed moon system in the Solar System, including Titan and Enceladus.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SATURN OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Saturn Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn is the sixth planet from the Sun and the second-largest planet in the Solar System. Classified as a gas giant, Saturn is composed primarily of hydrogen and helium and is famous for its spectacular ring system. Formed approximately 4.5 billion years ago, Saturn has become one of the most scientifically important planets because of its rings, complex atmosphere, and remarkable collection of moons.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Planet Classification</h4>
+
+<ul>
+
+<li>Planet Type — Gas Giant</li>
+
+<li>Solar System Order — 6th Planet</li>
+
+<li>Average Distance — 1.43 Billion km</li>
+
+<li>Orbital Period — 29.45 Earth Years</li>
+
+<li>Rotation Period — 10h 33m</li>
+
+<li>Average Orbital Speed — 9.68 km/s</li>
+
+<li>Axial Tilt — 26.7°</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Physical Characteristics</h4>
+
+<ul>
+
+<li>Diameter — 120,536 km</li>
+
+<li>Radius — 58,232 km</li>
+
+<li>Mass — 5.68 × 10²⁶ kg</li>
+
+<li>Density — 0.687 g/cm³</li>
+
+<li>Surface Gravity — 10.44 m/s²</li>
+
+<li>Escape Velocity — 35.5 km/s</li>
+
+<li>Known Moons — 146+</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>Atmosphere — Hydrogen & Helium</li>
+
+<li>Cloud Temperature — ≈ -178°C</li>
+
+<li>Ring System — Largest in Solar System</li>
+
+<li>Magnetic Field — Extremely Powerful</li>
+
+<li>Average Wind Speed — 1,800 km/h</li>
+
+<li>Surface — No Solid Surface</li>
+
+<li>Interior — Metallic Hydrogen</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- RING SYSTEM -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Saturn's Ring System
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn possesses the most spectacular ring system in the Solar System. Although they appear solid from a distance, the rings are actually made of billions of particles of ice, rock, and dust ranging in size from tiny grains to mountain-sized chunks. The rings extend hundreds of thousands of kilometers from Saturn but are surprisingly thin.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Ring Diameter</h3>
+
+<h2>282,000 km</h2>
+
+<p>
+
+The main rings stretch nearly 282,000 kilometers across.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Ring Thickness</h3>
+
+<h2>10–100 m</h2>
+
+<p>
+
+Despite their enormous width, most rings are only a few tens of meters thick.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Main Rings</h3>
+
+<h2>7</h2>
+
+<p>
+
+Astronomers identify seven major rings labeled A through G.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Composition</h3>
+
+<h2>Ice</h2>
+
+<p>
+
+More than 95% of the ring material consists of water ice.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ATMOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Atmosphere & Weather
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn's atmosphere consists mainly of hydrogen and helium with traces of methane, ammonia, and water vapor. The planet experiences extremely powerful winds, massive storms, and seasonal changes caused by its tilted rotational axis.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Hydrogen</h4>
+
+<p>
+
+Hydrogen makes up approximately 96% of Saturn's atmosphere.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Helium</h4>
+
+<p>
+
+Helium is the second most abundant atmospheric gas.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Storm Systems</h4>
+
+<p>
+
+Saturn occasionally develops giant storms that can wrap around the entire planet.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MAGNETIC FIELD -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Magnetic Field
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn generates a powerful magnetic field through the motion of electrically conducting metallic hydrogen deep inside the planet. Although weaker than Jupiter's, Saturn's magnetosphere extends millions of kilometers into space and interacts with the solar wind and its moons.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Magnetosphere</h3>
+
+<h2>Millions km</h2>
+
+<p>
+
+Saturn's magnetic influence stretches far beyond its rings.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Auroras</h3>
+
+<h2>Polar</h2>
+
+<p>
+
+Colorful auroras occur near Saturn's poles.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Radiation</h3>
+
+<h2>Strong</h2>
+
+<p>
+
+Charged particles become trapped inside Saturn's magnetic field.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Source</h3>
+
+<h2>Metallic Hydrogen</h2>
+
+<p>
+
+Electrical currents inside metallic hydrogen generate Saturn's magnetic field.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERNAL STRUCTURE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Interior Structure
+
+</h2>
+
+<p class="section-subtitle">
+
+Scientists believe Saturn contains a dense rocky core surrounded by layers of metallic hydrogen, liquid hydrogen, and gaseous hydrogen. Extreme pressure and temperature increase rapidly toward the planet's center, creating one of the most unusual environments in the Solar System.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Rocky Core</h4>
+
+<p>
+
+A compact core likely composed of rock, metal, and ice.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Metallic Hydrogen</h4>
+
+<p>
+
+Hydrogen behaves like an electrically conducting metal deep inside Saturn.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Outer Atmosphere</h4>
+
+<p>
+
+The visible atmosphere gradually blends into deeper layers without a solid boundary.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SATURN'S MAJOR MOONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Saturn's Major Moons
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn possesses the largest known moon system in the Solar System. Its diverse moons range from heavily cratered icy worlds to planets with thick atmospheres and even hidden oceans. These moons have become some of the most exciting destinations for future planetary exploration.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🌎 Titan</h3>
+
+<p>
+
+Titan is Saturn's largest moon and the second-largest moon in the Solar System. It possesses a thick nitrogen atmosphere, rivers, lakes, and seas of liquid methane and ethane, making it one of the most Earth-like worlds beyond Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>❄ Enceladus</h3>
+
+<p>
+
+Enceladus is famous for enormous geysers that eject water vapor, ice particles, and organic compounds into space. Beneath its icy crust lies a global ocean that may provide conditions suitable for life.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌑 Rhea</h3>
+
+<p>
+
+Rhea is Saturn's second-largest moon. Its heavily cratered icy surface preserves billions of years of Solar System history and may even possess a very thin ring system.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌍 Dione</h3>
+
+<p>
+
+Dione is covered with bright ice cliffs and fractured terrain, indicating past geological activity. Scientists suspect that a subsurface ocean may exist deep beneath its icy crust.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>⚪ Iapetus</h3>
+
+<p>
+
+Iapetus is famous for its dramatic two-tone appearance. One hemisphere is extremely dark while the opposite side is bright with reflective ice.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🧀 Mimas</h3>
+
+<p>
+
+Mimas is recognizable because of its enormous Herschel Crater, giving it an appearance similar to the fictional "Death Star."
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CASSINI-HUYGENS -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Cassini–Huygens Mission
+
+</h2>
+
+<p class="section-subtitle">
+
+The Cassini-Huygens mission remains one of the greatest achievements in planetary exploration. Launched in 1997, Cassini entered orbit around Saturn in 2004 and spent over 13 years studying the planet, its rings, magnetic field, and numerous moons before ending its mission with the spectacular Grand Finale in 2017.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Launch</h4>
+
+<p>
+
+October 15, 1997
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Saturn Arrival</h4>
+
+<p>
+
+July 1, 2004
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Mission End</h4>
+
+<p>
+
+September 15, 2017
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Historic Achievement</h4>
+
+<p>
+
+Delivered the Huygens probe to Titan, the first landing ever accomplished in the outer Solar System.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Saturn Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1610</h4>
+
+<p>
+
+Galileo Galilei first observed Saturn through a telescope, although he could not identify its rings.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1655</h4>
+
+<p>
+
+Christiaan Huygens correctly identified Saturn's rings and discovered Titan.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1979–1981</h4>
+
+<p>
+
+Pioneer 11 and Voyager 1 & 2 revealed the complexity of Saturn's rings and moons.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2004</h4>
+
+<p>
+
+Cassini entered orbit around Saturn and began detailed exploration.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2005</h4>
+
+<p>
+
+The Huygens probe successfully landed on Titan.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2017</h4>
+
+<p>
+
+Cassini completed its Grand Finale by diving into Saturn's atmosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- AMAZING FACTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Saturn Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>💍 Giant Rings</h3>
+
+<p>
+
+Saturn's rings extend hundreds of thousands of kilometers but are only tens of meters thick.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌊 Float on Water</h3>
+
+<p>
+
+Saturn's average density is lower than water, meaning it would theoretically float in an enormous ocean.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌎 Titan</h3>
+
+<p>
+
+Titan is the only moon in the Solar System with a dense atmosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>❄ Hidden Ocean</h3>
+
+<p>
+
+Enceladus contains a global subsurface ocean beneath its icy shell.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌪 Powerful Winds</h3>
+
+<p>
+
+Wind speeds near Saturn's equator can exceed 1,800 km/h.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>⬡ Hexagon Storm</h3>
+
+<p>
+
+A mysterious six-sided jet stream surrounds Saturn's north pole and has persisted for decades.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC IMPORTANCE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Importance
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn provides scientists with a unique laboratory for studying giant planet formation, ring dynamics, atmospheric circulation, and icy moon evolution. The Cassini mission transformed our understanding of Saturn's complex system, revealing active geysers on Enceladus, methane lakes on Titan, intricate ring structures, and interactions between the planet, its moons, and its magnetic field. Future missions will continue exploring Saturn's moons as promising locations in the search for environments capable of supporting life.
+
+</p>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Saturn: The Jewel of the Solar System
+
+</h2>
+
+<p class="section-subtitle">
+
+Saturn has fascinated humanity for centuries because of its magnificent rings and graceful appearance. Although Jupiter is larger, Saturn's brilliant ring system makes it the most visually recognizable planet in the Solar System. Modern spacecraft have transformed Saturn from a distant yellow world into one of the richest scientific laboratories for understanding planetary systems.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Saturn is primarily composed of hydrogen and helium. Unlike Earth, it has no solid surface. As a spacecraft descends, the atmosphere gradually becomes denser until gases transition into liquid hydrogen and metallic hydrogen under enormous pressure. Scientists believe a dense rocky core lies deep beneath these layers.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Its spectacular ring system consists of billions of particles made mostly of water ice mixed with rock and dust. Some particles are microscopic, while others are as large as mountains. Gravitational interactions with Saturn's moons continuously shape the rings into narrow gaps, waves, and intricate patterns.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;">
+
+The discoveries made by the Cassini-Huygens mission completely changed our understanding of Saturn. Scientists discovered active geysers on Enceladus, methane lakes on Titan, new moons, dynamic weather systems, and detailed structures within the rings. These discoveries continue to guide future planetary exploration and the search for life beyond Earth.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- IMAGE GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Saturn Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative scientific imagery showing Saturn and its remarkable planetary system.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/saturn1.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Global View
+
+</h3>
+
+<p>
+
+A full-disk image highlighting Saturn's atmosphere and ring system.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/saturn2.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Ring System
+
+</h3>
+
+<p>
+
+The spectacular rings consist primarily of billions of icy particles.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/saturn3.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Cassini Mission
+
+</h3>
+
+<p>
+
+Cassini revolutionized our understanding of Saturn and its moons.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Saturn famous?
+
+</h4>
+
+<p>
+
+Saturn is famous for its spectacular ring system, which is the largest and brightest in the Solar System.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can Saturn float on water?
+
+</h4>
+
+<p>
+
+Yes. Saturn's average density is lower than water, meaning it would theoretically float in a sufficiently large ocean.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+What are Saturn's rings made of?
+
+</h4>
+
+<p>
+
+They are composed mainly of water ice mixed with rock and dust particles.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Which is Saturn's largest moon?
+
+</h4>
+
+<p>
+
+Titan is Saturn's largest moon and possesses a dense nitrogen-rich atmosphere.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Does Saturn have storms?
+
+</h4>
+
+<p>
+
+Yes. Saturn experiences giant storms, extremely fast winds, and the famous hexagonal storm at its north pole.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Enceladus important?
+
+</h4>
+
+<p>
+
+Enceladus contains a global subsurface ocean and water-rich geysers, making it one of the most promising places to search for extraterrestrial life.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d5dfe8;">
+
+<li>NASA Solar System Exploration</li>
+
+<li>NASA Cassini Mission</li>
+
+<li>European Space Agency (ESA)</li>
+
+<li>ESA Huygens Mission</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+<li>Hubble Space Telescope</li>
+
+<li>James Webb Space Telescope</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE EXPLORING -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="uranus.html"
+
+class="primary-btn">
+
+Next Planet →
+
+Uranus
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#0d0908;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#ffe08a;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+">
+
+SpaceVerse is an educational astronomy encyclopedia dedicated to making astronomy accessible through scientifically inspired visualizations, verified astronomical information, interactive simulations, and educational resources for students, educators, researchers, and space enthusiasts around the world.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#8a8a8a;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+
+↑
+
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffe08a,#d9a441);
+
+color:#111;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+transition:.3s;
+
+box-shadow:0 0 30px rgba(255,224,138,.45);
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 45px rgba(255,224,138,.8);
+
+}
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(255,224,138,.45);
+
+}
+
+</style>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"Why is Saturn famous?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Saturn is famous for its spectacular ring system, the largest and brightest in the Solar System."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Can Saturn float on water?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Yes. Saturn's average density is lower than water, so it would theoretically float in a sufficiently large body of water."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"What are Saturn's rings made of?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Saturn's rings consist mainly of water ice mixed with smaller amounts of rock and dust."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Which is Saturn's largest moon?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Titan is Saturn's largest moon and has a dense nitrogen atmosphere."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- ARTICLE SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Saturn",
+
+"description":"A complete guide to Saturn including its rings, moons, atmosphere, Cassini mission, scientific discoveries, and planetary exploration.",
+
+"author":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":"https://space-verse-alpha.vercel.app/saturn.html"
+
+}
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+/* ==========================
+Back To Top
+========================== */
+
+const backBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+backBtn.style.display="block";
+
+}else{
+
+backBtn.style.display="none";
+
+}
+
+});
+
+backBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ==========================
+Fade Animation
+========================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade-in");
+
+observer.observe(section);
+
+});
+
+/* ==========================
+Animated Statistics
+========================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const number=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(number)){
+
+let count=0;
+
+const increment=Math.max(number/80,1);
+
+const timer=setInterval(()=>{
+
+count+=increment;
+
+if(count>=number){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+if(original.includes("km"))
+
+item.innerText=Math.floor(count).toLocaleString()+" km";
+
+else if(original.includes("Years"))
+
+item.innerText=(count/10).toFixed(1)+" Years";
+
+else if(original.includes("m/s"))
+
+item.innerText=count.toFixed(2)+" m/s²";
+
+else
+
+item.innerText=Math.floor(count);
+
+}
+
+},20);
+
+}
+
+});
+
+/* ==========================
+Lazy Loading Images
+========================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+});
+
+/* ==========================
+Console Message
+========================== */
+
+console.log("🪐 SpaceVerse | Saturn Encyclopedia Loaded Successfully");
+
+</script>
+
+</body>
+
+</html>
