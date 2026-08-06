@@ -409,6 +409,125 @@ transition:.3s;
 background:#00bbff;
 
 }
+.planet-details{
+
+display:none;
+
+margin-top:25px;
+
+padding:30px;
+
+background:#091522;
+
+border-radius:16px;
+
+border:1px solid rgba(0,170,255,.25);
+
+animation:fade .4s;
+
+}
+
+.planet-details.active{
+
+display:block;
+
+}
+
+.planet-large-image{
+
+width:100%;
+
+border-radius:16px;
+
+margin:20px 0;
+
+}
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+
+gap:20px;
+
+margin:30px 0;
+
+}
+
+.stats-grid div{
+
+background:#102235;
+
+padding:18px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+.stats-grid h4{
+
+color:#5bd8ff;
+
+margin-bottom:8px;
+
+}
+
+.stats-grid p{
+
+color:white;
+
+}
+
+.expand-btn{
+
+width:100%;
+
+margin-top:20px;
+
+padding:14px;
+
+background:#0099ff;
+
+border:none;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:16px;
+
+color:white;
+
+}
+
+.expand-btn:hover{
+
+background:#00bbff;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
     </style>
 </head>
 <body>
@@ -680,11 +799,6 @@ thousands of exoplanets discovered throughout our galaxy.
 <h2 class="gallery-title">🪐 Planet Gallery</h2>
 
 <div class="planet-gallery">
-<hr>
-
-<h2 class="gallery-title">🪐 Planet Gallery</h2>
-
-<div class="planet-gallery">
 
     <!-- Mercury -->
     <div class="planet-card">
@@ -699,7 +813,140 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Extremely Thin (Oxygen, Sodium, Hydrogen)</p>
         <p><strong>Moons:</strong> 0</p>
         <p><strong>Fun Fact:</strong> Mercury has the largest temperature variation of any planet.</p>
-        <button onclick="window.location.href='mercury.html'">Explore Mercury</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('mercury')">
+
+View Details
+
+</button>
+<div class="planet-details" id="mercury">
+
+<h2>☿ Mercury</h2>
+
+<img
+src="images/mercury-large.jpg"
+class="planet-large-image">
+
+<div class="stats-grid">
+
+<div>
+
+<h4>Diameter</h4>
+
+<p>4,879 km</p>
+
+</div>
+
+<div>
+
+<h4>Gravity</h4>
+
+<p>3.7 m/s²</p>
+
+</div>
+
+<div>
+
+<h4>Mass</h4>
+
+<p>3.30 × 10²³ kg</p>
+
+</div>
+
+<div>
+
+<h4>Density</h4>
+
+<p>5.43 g/cm³</p>
+
+</div>
+
+<div>
+
+<h4>Distance from Sun</h4>
+
+<p>57.9 Million km</p>
+
+</div>
+
+<div>
+
+<h4>Orbital Speed</h4>
+
+<p>47.4 km/s</p>
+
+</div>
+
+<div>
+
+<h4>Escape Velocity</h4>
+
+<p>4.25 km/s</p>
+
+</div>
+
+<div>
+
+<h4>Atmosphere</h4>
+
+<p>Extremely Thin Exosphere</p>
+
+</div>
+
+<div>
+
+<h4>Surface Temperature</h4>
+
+<p>-180°C to 430°C</p>
+
+</div>
+
+<div>
+
+<h4>Magnetic Field</h4>
+
+<p>Weak Global Magnetic Field</p>
+
+</div>
+
+<div>
+
+<h4>Known Moons</h4>
+
+<p>0</p>
+
+</div>
+
+<div>
+
+<h4>Interesting Fact</h4>
+
+<p>Mercury has the shortest year of any planet.</p>
+
+</div>
+
+</div>
+
+<h3>NASA Missions</h3>
+
+<ul>
+
+<li>Mariner 10</li>
+
+<li>MESSENGER</li>
+
+<li>BepiColombo</li>
+
+</ul>
+
+<button
+onclick="window.location.href='mercury.html'">
+
+Open Full Planet Page
+
+</button>
+
+</div>
     </div>
 
     <!-- Venus -->
@@ -715,7 +962,12 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Carbon Dioxide & Sulfuric Acid Clouds</p>
         <p><strong>Moons:</strong> 0</p>
         <p><strong>Fun Fact:</strong> Venus rotates backwards compared with most planets.</p>
-        <button onclick="window.location.href='venus.html'">Explore Venus</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('venus')">
+
+View Details
+
+</button>
     </div>
 
     <!-- Earth -->
@@ -731,7 +983,12 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Nitrogen & Oxygen</p>
         <p><strong>Moons:</strong> 1</p>
         <p><strong>Fun Fact:</strong> Earth is the only known planet that supports life.</p>
-        <button onclick="window.location.href='earth.html'">Explore Earth</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('earth')">
+
+View Details
+
+</button>
     </div>
 
     <!-- Mars -->
@@ -747,7 +1004,12 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Mostly Carbon Dioxide</p>
         <p><strong>Moons:</strong> 2</p>
         <p><strong>Fun Fact:</strong> Mars is home to Olympus Mons, the tallest volcano in the Solar System.</p>
-        <button onclick="window.location.href='mars.html'">Explore Mars</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('mars')">
+
+View Details
+
+</button>
     </div>
 
     <!-- Jupiter -->
@@ -763,8 +1025,8 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Hydrogen & Helium</p>
         <p><strong>Moons:</strong> 95+</p>
         <p><strong>Fun Fact:</strong> Jupiter is more than twice as massive as all the other planets combined.</p>
-        <button onclick="window.location.href='jupiter.html'">Explore Jupiter</button>
-    </div>
+        <button class="expand-btn"
+        onclick="togglePlanet('jupiter')">
 
     <!-- Saturn -->
     <div class="planet-card">
@@ -779,7 +1041,12 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Hydrogen & Helium</p>
         <p><strong>Moons:</strong> 145+</p>
         <p><strong>Fun Fact:</strong> Saturn's average density is lower than water.</p>
-        <button onclick="window.location.href='saturn.html'">Explore Saturn</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('mercury')">
+
+View Details
+
+</button>
     </div>
 
     <!-- Uranus -->
@@ -795,7 +1062,12 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Hydrogen, Helium & Methane</p>
         <p><strong>Moons:</strong> 28</p>
         <p><strong>Fun Fact:</strong> Uranus rotates almost completely on its side.</p>
-        <button onclick="window.location.href='uranus.html'">Explore Uranus</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('uranus')">
+
+View Details
+
+</button>
     </div>
 
     <!-- Neptune -->
@@ -811,7 +1083,12 @@ thousands of exoplanets discovered throughout our galaxy.
         <p><strong>Atmosphere:</strong> Hydrogen, Helium & Methane</p>
         <p><strong>Moons:</strong> 16</p>
         <p><strong>Fun Fact:</strong> Neptune has the fastest winds in the Solar System, exceeding 2,000 km/h.</p>
-        <button onclick="window.location.href='neptune.html'">Explore Neptune</button>
+        <button class="expand-btn"
+        onclick="togglePlanet('neptune')">
+
+View Details
+
+</button>
     </div>
 
 </div>
