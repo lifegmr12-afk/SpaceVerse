@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mercury | SpaceVerse Encyclopedia</title>
+
+<meta name="description"
+content="Explore Mercury, the smallest and fastest planet in our Solar System. Discover its orbit, structure, geology, atmosphere, missions, and scientific facts through SpaceVerse's interactive encyclopedia.">
+
+<meta name="keywords"
+content="Mercury, Mercury planet, Solar System, NASA Mercury, MESSENGER, BepiColombo, Mercury facts, SpaceVerse">
+
+<meta name="author" content="SpaceVerse">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#061321">
+
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/mercury.html">
+
+<!-- Open Graph -->
+
+<meta property="og:type" content="website">
+
+<meta property="og:title"
+content="Mercury | SpaceVerse Encyclopedia">
+
+<meta property="og:description"
+content="Explore Mercury through interactive scientific information, missions, structure, orbit, and realistic visualization.">
+
+<meta property="og:image"
+content="https://space-verse-alpha.vercel.app/images/mercury.jpg">
+
+<meta property="og:url"
+content="https://space-verse-alpha.vercel.app/mercury.html">
+
+<!-- Twitter -->
+
+<meta name="twitter:card"
+content="summary_large_image">
+
+<meta name="twitter:title"
+content="Mercury | SpaceVerse Encyclopedia">
+
+<meta name="twitter:description"
+content="Discover Mercury with SpaceVerse.">
+
+<meta name="twitter:image"
+content="https://space-verse-alpha.vercel.app/images/mercury.jpg">
+
+<link rel="icon" href="logo.png">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Article",
+"headline":"Mercury",
+"description":"Mercury is the smallest planet in the Solar System and the closest planet to the Sun.",
+"author":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+"publisher":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+"mainEntityOfPage":"https://space-verse-alpha.vercel.app/mercury.html"
+}
+</script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#050914;
+
+color:white;
+
+font-family:Inter,sans-serif;
+
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 20%,
+rgba(0,180,255,.12),transparent 35%),
+
+radial-gradient(circle at 80% 30%,
+rgba(255,180,0,.08),transparent 35%),
+
+radial-gradient(circle at 50% 90%,
+rgba(0,255,255,.08),transparent 40%);
+
+z-index:-2;
+
+}
+
+.stars{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(white 1px,transparent 1px);
+
+background-size:80px 80px;
+
+opacity:.2;
+
+z-index:-1;
+
+animation:starsMove 80s linear infinite;
+
+}
+
+@keyframes starsMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(400px);
+
+}
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:18px 7%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(5,10,18,.75);
+
+backdrop-filter:blur(14px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:Orbitron,sans-serif;
+
+font-size:28px;
+
+font-weight:700;
+
+color:#57d8ff;
+
+text-decoration:none;
+
+letter-spacing:2px;
+
+}
+
+nav{
+
+display:flex;
+
+gap:28px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#58d9ff;
+
+}
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:120px 8% 80px;
+
+gap:60px;
+
+}
+
+.hero-content{
+
+max-width:650px;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border:1px solid rgba(88,217,255,.4);
+
+border-radius:40px;
+
+color:#58d9ff;
+
+margin-bottom:25px;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron,sans-serif;
+
+font-size:72px;
+
+line-height:1.05;
+
+margin-bottom:20px;
+
+background:linear-gradient(90deg,#ffffff,#58d9ff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#c9d4df;
+
+margin-bottom:40px;
+
+}
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.primary-btn{
+
+padding:15px 34px;
+
+background:linear-gradient(135deg,#00b7ff,#0077ff);
+
+border:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+font-weight:600;
+
+color:white;
+
+cursor:pointer;
+
+transition:.35s;
+
+text-decoration:none;
+
+box-shadow:0 0 25px rgba(0,170,255,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 0 35px rgba(0,170,255,.55);
+
+}
+
+.secondary-btn{
+
+padding:15px 34px;
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:12px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(10px);
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.12);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:420px;
+
+max-width:100%;
+
+animation:floatPlanet 8s ease-in-out infinite;
+
+filter:drop-shadow(0 0 60px rgba(255,180,80,.35));
+
+}
+
+@keyframes floatPlanet{
+
+0%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+50%{
+
+transform:translateY(-18px) rotate(2deg);
+
+}
+
+100%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+}
+
+.quick-stats{
+
+width:100%;
+
+padding:70px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(88,217,255,.15);
+
+border-radius:18px;
+
+padding:30px;
+
+transition:.35s;
+
+backdrop-filter:blur(12px);
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#58d9ff;
+
+box-shadow:0 0 25px rgba(0,170,255,.25);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#58d9ff;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron,sans-serif;
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.stat-card p{
+
+color:#c7d4df;
+
+line-height:1.7;
+
+font-size:15px;
+
+}
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron,sans-serif;
+
+font-size:42px;
+
+margin-bottom:20px;
+
+color:#58d9ff;
+
+}
+
+.section-subtitle{
+
+color:#c9d4df;
+
+font-size:18px;
+
+margin-bottom:50px;
+
+line-height:1.8;
+
+}
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:24px;
+
+}
+
+.telemetry-card{
+
+background:#091522;
+
+padding:25px;
+
+border-radius:16px;
+
+border:1px solid rgba(88,217,255,.15);
+
+}
+
+.telemetry-card h4{
+
+font-size:15px;
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+color:#58d9ff;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+color:#d3dce5;
+
+}
+
+.telemetry-card li:last-child{
+
+border:none;
+
+}
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#facts">Facts</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>Closest Planet to the Sun</span>
+
+<h1>Mercury</h1>
+
+<p>
+
+Mercury is the smallest planet in the Solar System and the closest world to the Sun. Despite its small size, Mercury possesses a massive iron core, ancient impact basins, towering cliffs, and one of the most extreme temperature ranges known among the planets. This page combines scientific knowledge with interactive presentation to help you explore Mercury in depth.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview" class="primary-btn">
+
+Explore Mercury
+
+</a>
+
+<a href="solar-system.html" class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="images/mercury.png" alt="Planet Mercury">
+
+</div>
+
+</section>
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>4,879 km</h2>
+
+<p>Mercury is the smallest major planet in our Solar System.</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Length of Year</h3>
+
+<h2>88 Days</h2>
+
+<p>Mercury completes one orbit around the Sun every 88 Earth days.</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>3.7 m/s²</h2>
+
+<p>Surface gravity is only about 38% of Earth's.</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Natural Moons</h3>
+
+<h2>0</h2>
+
+<p>Mercury has no known natural satellites.</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+Mercury Overview
+</h2>
+
+<p class="section-subtitle">
+
+Mercury is the innermost planet of our Solar System and the closest world to the Sun.
+Although it is the smallest major planet, Mercury is one of the densest planets because of its enormous iron core, which occupies nearly 85% of its radius.
+Its heavily cratered landscape preserves billions of years of Solar System history, making Mercury an invaluable laboratory for understanding planetary formation and evolution.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Planet Classification</h4>
+
+<ul>
+
+<li>Planet Type — Terrestrial Planet</li>
+
+<li>Solar System Order — 1st Planet</li>
+
+<li>Average Distance — 57.9 Million km</li>
+
+<li>Orbital Period — 88 Earth Days</li>
+
+<li>Rotation Period — 58.6 Earth Days</li>
+
+<li>Average Orbital Speed — 47.4 km/s</li>
+
+<li>Axial Tilt — 0.034°</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Physical Characteristics</h4>
+
+<ul>
+
+<li>Diameter — 4,879 km</li>
+
+<li>Radius — 2,439.7 km</li>
+
+<li>Mass — 3.30 × 10²³ kg</li>
+
+<li>Density — 5.43 g/cm³</li>
+
+<li>Surface Gravity — 3.7 m/s²</li>
+
+<li>Escape Velocity — 4.25 km/s</li>
+
+<li>Natural Satellites — None</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>Atmosphere — Extremely Thin Exosphere</li>
+
+<li>Main Elements — Oxygen, Sodium, Hydrogen</li>
+
+<li>Magnetic Field — Weak but Global</li>
+
+<li>Average Temperature — 167°C</li>
+
+<li>Day Temperature — 430°C</li>
+
+<li>Night Temperature — -180°C</li>
+
+<li>Water Ice — Polar Craters</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERNAL STRUCTURE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Internal Structure
+
+</h2>
+
+<p class="section-subtitle">
+
+Mercury possesses the largest metallic core relative to its size of any planet in the Solar System. Scientists believe that much of Mercury's rocky mantle was stripped away during an enormous collision early in Solar System history.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Core</h3>
+
+<h2>Iron-Nickel</h2>
+
+<p>
+
+Mercury's enormous metallic core occupies nearly 85% of the planet's radius.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mantle</h3>
+
+<h2>Silicate Rock</h2>
+
+<p>
+
+A relatively thin rocky mantle surrounds the massive core.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Crust</h3>
+
+<h2>35 km</h2>
+
+<p>
+
+The outer crust is heavily cratered and covered with volcanic plains.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Magnetic Field</h3>
+
+<h2>Active Core</h2>
+
+<p>
+
+Mercury's liquid outer core generates a weak magnetic field.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SURFACE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Surface Features
+
+</h2>
+
+<p class="section-subtitle">
+
+Mercury's surface resembles Earth's Moon but contains giant cliffs, enormous impact basins, volcanic plains, and ancient craters that have survived for billions of years.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Caloris Basin</h4>
+
+<p>
+
+One of the largest known impact basins in the Solar System with a diameter exceeding 1,500 kilometers.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Scarps</h4>
+
+<p>
+
+Gigantic cliffs stretching hundreds of kilometers formed as Mercury slowly cooled and contracted.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Polar Ice</h4>
+
+<p>
+
+Radar observations have confirmed deposits of water ice hidden inside permanently shadowed polar craters.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ORBIT -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Orbit & Rotation
+
+</h2>
+
+<p class="section-subtitle">
+
+Mercury travels around the Sun faster than any other planet while rotating surprisingly slowly. It completes three rotations for every two orbits around the Sun, a phenomenon known as a 3:2 spin-orbit resonance.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Fastest Orbit</h3>
+
+<h2>47.4 km/s</h2>
+
+<p>
+
+Mercury has the fastest orbital speed in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Solar Day</h3>
+
+<h2>176 Days</h2>
+
+<p>
+
+A complete sunrise to sunrise on Mercury lasts 176 Earth days.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Year</h3>
+
+<h2>88 Days</h2>
+
+<p>
+
+Mercury completes two years before experiencing one solar day.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Axial Tilt</h3>
+
+<h2>0.034°</h2>
+
+<p>
+
+The almost nonexistent tilt means Mercury has virtually no seasons.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- ATMOSPHERE & TEMPERATURE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Atmosphere & Temperature
+
+</h2>
+
+<p class="section-subtitle">
+
+Unlike Earth, Mercury does not possess a thick atmosphere. Instead, it has an extremely thin exosphere composed of atoms blasted from its surface by solar radiation, meteorite impacts, and the solar wind. Without a dense atmosphere to trap heat, temperatures vary dramatically between day and night.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Atmosphere</h3>
+
+<h2>Exosphere</h2>
+
+<p>
+
+Mercury's atmosphere is so thin that atoms rarely collide with one another.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Day Temperature</h3>
+
+<h2>430°C</h2>
+
+<p>
+
+The side facing the Sun becomes hotter than many household ovens.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Night Temperature</h3>
+
+<h2>-180°C</h2>
+
+<p>
+
+Without atmospheric insulation, temperatures plunge dramatically after sunset.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Main Elements</h3>
+
+<h2>O • Na • H</h2>
+
+<p>
+
+Oxygen, sodium, hydrogen, helium and potassium dominate Mercury's exosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MAGNETIC FIELD -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Magnetic Field
+
+</h2>
+
+<p class="section-subtitle">
+
+Mercury is the only terrestrial planet besides Earth known to possess an active global magnetic field. Scientists believe this magnetic field is generated by the movement of molten iron inside its enormous metallic core.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Global Magnetic Field</h4>
+
+<p>
+
+Although only about 1% as strong as Earth's, Mercury's magnetic field deflects charged particles from the solar wind.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Magnetosphere</h4>
+
+<p>
+
+Mercury has a small but dynamic magnetosphere that constantly interacts with the intense solar wind.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Scientific Importance</h4>
+
+<p>
+
+Understanding Mercury's magnetic field helps scientists learn how planetary cores evolve over billions of years.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SPACE MISSIONS -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Major Space Missions
+
+</h2>
+
+<p class="section-subtitle">
+
+Only a few spacecraft have visited Mercury because reaching the closest planet to the Sun requires enormous amounts of energy. Each mission has transformed our understanding of this fascinating world.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Mariner 10</h3>
+
+<h2>1974–1975</h2>
+
+<p>
+
+The first spacecraft to visit Mercury, capturing the first close-up photographs of its cratered surface.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>MESSENGER</h3>
+
+<h2>2011–2015</h2>
+
+<p>
+
+The first spacecraft to orbit Mercury, mapping nearly the entire planet and revealing evidence of water ice and volcanic activity.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>BepiColombo</h3>
+
+<h2>2018–Present</h2>
+
+<p>
+
+A joint ESA and JAXA mission currently traveling toward Mercury to investigate its origin, interior, magnetic field, and surface.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Mercury Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1973</h4>
+
+<p>Mariner 10 launched toward Mercury.</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1974</h4>
+
+<p>First successful flyby of Mercury.</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2004</h4>
+
+<p>NASA launched the MESSENGER spacecraft.</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2011</h4>
+
+<p>MESSENGER became the first spacecraft to orbit Mercury.</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2015</h4>
+
+<p>MESSENGER intentionally impacted Mercury after completing its mission.</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2018</h4>
+
+<p>BepiColombo launched by ESA and JAXA for the next generation of Mercury exploration.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MERCURY FACTS -->
+<!-- ========================================================= -->
+
+<section class="section" id="facts">
+
+<h2 class="section-title">
+
+Interesting Facts
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+<h4>Fastest Planet</h4>
+<p>Mercury travels around the Sun faster than any other planet.</p>
+</div>
+
+<div class="telemetry-card">
+<h4>Smallest Planet</h4>
+<p>Mercury is even smaller than several moons in the Solar System.</p>
+</div>
+
+<div class="telemetry-card">
+<h4>Huge Iron Core</h4>
+<p>Its metallic core occupies roughly 85% of the planet's radius.</p>
+</div>
+
+<div class="telemetry-card">
+<h4>No Moons</h4>
+<p>Mercury has no natural satellites or ring system.</p>
+</div>
+
+<div class="telemetry-card">
+<h4>Water Ice</h4>
+<p>Permanent shadowed craters near the poles contain frozen water ice.</p>
+</div>
+
+<div class="telemetry-card">
+<h4>Extreme Temperatures</h4>
+<p>Surface temperatures range from approximately −180°C to 430°C.</p>
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Importance
+
+</h2>
+
+<p class="section-subtitle">
+
+Mercury is far more than just the smallest planet in the Solar System. Because it formed very close to the young Sun, Mercury preserves valuable clues about how rocky planets originated over 4.5 billion years ago. Its enormous iron core, ancient impact craters, volcanic plains, and unusual magnetic field continue to challenge scientists' understanding of planetary evolution.
+
+</p>
+
+<p style="line-height:2;color:#d2dde7;margin-bottom:25px;">
+
+Unlike Earth, Mercury has almost no atmosphere capable of protecting its surface from meteorite impacts. As a result, billions of years of collisions remain preserved across its landscape. Huge impact basins such as Caloris Basin provide evidence of violent events that occurred during the early formation of the Solar System.
+
+</p>
+
+<p style="line-height:2;color:#d2dde7;margin-bottom:25px;">
+
+Mercury also surprised scientists by possessing a global magnetic field despite being much smaller than Earth. Measurements from NASA's MESSENGER spacecraft revealed that a portion of Mercury's metallic core remains molten today. Understanding why Mercury still generates a magnetic field helps scientists better understand the internal evolution of rocky planets throughout the universe.
+
+</p>
+
+<p style="line-height:2;color:#d2dde7;">
+
+Mercury is also an excellent comparison for thousands of rocky exoplanets discovered orbiting other stars. Many of those distant worlds orbit extremely close to their parent stars and may experience conditions similar to Mercury. By studying Mercury, astronomers gain valuable insights into the evolution of rocky planets beyond our Solar System.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- IMAGE GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Mercury Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Images inspired by spacecraft observations and scientific visualization.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/mercury1.jpg"
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:20px;">Global View</h3>
+
+<p>
+
+Mercury photographed by NASA's MESSENGER spacecraft.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/mercury2.jpg"
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:20px;">Caloris Basin</h3>
+
+<p>
+
+One of the largest impact structures in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/mercury3.jpg"
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:20px;">Polar Region</h3>
+
+<p>
+
+Radar observations reveal water ice hidden inside permanently shadowed craters.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Mercury so hot?
+
+</h4>
+
+<p>
+
+Because Mercury orbits very close to the Sun and has almost no atmosphere to retain or redistribute heat.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Does Mercury have moons?
+
+</h4>
+
+<p>
+
+No. Mercury has no known natural satellites.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can humans live on Mercury?
+
+</h4>
+
+<p>
+
+Current technology cannot support permanent human settlements due to the planet's extreme temperatures, radiation, and lack of atmosphere.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Mercury important?
+
+</h4>
+
+<p>
+
+Mercury provides valuable evidence about planetary formation, giant impacts, magnetic fields, and the early history of the Solar System.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d3dce5;">
+
+<li>NASA Solar System Exploration</li>
+
+<li>NASA MESSENGER Mission</li>
+
+<li>ESA BepiColombo Mission</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+<li>European Space Agency (ESA)</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- NEXT PLANET -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="venus.html"
+class="primary-btn">
+
+Next Planet →
+
+Venus
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:50px;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+background:#08111c;
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#58d9ff;
+
+margin-bottom:15px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+color:#b9c8d4;
+
+line-height:1.8;
+
+max-width:800px;
+
+margin:auto;
+
+">
+
+SpaceVerse is an educational astronomy encyclopedia designed to make the universe easier to explore through scientifically inspired visualizations, interactive experiences, and verified astronomical information.
+
+</p>
+
+<div style="margin-top:35px;">
+
+<a href="privacy-policy.html"
+class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html"
+class="secondary-btn">
+
+Terms
+
+</a>
+
+<a href="contact.html"
+class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html"
+class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#73879b;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+↑
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#00bfff,#008cff);
+
+color:white;
+
+font-size:24px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:9999;
+
+box-shadow:0 0 25px rgba(0,180,255,.45);
+
+transition:.3s;
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-5px) scale(1.08);
+
+}
+
+.fade{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.4s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(0,180,255,.45);
+
+}
+
+.stat-card{
+
+transition:.4s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+</style>
+
+<script>
+
+// ===========================================
+// Fade Animation
+// ===========================================
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade");
+
+observer.observe(section);
+
+});
+
+// ===========================================
+// Back To Top
+// ===========================================
+
+const btn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+btn.style.display="block";
+
+}else{
+
+btn.style.display="none";
+
+}
+
+});
+
+btn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+// ===========================================
+// Animated Counters
+// ===========================================
+
+const numbers=document.querySelectorAll(".stat-card h2");
+
+numbers.forEach(number=>{
+
+const text=number.innerText;
+
+const value=parseFloat(text.replace(/[^0-9.]/g,""));
+
+if(!isNaN(value)){
+
+let current=0;
+
+const speed=value/80;
+
+const timer=setInterval(()=>{
+
+current+=speed;
+
+if(current>=value){
+
+number.innerText=text;
+
+clearInterval(timer);
+
+}else{
+
+if(text.includes("km"))
+
+number.innerText=Math.floor(current).toLocaleString()+" km";
+
+}
+
+},25);
+
+}
+
+});
+
+// ===========================================
+// Shooting Stars
+// ===========================================
+
+function createStar(){
+
+const star=document.createElement("div");
+
+star.style.position="fixed";
+
+star.style.width="2px";
+
+star.style.height="90px";
+
+star.style.background="linear-gradient(white,transparent)";
+
+star.style.left=Math.random()*window.innerWidth+"px";
+
+star.style.top="-100px";
+
+star.style.opacity=.7;
+
+star.style.pointerEvents="none";
+
+star.style.transform="rotate(35deg)";
+
+star.style.zIndex="-1";
+
+document.body.appendChild(star);
+
+const duration=2500+Math.random()*2500;
+
+star.animate([
+
+{
+
+transform:"translateY(0) rotate(35deg)",
+
+opacity:1
+
+},
+
+{
+
+transform:"translateY(120vh) translateX(250px) rotate(35deg)",
+
+opacity:0
+
+}
+
+],{
+
+duration:duration
+
+});
+
+setTimeout(()=>{
+
+star.remove();
+
+},duration);
+
+}
+
+setInterval(createStar,3500);
+
+// ===========================================
+// Current Year
+// ===========================================
+
+document.querySelectorAll(".currentYear").forEach(el=>{
+
+el.innerText=new Date().getFullYear();
+
+});
+
+</script>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"How far is Mercury from the Sun?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Mercury orbits the Sun at an average distance of approximately 57.9 million kilometers."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Does Mercury have moons?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"No. Mercury has no natural satellites."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Why is Mercury so hot?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Mercury is the closest planet to the Sun and has almost no atmosphere to retain or distribute heat."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Has Mercury been explored by spacecraft?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Yes. Mariner 10, MESSENGER, and ESA/JAXA's BepiColombo have explored Mercury."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+</body>
+
+</html>
