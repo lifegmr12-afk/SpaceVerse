@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Venus | SpaceVerse Encyclopedia
+</title>
+
+<meta name="description"
+content="Explore Venus, Earth's mysterious twin. Discover its atmosphere, volcanoes, greenhouse effect, geology, exploration missions, and scientific discoveries with SpaceVerse.">
+
+<meta name="keywords"
+content="Venus, Venus planet, Solar System, SpaceVerse, Venus facts, NASA Venus, ESA Venus, Magellan, Akatsuki">
+
+<meta name="author"
+content="SpaceVerse">
+
+<meta name="robots"
+content="index, follow">
+
+<meta name="theme-color"
+content="#08121d">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/venus.html">
+
+<!-- Open Graph -->
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:title"
+content="Venus | SpaceVerse Encyclopedia">
+
+<meta property="og:description"
+content="Explore Venus through scientific information, interactive astronomy, and realistic planetary visualization.">
+
+<meta property="og:image"
+content="https://space-verse-alpha.vercel.app/images/venus.png">
+
+<meta property="og:url"
+content="https://space-verse-alpha.vercel.app/venus.html">
+
+<!-- Twitter -->
+
+<meta name="twitter:card"
+content="summary_large_image">
+
+<meta name="twitter:title"
+content="Venus | SpaceVerse Encyclopedia">
+
+<meta name="twitter:description"
+content="Discover Venus through SpaceVerse.">
+
+<meta name="twitter:image"
+content="https://space-verse-alpha.vercel.app/images/venus.png">
+
+<link rel="icon"
+href="logo.png">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<!-- Structured Data -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Venus",
+
+"description":"Venus is the second planet from the Sun and the hottest planet in the Solar System.",
+
+"author":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+
+"publisher":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+
+"mainEntityOfPage":"https://space-verse-alpha.vercel.app/venus.html"
+
+}
+
+</script>
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:#050914;
+
+color:white;
+
+font-family:Inter,sans-serif;
+
+overflow-x:hidden;
+
+}
+
+/* Cosmic Background */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 15%,
+rgba(255,150,0,.10),transparent 35%),
+
+radial-gradient(circle at 80% 25%,
+rgba(255,80,0,.10),transparent 35%),
+
+radial-gradient(circle at 50% 85%,
+rgba(255,220,150,.06),transparent 45%);
+
+z-index:-2;
+
+}
+
+.stars{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(white 1px,transparent 1px);
+
+background-size:90px 90px;
+
+opacity:.18;
+
+animation:starsMove 90s linear infinite;
+
+z-index:-1;
+
+}
+
+@keyframes starsMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(500px);
+
+}
+
+}
+
+/* Header */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:18px 7%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(6,10,18,.78);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+font-weight:700;
+
+color:#ffb347;
+
+text-decoration:none;
+
+letter-spacing:2px;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+font-size:15px;
+
+}
+
+nav a:hover{
+
+color:#ffb347;
+
+}
+
+/* Hero */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:120px 8% 70px;
+
+gap:60px;
+
+}
+
+.hero-content{
+
+max-width:650px;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 20px;
+
+border-radius:50px;
+
+border:1px solid rgba(255,179,71,.4);
+
+color:#ffb347;
+
+letter-spacing:2px;
+
+font-size:13px;
+
+margin-bottom:28px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:74px;
+
+line-height:1.05;
+
+margin-bottom:25px;
+
+background:linear-gradient(90deg,#ffffff,#ffb347);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d0dae4;
+
+margin-bottom:40px;
+
+}
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.primary-btn{
+
+padding:15px 35px;
+
+background:linear-gradient(135deg,#ffb347,#ff7b00);
+
+border:none;
+
+border-radius:12px;
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:0 0 25px rgba(255,150,0,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 35px rgba(255,170,0,.55);
+
+}
+
+.secondary-btn{
+
+padding:15px 35px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:12px;
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+backdrop-filter:blur(10px);
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:440px;
+
+max-width:100%;
+
+animation:venusFloat 8s ease-in-out infinite;
+
+filter:drop-shadow(0 0 60px rgba(255,140,0,.35));
+
+}
+
+@keyframes venusFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ========================= */
+
+.quick-stats{
+
+padding:70px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,179,71,.15);
+
+border-radius:18px;
+
+padding:30px;
+
+transition:.35s;
+
+backdrop-filter:blur(14px);
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ffb347;
+
+box-shadow:0 0 30px rgba(255,160,0,.28);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+color:#ffb347;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+font-size:15px;
+
+line-height:1.7;
+
+color:#d0dae4;
+
+}
+
+/* ========================= */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#ffb347;
+
+margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#cfd8e3;
+
+margin-bottom:45px;
+
+}
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#09131d;
+
+padding:28px;
+
+border-radius:16px;
+
+border:1px solid rgba(255,179,71,.15);
+
+}
+
+.telemetry-card h4{
+
+color:#ffb347;
+
+margin-bottom:18px;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+color:#d0dae4;
+
+}
+
+.telemetry-card li:last-child{
+
+border:none;
+
+}
+
+/* ========================= */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+.hero-image img{
+
+width:320px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#facts">Facts</a>
+
+</nav>
+
+</header>
+
+<!-- ==================================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>Second Planet from the Sun</span>
+
+<h1>Venus</h1>
+
+<p>
+
+Venus is the second planet from the Sun and Earth's closest planetary neighbor. Often called Earth's "twin" because of its similar size and mass, Venus is actually the hottest planet in the Solar System due to its dense carbon dioxide atmosphere and powerful greenhouse effect. Thick clouds of sulfuric acid permanently hide its volcanic surface from visible light.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore Venus
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/venus.png"
+
+alt="Planet Venus">
+
+</div>
+
+</section>
+
+<!-- ==================================== -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>12,104 km</h2>
+
+<p>
+
+Nearly the same size as Earth, making Venus Earth's closest planetary twin.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Surface Temperature</h3>
+
+<h2>465°C</h2>
+
+<p>
+
+The hottest planetary surface in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Length of Year</h3>
+
+<h2>225 Days</h2>
+
+<p>
+
+Venus completes one orbit around the Sun in approximately 225 Earth days.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Natural Moons</h3>
+
+<h2>0</h2>
+
+<p>
+
+Venus has no natural satellites or ring system.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- VENUS OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Venus Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+Venus is the second planet from the Sun and the closest planetary neighbor to Earth. Although often called Earth's "sister planet" because of its similar size, mass, and composition, Venus evolved into one of the most extreme environments in the Solar System. A dense atmosphere rich in carbon dioxide traps enormous amounts of heat through a runaway greenhouse effect, producing surface temperatures hot enough to melt lead.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Planet Classification</h4>
+
+<ul>
+
+<li>Planet Type — Terrestrial Planet</li>
+
+<li>Solar System Order — 2nd Planet</li>
+
+<li>Average Distance — 108.2 Million km</li>
+
+<li>Orbital Period — 224.7 Earth Days</li>
+
+<li>Rotation Period — 243 Earth Days</li>
+
+<li>Average Orbital Speed — 35.0 km/s</li>
+
+<li>Axial Tilt — 177.4° (Retrograde)</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Physical Characteristics</h4>
+
+<ul>
+
+<li>Diameter — 12,104 km</li>
+
+<li>Radius — 6,051.8 km</li>
+
+<li>Mass — 4.87 × 10²⁴ kg</li>
+
+<li>Density — 5.24 g/cm³</li>
+
+<li>Surface Gravity — 8.87 m/s²</li>
+
+<li>Escape Velocity — 10.36 km/s</li>
+
+<li>Natural Satellites — None</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>Atmosphere — 96.5% Carbon Dioxide</li>
+
+<li>Clouds — Sulfuric Acid</li>
+
+<li>Surface Pressure — 92 Earth Atmospheres</li>
+
+<li>Average Temperature — 465°C</li>
+
+<li>Magnetic Field — None (Global)</li>
+
+<li>Water — Extremely Dry</li>
+
+<li>Volcanoes — Thousands</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ATMOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Atmosphere
+
+</h2>
+
+<p class="section-subtitle">
+
+Venus possesses the densest atmosphere of any rocky planet. Carbon dioxide makes up nearly 96.5% of the atmosphere, while thick clouds of sulfuric acid permanently hide the planet's surface from visible light. Atmospheric pressure at the surface is about ninety-two times greater than Earth's.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Main Gas</h3>
+
+<h2>96.5%</h2>
+
+<p>
+
+Carbon dioxide dominates the Venusian atmosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Pressure</h3>
+
+<h2>92× Earth</h2>
+
+<p>
+
+Standing on Venus would feel similar to being nearly one kilometer beneath Earth's oceans.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Clouds</h3>
+
+<h2>H₂SO₄</h2>
+
+<p>
+
+Clouds consist primarily of sulfuric acid droplets.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Wind Speed</h3>
+
+<h2>360 km/h</h2>
+
+<p>
+
+Powerful upper-atmosphere winds circle the planet in only a few days.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- GREENHOUSE EFFECT -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Runaway Greenhouse Effect
+
+</h2>
+
+<p class="section-subtitle">
+
+Venus is the hottest planet in the Solar System—not Mercury—because its thick carbon dioxide atmosphere traps heat extremely efficiently. Sunlight enters the atmosphere, warms the surface, and the escaping infrared radiation becomes trapped, creating an extreme greenhouse effect.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Surface Temperature</h4>
+
+<p>
+
+Average temperatures remain close to 465°C across almost the entire planet.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Why So Hot?</h4>
+
+<p>
+
+Dense carbon dioxide absorbs outgoing heat, preventing the planet from cooling efficiently.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Scientific Importance</h4>
+
+<p>
+
+Venus provides scientists with an important example of how greenhouse gases can dramatically affect planetary climates.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERIOR -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Internal Structure
+
+</h2>
+
+<p class="section-subtitle">
+
+Like Earth, Venus is believed to contain a metallic iron core surrounded by a rocky mantle and crust. However, unlike Earth, Venus shows no evidence of active plate tectonics.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Core</h3>
+
+<h2>Iron-Nickel</h2>
+
+<p>
+
+Scientists believe Venus contains a large metallic core similar to Earth's.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mantle</h3>
+
+<h2>Rocky</h2>
+
+<p>
+
+The mantle likely drives volcanic activity through slow convection.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Crust</h3>
+
+<h2>Basaltic</h2>
+
+<p>
+
+Large volcanic plains cover much of the planet's surface.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Tectonics</h3>
+
+<h2>No Plates</h2>
+
+<p>
+
+Venus lacks Earth's modern system of moving tectonic plates.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- VOLCANOES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Volcanoes & Surface
+
+</h2>
+
+<p class="section-subtitle">
+
+Radar observations reveal a world dominated by volcanic plains, lava flows, mountains, impact craters, and giant shield volcanoes. Venus may still be volcanically active today.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Maxwell Montes</h4>
+
+<p>
+
+The highest mountain range on Venus rises approximately 11 kilometers above the surrounding plains.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Maat Mons</h4>
+
+<p>
+
+One of the tallest volcanoes on Venus and a strong candidate for recent volcanic activity.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Volcanic Plains</h4>
+
+<p>
+
+Extensive lava flows have resurfaced much of Venus over hundreds of millions of years.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- MAGNETIC FIELD -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Magnetic Field
+
+</h2>
+
+<p class="section-subtitle">
+
+Unlike Earth, Venus does not possess a strong global magnetic field generated by an active internal dynamo. Instead, the planet has an induced magnetosphere created when the solar wind interacts with its upper atmosphere. This leaves the atmosphere more exposed to charged particles from the Sun and has likely contributed to the gradual loss of water over billions of years.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>No Global Magnetic Field</h4>
+
+<p>
+
+Venus lacks a powerful internally generated magnetic field like Earth's.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Induced Magnetosphere</h4>
+
+<p>
+
+The solar wind compresses Venus' upper atmosphere and creates a temporary magnetic shield.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Atmospheric Escape</h4>
+
+<p>
+
+Without a strong magnetic field, hydrogen and oxygen atoms can gradually escape into space.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SPACE MISSIONS -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Space Missions
+
+</h2>
+
+<p class="section-subtitle">
+
+Venus has been explored by numerous spacecraft from the Soviet Union, NASA, ESA, and JAXA. These missions have transformed our understanding of the planet's atmosphere, geology, climate, and volcanic history.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Venera Program</h3>
+
+<h2>1961–1984</h2>
+
+<p>
+
+The Soviet Venera missions achieved the first successful landings on another planet and returned the first photographs from the surface of Venus.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Magellan</h3>
+
+<h2>1989–1994</h2>
+
+<p>
+
+NASA's Magellan spacecraft mapped almost the entire Venusian surface using radar, revealing volcanoes, mountains, and lava plains.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Venus Express</h3>
+
+<h2>2005–2014</h2>
+
+<p>
+
+ESA studied the atmosphere, weather systems, and atmospheric escape processes around Venus.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Akatsuki</h3>
+
+<h2>2015–Present</h2>
+
+<p>
+
+Japan's Akatsuki spacecraft continues observing Venus' clouds, weather patterns, and atmospheric circulation.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1962</h4>
+
+<p>
+
+Mariner 2 became the first spacecraft to successfully fly past another planet, collecting valuable data about Venus.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1970</h4>
+
+<p>
+
+Venera 7 became the first spacecraft to successfully land on another planet and transmit data from the surface.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1982</h4>
+
+<p>
+
+Venera 13 returned the first color photographs from the surface of Venus.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1990</h4>
+
+<p>
+
+Magellan entered orbit and produced the highest-resolution radar maps of Venus ever created.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2006</h4>
+
+<p>
+
+ESA's Venus Express began a detailed investigation of the atmosphere and climate.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2015</h4>
+
+<p>
+
+JAXA's Akatsuki successfully entered orbit after an earlier failed attempt, beginning long-term atmospheric observations.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERESTING FACTS -->
+<!-- ========================================================= -->
+
+<section class="section" id="facts">
+
+<h2 class="section-title">
+
+Interesting Facts
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>🌡 Hottest Planet</h4>
+
+<p>
+
+Venus is hotter than Mercury even though Mercury is closer to the Sun.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>🔄 Retrograde Rotation</h4>
+
+<p>
+
+Venus rotates in the opposite direction of most planets in the Solar System.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>☁ Thick Clouds</h4>
+
+<p>
+
+Its clouds are made primarily of sulfuric acid droplets.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>📅 Long Day</h4>
+
+<p>
+
+One day on Venus lasts longer than one Venusian year.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>🌋 Thousands of Volcanoes</h4>
+
+<p>
+
+Scientists have identified thousands of volcanic structures across the planet.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>🌍 Earth's Twin</h4>
+
+<p>
+
+Venus is very similar to Earth in size, mass, and density, but evolved into an entirely different world.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC IMPORTANCE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Importance
+
+</h2>
+
+<p class="section-subtitle">
+
+Venus provides scientists with a natural laboratory for studying climate evolution, greenhouse effects, volcanic activity, atmospheric circulation, and planetary evolution. By comparing Venus with Earth, researchers gain valuable insight into how small differences in planetary conditions can lead to dramatically different environments.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Climate Science</h3>
+
+<p>
+
+Venus demonstrates the long-term effects of an extreme greenhouse atmosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Planetary Evolution</h3>
+
+<p>
+
+Studying Venus helps scientists understand why Earth remained habitable while Venus became hostile.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Exoplanets</h3>
+
+<p>
+
+Many rocky exoplanets discovered around other stars may resemble Venus more closely than Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Future Missions</h3>
+
+<p>
+
+Upcoming spacecraft will investigate Venus' atmosphere, geology, and possible ongoing volcanic activity.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Why Venus Matters
+
+</h2>
+
+<p class="section-subtitle">
+
+Venus is one of the most scientifically important planets in the Solar System. Although it shares many similarities with Earth in size, density, and composition, it evolved into an extremely hostile world with crushing atmospheric pressure, scorching temperatures, and acidic clouds. Understanding why Venus and Earth followed dramatically different evolutionary paths helps scientists better understand planetary climates, atmospheric evolution, and the future of rocky planets.
+
+</p>
+
+<p style="line-height:2;color:#d2dde7;margin-bottom:25px;">
+
+Venus likely possessed large amounts of water billions of years ago. As the young Sun became brighter, increasing temperatures caused oceans to evaporate. Water vapor, itself a greenhouse gas, trapped even more heat. Eventually, ultraviolet radiation split water molecules into hydrogen and oxygen, allowing the lightweight hydrogen to escape into space. Over time, Venus transformed into the dry, overheated world we observe today.
+
+</p>
+
+<p style="line-height:2;color:#d2dde7;margin-bottom:25px;">
+
+Radar observations from NASA's Magellan mission revealed enormous volcanic plains, giant shield volcanoes, extensive lava flows, and mountain ranges hidden beneath thick clouds. Some recent observations even suggest that volcanic eruptions may still be occurring today, indicating that Venus could remain geologically active.
+
+</p>
+
+<p style="line-height:2;color:#d2dde7;">
+
+Scientists also study Venus to understand rocky exoplanets discovered around distant stars. Many Earth-sized exoplanets orbit close to their stars and may resemble Venus more closely than Earth. Research on Venus therefore provides valuable insight into the evolution of terrestrial worlds throughout the Milky Way Galaxy.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- IMAGE GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Venus Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Images inspired by spacecraft observations and scientific visualization.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/venus1.jpg"
+
+style="width:100%;border-radius:14px;"
+
+class="gallery-image">
+
+<h3 style="margin-top:20px;">
+
+Global View
+
+</h3>
+
+<p>
+
+A global ultraviolet view of Venus highlighting its dense cloud layers.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/venus2.jpg"
+
+style="width:100%;border-radius:14px;"
+
+class="gallery-image">
+
+<h3 style="margin-top:20px;">
+
+Volcanic Surface
+
+</h3>
+
+<p>
+
+Radar imagery reveals enormous volcanic plains hidden beneath the clouds.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/venus3.jpg"
+
+style="width:100%;border-radius:14px;"
+
+class="gallery-image">
+
+<h3 style="margin-top:20px;">
+
+Atmosphere
+
+</h3>
+
+<p>
+
+Thick sulfuric acid clouds completely cover the planet.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Venus hotter than Mercury?
+
+</h4>
+
+<p>
+
+Venus has a thick carbon dioxide atmosphere that traps heat through a powerful greenhouse effect, making it hotter than Mercury despite being farther from the Sun.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can humans live on Venus?
+
+</h4>
+
+<p>
+
+No. The extremely high temperatures, crushing atmospheric pressure, and acidic clouds make the surface uninhabitable with current technology.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Does Venus have moons?
+
+</h4>
+
+<p>
+
+No. Venus has no known natural satellites or ring system.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why does Venus rotate backward?
+
+</h4>
+
+<p>
+
+Scientists are still investigating the cause. One possibility is that a massive collision early in the planet's history altered its rotation.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d3dce5;">
+
+<li>NASA Solar System Exploration</li>
+
+<li>NASA Magellan Mission</li>
+
+<li>ESA Venus Express Mission</li>
+
+<li>JAXA Akatsuki Mission</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE EXPLORING -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="earth.html"
+
+class="primary-btn">
+
+Next Planet →
+
+Earth
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:55px;
+
+text-align:center;
+
+background:#08111c;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#ffb347;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:850px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#c2ced8;
+
+">
+
+SpaceVerse is an educational astronomy encyclopedia dedicated to exploring the universe through scientifically inspired visualizations, interactive experiences, verified astronomical information, and immersive learning resources for students, educators, researchers, and space enthusiasts worldwide.
+
+</p>
+
+<div style="margin-top:35px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#7b91a5;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+
+↑
+
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:56px;
+
+height:56px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffb347,#ff7b00);
+
+color:#fff;
+
+font-size:24px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:9999;
+
+box-shadow:0 0 30px rgba(255,160,0,.45);
+
+transition:.35s;
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px) scale(1.08);
+
+}
+
+.fade{
+
+opacity:0;
+
+transform:translateY(45px);
+
+transition:all .8s ease;
+
+}
+
+.fade.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.4s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 40px rgba(255,170,0,.45);
+
+}
+
+.stat-card{
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+</style>
+
+<script>
+
+/* ==========================================
+SECTION FADE ANIMATION
+========================================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade");
+
+observer.observe(section);
+
+});
+
+/* ==========================================
+BACK TO TOP
+========================================== */
+
+const topBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ==========================================
+ANIMATED COUNTERS
+========================================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const value=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(value)){
+
+let current=0;
+
+const increment=value/80;
+
+const timer=setInterval(()=>{
+
+current+=increment;
+
+if(current>=value){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+if(original.includes("km")){
+
+item.innerText=Math.floor(current).toLocaleString()+" km";
+
+}
+
+}
+
+},20);
+
+}
+
+});
+
+/* ==========================================
+SHOOTING STARS
+========================================== */
+
+function createMeteor(){
+
+const meteor=document.createElement("div");
+
+meteor.style.position="fixed";
+
+meteor.style.width="2px";
+
+meteor.style.height="100px";
+
+meteor.style.background="linear-gradient(white,transparent)";
+
+meteor.style.left=Math.random()*window.innerWidth+"px";
+
+meteor.style.top="-120px";
+
+meteor.style.opacity=".8";
+
+meteor.style.pointerEvents="none";
+
+meteor.style.transform="rotate(35deg)";
+
+meteor.style.zIndex="-1";
+
+document.body.appendChild(meteor);
+
+const duration=2200+Math.random()*2500;
+
+meteor.animate([
+
+{
+
+transform:"translateY(0) rotate(35deg)",
+
+opacity:1
+
+},
+
+{
+
+transform:"translateY(120vh) translateX(220px) rotate(35deg)",
+
+opacity:0
+
+}
+
+],{
+
+duration:duration
+
+});
+
+setTimeout(()=>{
+
+meteor.remove();
+
+},duration);
+
+}
+
+setInterval(createMeteor,3500);
+
+/* ==========================================
+CURRENT YEAR
+========================================== */
+
+document.querySelectorAll(".currentYear").forEach(el=>{
+
+el.textContent=new Date().getFullYear();
+
+});
+
+</script>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"Why is Venus hotter than Mercury?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Venus has a dense carbon dioxide atmosphere that traps heat through a runaway greenhouse effect, making it the hottest planet in the Solar System."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Does Venus have moons?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"No. Venus has no natural satellites."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Can humans live on Venus?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The extreme heat, crushing pressure, and acidic atmosphere make the surface of Venus unsuitable for human life."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Has Venus been explored by spacecraft?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Yes. Spacecraft including Mariner 2, Venera, Magellan, Venus Express, and Akatsuki have explored Venus."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+</body>
+
+</html>
