@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Jupiter | SpaceVerse</title>
+
+<meta name="description"
+content="Explore Jupiter through SpaceVerse's interactive encyclopedia. Learn about the Solar System's largest planet, the Great Red Spot, its powerful magnetic field, rings, and dozens of fascinating moons.">
+
+<meta name="keywords"
+content="Jupiter, Gas Giant, Great Red Spot, Europa, Ganymede, Io, Callisto, SpaceVerse">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/jupiter.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:#060608;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ========================= */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("images/stars.jpg") center/cover;
+
+opacity:.28;
+
+z-index:-2;
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+text-decoration:none;
+
+color:#ffb84d;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ffb84d;
+
+}
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:140px 8% 80px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+background:rgba(255,184,77,.12);
+
+border:1px solid rgba(255,184,77,.25);
+
+border-radius:50px;
+
+color:#ffb84d;
+
+margin-bottom:20px;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:78px;
+
+margin-bottom:25px;
+
+line-height:1.1;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d7d7d7;
+
+margin-bottom:40px;
+
+}
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.primary-btn{
+
+padding:15px 35px;
+
+background:linear-gradient(135deg,#ffb84d,#ff8c00);
+
+border:none;
+
+border-radius:12px;
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:0 0 35px rgba(255,184,77,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 45px rgba(255,184,77,.65);
+
+}
+
+.secondary-btn{
+
+padding:15px 35px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:12px;
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+backdrop-filter:blur(12px);
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:500px;
+
+max-width:100%;
+
+filter:drop-shadow(0 0 70px rgba(255,184,77,.45));
+
+animation:jupiterFloat 10s ease-in-out infinite;
+
+}
+
+@keyframes jupiterFloat{
+
+0%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+50%{
+
+transform:translateY(-18px) rotate(.8deg);
+
+}
+
+100%{
+
+transform:translateY(0px) rotate(0deg);
+
+}
+
+}
+
+/* ================================= */
+
+.quick-stats{
+
+padding:80px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,184,77,.18);
+
+border-radius:18px;
+
+padding:30px;
+
+backdrop-filter:blur(16px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ffb84d;
+
+box-shadow:0 0 35px rgba(255,184,77,.30);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#ffb84d;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#d8d8d8;
+
+}
+
+/* ================================= */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#ffb84d;
+
+margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d7d7d7;
+
+margin-bottom:45px;
+
+}
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#111215;
+
+padding:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,184,77,.15);
+
+}
+
+.telemetry-card h4{
+
+color:#ffb84d;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+color:#d6d6d6;
+
+}
+
+.telemetry-card li:last-child{
+
+border:none;
+
+}
+
+/* ================================= */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:320px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#future">Future</a>
+
+</nav>
+
+</header>
+
+<!-- ===================================================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Fifth Planet from the Sun
+
+</span>
+
+<h1>
+
+Jupiter
+
+</h1>
+
+<p>
+
+Jupiter is the largest planet in the Solar System and the most massive world orbiting the Sun. This enormous gas giant contains more than twice the mass of all the other planets combined. Its colorful cloud bands, powerful magnetic field, giant storm systems, faint rings, and diverse family of moons make Jupiter one of the most extraordinary planets known to science.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore Jupiter
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/jupiter.png"
+
+alt="Planet Jupiter">
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>139,820 km</h2>
+
+<p>
+
+The largest planet in the Solar System with a diameter over eleven times that of Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>24.79 m/s²</h2>
+
+<p>
+
+Jupiter's strong gravity dominates much of the Solar System beyond the asteroid belt.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Length of Year</h3>
+
+<h2>11.86 Years</h2>
+
+<p>
+
+Jupiter takes nearly twelve Earth years to complete one orbit around the Sun.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Known Moons</h3>
+
+<h2>95+</h2>
+
+<p>
+
+Jupiter possesses the largest known family of natural satellites in the Solar System.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- JUPITER OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Jupiter Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter is the fifth planet from the Sun and the largest planet in the Solar System. It is classified as a gas giant, although much of its interior is believed to consist of compressed hydrogen existing in a metallic state. Jupiter formed approximately 4.57 billion years ago alongside the rest of the Solar System and has played a major role in shaping the architecture of planetary orbits through its immense gravitational influence.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Planet Classification</h4>
+
+<ul>
+
+<li>Planet Type — Gas Giant</li>
+
+<li>Solar System Order — 5th Planet</li>
+
+<li>Average Distance — 778.5 Million km</li>
+
+<li>Orbital Period — 11.86 Earth Years</li>
+
+<li>Rotation Period — 9h 56m</li>
+
+<li>Average Orbital Speed — 13.07 km/s</li>
+
+<li>Axial Tilt — 3.13°</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Physical Characteristics</h4>
+
+<ul>
+
+<li>Diameter — 139,820 km</li>
+
+<li>Radius — 69,911 km</li>
+
+<li>Mass — 1.898 × 10²⁷ kg</li>
+
+<li>Density — 1.33 g/cm³</li>
+
+<li>Surface Gravity — 24.79 m/s²</li>
+
+<li>Escape Velocity — 59.5 km/s</li>
+
+<li>Known Moons — 95+</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>Atmosphere — Hydrogen & Helium</li>
+
+<li>Cloud Temperature — ≈ -145°C</li>
+
+<li>Ring System — Present</li>
+
+<li>Magnetic Field — Strongest Planetary</li>
+
+<li>Largest Storm — Great Red Spot</li>
+
+<li>Liquid Surface — None</li>
+
+<li>Planetary Interior — Metallic Hydrogen</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- GREAT RED SPOT -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+The Great Red Spot
+
+</h2>
+
+<p class="section-subtitle">
+
+The Great Red Spot is Jupiter's most famous atmospheric feature. It is an enormous high-pressure storm that has been continuously observed for more than 350 years. Large enough to contain Earth, this gigantic vortex rotates counterclockwise with wind speeds exceeding 430 km/h.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Storm Width</h3>
+
+<h2>16,000 km</h2>
+
+<p>
+
+Currently wide enough to fit Earth inside with room to spare.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Wind Speed</h3>
+
+<h2>430 km/h</h2>
+
+<p>
+
+Powerful atmospheric winds circulate continuously around the storm.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Storm Age</h3>
+
+<h2>350+ Years</h2>
+
+<p>
+
+One of the longest-lived storms ever observed in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Storm Type</h3>
+
+<h2>Anticyclone</h2>
+
+<p>
+
+A massive rotating high-pressure weather system.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CLOUD BANDS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Cloud Bands
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter's colorful appearance comes from alternating bright zones and darker belts created by fast-moving jet streams. Clouds are composed primarily of ammonia crystals, ammonium hydrosulfide, and water vapor located at different atmospheric depths.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Bright Zones</h4>
+
+<p>
+
+Regions where gas rises upward, forming high-altitude clouds.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Dark Belts</h4>
+
+<p>
+
+Areas where gas sinks downward, revealing deeper atmospheric layers.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Jet Streams</h4>
+
+<p>
+
+Powerful winds separate the belts and zones while shaping Jupiter's atmosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MAGNETIC FIELD -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Powerful Magnetic Field
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter possesses the strongest magnetic field of any planet in the Solar System. Generated by rapidly rotating metallic hydrogen deep inside the planet, its magnetosphere extends millions of kilometers into space and traps enormous amounts of energetic charged particles.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Magnetosphere</h3>
+
+<h2>Largest</h2>
+
+<p>
+
+The largest planetary magnetic environment in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Radiation</h3>
+
+<h2>Extreme</h2>
+
+<p>
+
+Intense radiation poses serious challenges for visiting spacecraft.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Auroras</h3>
+
+<h2>Permanent</h2>
+
+<p>
+
+Powerful auroras shine continuously near Jupiter's poles.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Source</h3>
+
+<h2>Metallic Hydrogen</h2>
+
+<p>
+
+Rapid rotation of metallic hydrogen generates Jupiter's magnetic field.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- RING SYSTEM -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Jupiter's Ring System
+
+</h2>
+
+<p class="section-subtitle">
+
+Although Saturn is famous for its spectacular rings, Jupiter also possesses a faint ring system discovered in 1979 by Voyager 1. These rings consist mainly of microscopic dust particles produced by impacts on Jupiter's small inner moons.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Main Ring</h4>
+
+<p>
+
+A thin ring composed primarily of fine dust particles.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Halo Ring</h4>
+
+<p>
+
+A diffuse inner ring surrounding Jupiter close to the cloud tops.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Gossamer Rings</h4>
+
+<p>
+
+Very faint outer rings supplied by dust from small moons.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ATMOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Atmosphere & Interior
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter has no solid surface like Earth. Its atmosphere gradually transitions into deeper layers of compressed gas before becoming liquid hydrogen and eventually metallic hydrogen under enormous pressure. Scientists believe a dense rocky or icy core may exist at its center.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Primary Gas</h4>
+
+<p>
+
+Approximately 90% hydrogen and 10% helium with trace compounds.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Cloud Layers</h4>
+
+<p>
+
+Multiple cloud decks of ammonia, ammonium hydrosulfide, and water.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Interior</h4>
+
+<p>
+
+Deep layers of liquid and metallic hydrogen surround a possible dense core.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- GALILEAN MOONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+The Galilean Moons
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter's four largest moons—Io, Europa, Ganymede, and Callisto—were discovered by Galileo Galilei in 1610. These worlds are so remarkable that each could be considered a planet in its own right. Together they provide valuable insight into volcanism, subsurface oceans, impact cratering, and planetary evolution.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🌋 Io</h3>
+
+<p>
+
+The most volcanically active body in the Solar System. Hundreds of active volcanoes constantly reshape its colorful sulfur-rich surface through powerful eruptions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌊 Europa</h3>
+
+<p>
+
+Europa is covered by a smooth shell of water ice beneath which scientists believe a global liquid ocean exists. It is considered one of the best places to search for extraterrestrial life.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🧊 Ganymede</h3>
+
+<p>
+
+The largest moon in the Solar System, even larger than Mercury. Ganymede is the only moon known to possess its own magnetic field.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌑 Callisto</h3>
+
+<p>
+
+An ancient heavily cratered world preserving one of the oldest surfaces in the Solar System. It may also contain a buried salty ocean.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- JUPITER MISSIONS -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Major Jupiter Missions
+
+</h2>
+
+<p class="section-subtitle">
+
+Numerous spacecraft have explored Jupiter over the past five decades, transforming our understanding of giant planets, planetary atmospheres, magnetic fields, and icy moons.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Pioneer 10 & 11</h4>
+
+<p>
+
+The first spacecraft to fly past Jupiter, providing humanity's first close-up observations of the giant planet during the 1970s.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Voyager 1 & 2</h4>
+
+<p>
+
+Discovered Jupiter's faint ring system, observed volcanic eruptions on Io, and captured spectacular images of the Galilean moons.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Galileo Orbiter</h4>
+
+<p>
+
+Orbited Jupiter from 1995 to 2003, studying the atmosphere, magnetosphere, rings, and major moons in unprecedented detail.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Juno Mission</h4>
+
+<p>
+
+NASA's Juno spacecraft has been orbiting Jupiter since 2016, revealing the planet's deep atmosphere, gravity field, auroras, and interior structure.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Jupiter Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1610</h4>
+
+<p>
+
+Galileo Galilei discovered Jupiter's four largest moons using a telescope.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1973–1974</h4>
+
+<p>
+
+Pioneer missions completed humanity's first close flybys of Jupiter.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1979</h4>
+
+<p>
+
+Voyager spacecraft revealed volcanoes on Io and discovered Jupiter's faint rings.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1995</h4>
+
+<p>
+
+Galileo spacecraft entered orbit around Jupiter for long-term scientific study.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2016</h4>
+
+<p>
+
+NASA's Juno spacecraft successfully entered Jupiter's polar orbit.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2023+</h4>
+
+<p>
+
+ESA launched the JUICE mission to study Jupiter and its icy moons during the coming decade.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- AMAZING FACTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Jupiter Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>⚡ Largest Planet</h3>
+
+<p>
+
+More than 1,300 Earths could fit inside Jupiter by volume.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🧲 Strongest Magnetic Field</h3>
+
+<p>
+
+Jupiter possesses the most powerful planetary magnetic field in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌪 Giant Storms</h3>
+
+<p>
+
+The Great Red Spot has survived for over three centuries.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>☀ Fast Rotation</h3>
+
+<p>
+
+Despite its enormous size, Jupiter rotates once in less than 10 hours.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Moon System</h3>
+
+<p>
+
+More than 95 confirmed moons orbit Jupiter, with additional discoveries expected.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🪐 Planet Protector</h3>
+
+<p>
+
+Jupiter's gravity helps capture or redirect many comets and asteroids, reducing impacts in the inner Solar System.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC IMPORTANCE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Importance
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter is essential for understanding the formation and evolution of giant planets throughout the universe. Its immense gravity has influenced the structure of the Solar System since its formation, while its atmosphere serves as a natural laboratory for studying weather, fluid dynamics, and planetary physics. The icy moons—especially Europa and Ganymede—are among the most promising locations in the Solar System for investigating environments that may support life beneath thick ice shells. Research from missions such as Galileo, Juno, and the upcoming Europa Clipper and JUICE missions continues to expand our knowledge of gas giants and their complex satellite systems.
+
+</p>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Jupiter: King of the Planets
+
+</h2>
+
+<p class="section-subtitle">
+
+Jupiter is the largest and most massive planet in our Solar System. Its enormous size, powerful gravity, colorful cloud bands, giant storms, and diverse system of moons make it one of the most fascinating worlds ever discovered. Since ancient times Jupiter has been visible to the naked eye, but only modern spacecraft have revealed the incredible complexity hidden beneath its swirling clouds.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Unlike Earth, Jupiter has no solid surface where a spacecraft could land. Instead, its visible clouds gradually become denser as they descend into layers of compressed hydrogen and helium. Deep beneath the atmosphere lies metallic hydrogen—a unique state of matter capable of conducting electricity and generating Jupiter's enormous magnetic field.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Jupiter has played a crucial role throughout the history of the Solar System. Its immense gravity influences asteroid belts, captures comets, and affects the orbits of neighboring planets. Many astronomers believe Jupiter acted as both a protector and a sculptor during the Solar System's formation, helping shape the planetary system we observe today.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;">
+
+The planet's remarkable moon system has become one of the primary targets in the search for extraterrestrial life. Europa's hidden ocean, Ganymede's magnetic field, Callisto's ancient surface, and Io's active volcanoes demonstrate that Jupiter is not simply one giant planet—it is an entire miniature planetary system worthy of exploration.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- IMAGE GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Jupiter Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative scientific imagery of Jupiter and its extraordinary planetary system.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/jupiter1.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Global View
+
+</h3>
+
+<p>
+
+A full-disk image showing Jupiter's colorful cloud bands.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/jupiter2.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Great Red Spot
+
+</h3>
+
+<p>
+
+The largest known storm in the Solar System continues to rotate through Jupiter's atmosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/jupiter3.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Juno Mission
+
+</h3>
+
+<p>
+
+NASA's Juno spacecraft continues revealing Jupiter's hidden interior and atmosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Jupiter called a Gas Giant?
+
+</h4>
+
+<p>
+
+Because it consists primarily of hydrogen and helium rather than solid rock.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can humans stand on Jupiter?
+
+</h4>
+
+<p>
+
+No. Jupiter has no solid surface, and its immense pressure and temperatures make human survival impossible.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+What is the Great Red Spot?
+
+</h4>
+
+<p>
+
+It is a giant anticyclonic storm that has existed for more than 350 years.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+How many moons does Jupiter have?
+
+</h4>
+
+<p>
+
+Scientists have confirmed more than 95 moons, and additional small satellites may still be discovered.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Does Jupiter have rings?
+
+</h4>
+
+<p>
+
+Yes. Jupiter possesses a faint ring system composed mainly of dust particles.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Could life exist near Jupiter?
+
+</h4>
+
+<p>
+
+Life is unlikely within Jupiter itself, but Europa's underground ocean is considered one of the most promising places to search for extraterrestrial life.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d5dfe8;">
+
+<li>NASA Solar System Exploration</li>
+
+<li>NASA Juno Mission</li>
+
+<li>NASA Europa Clipper Mission</li>
+
+<li>European Space Agency (ESA)</li>
+
+<li>ESA JUICE Mission</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+<li>Hubble Space Telescope</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="saturn.html"
+
+class="primary-btn">
+
+Next Planet →
+
+Saturn
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#0d0908;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#ffb84d;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+">
+
+SpaceVerse is an educational astronomy encyclopedia dedicated to making astronomy accessible through scientifically inspired visualizations, verified astronomical information, interactive simulations, and educational resources for students, educators, researchers, and space enthusiasts around the world.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#8a8a8a;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+↑
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffb84d,#ff8c00);
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+box-shadow:0 0 30px rgba(255,184,77,.45);
+
+transition:.3s;
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 45px rgba(255,184,77,.75);
+
+}
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(255,184,77,.45);
+
+}
+
+</style>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"Why is Jupiter called a Gas Giant?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Jupiter is composed primarily of hydrogen and helium instead of solid rock."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Does Jupiter have a solid surface?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"No. Jupiter has no true solid surface. Its atmosphere gradually becomes denser until hydrogen exists in liquid and metallic forms."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"How many moons does Jupiter have?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"More than 95 confirmed natural satellites orbit Jupiter."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"What is the Great Red Spot?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The Great Red Spot is a giant anticyclonic storm that has been observed for over 350 years."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- ARTICLE SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Jupiter",
+
+"description":"A complete scientific guide to Jupiter including its atmosphere, Great Red Spot, moons, magnetic field, rings, exploration missions, and future discoveries.",
+
+"author":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":"https://space-verse-alpha.vercel.app/jupiter.html"
+
+}
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+/* ===========================
+   Back To Top
+=========================== */
+
+const backBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+backBtn.style.display="block";
+
+}else{
+
+backBtn.style.display="none";
+
+}
+
+});
+
+backBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================
+   Fade In Animation
+=========================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade-in");
+
+observer.observe(section);
+
+});
+
+/* ===========================
+   Animated Statistics
+=========================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const number=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(number)){
+
+let count=0;
+
+const increment=Math.max(number/80,1);
+
+const timer=setInterval(()=>{
+
+count+=increment;
+
+if(count>=number){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+if(original.includes("km"))
+
+item.innerText=Math.floor(count).toLocaleString()+" km";
+
+else if(original.includes("Years"))
+
+item.innerText=(count/10).toFixed(1)+" Years";
+
+else if(original.includes("m/s"))
+
+item.innerText=count.toFixed(2)+" m/s²";
+
+else
+
+item.innerText=Math.floor(count);
+
+}
+
+},20);
+
+}
+
+});
+
+/* ===========================
+   Lazy Load Images
+=========================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+});
+
+/* ===========================
+   Console Message
+=========================== */
+
+console.log("🪐 SpaceVerse | Jupiter Encyclopedia Loaded Successfully");
+
+</script>
+
+</body>
+
+</html>
