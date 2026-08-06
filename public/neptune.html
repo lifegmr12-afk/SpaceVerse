@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Neptune | SpaceVerse</title>
+
+<meta name="description"
+content="Explore Neptune through SpaceVerse's interactive encyclopedia. Discover the Solar System's farthest planet, its powerful storms, Triton, rings, Voyager 2 mission, and scientific discoveries.">
+
+<meta name="keywords"
+content="Neptune,Ice Giant,Triton,SpaceVerse,Solar System">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/neptune.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:#02050b;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ====================================== */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("images/stars.jpg") center/cover;
+
+opacity:.30;
+
+z-index:-2;
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+color:#5ab8ff;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#5ab8ff;
+
+}
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:140px 8% 80px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(90,184,255,.12);
+
+border:1px solid rgba(90,184,255,.30);
+
+color:#5ab8ff;
+
+margin-bottom:20px;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:76px;
+
+margin-bottom:25px;
+
+line-height:1.1;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.primary-btn{
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:700;
+
+text-decoration:none;
+
+background:linear-gradient(135deg,#5ab8ff,#2f7dff);
+
+color:white;
+
+transition:.35s;
+
+box-shadow:0 0 35px rgba(90,184,255,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 45px rgba(90,184,255,.7);
+
+}
+
+.secondary-btn{
+
+padding:15px 35px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+border:1px solid rgba(255,255,255,.12);
+
+background:rgba(255,255,255,.05);
+
+color:white;
+
+transition:.35s;
+
+backdrop-filter:blur(12px);
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:560px;
+
+max-width:100%;
+
+filter:drop-shadow(0 0 70px rgba(90,184,255,.55));
+
+animation:neptuneFloat 9s ease-in-out infinite;
+
+}
+
+@keyframes neptuneFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+/* ================================= */
+
+.quick-stats{
+
+padding:80px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(90,184,255,.18);
+
+border-radius:18px;
+
+padding:30px;
+
+backdrop-filter:blur(16px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#5ab8ff;
+
+box-shadow:0 0 35px rgba(90,184,255,.35);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#5ab8ff;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#d8d8d8;
+
+}
+
+/* ================================= */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#5ab8ff;
+
+margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d7d7d7;
+
+margin-bottom:45px;
+
+}
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#101a28;
+
+padding:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(90,184,255,.18);
+
+transition:.35s;
+
+}
+
+.telemetry-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#5ab8ff;
+
+box-shadow:0 0 25px rgba(90,184,255,.30);
+
+}
+
+.telemetry-card h4{
+
+color:#5ab8ff;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+color:#d6d6d6;
+
+}
+
+.telemetry-card li:last-child{
+
+border:none;
+
+}
+
+/* ================================= */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:340px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#future">Future</a>
+
+</nav>
+
+</header>
+
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Eighth Planet from the Sun
+
+</span>
+
+<h1>
+
+Neptune
+
+</h1>
+
+<p>
+
+Neptune is the eighth and most distant major planet from the Sun. It is an ice giant famous for its deep blue color, powerful supersonic winds, giant storms, faint ring system, and the remarkable moon Triton. Despite receiving very little sunlight, Neptune is one of the most dynamic worlds in the Solar System.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore Neptune
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/neptune.png"
+
+alt="Planet Neptune">
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- QUICK STATS -->
+<!-- ========================================================= -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>49,244 km</h2>
+
+<p>
+
+Neptune is slightly smaller than Uranus but significantly denser.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>11.15 m/s²</h2>
+
+<p>
+
+Gravity on Neptune is slightly stronger than Earth's.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Length of Year</h3>
+
+<h2>165 Years</h2>
+
+<p>
+
+Neptune completes one orbit around the Sun every 165 Earth years.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Known Moons</h3>
+
+<h2>16</h2>
+
+<p>
+
+Neptune has 16 confirmed natural satellites, with Triton being the largest.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- NEPTUNE OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Neptune Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune is the eighth and outermost major planet in the Solar System. Classified as an ice giant, it is composed primarily of hydrogen, helium, water, ammonia, and methane. Neptune's deep blue color comes from methane in its atmosphere, although scientists believe additional atmospheric processes contribute to its rich blue appearance. Despite receiving only about one nine-hundredth of the sunlight Earth receives, Neptune possesses the fastest winds measured anywhere in the Solar System.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Planet Classification</h4>
+
+<ul>
+
+<li>Planet Type — Ice Giant</li>
+
+<li>Solar System Order — 8th Planet</li>
+
+<li>Average Distance — 4.50 Billion km</li>
+
+<li>Orbital Period — 164.8 Earth Years</li>
+
+<li>Rotation Period — 16h 6m</li>
+
+<li>Average Orbital Speed — 5.43 km/s</li>
+
+<li>Axial Tilt — 28.32°</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Physical Characteristics</h4>
+
+<ul>
+
+<li>Diameter — 49,244 km</li>
+
+<li>Radius — 24,622 km</li>
+
+<li>Mass — 1.024 × 10²⁶ kg</li>
+
+<li>Density — 1.64 g/cm³</li>
+
+<li>Surface Gravity — 11.15 m/s²</li>
+
+<li>Escape Velocity — 23.5 km/s</li>
+
+<li>Known Moons — 16</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>Atmosphere — Hydrogen & Helium</li>
+
+<li>Methane — Produces Blue Color</li>
+
+<li>Cloud Temperature — ≈ -214°C</li>
+
+<li>Ring System — 5 Main Rings</li>
+
+<li>Magnetic Field — Tilted</li>
+
+<li>Surface — No Solid Surface</li>
+
+<li>Interior — Water-Ammonia Mantle</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ATMOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Atmosphere & Weather
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune's atmosphere is incredibly active despite its great distance from the Sun. It experiences powerful storms, bright methane-ice clouds, and winds exceeding 2,100 km/h—the fastest sustained winds known in the Solar System.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Hydrogen</h3>
+
+<h2>80%</h2>
+
+<p>
+
+Hydrogen forms most of Neptune's atmosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Helium</h3>
+
+<h2>19%</h2>
+
+<p>
+
+Helium is the second most abundant atmospheric gas.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Methane</h3>
+
+<h2>1.5%</h2>
+
+<p>
+
+Methane absorbs red light and gives Neptune its blue appearance.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Wind Speed</h3>
+
+<h2>2,100 km/h</h2>
+
+<p>
+
+The strongest planetary winds ever measured.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- GREAT DARK SPOT -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+The Great Dark Spot
+
+</h2>
+
+<p class="section-subtitle">
+
+During Voyager 2's historic flyby in 1989, scientists discovered the Great Dark Spot—a giant storm roughly the size of Earth. Similar to Jupiter's Great Red Spot, it was a massive high-pressure storm system. Later observations showed that these storms can disappear and new ones can form elsewhere on the planet.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Discovery</h4>
+
+<p>
+
+Observed by Voyager 2 in 1989.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Size</h4>
+
+<p>
+
+Approximately the size of Earth.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Nature</h4>
+
+<p>
+
+A giant atmospheric storm driven by Neptune's dynamic weather.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MAGNETIC FIELD -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Magnetic Field
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune's magnetic field is unusual because it is significantly tilted relative to the planet's rotation axis and offset from its center. This creates a highly complex magnetosphere that changes dramatically as Neptune rotates.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Magnetic Tilt</h4>
+
+<p>
+
+Approximately 47 degrees from the rotation axis.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Offset Center</h4>
+
+<p>
+
+The magnetic field does not originate from the planet's exact center.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Auroras</h4>
+
+<p>
+
+Charged particles produce dynamic auroras near Neptune's magnetic poles.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERNAL STRUCTURE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Interior Structure
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune likely contains a rocky core surrounded by a thick mantle of hot water, ammonia, and methane under extreme pressure. Above this mantle lies a deep atmosphere composed mainly of hydrogen and helium.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Rocky Core</h3>
+
+<p>
+
+Dense rock and metal at Neptune's center.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Icy Mantle</h3>
+
+<p>
+
+Superheated water, ammonia, and methane under enormous pressure.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Outer Atmosphere</h3>
+
+<p>
+
+Hydrogen, helium, and methane clouds.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Extreme Pressure</h3>
+
+<p>
+
+Pressure rises dramatically toward Neptune's deep interior.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- RING SYSTEM -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Neptune's Ring System
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune possesses five faint rings composed mainly of dust and dark particles. Some sections appear brighter due to dense clumps called ring arcs, which are maintained by the gravitational influence of nearby moons.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Known Rings</h4>
+
+<p>
+
+Five principal rings.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Composition</h4>
+
+<p>
+
+Dust, dark rocky particles, and small amounts of ice.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Ring Arcs</h4>
+
+<p>
+
+Bright sections remain stable through gravitational interactions with nearby moons.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- MAJOR MOONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Major Moons of Neptune
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune has 16 confirmed natural satellites. The largest, Triton, is one of the most extraordinary moons in the Solar System because it orbits Neptune in the opposite direction of the planet's rotation. Scientists believe Triton was once a dwarf planet captured by Neptune's gravity billions of years ago.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🌕 Triton</h3>
+
+<p>
+
+Triton is Neptune's largest moon and the seventh-largest moon in the Solar System. It has a retrograde orbit, nitrogen ice, cryovolcanoes, and an extremely thin atmosphere. Scientists believe it may hide a subsurface ocean beneath its icy crust.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Nereid</h3>
+
+<p>
+
+Nereid has one of the most eccentric orbits of any large moon. During its journey around Neptune, its distance from the planet changes dramatically.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Proteus</h3>
+
+<p>
+
+Proteus is Neptune's second-largest moon. Despite its large size, gravity has not pulled it into a perfectly spherical shape.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Larissa</h3>
+
+<p>
+
+Larissa is an irregularly shaped inner moon discovered during stellar occultation observations and later confirmed by Voyager 2.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Hippocamp</h3>
+
+<p>
+
+Discovered in 2013 using Hubble observations, Hippocamp is one of Neptune's smallest known moons and may be a fragment of Proteus created by an ancient collision.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Other Moons</h3>
+
+<p>
+
+Additional moons including Despina, Galatea, Naiad, Thalassa, Halimede, Sao, Laomedeia, Psamathe, and Neso continue to help scientists understand Neptune's complex satellite system.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- VOYAGER 2 -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Voyager 2 Mission
+
+</h2>
+
+<p class="section-subtitle">
+
+Voyager 2 became the first—and so far only—spacecraft to visit Neptune during its historic flyby on August 25, 1989. The mission completely transformed humanity's understanding of the Solar System's most distant giant planet.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Launch</h4>
+
+<p>
+
+August 20, 1977
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Neptune Flyby</h4>
+
+<p>
+
+August 25, 1989
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Closest Approach</h4>
+
+<p>
+
+Approximately 4,950 kilometers above Neptune's cloud tops.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Major Discoveries</h4>
+
+<p>
+
+Confirmed Neptune's rings, discovered six new moons, observed the Great Dark Spot, measured supersonic winds, and studied Triton's active geysers.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1846</h4>
+
+<p>
+
+Neptune was discovered mathematically by Urbain Le Verrier and Johann Galle after irregularities were observed in Uranus' orbit.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1846</h4>
+
+<p>
+
+Triton was discovered only 17 days after Neptune itself.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1984</h4>
+
+<p>
+
+Neptune's faint ring system was confirmed through Earth-based observations.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1989</h4>
+
+<p>
+
+Voyager 2 performed the first and only close flyby of Neptune.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2000s</h4>
+
+<p>
+
+Hubble Space Telescope observed changing storms, clouds, and seasonal weather patterns.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Future</h4>
+
+<p>
+
+NASA and ESA continue evaluating concepts for a dedicated Neptune Orbiter and Triton lander mission.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- AMAZING FACTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Neptune Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🌪 Fastest Winds</h3>
+
+<p>
+
+Neptune experiences winds exceeding 2,100 km/h, the fastest measured anywhere in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌊 Deep Blue World</h3>
+
+<p>
+
+Its vivid blue appearance comes mainly from methane, although additional atmospheric chemistry likely enhances the color.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Triton</h3>
+
+<p>
+
+Triton orbits backward, indicating it was likely captured from the Kuiper Belt.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>❄ Ice Giant</h3>
+
+<p>
+
+Neptune's interior contains enormous quantities of water, ammonia, and methane under extreme pressure.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>💍 Hidden Rings</h3>
+
+<p>
+
+Neptune has five faint rings with bright ring arcs maintained by nearby moons.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🚀 One Visitor</h3>
+
+<p>
+
+Voyager 2 remains the only spacecraft to explore Neptune directly.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC IMPORTANCE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Importance
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune is an essential laboratory for understanding ice giant planets. Many of the thousands of exoplanets discovered around distant stars are similar in size and composition to Neptune. By studying Neptune's atmosphere, interior, rings, magnetic field, and moons, scientists gain valuable insights into planetary formation throughout the Milky Way. Triton is also considered one of the most promising ocean-world candidates beyond the inner Solar System, making future exploration a major scientific priority.
+
+</p>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section" id="future">
+
+<h2 class="section-title">
+
+Neptune: The Dynamic Blue Ice Giant
+
+</h2>
+
+<p class="section-subtitle">
+
+Neptune is the most distant major planet in our Solar System and one of its most fascinating worlds. Although sunlight reaching Neptune is nearly 900 times weaker than on Earth, the planet possesses an incredibly active atmosphere filled with giant storms, high-altitude methane clouds, and the fastest winds ever measured on any planet. Neptune demonstrates that even the coldest regions of the Solar System remain surprisingly dynamic.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+The planet's deep blue appearance is produced primarily by methane gas, which absorbs red wavelengths of sunlight while reflecting blue light. Modern research suggests additional atmospheric compounds may also contribute to Neptune's richer blue color compared to Uranus. Deep inside Neptune, enormous pressures transform water, ammonia, and methane into exotic states of matter unlike anything found naturally on Earth.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Neptune is also home to Triton, one of the most remarkable moons in the Solar System. Triton likely originated in the Kuiper Belt before being captured by Neptune's gravity billions of years ago. It possesses nitrogen geysers, frozen plains, and may hide a liquid ocean beneath its icy crust, making it one of the most exciting targets for future exploration.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;">
+
+Future spacecraft missions to Neptune could revolutionize planetary science. Scientists hope to study its powerful storms, unusual magnetic field, ring system, and mysterious interior while investigating Triton's potential subsurface ocean. Because many exoplanets discovered around other stars resemble Neptune in size, learning more about this distant world helps us better understand planetary systems throughout the universe.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- IMAGE GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Neptune Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative scientific imagery of Neptune captured by Voyager 2, Hubble Space Telescope, and modern observatories.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/neptune1.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Global View
+
+</h3>
+
+<p>
+
+A full-disk image showing Neptune's deep blue atmosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/neptune2.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Great Dark Spot
+
+</h3>
+
+<p>
+
+Voyager 2 captured Neptune's giant storm system in 1989.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/neptune3.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Triton
+
+</h3>
+
+<p>
+
+Neptune's largest moon with cryovolcanoes and a retrograde orbit.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Neptune blue?
+
+</h4>
+
+<p>
+
+Methane absorbs red light while reflecting blue wavelengths. Additional atmospheric chemistry may also contribute to Neptune's rich blue color.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why are Neptune's winds so fast?
+
+</h4>
+
+<p>
+
+Scientists are still investigating this mystery, but Neptune's internal heat likely powers its extremely strong atmospheric circulation.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Has anyone landed on Neptune?
+
+</h4>
+
+<p>
+
+No. Neptune has no solid surface, and no spacecraft has entered its atmosphere.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+What is Triton?
+
+</h4>
+
+<p>
+
+Triton is Neptune's largest moon and is believed to be a captured Kuiper Belt object with nitrogen geysers and possible underground oceans.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Does Neptune have rings?
+
+</h4>
+
+<p>
+
+Yes. Neptune has five faint rings made primarily of dust and dark rocky particles.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Which spacecraft visited Neptune?
+
+</h4>
+
+<p>
+
+Voyager 2 remains the only spacecraft to have explored Neptune up close.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d5dfe8;">
+
+<li>NASA Solar System Exploration</li>
+
+<li>NASA Voyager Mission</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>European Space Agency (ESA)</li>
+
+<li>Hubble Space Telescope</li>
+
+<li>James Webb Space Telescope</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+<li>Planetary Science Journal</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE EXPLORING -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="kuiper-belt.html"
+
+class="primary-btn">
+
+Next Destination →
+
+Kuiper Belt
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#08131a;
+
+border-top:1px solid rgba(90,184,255,.15);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#5ab8ff;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+">
+
+SpaceVerse is an interactive astronomy encyclopedia dedicated to exploring the Solar System and the wider universe through scientifically inspired visualizations, accurate astronomical information, and immersive educational experiences for students, educators, and space enthusiasts around the world.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms of Use
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#8a8a8a;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
