@@ -296,6 +296,119 @@ background:rgba(255,255,255,.1);
 margin:40px 0;
 
 }
+.gallery-title{
+
+margin-top:40px;
+
+margin-bottom:25px;
+
+font-size:32px;
+
+color:#48d8ff;
+
+text-align:center;
+
+letter-spacing:2px;
+
+}
+
+.planet-gallery{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+margin-top:30px;
+
+}
+
+.planet-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(0,170,255,.25);
+
+border-radius:18px;
+
+padding:25px;
+
+transition:.4s;
+
+}
+
+.planet-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 30px rgba(0,170,255,.35);
+
+}
+
+.planet-card img{
+
+width:100%;
+
+height:180px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+margin-bottom:18px;
+
+}
+
+.planet-card h3{
+
+font-size:28px;
+
+margin-bottom:18px;
+
+color:#fff;
+
+}
+
+.planet-card p{
+
+line-height:1.8;
+
+font-size:15px;
+
+color:#d7d7d7;
+
+}
+
+.planet-card button{
+
+margin-top:20px;
+
+width:100%;
+
+padding:14px;
+
+background:#0099ff;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.planet-card button:hover{
+
+background:#00bbff;
+
+}
     </style>
 </head>
 <body>
@@ -562,7 +675,39 @@ thousands of exoplanets discovered throughout our galaxy.
 </p>
 
 </section>
+<hr>
 
+<h2 class="gallery-title">🪐 Planet Gallery</h2>
+
+<div class="planet-gallery">
+
+    <!-- Mercury -->
+
+    <div class="planet-card">
+
+        <img src="images/mercury.jpg" alt="Mercury">
+
+        <h3>Mercury</h3>
+
+        <p><strong>Type:</strong> Terrestrial Planet</p>
+
+        <p><strong>Diameter:</strong> 4,879 km</p>
+
+        <p><strong>Gravity:</strong> 3.7 m/s²</p>
+
+        <p><strong>Day:</strong> 58.6 Earth Days</p>
+
+        <p><strong>Year:</strong> 88 Earth Days</p>
+
+        <p><strong>Temperature:</strong> -180°C to 430°C</p>
+
+        <button onclick="window.location.href='mercury.html'">
+            Explore Planet
+        </button>
+
+    </div>
+
+</div>
 </div>
 
     <div id="labels-container"></div>
