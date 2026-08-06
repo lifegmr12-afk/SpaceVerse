@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Mars | SpaceVerse Encyclopedia
+
+</title>
+
+<meta name="description"
+content="Explore Mars through SpaceVerse. Learn about Olympus Mons, Valles Marineris, ancient rivers, Mars rovers, polar ice caps, atmosphere, geology, moons, and future human exploration.">
+
+<meta name="keywords"
+content="Mars, Red Planet, Mars facts, Olympus Mons, Perseverance, Curiosity, SpaceVerse">
+
+<meta name="robots"
+content="index, follow">
+
+<meta name="theme-color"
+content="#170b08">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/mars.html">
+
+<meta property="og:title"
+content="Mars | SpaceVerse Encyclopedia">
+
+<meta property="og:description"
+content="Discover the Red Planet with immersive scientific exploration.">
+
+<meta property="og:image"
+content="https://space-verse-alpha.vercel.app/images/mars.png">
+
+<meta property="og:url"
+content="https://space-verse-alpha.vercel.app/mars.html">
+
+<link rel="icon"
+href="logo.png">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Mars",
+
+"description":"Mars is the fourth planet from the Sun and one of the most explored worlds beyond Earth.",
+
+"author":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+
+"publisher":{
+"@type":"Organization",
+"name":"SpaceVerse"
+}
+
+}
+
+</script>
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:#08090d;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 20%,
+rgba(255,90,50,.12),transparent 35%),
+
+radial-gradient(circle at 80% 10%,
+rgba(255,140,60,.08),transparent 35%),
+
+radial-gradient(circle at 50% 90%,
+rgba(255,80,40,.05),transparent 45%);
+
+z-index:-2;
+
+}
+
+.stars{
+
+position:fixed;
+
+inset:0;
+
+background-image:
+
+radial-gradient(white 1px,transparent 1px);
+
+background-size:95px 95px;
+
+opacity:.18;
+
+animation:stars 90s linear infinite;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+@keyframes stars{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(450px);
+
+}
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:18px 7%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(10,8,8,.82);
+
+backdrop-filter:blur(16px);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+font-weight:700;
+
+text-decoration:none;
+
+color:#ff7043;
+
+letter-spacing:2px;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ff7043;
+
+}
+
+.hero{
+
+min-height:100vh;
+
+padding:120px 8% 70px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:60px;
+
+}
+
+.hero-content{
+
+max-width:650px;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 20px;
+
+border-radius:50px;
+
+border:1px solid rgba(255,112,67,.35);
+
+color:#ff8a65;
+
+letter-spacing:2px;
+
+font-size:13px;
+
+margin-bottom:25px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:74px;
+
+margin-bottom:25px;
+
+background:linear-gradient(90deg,#ffffff,#ff7043);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d7d7d7;
+
+margin-bottom:40px;
+
+}
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-bottom:40px;
+
+}
+
+.primary-btn{
+
+padding:15px 35px;
+
+background:linear-gradient(135deg,#ff7043,#d84315);
+
+border:none;
+
+border-radius:12px;
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:0 0 35px rgba(255,112,67,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 45px rgba(255,112,67,.65);
+
+}
+
+.secondary-btn{
+
+padding:15px 35px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:12px;
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+backdrop-filter:blur(12px);
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:470px;
+
+max-width:100%;
+
+filter:drop-shadow(0 0 70px rgba(255,90,40,.45));
+
+animation:marsFloat 9s ease-in-out infinite;
+
+}
+
+@keyframes marsFloat{
+
+0%{transform:translateY(0px) rotate(0deg);}
+
+50%{transform:translateY(-18px) rotate(1deg);}
+
+100%{transform:translateY(0px) rotate(0deg);}
+
+}
+
+/* ===================== */
+
+.quick-stats{
+
+padding:80px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,112,67,.15);
+
+border-radius:18px;
+
+padding:30px;
+
+backdrop-filter:blur(16px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ff7043;
+
+box-shadow:0 0 35px rgba(255,112,67,.30);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#ff7043;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#d8d8d8;
+
+}
+
+/* ===================== */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#ff7043;
+
+margin-bottom:18px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d7d7d7;
+
+margin-bottom:45px;
+
+}
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#101114;
+
+padding:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,112,67,.15);
+
+}
+
+.telemetry-card h4{
+
+color:#ff7043;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
+color:#d6d6d6;
+
+}
+
+.telemetry-card li:last-child{
+
+border:none;
+
+}
+
+/* ===================== */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:52px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:320px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#future">Future</a>
+
+</nav>
+
+</header>
+
+<!-- ===================================================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Fourth Planet from the Sun
+
+</span>
+
+<h1>
+
+Mars
+
+</h1>
+
+<p>
+
+Mars, often called the Red Planet, is one of the most explored worlds beyond Earth. Its towering volcanoes, enormous canyons, ancient river valleys, polar ice caps, and evidence of past liquid water make it one of the most fascinating planets in our Solar System. Scientists continue studying Mars to understand its history and determine whether it could once have supported microbial life.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore Mars
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/mars.png"
+
+alt="Planet Mars">
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>6,779 km</h2>
+
+<p>
+
+Mars is the second-smallest planet in the Solar System after Mercury.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>3.71 m/s²</h2>
+
+<p>
+
+Gravity on Mars is only about 38% as strong as Earth's.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Length of Year</h3>
+
+<h2>687 Days</h2>
+
+<p>
+
+One Martian year is nearly twice as long as an Earth year.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Natural Moons</h3>
+
+<h2>2</h2>
+
+<p>
+
+Mars has two tiny moons named Phobos and Deimos.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- MARS OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Mars Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System. Known as the <strong>Red Planet</strong> because of iron oxide (rust) covering much of its surface, Mars has fascinated astronomers for centuries. Although cold and dry today, evidence suggests that billions of years ago Mars possessed rivers, lakes, glaciers, and perhaps even a vast northern ocean.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Planet Classification</h4>
+
+<ul>
+
+<li>Planet Type — Terrestrial Planet</li>
+
+<li>Solar System Order — 4th Planet</li>
+
+<li>Average Distance — 227.9 Million km</li>
+
+<li>Orbital Period — 687 Earth Days</li>
+
+<li>Rotation Period — 24h 37m</li>
+
+<li>Average Orbital Speed — 24.1 km/s</li>
+
+<li>Axial Tilt — 25.19°</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Physical Characteristics</h4>
+
+<ul>
+
+<li>Diameter — 6,779 km</li>
+
+<li>Radius — 3,389 km</li>
+
+<li>Mass — 6.42 × 10²³ kg</li>
+
+<li>Density — 3.93 g/cm³</li>
+
+<li>Surface Gravity — 3.71 m/s²</li>
+
+<li>Escape Velocity — 5.03 km/s</li>
+
+<li>Natural Satellites — 2</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>Atmosphere — Mostly Carbon Dioxide</li>
+
+<li>Average Temperature — −63°C</li>
+
+<li>Surface Pressure — Less than 1% of Earth's</li>
+
+<li>Polar Ice Caps — Present</li>
+
+<li>Global Dust Storms — Common</li>
+
+<li>Known Liquid Water — None on Surface Today</li>
+
+<li>Evidence of Ancient Rivers — Strong</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- OLYMPUS MONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Olympus Mons
+
+</h2>
+
+<p class="section-subtitle">
+
+Olympus Mons is the tallest known volcano and mountain in the Solar System. Rising about 22 kilometers above the surrounding plains, it is nearly three times taller than Mount Everest. The volcano formed through repeated lava eruptions over millions of years because Mars lacks the moving tectonic plates found on Earth.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Height</h3>
+
+<h2>22 km</h2>
+
+<p>
+
+The tallest volcano discovered in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Width</h3>
+
+<h2>600 km</h2>
+
+<p>
+
+Its base covers an area comparable to a large country.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Volcano Type</h3>
+
+<h2>Shield</h2>
+
+<p>
+
+Built by countless layers of fluid lava over millions of years.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Location</h3>
+
+<h2>Tharsis Region</h2>
+
+<p>
+
+Part of the massive Tharsis volcanic plateau.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ANCIENT WATER -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Ancient Rivers & Lakes
+
+</h2>
+
+<p class="section-subtitle">
+
+Satellite observations and rover missions have revealed dried river valleys, lake beds, mineral deposits, and delta formations across Mars. These discoveries indicate that liquid water once flowed across the Martian surface billions of years ago, making early Mars significantly different from the cold desert seen today.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>River Valleys</h4>
+
+<p>
+
+Thousands of branching valleys resemble river networks found on Earth.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Ancient Lakes</h4>
+
+<p>
+
+Several impact craters once contained long-lasting lakes fed by rivers.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Water Ice</h4>
+
+<p>
+
+Large quantities of frozen water remain beneath the surface and within the polar regions.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- POLAR ICE CAPS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Polar Ice Caps
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars possesses permanent north and south polar ice caps composed mainly of water ice with seasonal layers of frozen carbon dioxide. During winter, carbon dioxide freezes directly from the atmosphere, increasing the size of the polar caps.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>North Pole</h3>
+
+<p>
+
+Contains extensive layers of water ice covered seasonally by frozen carbon dioxide.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>South Pole</h3>
+
+<p>
+
+Stores vast quantities of water ice beneath permanent carbon dioxide ice.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Frozen CO₂</h3>
+
+<p>
+
+Dry ice forms each Martian winter as temperatures rapidly decrease.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Future Resource</h3>
+
+<p>
+
+Polar ice may support future human exploration by providing water and oxygen.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- DUST STORMS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Dust Storms
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars frequently experiences dust storms ranging from small local events to enormous global storms that can cover nearly the entire planet for weeks. Fine dust particles suspended in the atmosphere reduce sunlight and can affect solar-powered spacecraft.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Global Storms</h4>
+
+<p>
+
+Some storms become large enough to envelop almost the entire planet.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Wind Speed</h4>
+
+<p>
+
+Strong winds lift fine dust high into the thin Martian atmosphere.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Space Missions</h4>
+
+<p>
+
+Dust storms can reduce solar power generation and limit rover operations.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SURFACE FEATURES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Surface Features
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars displays an extraordinary variety of geological formations, including giant volcanoes, impact craters, lava plains, ancient river valleys, towering cliffs, and one of the largest canyon systems ever discovered.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Largest Canyon</h3>
+
+<h2>Valles Marineris</h2>
+
+<p>
+
+Over 4,000 km long and up to 7 km deep.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Impact Craters</h3>
+
+<h2>Hundreds of Thousands</h2>
+
+<p>
+
+The heavily cratered surface preserves billions of years of planetary history.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Lava Plains</h3>
+
+<h2>Extensive</h2>
+
+<p>
+
+Ancient volcanic eruptions created vast plains across Mars.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Iron Oxide</h3>
+
+<h2>Abundant</h2>
+
+<p>
+
+Iron-rich dust gives Mars its distinctive reddish appearance.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ATMOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Atmosphere & Climate
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars has a very thin atmosphere composed primarily of carbon dioxide. Although it experiences seasons similar to Earth due to its axial tilt, the planet remains extremely cold, with temperatures varying greatly between day and night.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Main Gas</h4>
+
+<p>
+
+Approximately 95% carbon dioxide.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Average Temperature</h4>
+
+<p>
+
+Around −63°C across the planet.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Weather</h4>
+
+<p>
+
+Thin clouds, frost, seasonal winds, and massive dust storms occur regularly.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- MOONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Moons of Mars
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars has two small natural satellites, <strong>Phobos</strong> and <strong>Deimos</strong>. They were discovered by American astronomer Asaph Hall in 1877. Scientists believe both moons may be captured asteroids or remnants from a giant impact early in Martian history.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Phobos</h4>
+
+<ul>
+
+<li>Mean Diameter — 22.4 km</li>
+
+<li>Distance from Mars — 6,000 km</li>
+
+<li>Orbital Period — 7.65 Hours</li>
+
+<li>Shape — Irregular</li>
+
+<li>Future — Slowly spiraling toward Mars</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Deimos</h4>
+
+<ul>
+
+<li>Mean Diameter — 12.4 km</li>
+
+<li>Distance from Mars — 23,460 km</li>
+
+<li>Orbital Period — 30.3 Hours</li>
+
+<li>Shape — Irregular</li>
+
+<li>Surface — Covered with loose dust</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Interesting Facts</h4>
+
+<p>
+
+Phobos orbits Mars faster than the planet rotates, causing it to rise in the west and set in the east. In tens of millions of years it may either crash into Mars or break apart into a temporary ring.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ROVERS -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Mars Rovers & Landers
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars is the most extensively explored planet after Earth. Robotic spacecraft have transformed our understanding of its geology, atmosphere, climate, and the possibility of ancient microbial life.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Sojourner</h3>
+
+<p>
+
+NASA's first successful Mars rover, landing in 1997 during the Pathfinder mission.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Spirit & Opportunity</h3>
+
+<p>
+
+Twin rovers that explored Mars beginning in 2004. Opportunity operated for nearly 15 years.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Curiosity</h3>
+
+<p>
+
+Landed in Gale Crater in 2012 to investigate whether Mars once supported habitable environments.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Perseverance</h3>
+
+<p>
+
+Landed in Jezero Crater in 2021 to search for signs of ancient microbial life and collect rock samples.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- HELICOPTER -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Ingenuity Helicopter
+
+</h2>
+
+<p class="section-subtitle">
+
+Ingenuity became the first powered aircraft to achieve controlled flight on another planet. Originally designed as a technology demonstration, it greatly exceeded its planned mission and completed dozens of successful flights while scouting terrain for the Perseverance rover.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Mission</h4>
+
+<p>
+
+Demonstrated powered flight in Mars' thin atmosphere.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Historic Achievement</h4>
+
+<p>
+
+First aircraft ever flown on another planet.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Legacy</h4>
+
+<p>
+
+Opened the possibility of using aerial vehicles during future planetary exploration missions.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FUTURE MISSIONS -->
+<!-- ========================================================= -->
+
+<section class="section" id="future">
+
+<h2 class="section-title">
+
+Future Human Exploration
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars is widely considered the leading destination for future human exploration beyond the Moon. Space agencies and commercial organizations are developing technologies required for long-duration missions, surface habitats, and eventual human landings.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Sample Return</h3>
+
+<p>
+
+Future missions aim to return carefully selected Martian rock samples to Earth for laboratory analysis.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Surface Habitats</h3>
+
+<p>
+
+Scientists are designing habitats capable of protecting astronauts from radiation, cold temperatures, and dust storms.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Local Resources</h3>
+
+<p>
+
+Water ice beneath the surface may provide drinking water, oxygen, and rocket fuel for future explorers.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Long-Term Goal</h3>
+
+<p>
+
+Establish sustainable human exploration of Mars during future decades.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Mars Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1965</h4>
+
+<p>
+
+Mariner 4 returned the first close-up images of Mars.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1976</h4>
+
+<p>
+
+Viking 1 became the first successful spacecraft to land and operate on Mars.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1997</h4>
+
+<p>
+
+Mars Pathfinder and Sojourner demonstrated rover exploration.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2004</h4>
+
+<p>
+
+Spirit and Opportunity began their historic exploration missions.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2012</h4>
+
+<p>
+
+Curiosity landed in Gale Crater using the innovative sky crane system.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2021</h4>
+
+<p>
+
+Perseverance and Ingenuity began a new era of Martian exploration.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERESTING FACTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Mars Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🔴 Red Planet</h3>
+
+<p>
+
+Mars appears red because its surface contains iron oxide, commonly known as rust.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌋 Largest Volcano</h3>
+
+<p>
+
+Olympus Mons is the tallest volcano known anywhere in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌄 Giant Canyon</h3>
+
+<p>
+
+Valles Marineris stretches more than 4,000 kilometers across Mars.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🧊 Frozen Water</h3>
+
+<p>
+
+Large deposits of water ice exist beneath the surface and within the polar regions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌪 Dust Storms</h3>
+
+<p>
+
+Some Martian dust storms grow large enough to cover nearly the entire planet.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🛰 Most Explored Planet</h3>
+
+<p>
+
+Mars has been visited by dozens of orbiters, landers, and rovers from multiple space agencies.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC IMPORTANCE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Importance
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars provides scientists with a unique opportunity to study planetary evolution, ancient climates, volcanic activity, and the possibility of past life. Because it shares several similarities with early Earth while remaining far less geologically active today, Mars offers valuable clues about how rocky planets form and change over billions of years. Research conducted on Mars also supports planning for future human exploration throughout the Solar System.
+
+</p>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Mars: The Red Planet
+
+</h2>
+
+<p class="section-subtitle">
+
+Mars has inspired human imagination for thousands of years. Ancient civilizations observed its reddish appearance in the night sky and associated it with war because of its blood-like color. Today, Mars represents one of the greatest scientific targets for planetary exploration and the search for life beyond Earth.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Although Mars is now a cold desert world, numerous discoveries indicate that it once possessed a warmer and wetter environment. Ancient river valleys, lake beds, mineral deposits, and sedimentary rocks reveal that liquid water flowed across the Martian surface billions of years ago. These findings suggest that early Mars may have provided environments capable of supporting simple microbial life.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Modern robotic missions continue transforming our understanding of Mars. Orbiters map the planet in remarkable detail, while rovers analyze rocks, drill into the surface, study weather patterns, and search for chemical signatures preserved within ancient sediments. Every mission improves our knowledge of planetary evolution and helps scientists prepare for future human exploration.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;">
+
+Mars is also considered one of humanity's most realistic destinations for future crewed space missions. Scientists are developing technologies to produce oxygen from the Martian atmosphere, extract water from underground ice, generate power using local resources, and build sustainable habitats. The knowledge gained on Mars will help expand human exploration deeper into the Solar System.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- IMAGE GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Mars Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative scientific imagery of Mars and its remarkable surface.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/mars1.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Global View
+
+</h3>
+
+<p>
+
+A global image highlighting Mars' characteristic red appearance caused by iron oxide.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/mars2.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Olympus Mons
+
+</h3>
+
+<p>
+
+The largest known volcano in the Solar System rises high above the surrounding plains.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/mars3.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Perseverance Rover
+
+</h3>
+
+<p>
+
+NASA's Perseverance rover explores Jezero Crater searching for signs of ancient life.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is Mars called the Red Planet?
+
+</h4>
+
+<p>
+
+Mars appears reddish because its surface contains iron oxide, commonly known as rust.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Could Mars have supported life?
+
+</h4>
+
+<p>
+
+Ancient rivers, lakes, and minerals indicate Mars once had conditions that may have supported microbial life.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+How many moons does Mars have?
+
+</h4>
+
+<p>
+
+Mars has two small natural satellites: Phobos and Deimos.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+How long is one day on Mars?
+
+</h4>
+
+<p>
+
+A Martian day, called a sol, lasts approximately 24 hours and 37 minutes.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Has anyone landed on Mars?
+
+</h4>
+
+<p>
+
+Many robotic spacecraft have successfully landed on Mars, but no humans have visited the planet yet.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can humans live on Mars?
+
+</h4>
+
+<p>
+
+Not with current technology alone. Future missions will require habitats, life-support systems, radiation protection, and local resource utilization.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d5dfe8;">
+
+<li>NASA Mars Exploration Program</li>
+
+<li>NASA Jet Propulsion Laboratory (JPL)</li>
+
+<li>European Space Agency (ESA)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+<li>USGS Astrogeology Science Center</li>
+
+<li>Mars Reconnaissance Orbiter Mission</li>
+
+<li>Perseverance Rover Mission</li>
+
+<li>Curiosity Rover Mission</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE EXPLORING -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="jupiter.html"
+
+class="primary-btn">
+
+Next Planet →
+
+Jupiter
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#0d0908;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#ff7043;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+">
+
+SpaceVerse is an educational astronomy encyclopedia dedicated to making space science accessible through scientifically inspired visualizations, verified astronomical information, interactive simulations, and educational resources for students, educators, researchers, and space enthusiasts around the world.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#8a8a8a;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+↑
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ff7043,#d84315);
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+box-shadow:0 0 30px rgba(255,112,67,.45);
+
+transition:.3s;
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 45px rgba(255,112,67,.75);
+
+}
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(255,112,67,.45);
+
+}
+
+</style>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"Why is Mars called the Red Planet?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Mars appears red because iron oxide covers much of its surface."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Does Mars have water?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Mars contains large amounts of water ice beneath its surface and at its polar ice caps."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"How many moons does Mars have?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Mars has two natural moons named Phobos and Deimos."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Can humans live on Mars?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Future human missions are being planned, but permanent settlement will require advanced life-support systems and habitat technology."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- ARTICLE SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Mars",
+
+"description":"A comprehensive scientific guide to Mars including its geology, atmosphere, moons, exploration history, and future human missions.",
+
+"author":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":"https://space-verse-alpha.vercel.app/mars.html"
+
+}
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+/* ===========================
+   Back To Top
+=========================== */
+
+const backBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+backBtn.style.display="block";
+
+}else{
+
+backBtn.style.display="none";
+
+}
+
+});
+
+backBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================
+   Fade In Sections
+=========================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+
+{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade-in");
+
+observer.observe(section);
+
+});
+
+/* ===========================
+   Animated Numbers
+=========================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const number=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(number)){
+
+let count=0;
+
+const increment=Math.max(number/80,1);
+
+const timer=setInterval(()=>{
+
+count+=increment;
+
+if(count>=number){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+if(original.includes("km"))
+
+item.innerText=Math.floor(count).toLocaleString()+" km";
+
+else if(original.includes("Days"))
+
+item.innerText=Math.floor(count)+" Days";
+
+else if(original.includes("m/s"))
+
+item.innerText=Math.floor(count)+" m/s²";
+
+else
+
+item.innerText=Math.floor(count);
+
+}
+
+},20);
+
+}
+
+});
+
+/* ===========================
+   Lazy Load Images
+=========================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+});
+
+/* ===========================
+   Console Message
+=========================== */
+
+console.log("🚀 SpaceVerse | Mars Encyclopedia Loaded Successfully");
+
+</script>
+
+</body>
+
+</html>
