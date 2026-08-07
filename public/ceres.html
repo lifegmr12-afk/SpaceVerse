@@ -1,0 +1,2776 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Ceres | The Largest Dwarf Planet in the Asteroid Belt | SpaceVerse</title>
+
+<meta name="description"
+content="Explore Ceres, the largest object in the Asteroid Belt and the Solar System's smallest dwarf planet. Discover its icy interior, bright salt deposits, geology, NASA's Dawn mission, and scientific mysteries.">
+
+<meta name="keywords"
+content="Ceres, Dwarf Planet, Asteroid Belt, Dawn Mission, Occator Crater, Bright Spots, Water Ice, SpaceVerse">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/ceres.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:
+radial-gradient(circle at top,#5b6774 0%,#2b2f35 25%,#101215 65%,#000 100%);
+
+color:#fff;
+
+overflow-x:hidden;
+
+}
+
+/* ===================================== */
+/* STAR BACKGROUND */
+/* ===================================== */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("images/stars.jpg");
+
+background-size:cover;
+
+opacity:.22;
+
+z-index:-12;
+
+}
+
+/* ===================================== */
+/* ICE GLOW */
+/* ===================================== */
+
+.iceGlow{
+
+position:fixed;
+
+top:-250px;
+
+right:-180px;
+
+width:850px;
+
+height:850px;
+
+background:
+
+radial-gradient(circle,
+
+rgba(180,235,255,.55),
+
+rgba(120,180,255,.18),
+
+transparent 75%);
+
+filter:blur(90px);
+
+animation:icePulse 8s ease-in-out infinite;
+
+pointer-events:none;
+
+z-index:-11;
+
+}
+
+@keyframes icePulse{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* ===================================== */
+/* SPACE DUST */
+/* ===================================== */
+
+.dust{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background-image:
+
+radial-gradient(circle,#ffffff55 1px,transparent 2px);
+
+background-size:130px 130px;
+
+opacity:.16;
+
+animation:dustMove 120s linear infinite;
+
+z-index:-10;
+
+}
+
+@keyframes dustMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-1800px);
+
+}
+
+}
+
+/* ===================================== */
+/* FLOATING ASTEROIDS */
+/* ===================================== */
+
+.rock{
+
+position:fixed;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle at 30% 30%,
+
+#bfc7cf,
+
+#8a9198,
+
+#4f5358,
+
+#232528);
+
+box-shadow:
+
+inset -12px -12px 20px rgba(0,0,0,.6),
+
+0 0 18px rgba(180,220,255,.2);
+
+z-index:-9;
+
+}
+
+.r1{
+
+width:90px;
+
+height:90px;
+
+top:12%;
+
+left:8%;
+
+animation:float1 20s ease-in-out infinite;
+
+}
+
+.r2{
+
+width:140px;
+
+height:140px;
+
+top:68%;
+
+left:82%;
+
+animation:float2 24s ease-in-out infinite;
+
+}
+
+.r3{
+
+width:60px;
+
+height:60px;
+
+top:42%;
+
+left:22%;
+
+animation:float3 16s ease-in-out infinite;
+
+}
+
+.r4{
+
+width:110px;
+
+height:110px;
+
+top:78%;
+
+left:55%;
+
+animation:float4 22s ease-in-out infinite;
+
+}
+
+.r5{
+
+width:70px;
+
+height:70px;
+
+top:20%;
+
+left:72%;
+
+animation:float5 18s ease-in-out infinite;
+
+}
+
+@keyframes float1{
+
+50%{
+
+transform:translateY(-22px) rotate(180deg);
+
+}
+
+}
+
+@keyframes float2{
+
+50%{
+
+transform:translate(-20px,-30px) rotate(-180deg);
+
+}
+
+}
+
+@keyframes float3{
+
+50%{
+
+transform:translate(18px,-18px) rotate(120deg);
+
+}
+
+}
+
+@keyframes float4{
+
+50%{
+
+transform:translate(-25px,18px) rotate(220deg);
+
+}
+
+}
+
+@keyframes float5{
+
+50%{
+
+transform:translateY(18px) rotate(140deg);
+
+}
+
+}
+
+/* ===================================== */
+/* HEADER */
+/* ===================================== */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(18,22,28,.55);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(170,220,255,.15);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+text-decoration:none;
+
+color:#d9f3ff;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:#fff;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#9fe5ff;
+
+}
+
+/* ===================================== */
+/* HERO */
+/* ===================================== */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:140px 8% 70px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:10px 22px;
+
+border-radius:40px;
+
+background:rgba(170,220,255,.12);
+
+border:1px solid rgba(170,220,255,.25);
+
+color:#c9efff;
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:22px;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:78px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#ffffff,
+
+#dff7ff,
+
+#8bd8ff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d7dce2;
+
+margin-bottom:35px;
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:520px;
+
+max-width:100%;
+
+animation:rotateCeres 140s linear infinite;
+
+filter:
+
+drop-shadow(0 0 40px rgba(170,220,255,.5));
+
+}
+
+@keyframes rotateCeres{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+/* ===================================================== */
+/* BUTTONS */
+/* ===================================================== */
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+display:inline-block;
+
+padding:16px 36px;
+
+border-radius:14px;
+
+background:linear-gradient(135deg,#b8f0ff,#6cc8ff);
+
+color:#05121c;
+
+font-weight:700;
+
+text-decoration:none;
+
+transition:.35s;
+
+box-shadow:0 0 35px rgba(120,220,255,.35);
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 55px rgba(120,220,255,.7);
+
+}
+
+.secondary-btn{
+
+display:inline-block;
+
+padding:16px 36px;
+
+border-radius:14px;
+
+border:1px solid rgba(180,230,255,.25);
+
+background:rgba(255,255,255,.05);
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(170,220,255,.12);
+
+}
+
+/* ===================================================== */
+/* QUICK STATS */
+/* ===================================================== */
+
+.quick-stats{
+
+padding:90px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:28px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(180,220,255,.18);
+
+border-radius:22px;
+
+padding:30px;
+
+transition:.35s;
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.stat-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:4px;
+
+background:linear-gradient(90deg,#ffffff,#8adfff);
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#9de6ff;
+
+box-shadow:0 0 35px rgba(150,220,255,.28);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#bdeeff;
+
+margin-bottom:14px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:14px;
+
+color:white;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#d6dde5;
+
+}
+
+/* ===================================================== */
+/* CONTENT SECTIONS */
+/* ===================================================== */
+
+.section{
+
+padding:100px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:44px;
+
+margin-bottom:20px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#ffffff,
+
+#d8f7ff,
+
+#7edbff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d3d9df;
+
+margin-bottom:50px;
+
+}
+
+.info-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:28px;
+
+}
+
+.info-card{
+
+background:rgba(255,255,255,.04);
+
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(170,220,255,.16);
+
+border-radius:20px;
+
+padding:28px;
+
+transition:.35s;
+
+}
+
+.info-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#9be8ff;
+
+box-shadow:0 0 30px rgba(140,220,255,.25);
+
+}
+
+.info-card h4{
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#bdeeff;
+
+margin-bottom:18px;
+
+}
+
+.info-card ul{
+
+list-style:none;
+
+}
+
+.info-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+color:#d9d9d9;
+
+}
+
+.info-card li:last-child{
+
+border-bottom:none;
+
+}
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:56px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:330px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="iceGlow"></div>
+
+<div class="dust"></div>
+
+<div class="rock r1"></div>
+<div class="rock r2"></div>
+<div class="rock r3"></div>
+<div class="rock r4"></div>
+<div class="rock r5"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#facts">Facts</a>
+
+<a href="#missions">Missions</a>
+
+</nav>
+
+</header>
+
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Largest Dwarf Planet in the Asteroid Belt
+
+</span>
+
+<h1>
+
+CERES
+
+</h1>
+
+<p>
+
+Ceres is the largest object in the Asteroid Belt and the smallest recognized dwarf planet in our Solar System. Rich in water ice and mysterious bright salt deposits, it provides scientists with important clues about planetary formation and the possibility of ancient underground oceans.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore Ceres
+
+</a>
+
+<a href="asteroid-belt.html"
+
+class="secondary-btn">
+
+← Back to Asteroid Belt
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/ceres.png"
+
+alt="Ceres">
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- QUICK FACTS -->
+<!-- ===================================================== -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>939 km</h2>
+
+<p>
+
+The largest body in the Asteroid Belt.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Distance</h3>
+
+<h2>2.77 AU</h2>
+
+<p>
+
+Average distance from the Sun.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Rotation</h3>
+
+<h2>9.07 hrs</h2>
+
+<p>
+
+A Ceres day lasts just over nine Earth hours.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Orbital Period</h3>
+
+<h2>4.61 yrs</h2>
+
+<p>
+
+One journey around the Sun equals 4.61 Earth years.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>0.27 m/s²</h2>
+
+<p>
+
+Only about 3% of Earth's gravity.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Discovery</h3>
+
+<h2>1801</h2>
+
+<p>
+
+Discovered by Giuseppe Piazzi.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- OVERVIEW -->
+<!-- ===================================================== -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+Ceres accounts for roughly one-third of the total mass of the Asteroid Belt. Unlike most asteroids, it is nearly spherical because its gravity pulled it into hydrostatic equilibrium, earning it the classification of a dwarf planet in 2006.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Classification</h4>
+
+<ul>
+
+<li>Dwarf Planet</li>
+
+<li>Largest Asteroid Belt Object</li>
+
+<li>Nearly Spherical Shape</li>
+
+<li>IAU Classification (2006)</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Surface</h4>
+
+<ul>
+
+<li>Impact Craters</li>
+
+<li>Bright Salt Deposits</li>
+
+<li>Water Ice</li>
+
+<li>Cryovolcanic Features</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Interior</h4>
+
+<ul>
+
+<li>Rocky Core</li>
+
+<li>Ice-rich Mantle</li>
+
+<li>Hydrated Minerals</li>
+
+<li>Possible Ancient Ocean</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- DISCOVERY -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Discovery of Ceres
+
+</h2>
+
+<p class="section-subtitle">
+
+Ceres was discovered on <strong>1 January 1801</strong> by the Italian astronomer <strong>Giuseppe Piazzi</strong> at the Palermo Astronomical Observatory. It was the first object ever discovered in the region now known as the Asteroid Belt. Initially classified as a planet, it was later considered an asteroid before finally being reclassified as a <strong>dwarf planet</strong> by the International Astronomical Union (IAU) in 2006.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Discovery</h4>
+
+<ul>
+
+<li>Date: 1 January 1801</li>
+
+<li>Discovered by Giuseppe Piazzi</li>
+
+<li>Palermo Observatory, Italy</li>
+
+<li>First Asteroid Belt Object Found</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Name Origin</h4>
+
+<ul>
+
+<li>Named after Ceres</li>
+
+<li>Roman Goddess of Agriculture</li>
+
+<li>Symbol of Harvest</li>
+
+<li>Protector of Crops</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Classification History</h4>
+
+<ul>
+
+<li>1801 – Planet</li>
+
+<li>1850s – Asteroid</li>
+
+<li>2006 – Dwarf Planet</li>
+
+<li>IAU Official Status</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- GEOLOGY -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Surface & Geology
+
+</h2>
+
+<p class="section-subtitle">
+
+Ceres has a heavily cratered surface mixed with mysterious bright regions, mountains, fractures, and smooth plains. Unlike many asteroids, evidence suggests geological activity continued long after its formation.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Impact Craters</h3>
+
+<p>
+
+Thousands of craters record billions of years of collisions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Cryovolcanoes</h3>
+
+<p>
+
+Ahuna Mons is believed to be a cryovolcano formed by icy material instead of molten rock.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Bright Deposits</h3>
+
+<p>
+
+Highly reflective salt deposits appear inside several craters.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Ice-rich Crust</h3>
+
+<p>
+
+The crust contains significant quantities of water ice mixed with rock.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- OCCATOR CRATER -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Occator Crater & The Bright Spots
+
+</h2>
+
+<p class="section-subtitle">
+
+One of the most remarkable discoveries made by NASA's Dawn spacecraft was the brilliant white deposits inside <strong>Occator Crater</strong>. These bright regions are composed mainly of sodium carbonate and other salts left behind after salty water reached the surface and evaporated.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Occator Crater</h4>
+
+<ul>
+
+<li>Diameter: 92 km</li>
+
+<li>Young Impact Crater</li>
+
+<li>Central Bright Dome</li>
+
+<li>One of Ceres' Most Famous Features</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Bright Deposits</h4>
+
+<ul>
+
+<li>Sodium Carbonate</li>
+
+<li>Magnesium Salts</li>
+
+<li>Highly Reflective Surface</li>
+
+<li>Evidence of Briny Water</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Scientific Importance</h4>
+
+<ul>
+
+<li>Recent Geological Activity</li>
+
+<li>Subsurface Brines</li>
+
+<li>Cryovolcanism</li>
+
+<li>Possible Habitability Clues</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- INTERNAL STRUCTURE -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Internal Structure
+
+</h2>
+
+<p class="section-subtitle">
+
+Measurements from the Dawn spacecraft suggest that Ceres is internally differentiated, meaning its materials separated into layers during its evolution.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Rocky Core</h3>
+
+<p>
+
+Dense silicate rock forms the center of Ceres.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Ice-rich Mantle</h3>
+
+<p>
+
+A thick layer of water ice surrounds the rocky core.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Hydrated Crust</h3>
+
+<p>
+
+The outer crust contains hydrated minerals, salts, and frozen water.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Briny Reservoirs</h3>
+
+<p>
+
+Scientists believe pockets of salty liquid may still exist beneath the surface.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- WATER & POSSIBLE OCEAN -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Water Ice & Possible Ancient Ocean
+
+</h2>
+
+<p class="section-subtitle">
+
+Ceres is one of the most water-rich bodies in the inner Solar System. Data from the Dawn mission indicates that enormous quantities of water ice exist beneath its surface, and evidence suggests an ancient underground ocean may have existed for millions of years.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Water Ice</h4>
+
+<p>
+
+Large amounts of frozen water lie beneath Ceres' dusty surface.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Subsurface Brines</h4>
+
+<p>
+
+Liquid salty water may still survive deep underground today.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Astrobiology</h4>
+
+<p>
+
+Because water, salts, and internal heat once existed together, Ceres is considered an interesting target in the search for environments that could have supported simple microbial life.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FAST FACTS -->
+<!-- ===================================================== -->
+
+<section class="section" id="facts">
+
+<h2 class="section-title">
+
+Interesting Facts About Ceres
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🧊 Water-Rich World</h3>
+
+<p>
+
+Ceres may contain more fresh water than all of Earth's rivers and lakes combined.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌍 Smallest Dwarf Planet</h3>
+
+<p>
+
+It is the smallest officially recognized dwarf planet in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>✨ Bright Salt Deposits</h3>
+
+<p>
+
+Its mysterious bright spots were one of Dawn's biggest discoveries.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🛰 Explored Up Close</h3>
+
+<p>
+
+NASA's Dawn spacecraft became the first mission to orbit a dwarf planet.
+
+</p>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- DAWN MISSION -->
+<!-- ===================================================== -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+NASA's Dawn Mission
+
+</h2>
+
+<p class="section-subtitle">
+
+NASA's Dawn spacecraft revolutionized our understanding of Ceres. Launched in 2007, it became the first spacecraft to orbit both Vesta and Ceres, revealing a surprisingly active dwarf planet with bright salt deposits, ice-rich crust, and evidence of ancient underground brines.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Launch</h3>
+
+<h2>2007</h2>
+
+<p>
+
+Dawn launched aboard a Delta II rocket from Cape Canaveral.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Ceres Arrival</h3>
+
+<h2>2015</h2>
+
+<p>
+
+Entered orbit around Ceres on March 6, 2015.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mission End</h3>
+
+<h2>2018</h2>
+
+<p>
+
+Mission concluded after exhausting its hydrazine fuel.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Historic Achievement</h3>
+
+<h2>First</h2>
+
+<p>
+
+First spacecraft to orbit a dwarf planet.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- DISCOVERIES -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Major Scientific Discoveries
+
+</h2>
+
+<p class="section-subtitle">
+
+Dawn transformed Ceres from a mysterious asteroid into one of the Solar System's most fascinating worlds.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Bright Salt Deposits</h4>
+
+<p>
+
+The famous bright spots inside Occator Crater were identified as sodium carbonate and other salts left behind by evaporating briny water.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Water Ice</h4>
+
+<p>
+
+Large amounts of frozen water were discovered beneath the surface, making Ceres one of the most water-rich bodies in the inner Solar System.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Organic Compounds</h4>
+
+<p>
+
+Scientists detected organic molecules on the surface, providing clues about the chemistry of primitive Solar System bodies.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Cryovolcanism</h4>
+
+<p>
+
+Evidence suggests icy volcanoes transported salty material from the interior onto the surface.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- AHUNA MONS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Ahuna Mons — The Lonely Ice Mountain
+
+</h2>
+
+<p class="section-subtitle">
+
+Ahuna Mons is Ceres' tallest mountain and one of the most unusual geological features in the Solar System. Rather than forming from molten rock, scientists believe it formed when icy, salty material slowly erupted upward in a process known as cryovolcanism.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Height</h3>
+
+<h2>≈4 km</h2>
+
+<p>
+
+One of the tallest mountains on Ceres.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Type</h3>
+
+<h2>Cryovolcano</h2>
+
+<p>
+
+An icy volcano instead of a lava volcano.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Age</h3>
+
+<h2>Young</h2>
+
+<p>
+
+Estimated to be only a few hundred million years old.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Importance</h3>
+
+<h2>Unique</h2>
+
+<p>
+
+Strong evidence that Ceres remained geologically active long after its formation.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ORBIT & ROTATION -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Orbit and Rotation
+
+</h2>
+
+<p class="section-subtitle">
+
+Ceres follows a nearly circular orbit around the Sun within the Asteroid Belt. Its relatively short rotation period means one day on Ceres lasts only about nine Earth hours.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Orbit</h4>
+
+<ul>
+
+<li>Average Distance: 2.77 AU</li>
+
+<li>Orbital Period: 4.61 Earth Years</li>
+
+<li>Average Speed: 17.9 km/s</li>
+
+<li>Orbit Inside Asteroid Belt</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Rotation</h4>
+
+<ul>
+
+<li>Day Length: 9.07 Hours</li>
+
+<li>Axial Tilt: ~4°</li>
+
+<li>Weak Seasons</li>
+
+<li>Stable Rotation</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Environment</h4>
+
+<ul>
+
+<li>No Atmosphere</li>
+
+<li>Very Low Gravity</li>
+
+<li>Extreme Cold</li>
+
+<li>Constant Micrometeorite Impacts</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FUTURE EXPLORATION -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Future Exploration
+
+</h2>
+
+<p class="section-subtitle">
+
+Although no spacecraft are currently heading toward Ceres, scientists consider it one of the best destinations for future exploration because of its water resources and evidence of ancient subsurface activity.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Sample Return</h3>
+
+<p>
+
+Scientists hope to return Ceres rocks and salts to Earth for laboratory analysis.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Water Resources</h3>
+
+<p>
+
+Its abundant water ice could support future robotic and human missions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Astrobiology</h3>
+
+<p>
+
+Future missions may search for chemical signatures linked to ancient habitable environments.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gateway to Deep Space</h3>
+
+<p>
+
+Ceres may eventually become an important refueling and research station for deep-space exploration.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- CERES TIMELINE -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Timeline of Ceres Exploration
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>1801</h4>
+
+<p>
+
+Ceres discovered by Giuseppe Piazzi.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2006</h4>
+
+<p>
+
+Officially classified as a dwarf planet by the International Astronomical Union.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2007</h4>
+
+<p>
+
+NASA launched the Dawn spacecraft.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2015</h4>
+
+<p>
+
+Dawn entered orbit around Ceres.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2016</h4>
+
+<p>
+
+Bright salt deposits and cryovolcanic activity confirmed.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Future</h4>
+
+<p>
+
+Possible robotic sample-return and advanced exploration missions.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- IMAGE GALLERY -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Ceres Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Explore some of the most remarkable views of Ceres captured by NASA's Dawn spacecraft and artist impressions based on scientific observations.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/ceres-global.jpg"
+
+style="width:100%;border-radius:16px;">
+
+<h3 style="margin-top:20px;">
+
+Global View
+
+</h3>
+
+<p>
+
+A complete view of the dwarf planet showing its heavily cratered surface.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/occator-crater.jpg"
+
+style="width:100%;border-radius:16px;">
+
+<h3 style="margin-top:20px;">
+
+Occator Crater
+
+</h3>
+
+<p>
+
+Home to Ceres' mysterious bright salt deposits.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/ahuna-mons.jpg"
+
+style="width:100%;border-radius:16px;">
+
+<h3 style="margin-top:20px;">
+
+Ahuna Mons
+
+</h3>
+
+<p>
+
+The tallest mountain and likely cryovolcano on Ceres.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- SCIENTIFIC DATA -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific Data
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Physical Properties</h4>
+
+<ul>
+
+<li>Diameter: 939.4 km</li>
+
+<li>Mass: 9.39 × 10²⁰ kg</li>
+
+<li>Density: 2.16 g/cm³</li>
+
+<li>Surface Gravity: 0.27 m/s²</li>
+
+<li>Escape Velocity: 0.51 km/s</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Orbital Data</h4>
+
+<ul>
+
+<li>Distance from Sun: 2.77 AU</li>
+
+<li>Orbital Period: 4.61 Years</li>
+
+<li>Orbital Speed: 17.9 km/s</li>
+
+<li>Rotation Period: 9.07 Hours</li>
+
+<li>Axial Tilt: ~4°</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Surface Composition</h4>
+
+<ul>
+
+<li>Water Ice</li>
+
+<li>Silicate Rock</li>
+
+<li>Hydrated Minerals</li>
+
+<li>Sodium Carbonate</li>
+
+<li>Organic Compounds</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- AMAZING FACTS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>💧 Water World</h3>
+
+<p>
+
+Scientists estimate Ceres contains more freshwater than all of Earth's rivers and lakes combined.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>✨ Bright Spots</h3>
+
+<p>
+
+Its famous white spots are actually highly reflective salt deposits left behind by ancient briny water.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌋 Ice Volcano</h3>
+
+<p>
+
+Ahuna Mons is one of the best examples of cryovolcanism in the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌌 Ancient Survivor</h3>
+
+<p>
+
+Ceres has survived almost unchanged since the birth of the Solar System over 4.5 billion years ago.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🛰 Dawn's Legacy</h3>
+
+<p>
+
+The Dawn spacecraft transformed Ceres from a blurry point of light into one of the best-studied dwarf planets.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🪨 Largest Asteroid Belt World</h3>
+
+<p>
+
+Ceres contains nearly one-third of the entire Asteroid Belt's total mass.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FAQ -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Is Ceres a planet?</h4>
+
+<p>
+
+No. Ceres is officially classified as a dwarf planet by the International Astronomical Union.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Does Ceres have an atmosphere?</h4>
+
+<p>
+
+Ceres has an extremely thin and temporary exosphere, but it does not have a substantial atmosphere like Earth or Mars.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Could life exist on Ceres?</h4>
+
+<p>
+
+No evidence of life has been found, but its water, salts, and possible underground brines make it an exciting target for astrobiology.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Can humans visit Ceres?</h4>
+
+<p>
+
+Future robotic and human missions may one day explore Ceres because of its abundant water ice and scientific importance.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Why is Ceres important?</h4>
+
+<p>
+
+It preserves clues about how planets formed and may help scientists understand where water in the Solar System originated.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Does Ceres have moons?</h4>
+
+<p>
+
+No. Ceres has no known natural satellites.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- REFERENCES -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#dddddd;">
+
+<li>NASA Dawn Mission</li>
+
+<li>NASA Solar System Exploration</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>European Space Agency (ESA)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+<li>Minor Planet Center (MPC)</li>
+
+<li>USGS Astrogeology Science Center</li>
+
+<li>Nature Astronomy Publications</li>
+
+</ul>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- CONTINUE EXPLORING -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="asteroid-belt.html"
+
+class="secondary-btn">
+
+← Asteroid Belt
+
+</a>
+
+<a href="vesta.html"
+
+class="primary-btn">
+
+Next Destination →
+
+Vesta
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#081018;
+
+border-top:1px solid rgba(170,220,255,.18);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#d8f6ff;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d5dce3;
+
+">
+
+Discover the fascinating world of Ceres—the Solar System's smallest dwarf planet and the largest body in the Asteroid Belt. From mysterious bright salt deposits to ancient underground oceans, Ceres continues to reshape our understanding of planetary evolution.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">Privacy Policy</a>
+
+<a href="terms.html" class="secondary-btn">Terms of Use</a>
+
+<a href="contact.html" class="secondary-btn">Contact</a>
+
+<a href="disclaimer.html" class="secondary-btn">Disclaimer</a>
+
+</div>
+
+<p style="margin-top:40px;color:#888;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ===================================================== -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ===================================================== -->
+
+<button id="topBtn" title="Back to Top">
+
+⬆
+
+</button>
+
+<style>
+
+#topBtn{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:56px;
+
+height:56px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#dff9ff,#7ed8ff);
+
+color:#0b1622;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:none;
+
+z-index:9999;
+
+box-shadow:0 0 25px rgba(140,220,255,.45);
+
+transition:.35s;
+
+}
+
+#topBtn:hover{
+
+transform:translateY(-6px) scale(1.08);
+
+box-shadow:0 0 45px rgba(140,220,255,.8);
+
+}
+
+.fade-up{
+
+opacity:0;
+
+transform:translateY(45px);
+
+transition:.8s ease;
+
+}
+
+.fade-up.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.4s;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+}
+
+</style>
+
+<script>
+
+/* ===========================================
+BACK TO TOP
+=========================================== */
+
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================================
+SCROLL ANIMATION
+=========================================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(
+
+".section,.stat-card,.info-card"
+
+).forEach(el=>{
+
+el.classList.add("fade-up");
+
+observer.observe(el);
+
+});
+
+/* ===========================================
+FLOATING CERES PARALLAX
+=========================================== */
+
+window.addEventListener("mousemove",(e)=>{
+
+const x=(e.clientX/window.innerWidth-.5)*25;
+
+const y=(e.clientY/window.innerHeight-.5)*25;
+
+document.querySelectorAll(".rock").forEach((rock,index)=>{
+
+rock.style.transform=
+
+`translate(${x*(index+1)/6}px,${y*(index+1)/6}px)`;
+
+});
+
+});
+
+/* ===========================================
+LAZY LOAD IMAGES
+=========================================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+});
+
+/* ===========================================
+AUTO COPYRIGHT YEAR
+=========================================== */
+
+const year=new Date().getFullYear();
+
+const copyright=document.querySelector("footer p:last-child");
+
+if(copyright){
+
+copyright.innerHTML=
+
+`© ${year} SpaceVerse Encyclopedia • All Rights Reserved.`;
+
+}
+
+</script>
+
+<!-- ===========================================
+JSON-LD ARTICLE
+=========================================== -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Article",
+"headline":"Ceres",
+"description":"Explore Ceres, the largest object in the Asteroid Belt and the Solar System's smallest dwarf planet. Learn about its geology, bright salt deposits, water ice, NASA's Dawn mission, and possible ancient underground ocean.",
+"author":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+"publisher":{
+"@type":"Organization",
+"name":"SpaceVerse"
+}
+}
+</script>
+
+<!-- ===========================================
+JSON-LD FAQ
+=========================================== -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"What is Ceres?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Ceres is the largest object in the Asteroid Belt and the smallest officially recognized dwarf planet in the Solar System."
+}
+},
+{
+"@type":"Question",
+"name":"Does Ceres contain water?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Ceres contains large amounts of water ice beneath its surface and may still contain subsurface briny reservoirs."
+}
+},
+{
+"@type":"Question",
+"name":"Which spacecraft explored Ceres?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"NASA's Dawn spacecraft orbited Ceres from 2015 to 2018, revealing its bright salt deposits, cryovolcanoes, and water-rich interior."
+}
+},
+{
+"@type":"Question",
+"name":"Does Ceres have moons?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"No. Ceres has no known natural satellites."
+}
+}
+]
+}
+</script>
+
+</body>
+
+</html>
