@@ -531,481 +531,189 @@ transform:rotate(360deg);
 }
 
 }
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Asteroid Belt | SpaceVerse</title>
-
-<meta name="description"
-content="Explore the Asteroid Belt between Mars and Jupiter. Discover Ceres, Vesta, asteroid families, space missions, asteroid mining, and the history of our Solar System.">
-
-<meta name="keywords"
-content="Asteroid Belt, Ceres, Vesta, Dawn Mission, Lucy Mission, Psyche, Asteroids, Solar System">
-
-<meta name="author"
-content="SpaceVerse">
-
-<link rel="canonical"
-href="https://space-verse-alpha.vercel.app/asteroid-belt.html">
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-
-font-family:Inter,sans-serif;
-
-background:
-radial-gradient(circle at top,#352313 0%,#18120d 25%,#080808 65%,#000 100%);
-
-color:white;
-
-overflow-x:hidden;
-
-}
-
 /* ===================================================== */
-/* STARFIELD */
+/* BUTTONS */
 /* ===================================================== */
 
-.stars{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:url("images/stars.jpg");
-
-background-size:cover;
-
-opacity:.20;
-
-z-index:-10;
-
-}
-
-/* ===================================================== */
-/* DUST */
-/* ===================================================== */
-
-.dust{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background-image:
-
-radial-gradient(circle,#ffffff55 1px,transparent 2px);
-
-background-size:120px 120px;
-
-opacity:.18;
-
-animation:dustMove 100s linear infinite;
-
-z-index:-9;
-
-}
-
-@keyframes dustMove{
-
-from{
-
-transform:translateY(0);
-
-}
-
-to{
-
-transform:translateY(-1500px);
-
-}
-
-}
-
-/* ===================================================== */
-/* SUNLIGHT */
-/* ===================================================== */
-
-.sunlight{
-
-position:fixed;
-
-top:-350px;
-
-right:-250px;
-
-width:900px;
-
-height:900px;
-
-background:
-
-radial-gradient(circle,
-
-rgba(255,180,70,.55),
-
-rgba(255,120,30,.18),
-
-transparent 75%);
-
-filter:blur(90px);
-
-pointer-events:none;
-
-z-index:-8;
-
-animation:pulseSun 8s ease-in-out infinite;
-
-}
-
-@keyframes pulseSun{
-
-0%{
-
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.1);
-
-}
-
-100%{
-
-transform:scale(1);
-
-}
-
-}
-
-/* ===================================================== */
-/* FLOATING ASTEROIDS */
-/* ===================================================== */
-
-.asteroid{
-
-position:fixed;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle at 30% 30%,
-
-#999,
-
-#666,
-
-#444,
-
-#222);
-
-box-shadow:
-
-inset -10px -12px 18px rgba(0,0,0,.7),
-
-0 0 15px rgba(255,180,100,.15);
-
-z-index:-7;
-
-}
-
-.a1{
-
-width:80px;
-height:80px;
-
-top:8%;
-left:8%;
-
-animation:float1 18s ease-in-out infinite;
-
-}
-
-.a2{
-
-width:140px;
-height:140px;
-
-top:60%;
-left:82%;
-
-animation:float2 24s ease-in-out infinite;
-
-}
-
-.a3{
-
-width:55px;
-height:55px;
-
-top:40%;
-left:20%;
-
-animation:float3 14s ease-in-out infinite;
-
-}
-
-.a4{
-
-width:110px;
-height:110px;
-
-top:78%;
-left:55%;
-
-animation:float4 22s ease-in-out infinite;
-
-}
-
-.a5{
-
-width:70px;
-height:70px;
-
-top:20%;
-left:72%;
-
-animation:float5 16s ease-in-out infinite;
-
-}
-
-@keyframes float1{
-
-50%{
-
-transform:
-translateY(-25px)
-rotate(180deg);
-
-}
-
-}
-
-@keyframes float2{
-
-50%{
-
-transform:
-translate(-20px,-30px)
-rotate(-180deg);
-
-}
-
-}
-
-@keyframes float3{
-
-50%{
-
-transform:
-translate(15px,-18px)
-rotate(120deg);
-
-}
-
-}
-
-@keyframes float4{
-
-50%{
-
-transform:
-translate(-25px,15px)
-rotate(220deg);
-
-}
-
-}
-
-@keyframes float5{
-
-50%{
-
-transform:
-translateY(20px)
-rotate(150deg);
-
-}
-
-}
-
-/* ===================================================== */
-/* HEADER */
-/* ===================================================== */
-
-header{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-
-padding:22px 8%;
+.hero-buttons{
 
 display:flex;
 
-justify-content:space-between;
+gap:20px;
 
-align-items:center;
-
-background:rgba(15,10,5,.55);
-
-backdrop-filter:blur(18px);
-
-border-bottom:1px solid rgba(255,180,80,.15);
-
-z-index:999;
+flex-wrap:wrap;
 
 }
 
-.logo{
-
-font-family:Orbitron;
-
-font-size:28px;
-
-color:#ffcb82;
-
-text-decoration:none;
-
-}
-
-nav{
-
-display:flex;
-
-gap:30px;
-
-}
-
-nav a{
-
-text-decoration:none;
-
-color:white;
-
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:#ffcb82;
-
-}
-
-/* ===================================================== */
-/* HERO */
-/* ===================================================== */
-
-.hero{
-
-min-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-padding:140px 8% 70px;
-
-gap:70px;
-
-}
-
-.hero-content{
-
-flex:1;
-
-}
-
-.hero-content span{
+.primary-btn{
 
 display:inline-block;
 
-padding:10px 20px;
+padding:16px 36px;
 
-border-radius:40px;
+border-radius:14px;
 
-background:rgba(255,170,60,.12);
+background:linear-gradient(135deg,#ffb347,#ff7b00);
 
-border:1px solid rgba(255,180,80,.25);
+color:#111;
 
-color:#ffc56b;
+font-weight:700;
 
-margin-bottom:20px;
+text-decoration:none;
 
-letter-spacing:2px;
+transition:.35s;
 
-font-size:14px;
-
-text-transform:uppercase;
+box-shadow:0 0 35px rgba(255,150,40,.35);
 
 }
 
-.hero-content h1{
+.primary-btn:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 55px rgba(255,150,40,.7);
+
+}
+
+.secondary-btn{
+
+display:inline-block;
+
+padding:16px 36px;
+
+border-radius:14px;
+
+border:1px solid rgba(255,180,70,.25);
+
+background:rgba(255,255,255,.05);
+
+color:white;
+
+text-decoration:none;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,180,70,.12);
+
+}
+
+/* ===================================================== */
+/* QUICK STATS */
+/* ===================================================== */
+
+.quick-stats{
+
+padding:90px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:28px;
+
+}
+
+.stat-card{
+
+background:linear-gradient(145deg,#2a241d,#15110d);
+
+border:1px solid rgba(255,170,70,.15);
+
+border-radius:18px;
+
+padding:30px;
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.stat-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:4px;
+
+background:linear-gradient(90deg,#ff9d2e,#ffd28d);
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#ffb347;
+
+box-shadow:0 0 35px rgba(255,160,60,.3);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+color:#ffcf95;
+
+text-transform:uppercase;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
 
 font-family:Orbitron;
 
-font-size:78px;
+font-size:34px;
 
-line-height:1.1;
+margin-bottom:15px;
 
-margin-bottom:25px;
+}
 
-background:
+.stat-card p{
 
-linear-gradient(
+line-height:1.8;
 
-135deg,
+color:#d8d8d8;
 
-#ffffff,
+}
 
-#ffd7a1,
+/* ===================================================== */
+/* CONTENT SECTION */
+/* ===================================================== */
 
-#ff9f3d);
+.section{
+
+padding:100px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:44px;
+
+margin-bottom:20px;
+
+background:linear-gradient(135deg,#ffffff,#ffd08b,#ff9326);
 
 -webkit-background-clip:text;
 
@@ -1013,23 +721,111 @@ linear-gradient(
 
 }
 
-.hero-content p{
+.section-subtitle{
 
-font-size:19px;
+font-size:18px;
 
 line-height:1.9;
 
-color:#d8d8d8;
+color:#d5d5d5;
 
-margin-bottom:35px;
+margin-bottom:50px;
 
 }
 
-.hero-image{
+.info-grid{
 
-flex:1;
+display:grid;
 
-display:flex;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:28px;
+
+}
+
+.info-card{
+
+background:#18120d;
+
+border:1px solid rgba(255,180,70,.15);
+
+border-radius:20px;
+
+padding:28px;
+
+transition:.35s;
+
+}
+
+.info-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ffb347;
+
+box-shadow:0 0 30px rgba(255,160,60,.28);
+
+}
+
+.info-card h4{
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#ffca84;
+
+margin-bottom:18px;
+
+}
+
+.info-card ul{
+
+list-style:none;
+
+}
+
+.info-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+color:#ddd;
+
+}
+
+.info-card li:last-child{
+
+border-bottom:none;
+
+}
+
+/* ===================================================== */
+/* MOBILE */
+/* ===================================================== */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:56px;
+
+}
+
+.hero-buttons{
 
 justify-content:center;
 
@@ -1037,33 +833,289 @@ justify-content:center;
 
 .hero-image img{
 
-width:560px;
-
-max-width:100%;
-
-animation:rotateBelt 120s linear infinite;
-
-filter:
-
-drop-shadow(0 0 45px rgba(255,180,70,.45));
+width:340px;
 
 }
 
-@keyframes rotateBelt{
+nav{
 
-from{
-
-transform:rotate(0deg);
-
-}
-
-to{
-
-transform:rotate(360deg);
+display:none;
 
 }
 
 }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="dust"></div>
+
+<div class="sunlight"></div>
+
+<div class="asteroid a1"></div>
+<div class="asteroid a2"></div>
+<div class="asteroid a3"></div>
+<div class="asteroid a4"></div>
+<div class="asteroid a5"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#largest">Largest Asteroids</a>
+
+<a href="#missions">Missions</a>
+
+</nav>
+
+</header>
+
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Between Mars & Jupiter
+
+</span>
+
+<h1>
+
+Asteroid Belt
+
+</h1>
+
+<p>
+
+The Asteroid Belt is a vast region of millions of rocky and metallic objects orbiting the Sun between Mars and Jupiter. It contains ancient leftovers from the birth of the Solar System, preserving clues about how planets formed more than 4.5 billion years ago.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore the Belt
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/asteroid-belt.png"
+
+alt="Asteroid Belt">
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- QUICK STATS -->
+<!-- ===================================================== -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Location</h3>
+
+<h2>Mars–Jupiter</h2>
+
+<p>
+
+The Asteroid Belt lies between the orbits of Mars and Jupiter.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Largest Object</h3>
+
+<h2>Ceres</h2>
+
+<p>
+
+A dwarf planet nearly 940 km across.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Known Asteroids</h3>
+
+<h2>1.3M+</h2>
+
+<p>
+
+Over 1.3 million asteroids have been discovered.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Age</h3>
+
+<h2>4.56 BY</h2>
+
+<p>
+
+Remnants from the formation of the Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Total Mass</h3>
+
+<h2>3×10²¹ kg</h2>
+
+<p>
+
+Only about 3% of the Moon's mass.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Average Distance</h3>
+
+<h2>2.2–3.2 AU</h2>
+
+<p>
+
+Measured from the Sun.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- OVERVIEW -->
+<!-- ===================================================== -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+What is the Asteroid Belt?
+
+</h2>
+
+<p class="section-subtitle">
+
+Contrary to popular movies, the Asteroid Belt is not crowded with closely packed rocks. The average distance between large asteroids is hundreds of thousands of kilometers. Most spacecraft can safely pass through the belt without coming close to an asteroid.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Formation</h4>
+
+<ul>
+
+<li>Created 4.56 Billion Years Ago</li>
+
+<li>Planetary Building Blocks</li>
+
+<li>Never Formed a Planet</li>
+
+<li>Jupiter's Gravity Prevented It</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Composition</h4>
+
+<ul>
+
+<li>Rocky Asteroids</li>
+
+<li>Metal-rich Asteroids</li>
+
+<li>Carbon-rich Asteroids</li>
+
+<li>Water-bearing Objects</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Importance</h4>
+
+<ul>
+
+<li>History of Solar System</li>
+
+<li>Planet Formation Clues</li>
+
+<li>Future Space Mining</li>
+
+<li>Scientific Exploration</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
 <!-- ===================================================== -->
 <!-- FORMATION OF THE ASTEROID BELT -->
 <!-- ===================================================== -->
