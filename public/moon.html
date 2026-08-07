@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Moon | SpaceVerse</title>
+
+<meta name="description"
+content="Explore Earth's Moon with SpaceVerse. Discover its origin, phases, craters, Apollo missions, Artemis program, lunar eclipses, polar ice, and scientific discoveries.">
+
+<meta name="keywords"
+content="Moon, Earth's Moon, Lunar Surface, Apollo, Artemis, SpaceVerse, Lunar Exploration">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/moon.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:#030406;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ================================= */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("images/stars.jpg") center/cover;
+
+opacity:.28;
+
+z-index:-3;
+
+}
+
+/* ================================= */
+
+.moon-glow{
+
+position:fixed;
+
+top:-250px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:900px;
+
+height:900px;
+
+background:radial-gradient(circle,
+
+rgba(255,255,255,.35),
+
+rgba(180,200,255,.15),
+
+transparent 70%);
+
+filter:blur(65px);
+
+pointer-events:none;
+
+z-index:-2;
+
+animation:pulse 7s ease-in-out infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+50%{
+
+transform:translateX(-50%) scale(1.08);
+
+}
+
+100%{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+}
+
+/* ================================= */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(5,8,15,.45);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+text-decoration:none;
+
+color:#cfd8ff;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#cfd8ff;
+
+}
+
+/* ================================= */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:140px 8% 80px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(200,210,255,.25);
+
+color:#dfe6ff;
+
+margin-bottom:22px;
+
+letter-spacing:2px;
+
+font-size:14px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:82px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+background:linear-gradient(135deg,#ffffff,#d8dfff,#9eb7ff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#dddddd;
+
+margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+padding:16px 36px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:700;
+
+background:linear-gradient(135deg,#ffffff,#cfd8ff);
+
+color:#111;
+
+box-shadow:0 0 35px rgba(210,220,255,.35);
+
+transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 50px rgba(220,230,255,.7);
+
+}
+
+.secondary-btn{
+
+padding:16px 36px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.12);
+
+color:white;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.12);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:520px;
+
+max-width:100%;
+
+filter:drop-shadow(0 0 70px rgba(230,230,255,.55));
+
+animation:moonFloat 8s ease-in-out infinite;
+
+}
+
+@keyframes moonFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+/* ====================================== */
+/* QUICK STATS */
+/* ====================================== */
+
+.quick-stats{
+
+padding:80px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(210,220,255,.18);
+
+border-radius:18px;
+
+padding:30px;
+
+backdrop-filter:blur(18px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#dfe6ff;
+
+box-shadow:0 0 35px rgba(210,220,255,.35);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#dfe6ff;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#dddddd;
+
+}
+
+/* ====================================== */
+/* CONTENT SECTIONS */
+/* ====================================== */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#dfe6ff;
+
+margin-bottom:20px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+margin-bottom:45px;
+
+}
+
+/* ====================================== */
+/* INFO CARDS */
+/* ====================================== */
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#12161d;
+
+padding:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(210,220,255,.18);
+
+transition:.35s;
+
+}
+
+.telemetry-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#dfe6ff;
+
+box-shadow:0 0 30px rgba(210,220,255,.35);
+
+}
+
+.telemetry-card h4{
+
+color:#dfe6ff;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+color:#dddddd;
+
+}
+
+.telemetry-card li:last-child{
+
+border-bottom:none;
+
+}
+
+/* ====================================== */
+/* MOBILE */
+/* ====================================== */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:54px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:320px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="moon-glow"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#future">Future</a>
+
+</nav>
+
+</header>
+
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+Earth's Only Natural Satellite
+
+</span>
+
+<h1>
+
+The Moon
+
+</h1>
+
+<p>
+
+The Moon is Earth's only natural satellite and the fifth-largest moon in the Solar System. It formed about 4.5 billion years ago and has shaped Earth's tides, climate stability, and even the evolution of life. The Moon is the only celestial body beyond Earth that humans have visited.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore the Moon
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/moon.png"
+
+alt="Earth's Moon">
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- QUICK STATS -->
+<!-- ========================================================= -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>3,474 km</h2>
+
+<p>
+
+The Moon is about one-quarter the diameter of Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Distance</h3>
+
+<h2>384,400 km</h2>
+
+<p>
+
+Average distance from Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Gravity</h3>
+
+<h2>1.62 m/s²</h2>
+
+<p>
+
+Only about one-sixth of Earth's gravity.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Orbital Period</h3>
+
+<h2>27.3 Days</h2>
+
+<p>
+
+The Moon completes one orbit around Earth every 27.3 days.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Age</h3>
+
+<h2>4.51 Billion Years</h2>
+
+<p>
+
+Formed shortly after the birth of Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Surface Temperature</h3>
+
+<h2>-173° to 127°C</h2>
+
+<p>
+
+Temperatures vary dramatically between lunar night and day.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EARTH–MOON SYSTEM -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+The Earth–Moon System
+
+</h2>
+
+<p class="section-subtitle">
+
+Earth and the Moon form one of the most remarkable planetary systems in the Solar System. Their gravitational interaction creates ocean tides, stabilizes Earth's axial tilt, and gradually slows Earth's rotation while causing the Moon to drift farther away over time.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Relationship</h4>
+
+<ul>
+
+<li>Parent Planet — Earth</li>
+
+<li>Natural Satellite — Yes</li>
+
+<li>Average Distance — 384,400 km</li>
+
+<li>Tidally Locked — Yes</li>
+
+<li>Moving Away — 3.8 cm/year</li>
+
+<li>Gravity Influence — Ocean Tides</li>
+
+<li>Orbit Shape — Slightly Elliptical</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Why It Matters</h4>
+
+<ul>
+
+<li>Stabilizes Earth's Rotation</li>
+
+<li>Produces Ocean Tides</li>
+
+<li>Slows Earth's Spin</li>
+
+<li>Influences Climate Stability</li>
+
+<li>Creates Solar & Lunar Eclipses</li>
+
+<li>Supports Scientific Research</li>
+
+<li>Future Human Exploration</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Quick Facts</h4>
+
+<ul>
+
+<li>Fifth Largest Moon</li>
+
+<li>Largest Relative to Parent Planet</li>
+
+<li>No Global Atmosphere</li>
+
+<li>No Liquid Water on Surface</li>
+
+<li>Water Ice at Poles</li>
+
+<li>One Side Always Faces Earth</li>
+
+<li>First Human Landing: 1969</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- MOON FORMATION -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Formation of the Moon
+
+</h2>
+
+<p class="section-subtitle">
+
+The leading scientific explanation for the Moon's origin is the <strong>Giant Impact Theory</strong>. Around 4.5 billion years ago, a Mars-sized protoplanet named <strong>Theia</strong> collided with the young Earth. The enormous impact blasted huge amounts of molten rock into space. Over millions of years, this material gathered together under gravity and formed the Moon.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Formation</h3>
+
+<p>
+
+Created from debris after a collision between Earth and Theia.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Age</h3>
+
+<p>
+
+Approximately 4.51 billion years.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Importance</h3>
+
+<p>
+
+The impact helped stabilize Earth's rotation and axial tilt.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LUNAR PHASES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Lunar Phases
+
+</h2>
+
+<p class="section-subtitle">
+
+The Moon does not produce its own light. Instead, it reflects sunlight. As the Moon orbits Earth, different portions of its sunlit side become visible, creating the familiar lunar phases.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>🌑 New Moon</h4>
+
+<p>
+
+The Moon lies between Earth and the Sun, making its illuminated side invisible from Earth.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>🌓 First Quarter</h4>
+
+<p>
+
+Half of the Moon's visible surface is illuminated.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>🌕 Full Moon</h4>
+
+<p>
+
+Earth is positioned between the Sun and Moon, revealing the fully illuminated face.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>🌗 Last Quarter</h4>
+
+<p>
+
+The opposite half of the Moon remains illuminated before returning to a New Moon.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LUNAR ECLIPSES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Lunar Eclipses
+
+</h2>
+
+<p class="section-subtitle">
+
+A lunar eclipse occurs when Earth passes directly between the Sun and the Moon, casting Earth's shadow onto the lunar surface. During a total lunar eclipse, the Moon often appears reddish because Earth's atmosphere bends red sunlight into the shadow.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Total Eclipse</h3>
+
+<p>
+
+The Moon is completely inside Earth's darkest shadow (umbra).
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Partial Eclipse</h3>
+
+<p>
+
+Only part of the Moon passes through Earth's shadow.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Blood Moon</h3>
+
+<p>
+
+The reddish color is caused by sunlight filtered through Earth's atmosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LUNAR SURFACE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+The Lunar Surface
+
+</h2>
+
+<p class="section-subtitle">
+
+The Moon's surface has been shaped by billions of years of meteorite impacts and ancient volcanic activity. Fine dust known as <strong>regolith</strong> covers nearly the entire surface.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Surface Material</h4>
+
+<ul>
+
+<li>Regolith Dust</li>
+
+<li>Basalt Rocks</li>
+
+<li>Anorthosite Highlands</li>
+
+<li>Impact Ejecta</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Major Features</h4>
+
+<ul>
+
+<li>Impact Craters</li>
+
+<li>Lava Plains (Maria)</li>
+
+<li>Mountains</li>
+
+<li>Rilles & Valleys</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>No Weather</h4>
+
+<ul>
+
+<li>No Wind</li>
+
+<li>No Rain</li>
+
+<li>No Rivers</li>
+
+<li>No Plate Tectonics</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LUNAR MARIA -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Lunar Maria (Seas)
+
+</h2>
+
+<p class="section-subtitle">
+
+The dark regions visible on the Moon are called <strong>Maria</strong>, Latin for "seas." Early astronomers believed these smooth plains contained water, but they are actually vast fields of ancient volcanic basalt formed billions of years ago.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Mare Tranquillitatis</h3>
+
+<p>
+
+The Sea of Tranquility, where Apollo 11 landed in 1969.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mare Imbrium</h3>
+
+<p>
+
+One of the largest lava-filled impact basins.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mare Serenitatis</h3>
+
+<p>
+
+A large volcanic plain created after a massive impact.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAMOUS CRATERS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Famous Lunar Craters
+
+</h2>
+
+<p class="section-subtitle">
+
+Without a thick atmosphere to burn up incoming meteoroids, the Moon has accumulated millions of impact craters over billions of years.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Tycho</h4>
+
+<p>
+
+A young crater famous for its bright rays stretching across the Moon.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Copernicus</h4>
+
+<p>
+
+One of the most spectacular impact craters visible from Earth.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Clavius</h4>
+
+<p>
+
+A giant crater over 225 km wide, easily visible through telescopes.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- WATER ICE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Water Ice at the Lunar Poles
+
+</h2>
+
+<p class="section-subtitle">
+
+Recent spacecraft have confirmed that permanently shadowed craters near the Moon's north and south poles contain water ice. These frozen reserves may provide drinking water, oxygen, and rocket fuel for future human missions.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Discovery</h3>
+
+<p>
+
+Confirmed by multiple lunar missions using orbital instruments.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Location</h3>
+
+<p>
+
+Deep craters near the lunar north and south poles.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Future Importance</h3>
+
+<p>
+
+Essential for long-term Moon bases and future exploration of Mars.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- APOLLO PROGRAM -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Apollo Program
+
+</h2>
+
+<p class="section-subtitle">
+
+NASA's Apollo Program was humanity's first successful effort to land astronauts on another world. Between 1969 and 1972, six Apollo missions successfully landed twelve astronauts on the Moon, forever changing our understanding of space exploration and science.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Program Duration</h3>
+
+<p>
+
+1961–1972
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Successful Moon Landings</h3>
+
+<p>
+
+6 Crewed Missions
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Astronauts on the Moon</h3>
+
+<p>
+
+12 Humans
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- APOLLO 11 -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Apollo 11
+
+</h2>
+
+<p class="section-subtitle">
+
+Apollo 11 became the first mission to land humans on the Moon. On July 20, 1969, Neil Armstrong and Buzz Aldrin landed in Mare Tranquillitatis (Sea of Tranquility) while Michael Collins remained in lunar orbit aboard the Command Module Columbia.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Commander</h4>
+
+<p>
+
+Neil Armstrong
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Lunar Module Pilot</h4>
+
+<p>
+
+Buzz Aldrin
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Command Module Pilot</h4>
+
+<p>
+
+Michael Collins
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Historic Quote</h4>
+
+<p>
+
+"That's one small step for man, one giant leap for mankind."
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ALL MOON LANDINGS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Human Moon Landings
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Apollo 11</h4>
+
+<ul>
+
+<li>1969</li>
+
+<li>Sea of Tranquility</li>
+
+<li>First Human Landing</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Apollo 12</h4>
+
+<ul>
+
+<li>1969</li>
+
+<li>Ocean of Storms</li>
+
+<li>Precision Landing</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Apollo 14</h4>
+
+<ul>
+
+<li>1971</li>
+
+<li>Fra Mauro</li>
+
+<li>Geological Studies</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Apollo 15</h4>
+
+<ul>
+
+<li>1971</li>
+
+<li>Hadley–Apennine</li>
+
+<li>First Lunar Rover</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Apollo 16</h4>
+
+<ul>
+
+<li>1972</li>
+
+<li>Descartes Highlands</li>
+
+<li>Highland Exploration</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Apollo 17</h4>
+
+<ul>
+
+<li>1972</li>
+
+<li>Taurus–Littrow</li>
+
+<li>Last Human Moon Landing</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ARTEMIS PROGRAM -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+NASA Artemis Program
+
+</h2>
+
+<p class="section-subtitle">
+
+The Artemis Program aims to return astronauts to the Moon, establish a sustainable human presence, and prepare for future missions to Mars. Unlike Apollo, Artemis focuses on long-term exploration using modern spacecraft, lunar habitats, and international partnerships.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Artemis I</h3>
+
+<p>
+
+Successful uncrewed test flight of the Orion spacecraft in 2022.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Artemis II</h3>
+
+<p>
+
+First crewed lunar flyby mission of the Artemis era.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Artemis III</h3>
+
+<p>
+
+Planned mission to land astronauts near the Moon's South Pole.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- ROBOTIC MISSIONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Major Robotic Lunar Missions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Soviet Luna Program</h4>
+
+<p>
+
+First spacecraft to impact, orbit, and soft-land on the Moon.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Chang'e Program</h4>
+
+<p>
+
+China's successful lunar orbiters, landers, rovers, and sample-return missions.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Chandrayaan</h4>
+
+<p>
+
+India's missions that confirmed water molecules and achieved a successful south-pole landing.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Lunar Reconnaissance Orbiter</h4>
+
+<p>
+
+NASA mission mapping the Moon in extraordinary detail since 2009.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FUTURE MOON BASE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Future Lunar Bases
+
+</h2>
+
+<p class="section-subtitle">
+
+Scientists and engineers plan to establish permanent research stations near the Moon's south pole. These bases could use local resources such as water ice to produce drinking water, oxygen, and rocket fuel while supporting future journeys to Mars.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Water Ice</h3>
+
+<p>
+
+Supports life support and fuel production.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Lunar Gateway</h3>
+
+<p>
+
+A planned space station orbiting the Moon.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mars Preparation</h3>
+
+<p>
+
+The Moon will serve as a testing ground for deep-space exploration.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- LUNAR EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Lunar Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1959</h4>
+
+<p>
+
+Luna 2 became the first spacecraft to reach the Moon.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1966</h4>
+
+<p>
+
+Luna 9 achieved the first successful soft landing.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1969</h4>
+
+<p>
+
+Apollo 11 landed the first humans on the Moon.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1972</h4>
+
+<p>
+
+Apollo 17 became the last crewed Moon landing.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2009</h4>
+
+<p>
+
+NASA launched the Lunar Reconnaissance Orbiter.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2023</h4>
+
+<p>
+
+India's Chandrayaan-3 successfully landed near the Moon's south pole.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- AMAZING MOON FACTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Moon Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🌍 Tides</h3>
+
+<p>
+
+The Moon is the primary cause of Earth's ocean tides.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌙 One Face</h3>
+
+<p>
+
+Because it is tidally locked, we always see the same side of the Moon.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>👣 Footprints</h3>
+
+<p>
+
+Astronaut footprints could remain on the Moon for millions of years because there is no wind or rain.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🚀 Distance</h3>
+
+<p>
+
+The Moon is slowly moving away from Earth by about 3.8 centimeters every year.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>❄ Ice</h3>
+
+<p>
+
+Water ice exists inside permanently shadowed polar craters.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌕 Brightness</h3>
+
+<p>
+
+The Moon is the brightest object in Earth's night sky after the Sun.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- EDUCATIONAL ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section" id="future">
+
+<h2 class="section-title">
+
+Earth's Moon: Our Closest Neighbor in Space
+
+</h2>
+
+<p class="section-subtitle">
+
+The Moon has fascinated humanity for thousands of years. It has inspired myths, guided calendars, helped sailors navigate the oceans, and eventually became the first world beyond Earth visited by humans. Today it remains one of the most important objects in astronomy because it preserves a record of the early Solar System and serves as the next destination for human exploration.
+
+</p>
+
+<p style="line-height:2;color:#d8d8d8;margin-bottom:30px;">
+
+Unlike Earth, the Moon has almost no atmosphere and no liquid water on its surface. Because of this, its craters remain preserved for billions of years, providing scientists with a unique record of impacts that shaped the early Solar System. Rocks collected during the Apollo missions revealed important clues about the Moon's origin and confirmed that it formed from material ejected after a giant collision between Earth and another young planet.
+
+</p>
+
+<p style="line-height:2;color:#d8d8d8;margin-bottom:30px;">
+
+The Moon also plays a vital role in Earth's environment. Its gravitational pull creates ocean tides, stabilizes Earth's axis, and slows our planet's rotation. Without the Moon, Earth's climate would have been much less stable over geological time, potentially affecting the evolution of life.
+
+</p>
+
+<p style="line-height:2;color:#d8d8d8;">
+
+In the coming decades, the Moon will become humanity's gateway to deep space. NASA's Artemis Program and international lunar missions aim to establish long-term research stations, explore water ice at the poles, and develop technologies needed for future human missions to Mars and beyond.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MOON GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Moon Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative imagery of Earth's Moon from NASA and other space agencies.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/moon1.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:15px;">
+
+<h3 style="margin-top:20px;">
+
+Full Moon
+
+</h3>
+
+<p>
+
+The fully illuminated face of the Moon viewed from Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/moon2.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:15px;">
+
+<h3 style="margin-top:20px;">
+
+Apollo Landing Site
+
+</h3>
+
+<p>
+
+Historic region where Apollo astronauts explored the lunar surface.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/moon3.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:15px;">
+
+<h3 style="margin-top:20px;">
+
+South Pole
+
+</h3>
+
+<p>
+
+A region containing permanently shadowed craters with water ice.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+How did the Moon form?
+
+</h4>
+
+<p>
+
+Most scientists agree the Moon formed after a giant collision between Earth and a Mars-sized object called Theia about 4.5 billion years ago.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why do we always see the same side?
+
+</h4>
+
+<p>
+
+Because the Moon rotates once on its axis in exactly the same time it takes to orbit Earth, a phenomenon known as tidal locking.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Is there water on the Moon?
+
+</h4>
+
+<p>
+
+Yes. Water ice has been discovered inside permanently shadowed craters near both lunar poles.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+How many people have walked on the Moon?
+
+</h4>
+
+<p>
+
+Twelve astronauts walked on the Moon during six Apollo missions between 1969 and 1972.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can humans live on the Moon?
+
+</h4>
+
+<p>
+
+Not yet, but future lunar bases may become possible using local resources such as water ice for drinking water, oxygen, and rocket fuel.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is the Moon important?
+
+</h4>
+
+<p>
+
+The Moon stabilizes Earth's rotation, creates tides, preserves the history of the Solar System, and serves as the next major destination for human exploration.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d5dfe8;">
+
+<li>NASA Lunar Reconnaissance Orbiter (LRO)</li>
+
+<li>NASA Artemis Program</li>
+
+<li>NASA Apollo Mission Archive</li>
+
+<li>ESA Moon Exploration Programme</li>
+
+<li>ISRO Chandrayaan Missions</li>
+
+<li>CNSA Chang'e Program</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE EXPLORING -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="asteroid-belt.html"
+
+class="primary-btn">
+
+Next Destination →
+
+Asteroid Belt
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#05070c;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#dfe6ff;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#cfcfcf;
+
+">
+
+SpaceVerse is an interactive astronomy encyclopedia designed to make exploring the universe exciting, educational, and scientifically accurate. Discover planets, moons, stars, galaxies, black holes, and the latest space missions through immersive experiences and reliable information.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms of Use
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#8a8a8a;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+
+↑
+
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffffff,#cfd8ff);
+
+color:#111;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+transition:.3s;
+
+box-shadow:0 0 30px rgba(220,230,255,.45);
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 45px rgba(220,230,255,.8);
+
+}
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(220,230,255,.45);
+
+}
+
+</style>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"How did the Moon form?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The Moon most likely formed after a giant collision between the young Earth and a Mars-sized object called Theia about 4.5 billion years ago."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Why do we always see the same side of the Moon?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The Moon is tidally locked to Earth, meaning it rotates once on its axis during each orbit around Earth."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Is there water on the Moon?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Yes. Water ice exists inside permanently shadowed craters near both lunar poles."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"How many astronauts have walked on the Moon?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Twelve astronauts walked on the Moon during six Apollo missions."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- ARTICLE SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Earth's Moon",
+
+"description":"A complete guide to Earth's Moon including its origin, phases, Apollo missions, Artemis program, craters, polar ice, exploration history, and scientific discoveries.",
+
+"author":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":"https://space-verse-alpha.vercel.app/moon.html"
+
+}
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+/* ===============================
+Back To Top
+=============================== */
+
+const backBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+backBtn.style.display="block";
+
+}else{
+
+backBtn.style.display="none";
+
+}
+
+});
+
+backBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===============================
+Fade Animation
+=============================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade-in");
+
+observer.observe(section);
+
+});
+
+/* ===============================
+Animated Statistics
+=============================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const value=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(value)){
+
+let count=0;
+
+const step=Math.max(value/100,1);
+
+const timer=setInterval(()=>{
+
+count+=step;
+
+if(count>=value){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+item.innerText=Math.floor(count);
+
+}
+
+},20);
+
+}
+
+});
+
+/* ===============================
+Lazy Loading Images
+=============================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+img.decoding="async";
+
+});
+
+/* ===============================
+Current Year
+=============================== */
+
+const year=document.getElementById("year");
+
+if(year){
+
+year.textContent=new Date().getFullYear();
+
+}
+
+/* ===============================
+Console
+=============================== */
+
+console.log("🌙 SpaceVerse | Moon Encyclopedia Loaded Successfully");
+
+</script>
+
+</body>
+
+</html>
