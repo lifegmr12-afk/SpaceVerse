@@ -1,0 +1,2736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Asteroid Belt | SpaceVerse</title>
+
+<meta name="description"
+content="Explore the Asteroid Belt between Mars and Jupiter. Discover Ceres, Vesta, asteroid families, space missions, asteroid mining, and the history of our Solar System.">
+
+<meta name="keywords"
+content="Asteroid Belt, Ceres, Vesta, Dawn Mission, Lucy Mission, Psyche, Asteroids, Solar System">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/asteroid-belt.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:
+radial-gradient(circle at top,#352313 0%,#18120d 25%,#080808 65%,#000 100%);
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ===================================================== */
+/* STARFIELD */
+/* ===================================================== */
+
+.stars{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:url("images/stars.jpg");
+
+background-size:cover;
+
+opacity:.20;
+
+z-index:-10;
+
+}
+
+/* ===================================================== */
+/* DUST */
+/* ===================================================== */
+
+.dust{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background-image:
+
+radial-gradient(circle,#ffffff55 1px,transparent 2px);
+
+background-size:120px 120px;
+
+opacity:.18;
+
+animation:dustMove 100s linear infinite;
+
+z-index:-9;
+
+}
+
+@keyframes dustMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-1500px);
+
+}
+
+}
+
+/* ===================================================== */
+/* SUNLIGHT */
+/* ===================================================== */
+
+.sunlight{
+
+position:fixed;
+
+top:-350px;
+
+right:-250px;
+
+width:900px;
+
+height:900px;
+
+background:
+
+radial-gradient(circle,
+
+rgba(255,180,70,.55),
+
+rgba(255,120,30,.18),
+
+transparent 75%);
+
+filter:blur(90px);
+
+pointer-events:none;
+
+z-index:-8;
+
+animation:pulseSun 8s ease-in-out infinite;
+
+}
+
+@keyframes pulseSun{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.1);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* ===================================================== */
+/* FLOATING ASTEROIDS */
+/* ===================================================== */
+
+.asteroid{
+
+position:fixed;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle at 30% 30%,
+
+#999,
+
+#666,
+
+#444,
+
+#222);
+
+box-shadow:
+
+inset -10px -12px 18px rgba(0,0,0,.7),
+
+0 0 15px rgba(255,180,100,.15);
+
+z-index:-7;
+
+}
+
+.a1{
+
+width:80px;
+height:80px;
+
+top:8%;
+left:8%;
+
+animation:float1 18s ease-in-out infinite;
+
+}
+
+.a2{
+
+width:140px;
+height:140px;
+
+top:60%;
+left:82%;
+
+animation:float2 24s ease-in-out infinite;
+
+}
+
+.a3{
+
+width:55px;
+height:55px;
+
+top:40%;
+left:20%;
+
+animation:float3 14s ease-in-out infinite;
+
+}
+
+.a4{
+
+width:110px;
+height:110px;
+
+top:78%;
+left:55%;
+
+animation:float4 22s ease-in-out infinite;
+
+}
+
+.a5{
+
+width:70px;
+height:70px;
+
+top:20%;
+left:72%;
+
+animation:float5 16s ease-in-out infinite;
+
+}
+
+@keyframes float1{
+
+50%{
+
+transform:
+translateY(-25px)
+rotate(180deg);
+
+}
+
+}
+
+@keyframes float2{
+
+50%{
+
+transform:
+translate(-20px,-30px)
+rotate(-180deg);
+
+}
+
+}
+
+@keyframes float3{
+
+50%{
+
+transform:
+translate(15px,-18px)
+rotate(120deg);
+
+}
+
+}
+
+@keyframes float4{
+
+50%{
+
+transform:
+translate(-25px,15px)
+rotate(220deg);
+
+}
+
+}
+
+@keyframes float5{
+
+50%{
+
+transform:
+translateY(20px)
+rotate(150deg);
+
+}
+
+}
+
+/* ===================================================== */
+/* HEADER */
+/* ===================================================== */
+
+header{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(15,10,5,.55);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,180,80,.15);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+color:#ffcb82;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ffcb82;
+
+}
+
+/* ===================================================== */
+/* HERO */
+/* ===================================================== */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:140px 8% 70px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:10px 20px;
+
+border-radius:40px;
+
+background:rgba(255,170,60,.12);
+
+border:1px solid rgba(255,180,80,.25);
+
+color:#ffc56b;
+
+margin-bottom:20px;
+
+letter-spacing:2px;
+
+font-size:14px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:78px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#ffffff,
+
+#ffd7a1,
+
+#ff9f3d);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+margin-bottom:35px;
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:560px;
+
+max-width:100%;
+
+animation:rotateBelt 120s linear infinite;
+
+filter:
+
+drop-shadow(0 0 45px rgba(255,180,70,.45));
+
+}
+
+@keyframes rotateBelt{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Asteroid Belt | SpaceVerse</title>
+
+<meta name="description"
+content="Explore the Asteroid Belt between Mars and Jupiter. Discover Ceres, Vesta, asteroid families, space missions, asteroid mining, and the history of our Solar System.">
+
+<meta name="keywords"
+content="Asteroid Belt, Ceres, Vesta, Dawn Mission, Lucy Mission, Psyche, Asteroids, Solar System">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/asteroid-belt.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:
+radial-gradient(circle at top,#352313 0%,#18120d 25%,#080808 65%,#000 100%);
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ===================================================== */
+/* STARFIELD */
+/* ===================================================== */
+
+.stars{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:url("images/stars.jpg");
+
+background-size:cover;
+
+opacity:.20;
+
+z-index:-10;
+
+}
+
+/* ===================================================== */
+/* DUST */
+/* ===================================================== */
+
+.dust{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background-image:
+
+radial-gradient(circle,#ffffff55 1px,transparent 2px);
+
+background-size:120px 120px;
+
+opacity:.18;
+
+animation:dustMove 100s linear infinite;
+
+z-index:-9;
+
+}
+
+@keyframes dustMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-1500px);
+
+}
+
+}
+
+/* ===================================================== */
+/* SUNLIGHT */
+/* ===================================================== */
+
+.sunlight{
+
+position:fixed;
+
+top:-350px;
+
+right:-250px;
+
+width:900px;
+
+height:900px;
+
+background:
+
+radial-gradient(circle,
+
+rgba(255,180,70,.55),
+
+rgba(255,120,30,.18),
+
+transparent 75%);
+
+filter:blur(90px);
+
+pointer-events:none;
+
+z-index:-8;
+
+animation:pulseSun 8s ease-in-out infinite;
+
+}
+
+@keyframes pulseSun{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.1);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* ===================================================== */
+/* FLOATING ASTEROIDS */
+/* ===================================================== */
+
+.asteroid{
+
+position:fixed;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(circle at 30% 30%,
+
+#999,
+
+#666,
+
+#444,
+
+#222);
+
+box-shadow:
+
+inset -10px -12px 18px rgba(0,0,0,.7),
+
+0 0 15px rgba(255,180,100,.15);
+
+z-index:-7;
+
+}
+
+.a1{
+
+width:80px;
+height:80px;
+
+top:8%;
+left:8%;
+
+animation:float1 18s ease-in-out infinite;
+
+}
+
+.a2{
+
+width:140px;
+height:140px;
+
+top:60%;
+left:82%;
+
+animation:float2 24s ease-in-out infinite;
+
+}
+
+.a3{
+
+width:55px;
+height:55px;
+
+top:40%;
+left:20%;
+
+animation:float3 14s ease-in-out infinite;
+
+}
+
+.a4{
+
+width:110px;
+height:110px;
+
+top:78%;
+left:55%;
+
+animation:float4 22s ease-in-out infinite;
+
+}
+
+.a5{
+
+width:70px;
+height:70px;
+
+top:20%;
+left:72%;
+
+animation:float5 16s ease-in-out infinite;
+
+}
+
+@keyframes float1{
+
+50%{
+
+transform:
+translateY(-25px)
+rotate(180deg);
+
+}
+
+}
+
+@keyframes float2{
+
+50%{
+
+transform:
+translate(-20px,-30px)
+rotate(-180deg);
+
+}
+
+}
+
+@keyframes float3{
+
+50%{
+
+transform:
+translate(15px,-18px)
+rotate(120deg);
+
+}
+
+}
+
+@keyframes float4{
+
+50%{
+
+transform:
+translate(-25px,15px)
+rotate(220deg);
+
+}
+
+}
+
+@keyframes float5{
+
+50%{
+
+transform:
+translateY(20px)
+rotate(150deg);
+
+}
+
+}
+
+/* ===================================================== */
+/* HEADER */
+/* ===================================================== */
+
+header{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(15,10,5,.55);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,180,80,.15);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+color:#ffcb82;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:white;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ffcb82;
+
+}
+
+/* ===================================================== */
+/* HERO */
+/* ===================================================== */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:140px 8% 70px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:10px 20px;
+
+border-radius:40px;
+
+background:rgba(255,170,60,.12);
+
+border:1px solid rgba(255,180,80,.25);
+
+color:#ffc56b;
+
+margin-bottom:20px;
+
+letter-spacing:2px;
+
+font-size:14px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:78px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#ffffff,
+
+#ffd7a1,
+
+#ff9f3d);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+margin-bottom:35px;
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:560px;
+
+max-width:100%;
+
+animation:rotateBelt 120s linear infinite;
+
+filter:
+
+drop-shadow(0 0 45px rgba(255,180,70,.45));
+
+}
+
+@keyframes rotateBelt{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+<!-- ===================================================== -->
+<!-- FORMATION OF THE ASTEROID BELT -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Formation of the Asteroid Belt
+
+</h2>
+
+<p class="section-subtitle">
+
+The Asteroid Belt formed approximately <strong>4.56 billion years ago</strong> from leftover material that never became part of a planet. During the formation of the Solar System, dust and rock surrounded the young Sun. Most of this material combined to create the planets, but between Mars and Jupiter, the immense gravity of Jupiter continuously disturbed the growing objects, preventing them from merging into a single large planet.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Age</h4>
+
+<ul>
+
+<li>≈ 4.56 Billion Years</li>
+
+<li>Oldest Solar System Material</li>
+
+<li>Formed with the Planets</li>
+
+<li>Ancient Planetary Debris</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Origin</h4>
+
+<ul>
+
+<li>Dust & Rock</li>
+
+<li>Solar Nebula</li>
+
+<li>Planetesimals</li>
+
+<li>Failed Planet Formation</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Why It Exists</h4>
+
+<ul>
+
+<li>Jupiter's Gravity</li>
+
+<li>Frequent Collisions</li>
+
+<li>Orbital Resonances</li>
+
+<li>Objects Never United</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- TYPES OF ASTEROIDS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Types of Asteroids
+
+</h2>
+
+<p class="section-subtitle">
+
+Scientists classify asteroids according to their composition. The three primary classes are carbon-rich, rocky, and metallic asteroids.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>C-Type Asteroids</h4>
+
+<p>
+
+Carbon-rich asteroids make up approximately <strong>75%</strong> of all known asteroids. They are dark, primitive, and preserve material from the early Solar System.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>S-Type Asteroids</h4>
+
+<p>
+
+Silicate or rocky asteroids account for about <strong>17%</strong> of the population. They contain rock mixed with nickel and iron.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>M-Type Asteroids</h4>
+
+<p>
+
+Metal-rich asteroids are composed mainly of nickel and iron. They are believed to be fragments of the cores of ancient protoplanets.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- LARGEST ASTEROIDS -->
+<!-- ===================================================== -->
+
+<section class="section" id="largest">
+
+<h2 class="section-title">
+
+Largest Objects in the Asteroid Belt
+
+</h2>
+
+<p class="section-subtitle">
+
+Although millions of asteroids exist, four bodies dominate the Asteroid Belt by size and mass.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Ceres</h3>
+
+<h2>939 km</h2>
+
+<p>
+
+The largest object in the belt and officially classified as a dwarf planet.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Vesta</h3>
+
+<h2>525 km</h2>
+
+<p>
+
+One of the brightest asteroids visible from Earth and visited by NASA's Dawn spacecraft.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Pallas</h3>
+
+<h2>512 km</h2>
+
+<p>
+
+The third-largest asteroid with a highly tilted orbit.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Hygiea</h3>
+
+<h2>434 km</h2>
+
+<p>
+
+The fourth-largest asteroid and a possible dwarf planet candidate.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- WHY THERE IS NO PLANET -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Why Isn't There a Planet Here?
+
+</h2>
+
+<p class="section-subtitle">
+
+One of astronomy's most common questions is why the Asteroid Belt never became a planet. The answer lies in Jupiter's enormous gravity.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Jupiter's Gravity</h4>
+
+<p>
+
+Jupiter repeatedly disturbed asteroid orbits, preventing them from combining into a larger world.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>High-Speed Collisions</h4>
+
+<p>
+
+Instead of merging together, many objects collided at high speeds and shattered into smaller pieces.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Orbital Resonances</h4>
+
+<p>
+
+Special gravitational resonances with Jupiter created gaps known as <strong>Kirkwood Gaps</strong>, removing many asteroids from stable orbits.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- JUPITER'S INFLUENCE -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Jupiter's Gravitational Influence
+
+</h2>
+
+<p class="section-subtitle">
+
+As the largest planet in the Solar System, Jupiter acts as both a protector and a disruptor. Its gravity shapes the structure of the Asteroid Belt and influences the paths of countless small bodies.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Creates Kirkwood Gaps</h3>
+
+<p>
+
+Regions where few asteroids remain because of orbital resonances.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Changes Orbits</h3>
+
+<p>
+
+Asteroids can slowly drift into new orbits due to Jupiter's gravity.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Near-Earth Asteroids</h3>
+
+<p>
+
+Some asteroids are eventually pushed toward the inner Solar System.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Planetary Shield</h3>
+
+<p>
+
+Jupiter also helps deflect many comets and asteroids away from the inner planets.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- INTERESTING FACTS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Asteroid Belt Facts
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>☄ Mostly Empty</h4>
+
+<p>
+
+Despite popular movies, spacecraft usually pass through the Asteroid Belt without encountering any nearby asteroids.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>🪨 Tiny Mass</h4>
+
+<p>
+
+The combined mass of every asteroid is only about 3% of Earth's Moon.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>🌍 Building Blocks</h4>
+
+<p>
+
+Many asteroids are unchanged remnants from the earliest days of the Solar System.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- SPACE MISSIONS -->
+<!-- ===================================================== -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Exploring the Asteroid Belt
+
+</h2>
+
+<p class="section-subtitle">
+
+Although the Asteroid Belt is difficult to explore because of its enormous size, several robotic spacecraft have visited its largest objects and continue to reveal how our Solar System formed.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Dawn</h3>
+
+<h2>2007–2018</h2>
+
+<p>
+
+The first spacecraft to orbit two different extraterrestrial worlds—Vesta and Ceres.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Lucy</h3>
+
+<h2>2021–Present</h2>
+
+<p>
+
+Exploring ancient asteroids to understand the Solar System's earliest history.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Psyche</h3>
+
+<h2>2023–Present</h2>
+
+<p>
+
+Traveling to the metallic asteroid 16 Psyche, believed to be the exposed core of a protoplanet.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- MAJOR MISSIONS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Major Asteroid Missions
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Dawn (NASA)</h4>
+
+<ul>
+
+<li>Launch: 2007</li>
+
+<li>Visited Vesta</li>
+
+<li>Orbited Ceres</li>
+
+<li>Studied Planet Formation</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Lucy (NASA)</h4>
+
+<ul>
+
+<li>Launch: 2021</li>
+
+<li>Multiple Asteroid Flybys</li>
+
+<li>Ancient Solar System Objects</li>
+
+<li>12-Year Mission</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Psyche (NASA)</h4>
+
+<ul>
+
+<li>Launch: 2023</li>
+
+<li>Destination: 16 Psyche</li>
+
+<li>Metal-rich Asteroid</li>
+
+<li>Arrives in 2029</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Hayabusa & Hayabusa2</h4>
+
+<ul>
+
+<li>JAXA Missions</li>
+
+<li>Collected Samples</li>
+
+<li>Returned Material to Earth</li>
+
+<li>Advanced Asteroid Science</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ASTEROID MINING -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Future Asteroid Mining
+
+</h2>
+
+<p class="section-subtitle">
+
+Many asteroids contain enormous quantities of valuable metals and water. Future missions may use these resources to support deep-space exploration and build space infrastructure.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Metals</h4>
+
+<ul>
+
+<li>Iron</li>
+
+<li>Nickel</li>
+
+<li>Cobalt</li>
+
+<li>Platinum Group Metals</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Water</h4>
+
+<ul>
+
+<li>Drinking Water</li>
+
+<li>Oxygen Production</li>
+
+<li>Rocket Fuel</li>
+
+<li>Space Habitats</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h4>Benefits</h4>
+
+<ul>
+
+<li>Lower Mission Costs</li>
+
+<li>Deep Space Exploration</li>
+
+<li>Moon & Mars Support</li>
+
+<li>Space Industry</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- ASTEROID FAMILIES -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Asteroid Families
+
+</h2>
+
+<p class="section-subtitle">
+
+Many asteroids belong to families created when larger parent bodies shattered during ancient collisions. Members of a family share similar orbits and compositions.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Vesta Family</h3>
+
+<p>
+
+Fragments blasted from Vesta after a massive impact.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Flora Family</h3>
+
+<p>
+
+One of the largest asteroid families in the inner belt.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Eos Family</h3>
+
+<p>
+
+A large family located in the outer Asteroid Belt.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Koronis Family</h3>
+
+<p>
+
+Known for their similar orbital paths and rotation rates.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- IMPACTS ON EARTH -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Asteroids and Earth
+
+</h2>
+
+<p class="section-subtitle">
+
+Some asteroids are gradually nudged out of the Asteroid Belt and become Near-Earth Objects (NEOs). While most pose no danger, scientists continuously monitor their orbits to protect Earth from potential impacts.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>Near-Earth Asteroids</h4>
+
+<p>
+
+Thousands of asteroids regularly pass close to Earth's orbit.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>Planetary Defense</h4>
+
+<p>
+
+NASA and ESA actively track potentially hazardous asteroids.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>DART Mission</h4>
+
+<p>
+
+NASA successfully changed the orbit of an asteroid in 2022, demonstrating planetary defense technology.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- TIMELINE -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Asteroid Exploration Timeline
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>1801</h4>
+
+<p>
+
+Ceres discovered by Giuseppe Piazzi.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>1802</h4>
+
+<p>
+
+Pallas discovered.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>1804</h4>
+
+<p>
+
+Juno discovered.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>1807</h4>
+
+<p>
+
+Vesta discovered.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2011</h4>
+
+<p>
+
+Dawn entered orbit around Vesta.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2015</h4>
+
+<p>
+
+Dawn reached Ceres.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2021</h4>
+
+<p>
+
+Lucy mission launched.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>2023</h4>
+
+<p>
+
+Psyche mission launched.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===================================================== -->
+<!-- MAJOR ASTEROIDS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+The Giants of the Asteroid Belt
+
+</h2>
+
+<p class="section-subtitle">
+
+Although the Asteroid Belt contains millions of objects, four bodies dominate its total mass and scientific importance.
+
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>🌍 Ceres</h4>
+
+<p>
+
+Diameter: 939 km
+
+<br><br>
+
+The largest object in the Asteroid Belt and the only officially recognized dwarf planet in this region. Ceres contains water ice, mysterious bright salt deposits, and may have once possessed a subsurface ocean.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>🪨 Vesta</h4>
+
+<p>
+
+Diameter: 525 km
+
+<br><br>
+
+One of the brightest asteroids visible from Earth. Vesta has a differentiated interior with a crust, mantle, and metallic core, making it resemble a miniature planet.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>☄ Pallas</h4>
+
+<p>
+
+Diameter: 512 km
+
+<br><br>
+
+Pallas follows one of the most tilted orbits of any large asteroid. It is believed to contain hydrated minerals and primitive material from the early Solar System.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>🌑 Hygiea</h4>
+
+<p>
+
+Diameter: 434 km
+
+<br><br>
+
+The fourth-largest asteroid and a strong dwarf planet candidate. Hygiea appears remarkably round despite ancient giant impacts.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- AMAZING FACTS -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Asteroid Belt Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>☄ Mostly Empty</h3>
+
+<p>
+
+Hollywood often shows crowded asteroid fields, but spacecraft can usually cross the belt without encountering a nearby asteroid.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌍 Ancient Time Capsule</h3>
+
+<p>
+
+Many asteroids have remained almost unchanged since the Solar System formed over 4.5 billion years ago.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>💎 Valuable Resources</h3>
+
+<p>
+
+Some metallic asteroids contain enormous quantities of nickel, iron, platinum, and rare elements.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🚀 Future Fuel Stations</h3>
+
+<p>
+
+Water-rich asteroids could one day provide drinking water, oxygen, and rocket fuel for deep-space missions.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🛰 Scientific Treasure</h3>
+
+<p>
+
+Studying asteroids helps scientists understand how planets, including Earth, were formed.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌌 Millions of Worlds</h3>
+
+<p>
+
+More than 1.3 million asteroids have been discovered, with countless smaller bodies still awaiting discovery.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- IMAGE GALLERY -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Asteroid Belt Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative views of the Asteroid Belt and its largest worlds.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/ceres.jpg"
+
+style="width:100%;border-radius:15px;">
+
+<h3 style="margin-top:20px;">
+
+Ceres
+
+</h3>
+
+<p>
+
+The largest object in the Asteroid Belt.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/vesta.jpg"
+
+style="width:100%;border-radius:15px;">
+
+<h3 style="margin-top:20px;">
+
+Vesta
+
+</h3>
+
+<p>
+
+Visited and mapped by NASA's Dawn spacecraft.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/asteroid-field.jpg"
+
+style="width:100%;border-radius:15px;">
+
+<h3 style="margin-top:20px;">
+
+Asteroid Field
+
+</h3>
+
+<p>
+
+An artistic view showing rocky bodies orbiting the Sun.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FAQ -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h4>
+
+Could the Asteroid Belt become a planet?
+
+</h4>
+
+<p>
+
+No. Jupiter's powerful gravity prevents most asteroids from combining into a single planet.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>
+
+Can spacecraft safely fly through it?
+
+</h4>
+
+<p>
+
+Yes. The Asteroid Belt is mostly empty space, and spacecraft routinely pass through it safely.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>
+
+What is the largest asteroid?
+
+</h4>
+
+<p>
+
+Ceres is the largest object and is classified as a dwarf planet.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>
+
+Why are scientists interested in asteroids?
+
+</h4>
+
+<p>
+
+Asteroids preserve material from the birth of the Solar System and may contain valuable resources for future exploration.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>
+
+Could an asteroid hit Earth?
+
+</h4>
+
+<p>
+
+Some Near-Earth Asteroids cross Earth's orbit, but they are carefully tracked by space agencies around the world.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h4>
+
+Will humans mine asteroids?
+
+</h4>
+
+<p>
+
+Future missions may extract water and metals from asteroids to support long-term exploration beyond Earth.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#dddddd;">
+
+<li>NASA Dawn Mission</li>
+
+<li>NASA Lucy Mission</li>
+
+<li>NASA Psyche Mission</li>
+
+<li>ESA Planetary Science Programme</li>
+
+<li>JAXA Hayabusa & Hayabusa2 Missions</li>
+
+<li>Minor Planet Center (MPC)</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+</ul>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- CONTINUE EXPLORING -->
+<!-- ===================================================== -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="ceres.html"
+
+class="primary-btn">
+
+Next Destination →
+
+Ceres
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#080604;
+
+border-top:1px solid rgba(255,180,70,.15);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#ffcf8c;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+">
+
+Explore the Asteroid Belt and uncover the ancient building blocks of our Solar System. From dwarf planets to metallic worlds, SpaceVerse brings the history of planetary formation to life through immersive exploration and scientifically accurate content.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">Privacy Policy</a>
+
+<a href="terms.html" class="secondary-btn">Terms of Use</a>
+
+<a href="contact.html" class="secondary-btn">Contact</a>
+
+<a href="disclaimer.html" class="secondary-btn">Disclaimer</a>
+
+</div>
+
+<p style="margin-top:40px;color:#888;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ===================================================== -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ===================================================== -->
+
+<button id="topBtn" title="Back to Top">
+
+⬆
+
+</button>
+
+<style>
+
+#topBtn{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffb347,#ff7b00);
+
+color:#111;
+
+font-size:22px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:9999;
+
+box-shadow:0 0 25px rgba(255,160,60,.45);
+
+transition:.35s;
+
+}
+
+#topBtn:hover{
+
+transform:translateY(-6px) scale(1.08);
+
+box-shadow:0 0 40px rgba(255,170,70,.8);
+
+}
+
+.fade-up{
+
+opacity:0;
+
+transform:translateY(50px);
+
+transition:all .8s ease;
+
+}
+
+.fade-up.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.45s;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.04);
+
+}
+
+</style>
+
+<script>
+
+/* ===========================================
+   BACK TO TOP BUTTON
+=========================================== */
+
+const topBtn=document.getElementById("topBtn");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ===========================================
+   FADE ANIMATION
+=========================================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(
+
+".section,.stat-card,.info-card"
+
+).forEach(el=>{
+
+el.classList.add("fade-up");
+
+observer.observe(el);
+
+});
+
+/* ===========================================
+   PARALLAX ASTEROIDS
+=========================================== */
+
+window.addEventListener("mousemove",(e)=>{
+
+const x=(e.clientX/window.innerWidth-.5)*25;
+
+const y=(e.clientY/window.innerHeight-.5)*25;
+
+document.querySelectorAll(".asteroid").forEach((a,i)=>{
+
+a.style.transform=
+
+`translate(${x*(i+1)/6}px,${y*(i+1)/6}px)`;
+
+});
+
+});
+
+/* ===========================================
+   IMAGE LAZY LOADING
+=========================================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+});
+
+/* ===========================================
+   COPYRIGHT YEAR
+=========================================== */
+
+const year=new Date().getFullYear();
+
+const copy=document.querySelector("footer p:last-child");
+
+if(copy){
+
+copy.innerHTML=`© ${year} SpaceVerse Encyclopedia • All Rights Reserved.`;
+
+}
+
+</script>
+
+<!-- ===========================================
+JSON-LD : ARTICLE
+=========================================== -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Article",
+"headline":"Asteroid Belt",
+"description":"Explore the Asteroid Belt between Mars and Jupiter. Learn about Ceres, Vesta, asteroid families, formation, asteroid mining, and major exploration missions.",
+"author":{
+"@type":"Organization",
+"name":"SpaceVerse"
+},
+"publisher":{
+"@type":"Organization",
+"name":"SpaceVerse"
+}
+}
+</script>
+
+<!-- ===========================================
+JSON-LD : FAQ
+=========================================== -->
+
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"Where is the Asteroid Belt located?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"The Asteroid Belt lies between the orbits of Mars and Jupiter."
+}
+},
+{
+"@type":"Question",
+"name":"What is the largest asteroid?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Ceres is the largest object in the Asteroid Belt and is classified as a dwarf planet."
+}
+},
+{
+"@type":"Question",
+"name":"Why didn't the Asteroid Belt become a planet?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Jupiter's powerful gravity prevented the material from combining into a planet."
+}
+},
+{
+"@type":"Question",
+"name":"Can spacecraft fly through the Asteroid Belt?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. The Asteroid Belt is mostly empty space, allowing spacecraft to pass safely."
+}
+}
+]
+}
+</script>
+
+</body>
+
+</html>
