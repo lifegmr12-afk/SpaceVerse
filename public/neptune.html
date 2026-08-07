@@ -1903,3 +1903,370 @@ Disclaimer
 </p>
 
 </footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+
+↑
+
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#5ab8ff,#2f7dff);
+
+color:white;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+transition:.3s;
+
+box-shadow:0 0 30px rgba(90,184,255,.45);
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 45px rgba(90,184,255,.8);
+
+}
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(90,184,255,.45);
+
+}
+
+</style>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"Why is Neptune blue?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Methane absorbs red light while reflecting blue wavelengths. Additional atmospheric chemistry likely contributes to Neptune's vivid blue appearance."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"How fast are Neptune's winds?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Neptune has the fastest planetary winds in the Solar System, reaching speeds greater than 2,100 kilometers per hour."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Does Neptune have rings?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Yes. Neptune has five faint rings composed mainly of dust and dark rocky particles."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"What is Triton?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Triton is Neptune's largest moon and is believed to be a captured Kuiper Belt object with cryovolcanoes and a possible underground ocean."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- ARTICLE SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"Neptune",
+
+"description":"A complete scientific guide to Neptune, including its atmosphere, storms, rings, Triton, Voyager 2 mission, and scientific discoveries.",
+
+"author":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":"https://space-verse-alpha.vercel.app/neptune.html"
+
+}
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+/* ==========================
+Back To Top
+========================== */
+
+const backBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+backBtn.style.display="block";
+
+}else{
+
+backBtn.style.display="none";
+
+}
+
+});
+
+backBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ==========================
+Fade Animation
+========================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade-in");
+
+observer.observe(section);
+
+});
+
+/* ==========================
+Animated Statistics
+========================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const number=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(number)){
+
+let count=0;
+
+const increment=Math.max(number/80,1);
+
+const timer=setInterval(()=>{
+
+count+=increment;
+
+if(count>=number){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+if(original.includes("km"))
+
+item.innerText=Math.floor(count).toLocaleString()+" km";
+
+else if(original.includes("Years"))
+
+item.innerText=(count/10).toFixed(1)+" Years";
+
+else if(original.includes("m/s"))
+
+item.innerText=count.toFixed(2)+" m/s²";
+
+else if(original.includes("%"))
+
+item.innerText=Math.floor(count)+"%";
+
+else
+
+item.innerText=Math.floor(count);
+
+}
+
+},20);
+
+}
+
+});
+
+/* ==========================
+Lazy Loading Images
+========================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+img.decoding="async";
+
+});
+
+/* ==========================
+Console Message
+========================== */
+
+console.log("🌊 SpaceVerse | Neptune Encyclopedia Loaded Successfully");
+
+</script>
+
+</body>
+
+</html>
