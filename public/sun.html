@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Sun | SpaceVerse</title>
+
+<meta name="description"
+content="Explore the Sun through SpaceVerse's interactive encyclopedia. Learn about the Sun's structure, nuclear fusion, solar flares, corona, Parker Solar Probe, and its importance to the Solar System.">
+
+<meta name="keywords"
+content="Sun, Solar System, Star, SpaceVerse, Solar Physics, Parker Solar Probe">
+
+<meta name="author"
+content="SpaceVerse">
+
+<link rel="canonical"
+href="https://space-verse-alpha.vercel.app/sun.html">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:Inter,sans-serif;
+
+background:#040201;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+/* ================================= */
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("images/stars.jpg") center/cover;
+
+opacity:.25;
+
+z-index:-3;
+
+}
+
+/* ================================= */
+
+.sun-glow{
+
+position:fixed;
+
+top:-250px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:900px;
+
+height:900px;
+
+background:radial-gradient(circle,
+
+rgba(255,210,80,.55),
+
+rgba(255,140,0,.28),
+
+transparent 70%);
+
+filter:blur(60px);
+
+pointer-events:none;
+
+z-index:-2;
+
+animation:pulse 6s ease-in-out infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+50%{
+
+transform:translateX(-50%) scale(1.08);
+
+}
+
+100%{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+}
+
+/* ================================= */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+padding:22px 8%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-family:Orbitron;
+
+font-size:28px;
+
+text-decoration:none;
+
+color:#ffd24c;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#ffd24c;
+
+}
+
+/* ================================= */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:140px 8% 80px;
+
+gap:70px;
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content span{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(255,180,0,.12);
+
+border:1px solid rgba(255,200,0,.35);
+
+color:#ffd24c;
+
+margin-bottom:22px;
+
+letter-spacing:2px;
+
+font-size:14px;
+
+text-transform:uppercase;
+
+}
+
+.hero-content h1{
+
+font-family:Orbitron;
+
+font-size:82px;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+background:linear-gradient(135deg,#fff8cc,#ffd24c,#ff8c00);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+.hero-content p{
+
+font-size:19px;
+
+line-height:1.9;
+
+color:#dddddd;
+
+margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+padding:16px 36px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-weight:700;
+
+background:linear-gradient(135deg,#ffd24c,#ff8c00);
+
+color:#111;
+
+box-shadow:0 0 35px rgba(255,170,0,.45);
+
+transition:.35s;
+
+}
+
+.primary-btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 0 50px rgba(255,170,0,.8);
+
+}
+
+.secondary-btn{
+
+padding:16px 36px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.12);
+
+color:white;
+
+transition:.35s;
+
+}
+
+.secondary-btn:hover{
+
+background:rgba(255,255,255,.12);
+
+}
+
+.hero-image{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-image img{
+
+width:560px;
+
+max-width:100%;
+
+filter:drop-shadow(0 0 90px rgba(255,180,0,.85));
+
+animation:sunFloat 7s ease-in-out infinite;
+
+}
+
+@keyframes sunFloat{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+/* ====================================== */
+/* QUICK STATS */
+/* ====================================== */
+
+.quick-stats{
+
+padding:80px 8%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.stat-card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,180,0,.18);
+
+border-radius:18px;
+
+padding:30px;
+
+backdrop-filter:blur(18px);
+
+transition:.35s;
+
+}
+
+.stat-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ffd24c;
+
+box-shadow:0 0 35px rgba(255,180,0,.35);
+
+}
+
+.stat-card h3{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#ffd24c;
+
+margin-bottom:15px;
+
+}
+
+.stat-card h2{
+
+font-family:Orbitron;
+
+font-size:34px;
+
+margin-bottom:12px;
+
+}
+
+.stat-card p{
+
+line-height:1.8;
+
+color:#dddddd;
+
+}
+
+/* ====================================== */
+/* SECTIONS */
+/* ====================================== */
+
+.section{
+
+padding:90px 8%;
+
+}
+
+.section-title{
+
+font-family:Orbitron;
+
+font-size:42px;
+
+color:#ffd24c;
+
+margin-bottom:20px;
+
+}
+
+.section-subtitle{
+
+font-size:18px;
+
+line-height:1.9;
+
+color:#d8d8d8;
+
+margin-bottom:45px;
+
+}
+
+/* ====================================== */
+/* TELEMETRY CARDS */
+/* ====================================== */
+
+.telemetry{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+}
+
+.telemetry-card{
+
+background:#181008;
+
+padding:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,180,0,.18);
+
+transition:.35s;
+
+}
+
+.telemetry-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#ffd24c;
+
+box-shadow:0 0 30px rgba(255,180,0,.35);
+
+}
+
+.telemetry-card h4{
+
+color:#ffd24c;
+
+font-size:15px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.telemetry-card ul{
+
+list-style:none;
+
+}
+
+.telemetry-card li{
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+color:#dddddd;
+
+}
+
+.telemetry-card li:last-child{
+
+border-bottom:none;
+
+}
+
+/* ====================================== */
+/* MOBILE */
+/* ====================================== */
+
+@media(max-width:980px){
+
+.hero{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+padding-top:150px;
+
+}
+
+.hero-content h1{
+
+font-size:54px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:340px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="sun-glow"></div>
+
+<header>
+
+<a href="index.html" class="logo">
+
+SPACEVERSE
+
+</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="solar-system.html">Solar System</a>
+
+<a href="#overview">Overview</a>
+
+<a href="#missions">Missions</a>
+
+<a href="#future">Future</a>
+
+</nav>
+
+</header>
+
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span>
+
+The Star at the Center of Our Solar System
+
+</span>
+
+<h1>
+
+The Sun
+
+</h1>
+
+<p>
+
+The Sun is a G-type main-sequence star (G2V Yellow Dwarf) that formed approximately 4.57 billion years ago. It contains about 99.86% of the Solar System's total mass and generates enormous amounts of energy through nuclear fusion in its core. Every planet, asteroid, comet, and moon orbits the Sun because of its immense gravitational pull.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#overview"
+
+class="primary-btn">
+
+Explore the Sun
+
+</a>
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img
+
+src="images/sun.png"
+
+alt="The Sun">
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- QUICK STATS -->
+<!-- ========================================================= -->
+
+<section class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Diameter</h3>
+
+<h2>1.39 Million km</h2>
+
+<p>
+
+The Sun's diameter is about 109 times larger than Earth's.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Mass</h3>
+
+<h2>99.86%</h2>
+
+<p>
+
+The Sun contains approximately 99.86% of the Solar System's total mass.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Surface Temperature</h3>
+
+<h2>5,500°C</h2>
+
+<p>
+
+The visible surface (photosphere) averages about 5,500°C.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Core Temperature</h3>
+
+<h2>15 Million°C</h2>
+
+<p>
+
+The Sun's core reaches temperatures of roughly 15 million degrees Celsius.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Age</h3>
+
+<h2>4.57 Billion Years</h2>
+
+<p>
+
+The Sun formed from a giant molecular cloud about 4.57 billion years ago.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Energy Source</h3>
+
+<h2>Fusion</h2>
+
+<p>
+
+Hydrogen nuclei fuse into helium, releasing enormous amounts of energy every second.
+
+</p>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SUN OVERVIEW -->
+<!-- ========================================================= -->
+
+<section class="section" id="overview">
+
+<h2 class="section-title">
+
+Solar Overview
+
+</h2>
+
+<p class="section-subtitle">
+
+The Sun is the central star of our Solar System and the ultimate source of nearly all energy on Earth. Formed approximately 4.57 billion years ago from a collapsing cloud of gas and dust, it contains more than 99.86% of the Solar System's total mass. Through nuclear fusion in its core, the Sun converts hydrogen into helium, producing the immense heat and light that sustain life on Earth and drive the motion of every planet.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>General Information</h4>
+
+<ul>
+
+<li>Type — G2V Yellow Dwarf</li>
+
+<li>Age — 4.57 Billion Years</li>
+
+<li>Diameter — 1,392,700 km</li>
+
+<li>Mass — 1.989 × 10³⁰ kg</li>
+
+<li>Distance from Earth — 149.6 Million km</li>
+
+<li>Average Density — 1.41 g/cm³</li>
+
+<li>Luminosity — 3.828 × 10²⁶ Watts</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Rotation</h4>
+
+<ul>
+
+<li>Equator — 25 Earth Days</li>
+
+<li>Mid Latitudes — 27 Days</li>
+
+<li>Polar Regions — 35 Days</li>
+
+<li>Differential Rotation — Yes</li>
+
+<li>Gravity — 274 m/s²</li>
+
+<li>Escape Velocity — 617.7 km/s</li>
+
+<li>Magnetic Cycle — 11 Years</li>
+
+</ul>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Composition</h4>
+
+<ul>
+
+<li>Hydrogen — 74%</li>
+
+<li>Helium — 24%</li>
+
+<li>Oxygen</li>
+
+<li>Carbon</li>
+
+<li>Neon</li>
+
+<li>Iron</li>
+
+<li>Other Heavy Elements</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- INTERNAL STRUCTURE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Internal Structure
+
+</h2>
+
+<p class="section-subtitle">
+
+The Sun is composed of several distinct layers, each playing an important role in producing and transporting energy from the core into space.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🔥 Core</h3>
+
+<p>
+
+The core reaches temperatures of nearly 15 million°C where hydrogen nuclei fuse into helium, producing enormous amounts of energy.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌞 Radiative Zone</h3>
+
+<p>
+
+Energy slowly moves outward as photons repeatedly scatter through dense plasma. This journey can take hundreds of thousands of years.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌋 Convective Zone</h3>
+
+<p>
+
+Hot plasma rises while cooler plasma sinks, transporting energy to the Sun's visible surface.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- PHOTOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Photosphere
+
+</h2>
+
+<p class="section-subtitle">
+
+The photosphere is the visible "surface" of the Sun. Although it appears solid, it is actually a thin layer of hot plasma approximately 500 km thick with an average temperature of about 5,500°C.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Temperature</h4>
+
+<p>
+
+Approximately 5,500°C
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Thickness</h4>
+
+<p>
+
+Roughly 500 kilometers
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Visible Features</h4>
+
+<p>
+
+Granules, faculae, and sunspots dominate the photosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CHROMOSPHERE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Chromosphere
+
+</h2>
+
+<p class="section-subtitle">
+
+Located above the photosphere, the chromosphere glows with a reddish color during total solar eclipses. It contains towering jets of hot plasma known as spicules.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Color</h3>
+
+<p>
+
+Deep reddish-pink during eclipses.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Temperature</h3>
+
+<p>
+
+4,500°C to over 20,000°C
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Spicules</h3>
+
+<p>
+
+Thousands of plasma jets erupt every minute.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CORONA -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Solar Corona
+
+</h2>
+
+<p class="section-subtitle">
+
+The corona is the Sun's extremely hot outer atmosphere extending millions of kilometers into space. Surprisingly, it is much hotter than the Sun's visible surface, reaching temperatures of more than one million degrees Celsius.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Temperature</h4>
+
+<p>
+
+1–3 Million°C
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Visible During</h4>
+
+<p>
+
+Total Solar Eclipses
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Scientific Mystery</h4>
+
+<p>
+
+Scientists continue investigating why the corona is far hotter than the photosphere.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- NUCLEAR FUSION -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Nuclear Fusion
+
+</h2>
+
+<p class="section-subtitle">
+
+Every second, the Sun converts approximately 600 million tons of hydrogen into helium through nuclear fusion. A small portion of this mass becomes pure energy according to Einstein's equation E = mc², producing the sunlight and heat that power our Solar System.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Hydrogen Used</h3>
+
+<p>
+
+≈600 Million Tons per Second
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Energy Released</h3>
+
+<p>
+
+3.8 × 10²⁶ Watts
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Energy Source</h3>
+
+<p>
+
+Proton-Proton Fusion Chain
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SOLAR WIND -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Solar Wind
+
+</h2>
+
+<p class="section-subtitle">
+
+The Sun continuously releases charged particles known as the solar wind. These particles travel throughout the Solar System, shaping planetary magnetospheres, creating auroras, and influencing space weather around Earth.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Speed</h4>
+
+<p>
+
+300–800 km/s
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Composition</h4>
+
+<p>
+
+Electrons, Protons & Alpha Particles
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Effects</h4>
+
+<p>
+
+Auroras, geomagnetic storms, and impacts on satellites and spacecraft.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SUNSPOTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Sunspots
+
+</h2>
+
+<p class="section-subtitle">
+
+Sunspots are temporary dark regions on the Sun's photosphere caused by intense magnetic activity. They appear darker because they are cooler than the surrounding surface, although they are still thousands of degrees Celsius. Sunspots often occur in groups and are closely linked to solar flares and coronal mass ejections.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Temperature</h3>
+
+<p>
+
+Approximately 3,500–4,500°C, making them cooler than the surrounding photosphere.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Cause</h3>
+
+<p>
+
+Powerful magnetic fields suppress convection, reducing the flow of heat.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Solar Cycle</h3>
+
+<p>
+
+The number of sunspots rises and falls during the Sun's 11-year activity cycle.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SOLAR FLARES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Solar Flares
+
+</h2>
+
+<p class="section-subtitle">
+
+Solar flares are sudden explosions of energy caused by the release of magnetic energy near sunspots. They emit intense radiation across the electromagnetic spectrum, including X-rays, ultraviolet light, and radio waves.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Energy Released</h4>
+
+<p>
+
+Equivalent to billions of hydrogen bombs exploding simultaneously.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Duration</h4>
+
+<p>
+
+Usually lasts from a few minutes to several hours.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Effects</h4>
+
+<p>
+
+Can disrupt satellites, GPS systems, radio communications, and electrical power grids on Earth.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CORONAL MASS EJECTIONS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Coronal Mass Ejections (CMEs)
+
+</h2>
+
+<p class="section-subtitle">
+
+A Coronal Mass Ejection is a massive eruption of plasma and magnetic fields from the Sun's corona. When directed toward Earth, CMEs can produce powerful geomagnetic storms capable of generating spectacular auroras and affecting modern technology.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>Speed</h3>
+
+<p>
+
+300–3,000 km/s
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Material</h3>
+
+<p>
+
+Billions of tons of ionized plasma.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>Travel Time</h3>
+
+<p>
+
+Typically reaches Earth within 1–3 days.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- MAGNETIC FIELD -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Solar Magnetic Field
+
+</h2>
+
+<p class="section-subtitle">
+
+The Sun's magnetic field is generated by the movement of electrically charged plasma inside its interior. This magnetic field constantly changes, twists, and reconnects, driving solar activity throughout the Solar System.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Magnetic Cycle</h4>
+
+<p>
+
+Approximately 11 years.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Pole Reversal</h4>
+
+<p>
+
+The Sun's north and south magnetic poles reverse during each solar cycle.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Importance</h4>
+
+<p>
+
+Controls sunspots, flares, CMEs, and space weather throughout the Solar System.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EFFECTS ON EARTH -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Effects on Earth
+
+</h2>
+
+<p class="section-subtitle">
+
+The Sun makes life on Earth possible by providing light and heat. However, powerful solar storms can also interfere with satellites, communications, navigation systems, and electrical infrastructure.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>🌎 Climate</h3>
+
+<p>
+
+Provides the energy that drives Earth's weather and climate systems.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌈 Auroras</h3>
+
+<p>
+
+Charged solar particles interacting with Earth's magnetic field create the Northern and Southern Lights.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>📡 Technology</h3>
+
+<p>
+
+Strong geomagnetic storms can affect satellites, astronauts, GPS, and power grids.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- PARKER SOLAR PROBE -->
+<!-- ========================================================= -->
+
+<section class="section" id="missions">
+
+<h2 class="section-title">
+
+Parker Solar Probe
+
+</h2>
+
+<p class="section-subtitle">
+
+NASA's Parker Solar Probe is the fastest human-made object ever built. Launched in 2018, it repeatedly flies through the Sun's corona to study the origin of the solar wind, magnetic fields, and the heating of the corona.
+
+</p>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>Launch</h4>
+
+<p>
+
+August 12, 2018
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Agency</h4>
+
+<p>
+
+NASA
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Top Speed</h4>
+
+<p>
+
+More than 690,000 km/h, making it the fastest spacecraft ever built.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>Main Goal</h4>
+
+<p>
+
+Study the Sun's outer atmosphere and improve our understanding of solar activity.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- EXPLORATION TIMELINE -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Solar Exploration Timeline
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>1610</h4>
+
+<p>
+
+Galileo Galilei used a telescope to observe sunspots.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1976</h4>
+
+<p>
+
+Helios spacecraft began studying the inner Solar System and the Sun.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>1995</h4>
+
+<p>
+
+SOHO was launched to continuously observe the Sun.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2010</h4>
+
+<p>
+
+Solar Dynamics Observatory (SDO) began high-resolution observations.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2018</h4>
+
+<p>
+
+Parker Solar Probe launched toward the Sun.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>2020</h4>
+
+<p>
+
+ESA's Solar Orbiter began studying the Sun's poles and magnetic activity.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- AMAZING SUN FACTS -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Amazing Sun Facts
+
+</h2>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<h3>☀ Solar Mass</h3>
+
+<p>
+
+The Sun contains 99.86% of the Solar System's total mass.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>⚛ Fusion</h3>
+
+<p>
+
+Every second, around 600 million tons of hydrogen are converted into helium.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>💡 Energy</h3>
+
+<p>
+
+Sunlight takes about 8 minutes and 20 seconds to travel from the Sun to Earth.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌌 Lifetime</h3>
+
+<p>
+
+The Sun is expected to shine for about another 5 billion years before becoming a red giant.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🌍 Life</h3>
+
+<p>
+
+Nearly every form of life on Earth ultimately depends on energy from the Sun.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<h3>🚀 Exploration</h3>
+
+<p>
+
+The Parker Solar Probe is flying closer to the Sun than any spacecraft in history.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<!-- ========================================================= -->
+<!-- SCIENTIFIC ARTICLE -->
+<!-- ========================================================= -->
+
+<section class="section" id="future">
+
+<h2 class="section-title">
+
+The Sun: The Heart of Our Solar System
+
+</h2>
+
+<p class="section-subtitle">
+
+The Sun is the engine that powers the Solar System. Every planet, moon, asteroid, and comet is held in orbit by its enormous gravitational pull. Although it appears as an ordinary star among billions in the Milky Way, the Sun is extraordinary to humanity because it makes life on Earth possible. Without its continuous supply of light and heat, our planet would be a frozen world incapable of supporting oceans, weather, or living organisms.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+Deep inside the Sun's core, hydrogen atoms are continuously fused into helium through nuclear fusion. This process converts a tiny amount of matter into enormous quantities of energy, following Einstein's famous equation E = mc². The energy produced in the core slowly travels outward through the radiative and convective zones before finally escaping from the photosphere as sunlight. The light reaching Earth today began its journey from the Sun's surface about 8 minutes ago, although the energy itself may have spent hundreds of thousands of years moving outward from the core.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;margin-bottom:30px;">
+
+The Sun is also an active magnetic star. Sunspots, solar flares, and coronal mass ejections constantly reshape its atmosphere and influence space weather throughout the Solar System. These powerful eruptions can create beautiful auroras on Earth while also disrupting satellites, communication systems, navigation networks, and electrical power grids. Understanding these events is one of the major goals of modern solar physics.
+
+</p>
+
+<p style="line-height:2;color:#d7d7d7;">
+
+Modern missions such as NASA's Parker Solar Probe and ESA's Solar Orbiter are revolutionizing our understanding of the Sun. By flying closer than any spacecraft before, these missions are helping scientists explain why the corona is millions of degrees hotter than the visible surface, how the solar wind is accelerated, and how magnetic fields generate solar storms. Their discoveries not only deepen our understanding of our own star but also improve our knowledge of stars throughout the universe.
+
+</p>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SUN GALLERY -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Sun Gallery
+
+</h2>
+
+<p class="section-subtitle">
+
+Representative scientific imagery from NASA, ESA, SOHO, SDO, Parker Solar Probe, and Solar Orbiter.
+
+</p>
+
+<div class="quick-stats">
+
+<div class="stat-card">
+
+<img src="images/sun1.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Visible Surface
+
+</h3>
+
+<p>
+
+The photosphere showing sunspots and granulation.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/sun2.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Solar Corona
+
+</h3>
+
+<p>
+
+The Sun's outer atmosphere visible during a total solar eclipse.
+
+</p>
+
+</div>
+
+<div class="stat-card">
+
+<img src="images/sun3.jpg"
+
+class="gallery-image"
+
+style="width:100%;border-radius:14px;">
+
+<h3 style="margin-top:18px;">
+
+Solar Flare
+
+</h3>
+
+<p>
+
+A massive eruption releasing tremendous energy into space.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="telemetry">
+
+<div class="telemetry-card">
+
+<h4>
+
+What type of star is the Sun?
+
+</h4>
+
+<p>
+
+The Sun is classified as a G2V main-sequence star, commonly called a Yellow Dwarf.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+How old is the Sun?
+
+</h4>
+
+<p>
+
+The Sun formed approximately 4.57 billion years ago and has enough hydrogen to continue shining for about another 5 billion years.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is the Sun hot?
+
+</h4>
+
+<p>
+
+Nuclear fusion in the Sun's core converts hydrogen into helium, releasing enormous amounts of energy.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+How long does sunlight take to reach Earth?
+
+</h4>
+
+<p>
+
+Sunlight travels from the Sun to Earth in approximately 8 minutes and 20 seconds.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Can the Sun explode?
+
+</h4>
+
+<p>
+
+No. The Sun is not massive enough to become a supernova. Instead, it will eventually become a red giant and later a white dwarf.
+
+</p>
+
+</div>
+
+<div class="telemetry-card">
+
+<h4>
+
+Why is studying the Sun important?
+
+</h4>
+
+<p>
+
+Understanding the Sun helps protect satellites, astronauts, communication systems, and electrical infrastructure from space weather.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- SCIENTIFIC REFERENCES -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Scientific References
+
+</h2>
+
+<ul style="line-height:2.2;font-size:18px;color:#d5dfe8;">
+
+<li>NASA Solar Dynamics Observatory (SDO)</li>
+
+<li>NASA Parker Solar Probe</li>
+
+<li>ESA Solar Orbiter</li>
+
+<li>SOHO Mission</li>
+
+<li>Jet Propulsion Laboratory (JPL)</li>
+
+<li>European Space Agency (ESA)</li>
+
+<li>National Solar Observatory</li>
+
+<li>International Astronomical Union (IAU)</li>
+
+</ul>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- CONTINUE EXPLORING -->
+<!-- ========================================================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+
+Continue Exploring
+
+</h2>
+
+<div class="hero-buttons">
+
+<a href="solar-system.html"
+
+class="secondary-btn">
+
+← Back to Solar System
+
+</a>
+
+<a href="mercury.html"
+
+class="primary-btn">
+
+Next Destination →
+
+Mercury
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+
+margin-top:100px;
+
+padding:60px;
+
+text-align:center;
+
+background:#0b0600;
+
+border-top:1px solid rgba(255,180,0,.2);
+
+">
+
+<h2 style="
+
+font-family:Orbitron;
+
+color:#ffd24c;
+
+margin-bottom:20px;
+
+">
+
+SPACEVERSE
+
+</h2>
+
+<p style="
+
+max-width:900px;
+
+margin:auto;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+">
+
+SpaceVerse is an interactive astronomy encyclopedia dedicated to exploring the Solar System and the wider universe through scientifically accurate information, immersive visualizations, and educational experiences designed for students, educators, and space enthusiasts around the world.
+
+</p>
+
+<div style="
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+">
+
+<a href="privacy-policy.html" class="secondary-btn">
+
+Privacy Policy
+
+</a>
+
+<a href="terms.html" class="secondary-btn">
+
+Terms of Use
+
+</a>
+
+<a href="contact.html" class="secondary-btn">
+
+Contact
+
+</a>
+
+<a href="disclaimer.html" class="secondary-btn">
+
+Disclaimer
+
+</a>
+
+</div>
+
+<p style="margin-top:40px;color:#8a8a8a;">
+
+© 2026 SpaceVerse Encyclopedia • All Rights Reserved.
+
+</p>
+
+</footer>
+<!-- ========================================================= -->
+<!-- BACK TO TOP BUTTON -->
+<!-- ========================================================= -->
+
+<button id="backToTop" title="Back to Top">
+
+↑
+
+</button>
+
+<style>
+
+#backToTop{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#ffd24c,#ff8c00);
+
+color:#111;
+
+font-size:22px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+transition:.3s;
+
+box-shadow:0 0 30px rgba(255,180,0,.45);
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 0 45px rgba(255,180,0,.8);
+
+}
+
+.fade-in{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.gallery-image{
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.gallery-image:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 35px rgba(255,180,0,.5);
+
+}
+
+</style>
+
+<!-- ========================================================= -->
+<!-- FAQ SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"FAQPage",
+
+"mainEntity":[
+
+{
+
+"@type":"Question",
+
+"name":"What type of star is the Sun?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The Sun is a G2V main-sequence star, commonly known as a Yellow Dwarf."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"How old is the Sun?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The Sun formed approximately 4.57 billion years ago."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"Why is the Sun hot?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"The Sun is powered by nuclear fusion, where hydrogen atoms combine to form helium and release enormous amounts of energy."
+
+}
+
+},
+
+{
+
+"@type":"Question",
+
+"name":"How long does sunlight take to reach Earth?",
+
+"acceptedAnswer":{
+
+"@type":"Answer",
+
+"text":"Sunlight travels from the Sun to Earth in approximately 8 minutes and 20 seconds."
+
+}
+
+}
+
+]
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- ARTICLE SCHEMA -->
+<!-- ========================================================= -->
+
+<script type="application/ld+json">
+
+{
+
+"@context":"https://schema.org",
+
+"@type":"Article",
+
+"headline":"The Sun",
+
+"description":"A complete scientific guide to the Sun including its structure, nuclear fusion, solar flares, corona, Parker Solar Probe, and importance to the Solar System.",
+
+"author":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"publisher":{
+
+"@type":"Organization",
+
+"name":"SpaceVerse"
+
+},
+
+"mainEntityOfPage":{
+
+"@type":"WebPage",
+
+"@id":"https://space-verse-alpha.vercel.app/sun.html"
+
+}
+
+}
+
+</script>
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+/* ==========================
+Back To Top
+========================== */
+
+const backBtn=document.getElementById("backToTop");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+backBtn.style.display="block";
+
+}else{
+
+backBtn.style.display="none";
+
+}
+
+});
+
+backBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+/* ==========================
+Fade-In Animation
+========================== */
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section").forEach(section=>{
+
+section.classList.add("fade-in");
+
+observer.observe(section);
+
+});
+
+/* ==========================
+Animated Statistics
+========================== */
+
+document.querySelectorAll(".stat-card h2").forEach(item=>{
+
+const original=item.innerText;
+
+const number=parseFloat(original.replace(/[^0-9.]/g,""));
+
+if(!isNaN(number)){
+
+let count=0;
+
+const increment=Math.max(number/100,1);
+
+const timer=setInterval(()=>{
+
+count+=increment;
+
+if(count>=number){
+
+item.innerText=original;
+
+clearInterval(timer);
+
+}else{
+
+if(original.includes("%"))
+
+item.innerText=Math.floor(count)+"%";
+
+else if(original.includes("Million"))
+
+item.innerText=count.toFixed(2)+" Million";
+
+else if(original.includes("Billion"))
+
+item.innerText=(count/100).toFixed(2)+" Billion";
+
+else if(original.includes("°"))
+
+item.innerText=Math.floor(count)+"°C";
+
+else
+
+item.innerText=Math.floor(count);
+
+}
+
+},20);
+
+}
+
+});
+
+/* ==========================
+Lazy Loading Images
+========================== */
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+img.decoding="async";
+
+});
+
+/* ==========================
+Console Message
+========================== */
+
+console.log("☀ SpaceVerse | Sun Encyclopedia Loaded Successfully");
+
+</script>
+
+</body>
+
+</html>
