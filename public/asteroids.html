@@ -6728,6 +6728,355 @@ MOBILE
     }
 
 }
+/* ==========================================================
+   ASTEROID SEARCH
+========================================================== */
+
+.asteroid-search-toggle {
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(108, 229, 255, 0.35);
+    border-radius: 50%;
+
+    background: rgba(10, 15, 30, 0.85);
+    color: #ffffff;
+
+    font-size: 19px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s ease;
+
+    z-index: 10001;
+}
+
+.asteroid-search-toggle:hover {
+    transform: scale(1.08);
+
+    background: rgba(40, 70, 110, 0.95);
+
+    box-shadow:
+        0 0 18px rgba(108, 229, 255, 0.35);
+}
+
+
+/* SEARCH PANEL */
+
+.asteroid-search-panel {
+
+    position: fixed;
+
+    top: 85px;
+    right: 30px;
+
+    width: min(500px, calc(100vw - 30px));
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16, 22, 38, 0.98),
+            rgba(8, 12, 24, 0.98)
+        );
+
+    border: 1px solid rgba(108, 229, 255, 0.25);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.55),
+        0 0 30px rgba(108, 229, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-12px) scale(0.98);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.25s ease;
+
+    z-index: 10000;
+}
+
+
+/* OPEN */
+
+.asteroid-search-panel.active {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0) scale(1);
+}
+
+
+/* SEARCH INPUT */
+
+.asteroid-search-box {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+#asteroidSearchInput {
+
+    flex: 1;
+
+    height: 48px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(108, 229, 255, 0.25);
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-family: inherit;
+}
+
+
+#asteroidSearchInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+#asteroidSearchInput:focus {
+
+    border-color: #6ce5ff;
+
+    box-shadow:
+        0 0 0 3px rgba(108, 229, 255, 0.08);
+}
+
+
+/* CLOSE */
+
+#asteroidSearchClose {
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.2s ease;
+}
+
+
+#asteroidSearchClose:hover {
+
+    background: rgba(255, 80, 100, 0.18);
+
+    transform: scale(1.05);
+}
+
+
+/* RESULTS */
+
+.asteroid-search-results {
+
+    margin-top: 10px;
+
+    max-height: 420px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+/* RESULT */
+
+.asteroid-search-result {
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.asteroid-search-result:hover {
+
+    background: rgba(108, 229, 255, 0.10);
+
+    border-color: rgba(108, 229, 255, 0.3);
+
+    transform: translateX(3px);
+}
+
+
+.asteroid-search-result-title {
+
+    display: block;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+.asteroid-search-result-type {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #6ce5ff;
+
+    font-size: 11px;
+}
+
+
+.asteroid-search-empty {
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 14px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .asteroid-search-panel {
+
+        top: 75px;
+        right: 12px;
+        left: 12px;
+
+        width: auto;
+    }
+
+    .asteroid-search-results {
+
+        max-height: 55vh;
+    }
+
+}
+/* ==========================================================
+   SEARCH TARGET HIGHLIGHT
+========================================================== */
+
+.search-topic-highlight {
+
+    animation:
+        searchTopicHighlight 1.8s ease;
+
+}
+
+
+@keyframes searchTopicHighlight {
+
+    0% {
+
+        box-shadow:
+            0 0 0 0 rgba(108, 229, 255, 0);
+
+    }
+
+    25% {
+
+        box-shadow:
+            0 0 35px 8px rgba(108, 229, 255, 0.35);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 0 0 rgba(108, 229, 255, 0);
+
+    }
+
+}
+/* ==========================================================
+   SEARCH TARGET HIGHLIGHT
+========================================================== */
+
+.search-topic-highlight {
+
+    animation:
+        searchTopicHighlight 1.8s ease;
+
+}
+
+
+@keyframes searchTopicHighlight {
+
+    0% {
+
+        box-shadow:
+            0 0 0 0 rgba(108, 229, 255, 0);
+
+    }
+
+    25% {
+
+        box-shadow:
+            0 0 35px 8px rgba(108, 229, 255, 0.35);
+
+    }
+
+    100% {
+
+        box-shadow:
+            0 0 0 0 rgba(108, 229, 255, 0);
+
+    }
+
+}
 </style>
 </head>
 
@@ -7201,8 +7550,12 @@ style="left:98%;top:18%;animation:asteroidFloat1 200s linear infinite;"></div>
                 </a>
 
             </nav>
-            <!-- ASTEROID TOPIC SEARCH -->
-<button
+
+<!-- ==========================================================
+ASTEROID TOPIC SEARCH
+========================================================== -->
+
+     <button
     id="asteroidSearchToggle"
     class="asteroid-search-toggle"
     type="button"
@@ -7212,23 +7565,10 @@ style="left:98%;top:18%;animation:asteroidFloat1 200s linear infinite;"></div>
 >
     🔍
 </button>
-<!-- ==========================================================
-ASTEROID TOPIC SEARCH
-========================================================== -->
 
-<div
-    id="asteroidSearchPanel"
-    class="asteroid-search-panel"
-    aria-hidden="true"
->
+<div id="asteroidSearchPanel" class="asteroid-search-panel">
 
     <div class="asteroid-search-box">
-
-        <div class="asteroid-search-input-row">
-
-            <span class="asteroid-search-symbol">
-                🔍
-            </span>
 
             <input
                 id="asteroidSearchInput"
@@ -18120,20 +18460,6 @@ the outer regions where comets formed.
 </p>
 
 </div>
-
-<div class="info-card">
-
-<h3>📚 Laboratory Studies</h3>
-
-<p>
-
-Scientists continue studying Stardust samples decades after their
-return.
-
-</p>
-
-</div>
-
 <div class="info-card">
 
 <h3>💎 Primitive Material</h3>
@@ -25526,59 +25852,6 @@ document.getElementById("header")
 });
 
 </script>
-<!-- =========================
-SPACEVERSE TOPIC SEARCH
-========================= -->
-
-<div class="topic-search">
-
-    <button
-        id="topicSearchButton"
-        class="topic-search-button"
-        aria-label="Search topics"
-        title="Search topics"
-        type="button"
-    >
-        🔍
-    </button>
-
-    <div
-        id="topicSearchPanel"
-        class="topic-search-panel"
-        aria-hidden="true"
-    >
-
-        <div class="topic-search-input-wrap">
-
-            <span class="topic-search-icon">🔍</span>
-
-            <input
-                id="topicSearchInput"
-                type="search"
-                placeholder="Search asteroid topics..."
-                autocomplete="off"
-                aria-label="Search asteroid topics"
-            >
-
-            <button
-                id="topicSearchClose"
-                type="button"
-                aria-label="Close search"
-            >
-                ×
-            </button>
-
-        </div>
-
-        <div
-            id="topicSearchResults"
-            class="topic-search-results"
-        ></div>
-
-    </div>
-
-</div>
-</main>
 <script>
 /* ==========================================================
 SPACEVERSE ASTEROID TOPIC SEARCH
@@ -26268,5 +26541,502 @@ AUTO-INDEX SYSTEM
 
 })();
 </script>
+<script>
+/* ==========================================================
+   SPACEVERSE ASTEROIDS SEARCH ENGINE
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchToggle =
+        document.getElementById("asteroidSearchToggle");
+
+    const searchPanel =
+        document.getElementById("asteroidSearchPanel");
+
+    const searchInput =
+        document.getElementById("asteroidSearchInput");
+
+    const searchResults =
+        document.getElementById("asteroidSearchResults");
+
+    const searchClose =
+        document.getElementById("asteroidSearchClose");
+
+
+    /* SAFETY CHECK */
+
+    if (
+        !searchToggle ||
+        !searchPanel ||
+        !searchInput ||
+        !searchResults ||
+        !searchClose
+    ) {
+        console.warn(
+            "SpaceVerse Search: required search elements were not found."
+        );
+
+        return;
+    }
+
+
+    /* ======================================================
+       BUILD SEARCH INDEX
+    ====================================================== */
+
+    const searchIndex = [];
+
+
+    /*
+       Search all important headings.
+    */
+
+    const headings =
+        document.querySelectorAll(
+            "main h1, main h2, main h3, main h4, section h1, section h2, section h3, section h4"
+        );
+
+
+    headings.forEach(function (heading, index) {
+
+        const title =
+            heading.textContent.trim();
+
+        if (!title) return;
+
+
+        /*
+           Find the best section to scroll to.
+        */
+
+        let target = heading.closest("section");
+
+
+        if (!target) {
+            target = heading;
+        }
+
+
+        /*
+           Create an ID automatically if needed.
+        */
+
+        if (!target.id) {
+
+            let id =
+                "search-topic-" + index;
+
+            target.id = id;
+        }
+
+
+        searchIndex.push({
+
+            title: title,
+
+            element: target,
+
+            type: "Topic"
+
+        });
+
+    });
+
+
+    /*
+       Also index explicit search topics.
+    */
+
+    document
+        .querySelectorAll("[data-search-topic]")
+        .forEach(function (element) {
+
+            const title =
+                element.getAttribute(
+                    "data-search-topic"
+                );
+
+            if (!title) return;
+
+
+            if (!element.id) {
+
+                element.id =
+                    "search-custom-" +
+                    searchIndex.length;
+
+            }
+
+
+            searchIndex.push({
+
+                title: title,
+
+                element: element,
+
+                type: "Topic"
+
+            });
+
+        });
+
+
+    /*
+       Remove duplicate topics.
+    */
+
+    const uniqueIndex = [];
+
+    const seen = new Set();
+
+
+    searchIndex.forEach(function (item) {
+
+        const key =
+            item.title.toLowerCase();
+
+        if (seen.has(key)) return;
+
+        seen.add(key);
+
+        uniqueIndex.push(item);
+
+    });
+
+
+    /* ======================================================
+       OPEN SEARCH
+    ====================================================== */
+
+    function openSearch() {
+
+        searchPanel.classList.add("active");
+
+        setTimeout(function () {
+
+            searchInput.focus();
+
+        }, 100);
+
+    }
+
+
+    /* ======================================================
+       CLOSE SEARCH
+    ====================================================== */
+
+    function closeSearch() {
+
+        searchPanel.classList.remove("active");
+
+        searchInput.value = "";
+
+        searchResults.innerHTML = "";
+
+    }
+
+
+    /* ======================================================
+       SEARCH
+    ====================================================== */
+
+    function performSearch() {
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        searchResults.innerHTML = "";
+
+
+        /*
+           Nothing typed
+        */
+
+        if (!query) {
+
+            return;
+
+        }
+
+
+        /*
+           Find matching topics
+        */
+
+        const matches =
+            uniqueIndex.filter(function (item) {
+
+                return item.title
+                    .toLowerCase()
+                    .includes(query);
+
+            });
+
+
+        /*
+           No results
+        */
+
+        if (!matches.length) {
+
+            searchResults.innerHTML = `
+
+                <div class="asteroid-search-empty">
+
+                    🔭 No matching asteroid topic found.
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        /*
+           Display results
+        */
+
+        matches
+            .slice(0, 30)
+            .forEach(function (item) {
+
+                const result =
+                    document.createElement("button");
+
+
+                result.type = "button";
+
+                result.className =
+                    "asteroid-search-result";
+
+
+                result.innerHTML = `
+
+                    <span class="asteroid-search-result-title">
+                        ${escapeSearchHTML(item.title)}
+                    </span>
+
+                    <span class="asteroid-search-result-type">
+                        ${item.type} →
+                    </span>
+
+                `;
+
+
+                /*
+                   CLICK RESULT
+                */
+
+                result.addEventListener(
+                    "click",
+                    function () {
+
+                        closeSearch();
+
+
+                        /*
+                           Account for sticky navbar.
+                        */
+
+                        const header =
+                            document.querySelector(
+                                "header, nav, .navbar, .site-header"
+                            );
+
+
+                        const offset =
+                            header
+                                ? header.offsetHeight + 20
+                                : 20;
+
+
+                        const targetTop =
+                            item.element.getBoundingClientRect().top +
+                            window.scrollY -
+                            offset;
+
+
+                        window.scrollTo({
+
+                            top: Math.max(
+                                0,
+                                targetTop
+                            ),
+
+                            behavior: "smooth"
+
+                        });
+
+
+                        /*
+                           Highlight the topic temporarily.
+                        */
+
+                        item.element.classList.add(
+                            "search-topic-highlight"
+                        );
+
+
+                        setTimeout(function () {
+
+                            item.element.classList.remove(
+                                "search-topic-highlight"
+                            );
+
+                        }, 1800);
+
+                    }
+                );
+
+
+                searchResults.appendChild(result);
+
+            });
+
+    }
+
+
+    /* ======================================================
+       ESCAPE HTML
+    ====================================================== */
+
+    function escapeSearchHTML(text) {
+
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* ======================================================
+       EVENTS
+    ====================================================== */
+
+    searchToggle.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+            if (
+                searchPanel.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeSearch();
+
+            } else {
+
+                openSearch();
+
+            }
+
+        }
+    );
+
+
+    searchClose.addEventListener(
+        "click",
+        function () {
+
+            closeSearch();
+
+        }
+    );
+
+
+    searchInput.addEventListener(
+        "input",
+        performSearch
+    );
+
+
+    /*
+       Enter = first result
+    */
+
+    searchInput.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Enter") return;
+
+
+            const firstResult =
+                searchResults.querySelector(
+                    ".asteroid-search-result"
+                );
+
+
+            if (firstResult) {
+
+                firstResult.click();
+
+            }
+
+        }
+    );
+
+
+    /*
+       ESC = close
+    */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeSearch();
+
+            }
+
+        }
+    );
+
+
+    /*
+       Click outside = close
+    */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                !searchPanel.contains(event.target) &&
+                !searchToggle.contains(event.target)
+            ) {
+
+                closeSearch();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "SpaceVerse Search indexed " +
+        uniqueIndex.length +
+        " topics."
+    );
+
+});
+</script>
+</main>
+
 </body>
 </html>
