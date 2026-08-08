@@ -32,7 +32,7 @@ const scientistsData: Scientist[] = [
     discovery: 'General Theory of Relativity',
     contribution: 'Formulated general relativity, demonstrating that gravity is the warping of space-time fabric by mass. He mathematically predicted gravitational lensing, black holes, and gravitational waves.',
     bio: 'Theoretical physicist whose formulations reshaped modern cosmology. His field equations serve as the foundation of black hole geometry and modern orbital calculations.',
-    image: 'https://images.unsplash.com/photo-1447063513244-4e17b903e1c6?auto=format&fit=crop&w=400&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/mars.png'
   },
   {
     name: 'Edwin Hubble',
@@ -41,7 +41,7 @@ const scientistsData: Scientist[] = [
     discovery: 'Expansion of the Universe (Hubble\'s Law)',
     contribution: 'Proved that spiral nebulae are actually distant galaxies outside our Milky Way, and demonstrated that galaxies are moving away from us at speeds proportional to their distance.',
     bio: 'American astronomer who revolutionized observational astronomy. The Hubble Space Telescope is named in his honor to commemorate his proof of the expanding cosmos.',
-    image: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=400&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/mars.png'
   },
   {
     name: 'Vera Rubin',
@@ -50,7 +50,7 @@ const scientistsData: Scientist[] = [
     discovery: 'Observational Evidence for Dark Matter',
     contribution: 'Measured the flat rotation curves of spiral galaxies, proving that stars in the outer margins orbit as fast as those in the center, verifying the presence of invisible Dark Matter.',
     bio: 'Astronomer who pioneered work on galaxy rotation rates. Her persistent measurements overcame massive academic skepticism and proved that 85% of the universe\'s mass is dark matter.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/mars.png'
   },
   {
     name: 'Stephen Hawking',
@@ -59,7 +59,7 @@ const scientistsData: Scientist[] = [
     discovery: 'Hawking Radiation & Singularity Theorems',
     contribution: 'Showed that black holes can radiate thermal energy due to quantum mechanics near the event horizon, eventually evaporating. Fused general relativity and quantum mechanics.',
     bio: 'Theoretical physicist and cosmologist who decoded the thermodynamics of black holes. His books brought quantum gravity concepts to millions globally.',
-    image: 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=400&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/mars.png'
   },
   {
     name: 'Cecilia Payne-Gaposchkin',
@@ -68,7 +68,7 @@ const scientistsData: Scientist[] = [
     discovery: 'Hydrogen/Helium Composition of Stars',
     contribution: 'Discovered that stars are composed primarily of hydrogen and helium. Related the spectral lines of stars to their physical temperatures using ionization physics.',
     bio: 'British-born American astronomer. Her 1925 doctoral thesis was described by colleagues as the most brilliant PhD thesis ever written in astronomy, redefining stellar chemistry.',
-    image: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?auto=format&fit=crop&w=400&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/mars.png'
   },
   {
     name: 'Carl Sagan',
@@ -77,7 +77,7 @@ const scientistsData: Scientist[] = [
     discovery: 'Planetary Atmospheres & Astrobiology',
     contribution: 'Discovered Venus\'s extreme surface temperature was due to a runaway greenhouse effect, and championed search for extraterrestrial intelligence (SETI). Created the Voyager Golden Record.',
     bio: 'Astronomer, astrophysicist, and supreme science communicator. His legacy is the popularization of cosmology as a beautiful, shared human adventure.',
-    image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=400&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/mars.png'
   }
 ];
 
