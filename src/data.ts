@@ -323,6 +323,7 @@ export const spaceObjects: SpaceObject[] = [
   themeColor: 'amber',
   bgGradient: 'from-amber-500/10 to-yellow-500/10'
 },
+
   {
   id: 'alpha-centauri',
 
@@ -1008,5 +1009,16 @@ export const spaceObjects: SpaceObject[] = [
       'Ultra dark aesthetic mode toggle and screenshots'
     ],
     scientificSignificance: 'Phoenix A represents the extreme upper limit of black hole sizes, testing models of black hole growth, accretion physics, and the thermodynamic feedback cycles of massive galaxy clusters.'
-  }
+  },
+  {
+    id: 'asteroids',
+    name: 'Asteroids',
+    category: 'small-bodies',
+    categoryLabel: 'Small Bodies',
+    embedPath: '/asteroids.html',
+    distance: 'Main Asteroid Belt',
+    mass: 'Millions of known bodies',
+    constellation: 'Solar System',
+    oneLiner: 'Ancient rocky remnants from the formation of the Solar System, preserving clues about its earliest history.'
+}
 ];
