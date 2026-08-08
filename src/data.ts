@@ -887,8 +887,8 @@ export const spaceObjects: SpaceObject[] = [
         distance: 'Main Asteroid Belt',
         mass: 'Millions of known bodies',
         constellation: 'Solar System',
-        oneLiner:
-            'Ancient rocky remnants from the formation of the Solar System, preserving clues about its earliest history.'
+        oneLiner:'Ancient rocky remnants from the formation of the Solar System, preserving clues about its earliest history.'
+        
     },
   {
     id: 'sagittarius-a',
