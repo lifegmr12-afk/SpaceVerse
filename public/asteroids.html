@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -4783,108 +4782,82 @@ PART 6-5
 UTILITY COMPONENTS
 ========================================================== */
 
-/* =========================
-READING PROGRESS BAR
-========================= */
+/* ==========================================================
+BACK TO TOP BUTTON
+========================================================== */
 
-#reading-progress{
+#backToTop {
 
-position:fixed;
-top:0;
-left:0;
+    position: fixed !important;
 
-width:0;
-height:4px;
+    right: 25px;
+    bottom: 25px;
 
-z-index:99999;
+    width: 54px;
+    height: 54px;
 
-background:linear-gradient(
-90deg,
-#39b7ff,
-#6ce5ff,
-#9a7dff
-);
+    border: none;
+    border-radius: 50%;
 
-transition:width .1s linear;
+    cursor: pointer;
 
-}
+    font-size: 22px;
+    font-weight: 700;
 
-/* =========================
-BACK TO TOP
-========================= */
+    color: #ffffff;
 
-#backToTop{
+    background: linear-gradient(
+        135deg,
+        #3a8dff,
+        #6bc8ff
+    );
 
-position:fixed;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, .30);
 
-right:25px;
-bottom:25px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-width:54px;
-height:54px;
+    transform: translateY(20px);
 
-border:none;
-border-radius:50%;
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease;
 
-cursor:pointer;
-
-font-size:22px;
-
-color:#fff;
-
-background:linear-gradient(
-135deg,
-#3a8dff,
-#6bc8ff
-);
-
-box-shadow:0 10px 25px rgba(0,0,0,.3);
-
-opacity:0;
-visibility:hidden;
-
-transform:translateY(20px);
-
-transition:.35s;
-
-z-index:9999;
+    z-index: 2147483647 !important;
 
 }
 
-#backToTop.show{
 
-opacity:1;
-visibility:visible;
+/* Hover */
 
-transform:translateY(0);
+#backToTop:hover {
 
-}
+    transform: translateY(-5px) scale(1.08);
 
-#backToTop:hover{
-
-transform:translateY(-5px) scale(1.08);
-
-box-shadow:0 14px 30px rgba(70,170,255,.45);
+    box-shadow:
+        0 14px 30px rgba(70, 170, 255, .45);
 
 }
 
-/* =========================
-MOBILE
-========================= */
 
-@media(max-width:768px){
+/* Mobile */
 
-#backToTop{
+@media (max-width: 768px) {
 
-right:18px;
-bottom:18px;
+    #backToTop {
 
-width:48px;
-height:48px;
+        right: 18px;
+        bottom: 18px;
 
-font-size:20px;
+        width: 48px;
+        height: 48px;
 
-}
+        font-size: 20px;
+
+    }
 
 }
 /* ==========================================================
@@ -6047,6 +6020,303 @@ transparent 55%,
 rgba(0,0,0,.22) 100%);
 
 mix-blend-mode:multiply;
+
+}
+/* ==========================================================
+SPACEVERSE TOPIC SEARCH
+========================================================== */
+
+.topic-search {
+    position: relative;
+    z-index: 10000;
+}
+
+.topic-search-button {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.06);
+
+    color: #fff;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+
+}
+
+.topic-search-button:hover {
+
+    transform: scale(1.08);
+
+    background: rgba(80,170,255,.16);
+
+    border-color: rgba(100,190,255,.5);
+
+}
+
+
+/* ==========================================================
+SEARCH PANEL
+========================================================== */
+
+.topic-search-panel {
+
+    position: absolute;
+
+    top: calc(100% + 12px);
+    right: 0;
+
+    width: min(420px, calc(100vw - 30px));
+
+    padding: 14px;
+
+    border: 1px solid rgba(120,190,255,.2);
+
+    border-radius: 18px;
+
+    background:
+        rgba(7,12,28,.96);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-10px)
+        scale(.98);
+
+    pointer-events: none;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+}
+
+.topic-search-panel.active {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+
+}
+
+
+/* ==========================================================
+SEARCH INPUT
+========================================================== */
+
+.topic-search-input-wrap {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 4px 10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.06);
+
+}
+
+.topic-search-icon {
+
+    font-size: 17px;
+
+    opacity: .75;
+
+}
+
+#topicSearchInput {
+
+    width: 100%;
+
+    height: 42px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-size: 15px;
+
+}
+
+#topicSearchInput::placeholder {
+
+    color:
+        rgba(220,230,245,.55);
+
+}
+
+#topicSearchClose {
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    opacity: .65;
+
+}
+
+#topicSearchClose:hover {
+
+    opacity: 1;
+
+}
+
+
+/* ==========================================================
+SEARCH RESULTS
+========================================================== */
+
+.topic-search-results {
+
+    max-height: 360px;
+
+    margin-top: 10px;
+
+    overflow-y: auto;
+
+}
+
+.topic-search-result {
+
+    display: block;
+
+    width: 100%;
+
+    padding: 12px 13px;
+
+    margin-bottom: 5px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    background: transparent;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+.topic-search-result:hover {
+
+    background:
+        rgba(80,170,255,.12);
+
+    transform: translateX(3px);
+
+}
+
+.topic-search-result-title {
+
+    display: block;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+}
+
+.topic-search-result-meta {
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+
+    color:
+        rgba(210,225,245,.55);
+
+}
+
+
+/* No results */
+
+.topic-search-empty {
+
+    padding: 20px;
+
+    text-align: center;
+
+    color:
+        rgba(220,230,245,.6);
+
+    font-size: 14px;
+
+}
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .topic-search-panel {
+
+        position: fixed;
+
+        top: 75px;
+
+        left: 15px;
+        right: 15px;
+
+        width: auto;
+
+    }
 
 }
 </style>
@@ -24518,91 +24788,135 @@ console.log("✅ SpaceVerse Asteroids loaded successfully.");
 PART 6-5
 UTILITY COMPONENTS
 Back-to-Top • Reading Progress • Mouse Parallax
-Place before </body>
 ========================================================== -->
 
 <!-- =========================
 READING PROGRESS BAR
 ========================= -->
 
-<div id="reading-progress"></div>
+<div id="reading-progress" aria-hidden="true"></div>
 
 <!-- =========================
 BACK TO TOP BUTTON
 ========================= -->
 
-<button id="backToTop" aria-label="Back to Top">
-⬆
+<button id="backToTop" type="button" aria-label="Back to Top">
+    <span aria-hidden="true">⬆</span>
 </button>
 
 <script>
 /* ==========================================================
-READING PROGRESS BAR
+PART 6-5 — UTILITY COMPONENTS
 ========================================================== */
 
-const progressBar = document.getElementById("reading-progress");
+(function () {
 
-window.addEventListener("scroll",()=>{
+    "use strict";
 
-const scrollTop = window.scrollY;
-const docHeight =
-document.documentElement.scrollHeight -
-window.innerHeight;
+    const progressBar = document.getElementById("reading-progress");
+    const backBtn = document.getElementById("backToTop");
 
-const progress = (scrollTop / docHeight) * 100;
+    function updateScrollFeatures() {
 
-progressBar.style.width = progress + "%";
+        const scrollTop =
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            0;
 
-});
+        /* Reading progress */
+        if (progressBar) {
 
-/* ==========================================================
-BACK TO TOP BUTTON
-========================================================== */
+            const scrollHeight =
+                document.documentElement.scrollHeight;
 
-document.addEventListener("DOMContentLoaded", () => {
+            const viewportHeight =
+                window.innerHeight;
 
-const backBtn = document.getElementById("backToTop");
+            const scrollable =
+                Math.max(scrollHeight - viewportHeight, 1);
 
-if(!backBtn) return;
+            const progress =
+                Math.min(
+                    Math.max((scrollTop / scrollable) * 100, 0),
+                    100
+                );
 
-window.addEventListener("scroll", () => {
+            progressBar.style.width = progress + "%";
+        }
 
-backBtn.classList.toggle("show", window.scrollY > 150);
+        /* Back to top */
+        if (backBtn) {
 
-});
+            const visible = scrollTop > 150;
 
-backBtn.addEventListener("click", () => {
+            backBtn.classList.toggle("is-visible", visible);
 
-window.scrollTo({
+            /* Direct fallback so another stylesheet cannot prevent it */
+            backBtn.style.opacity = visible ? "1" : "0";
+            backBtn.style.visibility = visible ? "visible" : "hidden";
+            backBtn.style.pointerEvents = visible ? "auto" : "none";
+            backBtn.style.transform =
+                visible ? "translateY(0)" : "translateY(20px)";
+        }
+    }
 
-top:0,
-behavior:"smooth"
+    if (backBtn) {
 
-});
+        backBtn.addEventListener("click", function () {
 
-});
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
 
-});
+        });
 
-/* ==========================================================
-MOUSE PARALLAX
-========================================================== */
+    }
 
-const hero = document.querySelector(".hero");
+    window.addEventListener(
+        "scroll",
+        updateScrollFeatures,
+        { passive: true }
+    );
 
-if(hero){
+    window.addEventListener(
+        "resize",
+        updateScrollFeatures,
+        { passive: true }
+    );
 
-document.addEventListener("mousemove",(e)=>{
+    updateScrollFeatures();
 
-const x=(e.clientX/window.innerWidth-0.5)*12;
-const y=(e.clientY/window.innerHeight-0.5)*12;
 
-hero.style.backgroundPosition=`calc(50% + ${x}px) calc(50% + ${y}px)`;
+    /* ======================================================
+    MOUSE PARALLAX
+    ====================================================== */
 
-});
+    const hero = document.querySelector(".hero");
 
-}
+    if (
+        hero &&
+        window.matchMedia &&
+        window.matchMedia("(pointer: fine)").matches
+    ) {
+
+        document.addEventListener("mousemove", function (event) {
+
+            const x =
+                (event.clientX / window.innerWidth - 0.5) * 12;
+
+            const y =
+                (event.clientY / window.innerHeight - 0.5) * 12;
+
+            hero.style.backgroundPosition =
+                `calc(50% + ${x}px) calc(50% + ${y}px)`;
+        });
+    }
+
+})();
 </script>
+
 <!-- ==========================================================
 PART 6-6
 SPACEVERSE FOOTER
@@ -24739,5 +25053,59 @@ document.getElementById("header")
 });
 
 </script>
+<!-- =========================
+SPACEVERSE TOPIC SEARCH
+========================= -->
+
+<div class="topic-search">
+
+    <button
+        id="topicSearchButton"
+        class="topic-search-button"
+        aria-label="Search topics"
+        title="Search topics"
+        type="button"
+    >
+        🔍
+    </button>
+
+    <div
+        id="topicSearchPanel"
+        class="topic-search-panel"
+        aria-hidden="true"
+    >
+
+        <div class="topic-search-input-wrap">
+
+            <span class="topic-search-icon">🔍</span>
+
+            <input
+                id="topicSearchInput"
+                type="search"
+                placeholder="Search asteroid topics..."
+                autocomplete="off"
+                aria-label="Search asteroid topics"
+            >
+
+            <button
+                id="topicSearchClose"
+                type="button"
+                aria-label="Close search"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            id="topicSearchResults"
+            class="topic-search-results"
+        ></div>
+
+    </div>
+
+</div>
+</main>
+
 </body>
 </html>
