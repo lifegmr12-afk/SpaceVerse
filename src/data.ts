@@ -878,6 +878,17 @@ export const spaceObjects: SpaceObject[] = [
     'Kepler-90 is one of the best-studied multiple-planet systems discovered by the Kepler mission.'
   ]
 },
+{
+    id: 'asteroids',
+    name: 'Asteroids',
+    category: 'small-bodies',
+    categoryLabel: 'Small Bodies',
+    embedPath: '/asteroids.html',
+    distance: 'Main Asteroid Belt',
+    mass: 'Millions of known bodies',
+    constellation: 'Solar System',
+    oneLiner: 'Ancient rocky remnants from the formation of the Solar System, preserving clues about its earliest history.'
+},
   {
     id: 'sagittarius-a',
     name: 'Sagittarius A*',
@@ -1010,15 +1021,4 @@ export const spaceObjects: SpaceObject[] = [
     ],
     scientificSignificance: 'Phoenix A represents the extreme upper limit of black hole sizes, testing models of black hole growth, accretion physics, and the thermodynamic feedback cycles of massive galaxy clusters.'
   },
-  {
-    id: 'asteroids',
-    name: 'Asteroids',
-    category: 'small-bodies',
-    categoryLabel: 'Small Bodies',
-    embedPath: '/asteroids.html',
-    distance: 'Main Asteroid Belt',
-    mass: 'Millions of known bodies',
-    constellation: 'Solar System',
-    oneLiner: 'Ancient rocky remnants from the formation of the Solar System, preserving clues about its earliest history.'
-}
 ];
