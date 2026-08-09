@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Search, Layers, Globe, ShieldAlert, Image } from 'lucide-react';
+import {
+  Compass,
+  Search,
+  Layers,
+  Globe,
+  ShieldAlert,
+  Image,
+  Orbit
+} from 'lucide-react';
 import { SpaceObjectCategory } from '../types';
 
 interface NavbarProps {
