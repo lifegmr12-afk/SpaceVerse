@@ -7078,6 +7078,13 @@ MOBILE
     }
 
 }
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 100px;
+}
 </style>
 </head>
 
@@ -27105,6 +27112,264 @@ document.addEventListener("DOMContentLoaded", () => {
 
             history.replaceState(null, "", targetId);
         });
+
+    });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /*
+    ============================================
+    ASTEROIDS SEARCH
+    ============================================
+    */
+
+    const searchButton =
+        document.getElementById("asteroidSearchButton");
+
+    const searchPanel =
+        document.getElementById("asteroidSearchPanel");
+
+    const searchInput =
+        document.getElementById("asteroidSearchInput");
+
+    const searchResults =
+        document.getElementById("asteroidSearchResults");
+
+    const searchClose =
+        document.getElementById("asteroidSearchClose");
+
+
+    if (!searchButton || !searchPanel || !searchInput || !searchResults) {
+        console.warn("Asteroids search elements not found.");
+        return;
+    }
+
+
+    /*
+    OPEN SEARCH
+    */
+
+    searchButton.addEventListener("click", () => {
+
+        searchPanel.classList.add("active");
+
+        setTimeout(() => {
+            searchInput.focus();
+        }, 100);
+
+    });
+
+
+    /*
+    CLOSE SEARCH
+    */
+
+    if (searchClose) {
+
+        searchClose.addEventListener("click", () => {
+
+            searchPanel.classList.remove("active");
+
+            searchInput.value = "";
+
+            searchResults.innerHTML = "";
+
+        });
+
+    }
+
+
+    /*
+    BUILD TOPIC LIST
+    */
+
+    const topics = [];
+
+
+    /*
+    Find all headings and important sections
+    */
+
+    document
+        .querySelectorAll(
+            "section[id], h1, h2, h3, h4"
+        )
+        .forEach(element => {
+
+            const text =
+                element.textContent.trim();
+
+            if (!text) return;
+
+
+            let targetId =
+                element.id;
+
+
+            /*
+            If heading doesn't have an ID,
+            find its parent section.
+            */
+
+            if (!targetId) {
+
+                const parentSection =
+                    element.closest("section[id]");
+
+                if (parentSection) {
+                    targetId = parentSection.id;
+                }
+
+            }
+
+
+            if (!targetId) return;
+
+
+            /*
+            Prevent duplicate topics
+            */
+
+            if (
+                topics.some(
+                    topic => topic.id === targetId
+                )
+            ) {
+                return;
+            }
+
+
+            topics.push({
+                id: targetId,
+                title: text
+            });
+
+        });
+
+
+    /*
+    SEARCH
+    */
+
+    searchInput.addEventListener("input", () => {
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        searchResults.innerHTML = "";
+
+
+        if (!query) {
+            return;
+        }
+
+
+        const matches =
+            topics.filter(topic =>
+                topic.title
+                    .toLowerCase()
+                    .includes(query)
+            );
+
+
+        /*
+        NO RESULTS
+        */
+
+        if (matches.length === 0) {
+
+            searchResults.innerHTML = `
+                <div class="search-no-results">
+                    No asteroid topic found.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        /*
+        RESULTS
+        */
+
+        matches.forEach(topic => {
+
+            const result =
+                document.createElement("button");
+
+            result.type = "button";
+
+            result.className =
+                "asteroid-search-result";
+
+
+            result.innerHTML = `
+                <strong>${topic.title}</strong>
+                <span>→ Jump to topic</span>
+            `;
+
+
+            result.addEventListener("click", () => {
+
+                const target =
+                    document.getElementById(topic.id);
+
+
+                if (!target) return;
+
+
+                searchPanel.classList.remove("active");
+
+
+                searchInput.value = "";
+
+
+                searchResults.innerHTML = "";
+
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+
+                history.replaceState(
+                    null,
+                    "",
+                    "#" + topic.id
+                );
+
+            });
+
+
+            searchResults.appendChild(result);
+
+        });
+
+    });
+
+
+    /*
+    ESC KEY CLOSES SEARCH
+    */
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+
+            searchPanel.classList.remove("active");
+
+            searchInput.value = "";
+
+            searchResults.innerHTML = "";
+
+        }
 
     });
 
