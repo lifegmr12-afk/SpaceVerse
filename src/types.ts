@@ -1,4 +1,4 @@
-export type SpaceObjectCategory = 'all' | 'galaxy' | 'stellar-system' | 'black-hole' | 'gallery' | 'asteroids';
+export type SpaceObjectCategory = 'all' | 'galaxy' | 'stellar-system' | 'black-hole' | 'gallery';
 
 export interface QuickStat {
   label: string;
