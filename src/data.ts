@@ -879,42 +879,6 @@ export const spaceObjects: SpaceObject[] = [
   ]
 },
   {
-    id: 'asteroids',
-    name: 'Asteroids',
-    category: 'asteroids',
-    categoryLabel: 'Asteroids',
-    embedPath: '/asteroids.html',
-    distance: 'Main Asteroid Belt',
-    mass: 'Millions of known bodies',
-    constellation: 'Solar System',
-    oneLiner: 'Ancient rocky remnants from the formation of the Solar System, preserving clues about its earliest history.',
-    description: 'Asteroids are rocky bodies that orbit the Sun, primarily found within the Main Asteroid Belt between Mars and Jupiter. They range in size from tiny dust particles to dwarf planets like Ceres and provide insight into the early conditions of the Solar System.',
-    quickStats: [
-      { label: 'Primary Location', value: 'Main Asteroid Belt' },
-      { label: 'Estimated Number', value: 'Millions of known bodies' },
-      { label: 'Largest Object', value: 'Ceres' },
-      { label: 'Composition', value: 'Rocky, metallic, and carbonaceous' },
-      { label: 'Typical Size', value: 'Meters to hundreds of kilometers' },
-      { label: 'Notable Families', value: 'Ceres, Vesta, Pallas, Hygiea' }
-    ],
-    trivia: [
-      'The Main Asteroid Belt contains enough mass to form a small planet, but its material never coalesced due to Jupiter’s gravity.',
-      'Ceres is the only dwarf planet located in the asteroid belt.',
-      'Some asteroids are binary systems with a small moon orbiting a larger body.',
-      'Asteroids occasionally enter Earth-crossing orbits and become meteors when they enter the atmosphere.'
-    ],
-    themeColor: 'amber',
-    bgGradient: 'from-amber-500/10 to-orange-500/10',
-    interactiveFeatures: [
-      'Belt distribution map',
-      'Asteroid size comparison',
-      'Orbit and family selector',
-      'Composition visualization',
-      'Impact probability simulator'
-    ],
-    scientificSignificance: 'Studying asteroids reveals the chemical makeup and physical conditions of the early Solar System, offering a record of planetary formation and the potential for future resource utilization.'
-  },
-  {
     id: 'sagittarius-a',
     name: 'Sagittarius A*',
     category: 'black-hole',
