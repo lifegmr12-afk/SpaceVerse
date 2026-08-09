@@ -79,23 +79,36 @@ export default function Navbar({
           </div>
 
           {/* Navigation Categories */}
-          <nav className="hidden md:flex items-center gap-1">
-            {categories.map((cat) => (
-              <button
-                key={cat.value}
-                id={`nav-cat-${cat.value}`}
-                onClick={() => setActiveCategory(cat.value)}
-                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 ${
-                  activeCategory === cat.value
-                    ? 'bg-white/10 text-white shadow-inner shadow-white/5 border border-white/10'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent'
-                }`}
-              >
-                {cat.icon}
-                {cat.label}
-              </button>
-            ))}
-          </nav>
+          <<nav className="hidden md:flex items-center gap-1">
+
+  {categories.map((cat) => (
+    <button
+      key={cat.value}
+      id={`nav-cat-${cat.value}`}
+      onClick={() => setActiveCategory(cat.value)}
+      className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-300 ${
+        activeCategory === cat.value
+          ? 'bg-white/10 text-white shadow-inner shadow-white/5 border border-white/10'
+          : 'text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent'
+      }`}
+    >
+      {cat.icon}
+      {cat.label}
+    </button>
+  ))}
+
+  {/* ASTEROIDS */}
+  <button
+    onClick={() => {
+      window.location.href = '/asteroids.html';
+    }}
+    className="flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent transition-all duration-300"
+  >
+    <Orbit className="w-4 h-4" />
+    Asteroids
+  </button>
+
+</nav>
 
           {/* Search Bar & Telemetry Section */}
           <div className="flex items-center gap-4 flex-1 md:flex-initial justify-end">
