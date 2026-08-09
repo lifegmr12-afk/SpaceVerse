@@ -27068,6 +27068,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    /*
+    ============================================
+    ASTEROIDS INTERNAL NAVIGATION
+    ============================================
+    */
+
+    const navLinks = document.querySelectorAll(
+        'a[href^="#types"], a[href^="#largest"], a[href^="#gallery"], a[href^="#faq"]'
+    );
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", function(event) {
+
+            const targetId = this.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) {
+                console.warn("Asteroids section not found:", targetId);
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+            history.replaceState(null, "", targetId);
+        });
+
+    });
+
+});
+</script>
 </main>
 
 </body>
