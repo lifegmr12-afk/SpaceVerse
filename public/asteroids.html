@@ -26901,7 +26901,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     /* ======================================================
        ESCAPE HTML
     ====================================================== */
@@ -27033,6 +27032,38 @@ document.addEventListener("DOMContentLoaded", function () {
         uniqueIndex.length +
         " topics."
     );
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId = this.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) {
+                console.warn("Asteroids navigation target not found:", targetId);
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+            history.replaceState(null, "", targetId);
+        });
+
+    });
 
 });
 </script>
