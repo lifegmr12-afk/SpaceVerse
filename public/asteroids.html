@@ -7085,6 +7085,219 @@ html {
 section[id] {
     scroll-margin-top: 100px;
 }
+/* ============================================
+   ASTEROIDS SEARCH PANEL
+============================================ */
+
+.asteroid-search-panel {
+    position: fixed;
+
+    top: 80px;
+    right: 30px;
+
+    width: min(420px, calc(100vw - 40px));
+
+    max-height: 70vh;
+
+    background: rgba(8, 10, 20, 0.97);
+
+    border: 1px solid rgba(0, 200, 255, 0.35);
+
+    border-radius: 18px;
+
+    padding: 14px;
+
+    z-index: 99999;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        visibility 0.2s ease;
+
+    overflow-y: auto;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+
+.asteroid-search-panel.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
+
+
+/* Search input */
+
+.asteroid-search-box {
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+
+#asteroidSearchInput {
+
+    flex: 1;
+
+    min-width: 0;
+
+    height: 46px;
+
+    padding: 0 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(0, 200, 255, 0.4);
+
+    background: #11141f;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+
+#asteroidSearchInput:focus {
+
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 0 2px rgba(0, 217, 255, 0.12);
+}
+
+
+#asteroidSearchClose {
+
+    width: 46px;
+
+    height: 46px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background: #171923;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 22px;
+}
+
+
+/* Results */
+
+#asteroidSearchResults {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.asteroid-search-result {
+
+    width: 100%;
+
+    text-align: left;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: #171a27;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.asteroid-search-result:hover {
+
+    background: #202538;
+
+    border-color: rgba(0, 217, 255, 0.4);
+
+    transform: translateY(-1px);
+}
+
+
+.asteroid-search-result strong {
+
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+
+.asteroid-search-result span {
+
+    display: block;
+
+    color: #8ea0b9;
+
+    font-size: 12px;
+}
+
+
+.search-no-results {
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: #8ea0b9;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .asteroid-search-panel {
+
+        top: 70px;
+
+        right: 10px;
+
+        width: calc(100vw - 20px);
+
+        max-height: 75vh;
+    }
+
+}
 </style>
 </head>
 
