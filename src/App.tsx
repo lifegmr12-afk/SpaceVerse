@@ -204,7 +204,7 @@ export default function App() {
 
   const toggleFavorite = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    setFavorites(prev => 
+    setFavorites((prev): any => 
       prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]
     );
   };
@@ -278,74 +278,6 @@ export default function App() {
     { id: 'star-systems-link', label: 'Star Systems', icon: <Sun className="w-4 h-4" />, action: () => { setCurrentTab('explore'); setActiveCategory('stellar-system'); setSearchQuery(''); } },
     { id: 'exoplanets-link', label: 'Exoplanets', icon: <Globe className="w-4 h-4" />, action: () => { setCurrentTab('explore'); setActiveCategory('stellar-system'); setSearchQuery('kepler-90'); } },
     { id: 'black-holes-link', label: 'Black Holes', icon: <Zap className="w-4 h-4" />, action: () => { setCurrentTab('explore'); setActiveCategory('black-hole'); setSearchQuery(''); } },
-    // Sidebar Menu Items definition
-const menuItems = [
-  { 
-    id: 'home', 
-    label: 'Home', 
-    icon: <Home className="w-4 h-4" /> 
-  },
-
-  { 
-    id: 'explore', 
-    label: 'Explore', 
-    icon: <Compass className="w-4 h-4" /> 
-  },
-
-  { 
-    id: 'solar-system-link', 
-    label: 'Solar System', 
-    icon: <Orbit className="w-4 h-4" />, 
-    action: () => { 
-      setCurrentTab('explore'); 
-      setActiveCategory('stellar-system'); 
-      setSearchQuery(''); 
-    } 
-  },
-
-  { 
-    id: 'galaxies-link', 
-    label: 'Galaxies', 
-    icon: <Layers className="w-4 h-4" />, 
-    action: () => { 
-      setCurrentTab('explore'); 
-      setActiveCategory('galaxy'); 
-      setSearchQuery(''); 
-    } 
-  },
-
-  { 
-    id: 'star-systems-link', 
-    label: 'Star Systems', 
-    icon: <Sun className="w-4 h-4" />, 
-    action: () => { 
-      setCurrentTab('explore'); 
-      setActiveCategory('stellar-system'); 
-      setSearchQuery(''); 
-    } 
-  },
-
-  { 
-    id: 'exoplanets-link', 
-    label: 'Exoplanets', 
-    icon: <Globe className="w-4 h-4" />, 
-    action: () => { 
-      setCurrentTab('explore'); 
-      setActiveCategory('stellar-system'); 
-      setSearchQuery('kepler-90'); 
-    } 
-  },
-
-  { 
-    id: 'black-holes-link', 
-    label: 'Black Holes', 
-    icon: <Zap className="w-4 h-4" />, 
-    action: () => { 
-      setCurrentTab('explore'); 
-      setActiveCategory('black-hole'); 
-      setSearchQuery(''); 
-    } 
-  },
 
   // ASTEROIDS
   {
