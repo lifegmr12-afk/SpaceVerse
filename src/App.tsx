@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { spaceObjects } from './data';
@@ -12,6 +13,16 @@ import {
   Check, ExternalLink, Eye, Star, Menu, ArrowRight, Clock, Sparkles, Cpu, 
   ArrowUpRight, Activity, Share2, BookOpen, AlertCircle
 } from 'lucide-react';
+
+declare module 'react/jsx-runtime';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
 
 // Scientists Data
 interface Scientist {
