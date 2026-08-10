@@ -49,6 +49,10 @@ interface Scientist {
   majorDiscoveries: string[];
   spaceFindings: string[];
   methods: string[];
+  discoveryYears?: string[];
+  relatedObjects?: string[];
+  relatedMissions?: string[];
+  evidence?: string[];
   whyItMatters: string;
   laterConfirmation: string[];
   legacy: string;
@@ -64,7 +68,7 @@ const scientistsData: Scientist[] = [
       'Proposed that Earth and the other planets orbit the Sun rather than placing Earth at the center of the universe.',
     bio:
       'Polish astronomer whose heliocentric model transformed humanity’s understanding of the Solar System and helped begin the Scientific Revolution.',
-    image: 'https://space-verse-alpha.vercel.app/images/Nicolaus_Copernicus.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Nicolaus_Copernicus.png',
 
     field: 'Astronomy & Cosmology',
     nationality: 'Polish',
@@ -130,7 +134,7 @@ const scientistsData: Scientist[] = [
       'Produced exceptionally accurate naked-eye measurements of stars and planets that later enabled Johannes Kepler to discover the laws of planetary motion.',
     bio:
       'Danish astronomer who constructed sophisticated instruments and accumulated some of the most precise astronomical observations available before the invention of the telescope.',
-    image: 'https://space-verse-alpha.vercel.app/images/Tycho_Brahe.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Tycho_Brahe.png',
 
     field: 'Observational Astronomy',
     nationality: 'Danish',
@@ -197,7 +201,7 @@ const scientistsData: Scientist[] = [
       'Used the telescope to observe mountains on the Moon, sunspots, the phases of Venus, Jupiter’s four largest moons, and countless previously unseen stars.',
     bio:
       'Italian astronomer, physicist, and mathematician whose telescopic observations revolutionized astronomy and provided major evidence for the Copernican model.',
-    image: 'https://space-verse-alpha.vercel.app/images/Galileo_Galilei.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Galileo_Galilei.png',
 
     field: 'Astronomy & Physics',
     nationality: 'Italian',
@@ -274,7 +278,7 @@ const scientistsData: Scientist[] = [
       'Used Tycho Brahe’s observations to discover that planets travel in elliptical orbits and move at varying speeds according to precise mathematical laws.',
     bio:
       'German mathematician and astronomer whose laws of planetary motion transformed astronomy from geometric description into predictive mathematical science.',
-    image: 'https://space-verse-alpha.vercel.app/images/Johannes_Kepler.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Johannes_Kepler.png',
 
     field: 'Astronomy & Mathematics',
     nationality: 'German',
@@ -343,7 +347,7 @@ const scientistsData: Scientist[] = [
       'Developed the laws of motion and universal gravitation, providing the physical explanation for planetary orbits and many other celestial motions.',
     bio:
       'English physicist and mathematician whose laws of motion and universal gravitation established the foundation of classical celestial mechanics.',
-    image: 'https://space-verse-alpha.vercel.app/images/Isaac_Newton.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Isaac_Newton.png',
 
     field: 'Physics, Mathematics & Astronomy',
     nationality: 'English',
@@ -409,7 +413,7 @@ const scientistsData: Scientist[] = [
       'Discovered the relationship between the pulsation period and intrinsic brightness of Cepheid variable stars, creating a powerful cosmic distance-measuring tool.',
     bio:
       'American astronomer whose work enabled astronomers to measure distances far beyond the immediate stellar neighborhood.',
-    image: 'https://space-verse-alpha.vercel.app/images/Henrietta_Leavitt.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Henrietta_Leavitt.png',
 
     field: 'Stellar Astronomy & Cosmology',
     nationality: 'American',
@@ -476,7 +480,7 @@ const scientistsData: Scientist[] = [
       'Developed major theories of stellar interiors and helped demonstrate the validity of Einstein’s general relativity through observations of the 1919 solar eclipse.',
     bio:
       'British astrophysicist who connected theoretical physics with observations of stars and played an important role in the early testing of general relativity.',
-    image: 'https://space-verse-alpha.vercel.app/images/Arthur_Eddington.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Arthur_Eddington.png',
 
     field: 'Astrophysics & Relativity',
     nationality: 'British',
@@ -542,7 +546,7 @@ const scientistsData: Scientist[] = [
       'Developed general relativity, describing gravity as the curvature of spacetime produced by mass and energy.',
     bio:
       'German-born theoretical physicist whose theories transformed our understanding of space, time, gravity, light, and the universe.',
-    image: 'https://space-verse-alpha.vercel.app/images/Albert_Einstein.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Albert_Einstein.png',
 
     field: 'Theoretical Physics & Cosmology',
     nationality: 'German-born Swiss-American',
@@ -618,7 +622,7 @@ const scientistsData: Scientist[] = [
       'Established that stars are composed predominantly of hydrogen and helium and connected stellar spectra with temperature and ionization.',
     bio:
       'British-born American astronomer whose research fundamentally changed our understanding of stellar composition.',
-    image: 'https://space-verse-alpha.vercel.app/images/Cecilia_Payne-Gaposchkin.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Cecilia_Payne-Gaposchkin.png',
 
     field: 'Stellar Astrophysics',
     nationality: 'British-born American',
@@ -684,7 +688,7 @@ const scientistsData: Scientist[] = [
       'Demonstrated that a white dwarf cannot remain stable above a critical mass of roughly 1.4 times the mass of the Sun.',
     bio:
       'Indian-American astrophysicist whose theoretical work explained important aspects of stellar evolution and the fate of massive stars.',
-    image: 'https://space-verse-alpha.vercel.app/images/Subrahmanyan_Chandrasekhar.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Subrahmanyan_Chandrasekhar.png',
 
     field: 'Astrophysics & Stellar Evolution',
     nationality: 'Indian-American',
@@ -752,7 +756,7 @@ const scientistsData: Scientist[] = [
       'Independently derived an expanding-universe solution from general relativity and developed an early version of the idea that the universe began from a much denser initial state.',
     bio:
       'Belgian physicist, astronomer, and priest who made foundational contributions to modern cosmology.',
-    image: 'https://space-verse-alpha.vercel.app/images/Georges_Lemaitre.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Georges_Lemaitre.png',
 
     field: 'Cosmology & General Relativity',
     nationality: 'Belgian',
@@ -819,7 +823,7 @@ const scientistsData: Scientist[] = [
       'Used galaxy velocities in the Coma Cluster to infer that far more mass was present than could be seen in visible galaxies.',
     bio:
       'Swiss-American astronomer and physicist who pioneered the study of supernovae, galaxy clusters, and unseen mass.',
-    image: 'https://space-verse-alpha.vercel.app/images/Fritz_Zwicky.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Fritz_Zwicky.png',
 
     field: 'Astronomy & Astrophysics',
     nationality: 'Swiss-American',
@@ -889,7 +893,7 @@ const scientistsData: Scientist[] = [
       'Demonstrated that many objects once called nebulae were separate galaxies and found a relationship between galaxy distance and recession velocity.',
     bio:
       'American astronomer whose observations transformed humanity’s understanding of the scale of the universe.',
-    image: 'https://space-verse-alpha.vercel.app/images/Edwin_Hubble.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Edwin_Hubble.png',
 
     field: 'Observational Astronomy & Cosmology',
     nationality: 'American',
@@ -959,7 +963,7 @@ const scientistsData: Scientist[] = [
       'Measured the rotation of spiral galaxies and found that their outer regions rotate much faster than expected from visible matter alone.',
     bio:
       'American astronomer whose observations provided some of the strongest evidence for dark matter on galactic scales.',
-    image: 'https://space-verse-alpha.vercel.app/images/Vera_Rubin.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Vera_Rubin.png',
 
     field: 'Observational Cosmology',
     nationality: 'American',
@@ -1023,7 +1027,7 @@ const scientistsData: Scientist[] = [
       'Predicted that black holes should emit thermal radiation because of quantum effects near their event horizons.',
     bio:
       'British theoretical physicist and cosmologist whose work connected black-hole physics, quantum mechanics, thermodynamics, and cosmology.',
-    image: 'https://space-verse-alpha.vercel.app/images/Stephen_Hawking.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Stephen_Hawking.png',
 
     field: 'Theoretical Physics & Cosmology',
     nationality: 'British',
@@ -1091,7 +1095,7 @@ const scientistsData: Scientist[] = [
       'Developed powerful mathematical methods showing that gravitational collapse can inevitably produce singularities under realistic conditions.',
     bio:
       'British mathematical physicist whose work transformed the mathematical understanding of black holes and spacetime.',
-    image: 'https://space-verse-alpha.vercel.app/images/Roger_Penrose.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Roger_Penrose.png',
 
     field: 'Mathematical Physics & Relativity',
     nationality: 'British',
@@ -1159,7 +1163,7 @@ const scientistsData: Scientist[] = [
       'Made major contributions to general relativity and popularized the term “black hole.” He also developed influential ideas about spacetime, quantum gravity, and the nature of physical reality.',
     bio:
       'American theoretical physicist who played a major role in developing modern black-hole physics.',
-    image: 'https://space-verse-alpha.vercel.app/images/John_Wheeler.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/John_Wheeler.png',
 
     field: 'Theoretical Physics & Relativity',
     nationality: 'American',
@@ -1224,7 +1228,7 @@ const scientistsData: Scientist[] = [
       'Made major contributions to planetary science, atmospheric modeling, the study of Venus and Mars, and the scientific search for extraterrestrial life.',
     bio:
       'American astronomer, planetary scientist, astrophysicist, and science communicator who helped establish modern planetary science and popularized the search for life beyond Earth.',
-    image: 'https://space-verse-alpha.vercel.app/images/Carl_Sagan.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Carl_Sagan.png',
 
     field: 'Planetary Science & Astrobiology',
     nationality: 'American',
@@ -1297,7 +1301,7 @@ const scientistsData: Scientist[] = [
       'Co-discovered 51 Pegasi b, the first confirmed exoplanet orbiting a Sun-like star.',
     bio:
       'Swiss astronomer whose discovery of the first confirmed exoplanet around a Sun-like star opened a new era of exoplanet astronomy.',
-    image: 'https://space-verse-alpha.vercel.app/images/Michel_Mayor.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Michel_Mayor.png',
 
     field: 'Exoplanet Astronomy',
     nationality: 'Swiss',
@@ -1361,7 +1365,7 @@ const scientistsData: Scientist[] = [
       'Co-discovered the first confirmed exoplanet orbiting a Sun-like star together with Michel Mayor.',
     bio:
       'Swiss astronomer whose work helped establish exoplanet science as a major branch of astronomy.',
-    image: 'https://space-verse-alpha.vercel.app/images/Didier_Queloz.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Didier_Queloz.png',
 
     field: 'Exoplanet Science',
     nationality: 'Swiss',
@@ -1422,7 +1426,7 @@ const scientistsData: Scientist[] = [
       'Co-discovered planets orbiting the pulsar PSR B1257+12, providing the first confirmed evidence of planets beyond the Solar System.',
     bio:
       'Polish astronomer whose pulsar observations revealed one of the first known planetary systems beyond our Solar System.',
-    image: 'https://space-verse-alpha.vercel.app/images/Aleksander_Wolszczan.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Aleksander_Wolszczan.png',
 
     field: 'Radio Astronomy & Exoplanets',
     nationality: 'Polish',
@@ -1481,7 +1485,7 @@ const scientistsData: Scientist[] = [
       'Developed theoretical methods for studying exoplanet atmospheres and identifying possible chemical signatures of life.',
     bio:
       'Canadian-American astrophysicist known for pioneering work on exoplanets, planetary atmospheres, and the search for habitable worlds.',
-    image: 'https://space-verse-alpha.vercel.app/images/Sara_Seager.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Sara_Seager.png',
 
     field: 'Exoplanets & Astrobiology',
     nationality: 'Canadian-American',
@@ -1548,7 +1552,7 @@ const scientistsData: Scientist[] = [
       'Led observations of stars orbiting the center of the Milky Way and provided compelling evidence for a supermassive black hole known as Sagittarius A*.',
     bio:
       'American astronomer whose high-resolution observations of the Galactic Center transformed our understanding of the object at the heart of the Milky Way.',
-    image: 'https://space-verse-alpha.vercel.app/images/Andrea_Ghez.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Andrea_Ghez.png',
 
     field: 'Observational Astronomy & Black Holes',
     nationality: 'American',
@@ -1613,7 +1617,7 @@ const scientistsData: Scientist[] = [
       'Led independent long-term observations of stars orbiting Sagittarius A*, providing compelling evidence for a supermassive black hole at the center of the Milky Way.',
     bio:
       'German astrophysicist whose infrared observations of the Galactic Center helped establish the presence of a supermassive black hole at the heart of the Milky Way.',
-    image: 'https://space-verse-alpha.vercel.app/images/Reinhard_Genzel.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Reinhard_Genzel.png',
 
     field: 'Infrared Astronomy & Black Holes',
     nationality: 'German',
@@ -1679,7 +1683,7 @@ const scientistsData: Scientist[] = [
       'Led the Event Horizon Telescope collaboration that produced the first image of a black-hole shadow, M87*.',
     bio:
       'American astronomer and astrophysicist who helped develop the global Very Long Baseline Interferometry network required to image black-hole-scale structures.',
-    image: 'https://space-verse-alpha.vercel.app/images/Sheperd_Doeleman.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Sheperd_Doeleman.png',
 
     field: 'Radio Astronomy & Black-Hole Imaging',
     nationality: 'American',
@@ -1744,7 +1748,7 @@ const scientistsData: Scientist[] = [
       'Developed algorithms and computational techniques used in the Event Horizon Telescope imaging process.',
     bio:
       'American computer scientist and astronomer whose work contributed to reconstructing images from the sparse data collected by the global EHT network.',
-    image: 'https://space-verse-alpha.vercel.app/images/Katie_Bouman.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Katie_Bouman.png',
 
     field: 'Computational Imaging & Astronomy',
     nationality: 'American',
@@ -1807,7 +1811,7 @@ const scientistsData: Scientist[] = [
       'Developed foundational concepts and technologies for laser interferometers capable of detecting extremely small changes in distance caused by gravitational waves.',
     bio:
       'German-American physicist and one of the principal architects of the LIGO gravitational-wave detector.',
-    image: 'https://space-verse-alpha.vercel.app/images/Rainer_Weiss.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Rainer_Weiss.png',
 
     field: 'Experimental Physics & Gravitational Waves',
     nationality: 'German-American',
@@ -1871,7 +1875,7 @@ const scientistsData: Scientist[] = [
       'Made major theoretical contributions to gravitational waves, black holes, relativistic astrophysics, and the predictions needed to interpret gravitational-wave signals.',
     bio:
       'American theoretical physicist who helped establish the theoretical framework behind gravitational-wave astronomy.',
-    image: 'https://space-verse-alpha.vercel.app/images/Kip_Thorne.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Kip_Thorne.png',
 
     field: 'Relativity & Gravitational-Wave Physics',
     nationality: 'American',
@@ -1937,7 +1941,7 @@ const scientistsData: Scientist[] = [
       'Led major organizational and engineering efforts that transformed LIGO from a challenging experimental concept into a functioning observatory capable of detecting gravitational waves.',
     bio:
       'American experimental physicist who played a crucial leadership role in building the Advanced LIGO detector.',
-    image: 'https://space-verse-alpha.vercel.app/images/Barry_Barish.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Barry_Barish.png',
 
     field: 'Experimental Physics',
     nationality: 'American',
@@ -1999,7 +2003,7 @@ const scientistsData: Scientist[] = [
       'Led a team studying distant Type Ia supernovae and found evidence that cosmic expansion is accelerating rather than slowing under gravity alone.',
     bio:
       'American astrophysicist whose supernova observations revealed the unexpected acceleration of the universe.',
-    image: 'https://space-verse-alpha.vercel.app/images/Saul_Perlmutter.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Saul_Perlmutter.png',
 
     field: 'Cosmology',
     nationality: 'American',
@@ -2063,7 +2067,7 @@ const scientistsData: Scientist[] = [
       'Led the High-Z Supernova Search Team, independently discovering that the expansion of the universe is accelerating.',
     bio:
       'Australian-American astrophysicist whose supernova research independently revealed cosmic acceleration.',
-    image: 'https://space-verse-alpha.vercel.app/images/Brian_Schmidt.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Brian_Schmidt.png',
 
     field: 'Observational Cosmology',
     nationality: 'Australian-American',
@@ -2127,7 +2131,7 @@ const scientistsData: Scientist[] = [
       'Played a leading role in the discovery that the expansion of the universe is accelerating through observations of distant Type Ia supernovae.',
     bio:
       'American astrophysicist whose precision cosmological measurements have also contributed to the modern Hubble-tension problem.',
-    image: 'https://space-verse-alpha.vercel.app/images/Adam_Riess.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Adam_Riess.png',
 
     field: 'Observational Cosmology',
     nationality: 'American',
@@ -2192,7 +2196,7 @@ const scientistsData: Scientist[] = [
       'Performed critical mathematical calculations for early American human-spaceflight missions, including orbital trajectories and re-entry calculations.',
     bio:
       'American mathematician whose calculations contributed to the success of several NASA human-spaceflight missions.',
-    image: 'https://space-verse-alpha.vercel.app/images/Katherine_Johnson.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Katherine_Johnson.png',
 
     field: 'Orbital Mechanics & Applied Mathematics',
     nationality: 'American',
@@ -2257,7 +2261,7 @@ const scientistsData: Scientist[] = [
       'Led development of software systems for NASA’s Apollo lunar missions, including software designed to handle unexpected computer workloads during landing.',
     bio:
       'American computer scientist and systems engineer whose work helped establish software engineering as a disciplined field and contributed to Apollo mission reliability.',
-    image: 'https://space-verse-alpha.vercel.app/images/Margaret_Hamilton.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Margaret_Hamilton.png',
 
     field: 'Computer Science & Spaceflight',
     nationality: 'American',
@@ -2320,7 +2324,7 @@ const scientistsData: Scientist[] = [
       'Played a major leadership role in establishing NASA’s space astronomy program and was instrumental in developing the Hubble Space Telescope.',
     bio:
       'American astronomer and NASA executive widely known as the “Mother of Hubble” for her leadership in making a major space telescope program possible.',
-    image: 'https://space-verse-alpha.vercel.app/images/Nancy_Grace_Roman.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Nancy_Grace_Roman.png',
 
     field: 'Astronomy & Space Science Leadership',
     nationality: 'American',
