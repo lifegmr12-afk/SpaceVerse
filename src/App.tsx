@@ -1,3 +1,16 @@
+declare module 'react/jsx-runtime' {
+  export function jsx(type: any, props?: any, key?: string | number | null): any;
+  export function jsxs(type: any, props?: any, key?: string | number | null): any;
+  export function jsxDEV(
+    type: any,
+    props?: any,
+    key?: string | number | null,
+    isStaticChildren?: boolean,
+    source?: any,
+    self?: any
+  ): any;
+}
+
 /// <reference types="react" />
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -3403,11 +3416,19 @@ export default function App() {
                       key={idx}
                       className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden group transition-all duration-300 flex flex-col justify-between`}
                     >
-
-
-
-                      
                       <div>
+  {/* Mission Image */}
+  <div className="w-full aspect-square sm:aspect-video rounded-2xl overflow-hidden mb-4 bg-slate-900/60 border border-white/5">
+    <img
+      src={mis.image}
+      alt={mis.name}
+      loading="lazy"
+      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).style.display = 'none';
+      }}
+    />
+  </div>
                         {/* Status / Launch Badge */}
                         <div className="flex items-center justify-between gap-2 mb-4">
                           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{mis.agency}</span>
