@@ -3577,262 +3577,375 @@ export default function App() {
               </motion.div>
             )}
 
-           {/* 8. ABOUT US (SpaceVerse Math & Mechanics) */}
-            {currentTab === 'about' && (
-              <motion.div
-                key="about"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                className="space-y-8"
-              >
-                <div>
-             <h2 className="text-4xl font-extrabold tracking-tight text-white">
-                    About SpaceVerse
-            </h2>
+           /* ============================================================
+   ENHANCED "ABOUT US" SECTION + FOOTER — drop-in replacement
+   ============================================================
+   Requires these additional lucide-react icons (add to your
+   existing import block at the top of App.tsx):
 
-                  <p className="text-cyan-400 text-sm uppercase tracking-[0.25em] mt-2">
-                 Interactive Astronomy • Space Encyclopedia • 3D Universe Simulator
-                </p>
-                </div>
+   import {
+     ... your existing icons ...,
+     CircleDot, Cloud, ShieldCheck, RefreshCw, Smartphone,
+     Infinity as InfinityIcon, GraduationCap, Telescope, Satellite
+   } from 'lucide-react';
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div className="mt-6 max-w-5xl">
+   Everything below assumes `motion`, `AnimatePresence`, `cardBg`,
+   and `isDarkMode` already exist in your App.tsx scope (they do).
+   ============================================================ */
 
-<p className="text-slate-400 mt-3 max-w-4xl leading-relaxed">
-SpaceVerse is a next-generation interactive astronomy encyclopedia and 3D universe simulator built for students, educators, researchers, and space enthusiasts. Explore scientifically accurate models of the Solar System, galaxies, black holes, nebulae, exoplanets, and space missions through immersive 3D visualization, verified astronomical data, and educational articles that make complex space science easy to understand.
-</p>
-<div className="mt-6 p-5 rounded-2xl bg-cyan-500/5 border border-cyan-500/20">
-  <p className="text-sm leading-8 text-slate-300">
-    <strong className="text-cyan-300">SpaceVerse</strong> is a next-generation interactive 3D astronomy platform designed to explore the universe through immersive scientific visualization. The website features realistic simulations of the Solar System, Milky Way Galaxy, black holes, exoplanets, nebulae, star systems, and space missions using modern web technologies and accurate astronomical information.
-  </p>
-</div>
+/* ---------------------------------------------------------
+   1) Small reusable "advanced" building blocks
+   Paste these ABOVE your default export component (e.g. right
+   after your existing interfaces/consts near the top of the file).
+--------------------------------------------------------- */
 
-<p className="text-slate-400 mt-6 leading-8">
-Our platform allows visitors to explore planets, stars, galaxies, black holes, nebulae, exoplanets, and space missions using modern web technologies. Every article combines educational content, interactive visualization, and verified scientific knowledge to inspire curiosity about the cosmos.
-</p>
+// Animated number counter — ticks up when it scrolls into view
+function AnimatedStat({ value, label }: { value: string; label: string }) {
+  const [display, setDisplay] = useState('0');
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
 
-<div className="mt-8 rounded-2xl border border-cyan-500/20 bg-slate-900/50 p-6">
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          setStarted(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [started]);
 
-<h3 className="text-2xl font-bold text-cyan-300">
-🚀 What You'll Discover
-</h3>
+  useEffect(() => {
+    if (!started) return;
+    const numeric = parseFloat(value.replace(/[^0-9.]/g, '')) || 0;
+    const suffix = value.replace(/[0-9.]/g, '');
+    const duration = 1200;
+    const startTime = performance.now();
 
-<ul className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-slate-300">
+    let raf: number;
+    const tick = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+      const current = Math.floor(numeric * eased);
+      setDisplay(
+        numeric % 1 === 0
+          ? `${current.toLocaleString()}${suffix}`
+          : `${(numeric * eased).toFixed(1)}${suffix}`
+      );
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [started, value]);
 
-<li>🌍 Solar System</li>
-<li>🌌 Milky Way Galaxy</li>
-<li>⭐ Stars</li>
-<li>🪐 Exoplanets</li>
-<li>🕳 Black Holes</li>
-<li>☄️ Comets</li>
-<li>🌠 Nebulae</li>
-<li>🚀 Space Missions</li>
-<li>📚 Astronomy Articles</li>
+  return (
+    <div
+      ref={ref}
+      className="relative rounded-2xl border border-cyan-500/20 bg-gradient-to-b from-slate-900/60 to-slate-900/20 p-5 text-center overflow-hidden group hover:border-cyan-400/50 transition-colors duration-300"
+    >
+      <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <p className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent tabular-nums">
+        {display}
+      </p>
+      <p className="text-slate-400 mt-2 text-xs md:text-sm uppercase tracking-wider">{label}</p>
+    </div>
+  );
+}
 
-</ul>
+// Stagger container/item variants for scroll-triggered grids
+const staggerContainer = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+const staggerItem = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
-</div>
+/* ---------------------------------------------------------
+   2) The section itself — replace your existing
+   `{currentTab === 'about' && (...)}` block with this.
+--------------------------------------------------------- */
 
-<div className="grid md:grid-cols-4 gap-6 mt-10">
+{currentTab === 'about' && (
+  <motion.div
+    key="about"
+    initial={{ opacity: 0, y: 15 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -15 }}
+    className="space-y-12"
+  >
+    {/* ---------- HERO ---------- */}
+    <div className="relative overflow-hidden rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 via-slate-900/40 to-indigo-500/10 p-8 md:p-12">
+      {/* ambient glow orbs */}
+      <div className="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-indigo-500/20 blur-3xl" />
 
-<div className="rounded-xl bg-slate-900/40 p-5 text-center">
-<h2 className="text-3xl font-bold text-cyan-400">20+</h2>
-<p className="text-slate-400 mt-2">Interactive Simulations</p>
-</div>
+      <div className="relative flex items-center gap-3 mb-4">
+        <span className="relative flex h-2.5 w-2.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400" />
+        </span>
+        <span className="text-cyan-300 text-xs font-mono uppercase tracking-[0.3em]">
+          Interactive Astronomy • 3D Universe Simulator
+        </span>
+      </div>
 
-<div className="rounded-xl bg-slate-900/40 p-5 text-center">
-<h2 className="text-3xl font-bold text-cyan-400">5656+</h2>
-<p className="text-slate-400 mt-2">Confirmed Exoplanets</p>
-</div>
+      <h2 className="relative text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-white via-cyan-100 to-indigo-200 bg-clip-text text-transparent">
+        About SpaceVerse
+      </h2>
 
-<div className="rounded-xl bg-slate-900/40 p-5 text-center">
-<h2 className="text-3xl font-bold text-cyan-400">8+</h2>
-<p className="text-slate-400 mt-2">Scientific Categories</p>
-</div>
+      <p className="relative text-slate-300 leading-8 max-w-3xl mt-6 text-base md:text-lg">
+        <strong className="text-cyan-300 font-semibold">SpaceVerse</strong> is a
+        next-generation interactive astronomy encyclopedia and 3D universe
+        simulator built for students, educators, researchers, and space
+        enthusiasts — turning the Solar System, black holes, exoplanets, and
+        deep-sky objects into something you can explore, not just read about.
+      </p>
 
-<div className="rounded-xl bg-slate-900/40 p-5 text-center">
-<h2 className="text-3xl font-bold text-cyan-400">100%</h2>
-<p className="text-slate-400 mt-2">Educational Content</p>
-</div>
-
-</div>
-
-</div>
-<div className="mt-14 rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8">
-
-<h2 className="text-3xl font-bold text-white mb-6">
-🚀 Our Mission
-</h2>
-
-<p className="text-slate-300 leading-8">
-Our mission is to make astronomy accessible to everyone through immersive
-3D technology, scientifically accurate information, and engaging educational
-experiences. We believe learning about the universe should be inspiring,
-interactive, and free for everyone.
-</p>
-
-</div>
-<div className="mt-8 rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8">
-
-<h2 className="text-3xl font-bold text-white mb-6">
-🌌 Our Vision
-</h2>
-
-<p className="text-slate-300 leading-8">
-Our vision is to become one of the world's largest interactive
-astronomy platforms by bringing together immersive 3D visualization,
-scientifically accurate information, and educational content for
-students, educators, researchers, and space enthusiasts worldwide.
-</p>
-
-</div>
-
-<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
-  <h2 className="text-4xl font-bold text-white mb-6">
-🚀 Why Choose SpaceVerse?
-</h2>
-
-<p className="text-slate-300 leading-8">
-
-Unlike traditional astronomy websites, SpaceVerse combines
-interactive 3D simulations, verified scientific information,
-beautiful visual design, and educational articles into one
-modern learning platform.
-
-Whether you're a student, educator, researcher, or simply curious
-about the universe, SpaceVerse makes complex astronomy easy
-to understand through immersive visualization.
-
-</p>
-</div>
-<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
-
-<h2 className="text-3xl font-bold text-white mb-5">
-⭐ What Makes SpaceVerse Unique?
-</h2>
-
-<ul className="space-y-3 text-slate-300">
-
-<li>✔ Interactive 3D Solar System</li>
-
-<li>✔ Realistic Galaxy Models</li>
-
-<li>✔ Black Hole Visualizations</li>
-
-<li>✔ Verified Scientific Information</li>
-
-<li>✔ Educational Astronomy Articles</li>
-
-<li>✔ Responsive Across All Devices</li>
-
-<li>✔ Constantly Updated Space Data</li>
-
-</ul>
-
-</div>
-
-<div className="rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8 mt-8">
-
-<h2 className="text-3xl font-bold text-white mb-6">
-🌠 Did You Know?
-</h2>
-
-<ul className="space-y-4 text-slate-300">
-
-<li>⭐ The Milky Way contains over 100 billion stars.</li>
-
-<li>🪐 More than 5,656 exoplanets have been confirmed.</li>
-
-<li>🌌 The observable universe spans about 93 billion light-years.</li>
-
-<li>🕳 Sagittarius A* is the supermassive black hole at the center of our galaxy.</li>
-
-<li>🚀 New space discoveries are made every year using advanced telescopes.</li>
-
-</ul>
-
-</div>
-
-                          {/* Physics & Formulas */}
-  <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
-
-    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
-        TRUSTED SOURCES
-    </span>
-
-    <h3 className="text-3xl font-bold text-white mt-2 mb-6">
-        Scientific Sources We Trust
-    </h3>
-
-    <div className="space-y-4">
-
-        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
-            🚀 NASA — Space missions, astronomy and planetary science
-        </div>
-
-        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
-            🌍 ESA — European Space Agency research
-        </div>
-
-        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
-            🔭 Hubble Space Telescope
-        </div>
-
-        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
-            ✨ James Webb Space Telescope
-        </div>
-
-        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
-            🌌 International Astronomical Union (IAU)
-        </div>
-
+      <div className="relative flex flex-wrap gap-3 mt-8">
+        {['NASA-verified data', 'Real-time 3D physics', '100% free forever'].map((tag) => (
+          <span
+            key={tag}
+            className="text-xs font-medium text-cyan-200 bg-cyan-500/10 border border-cyan-500/30 rounded-full px-4 py-1.5"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
     </div>
 
-</div>
-                </div>
-              </motion.div>
-            )}
+    {/* ---------- ANIMATED STATS ---------- */}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <AnimatedStat value="20+" label="Interactive Simulations" />
+      <AnimatedStat value="5656+" label="Confirmed Exoplanets" />
+      <AnimatedStat value="8+" label="Scientific Categories" />
+      <AnimatedStat value="100%" label="Educational Content" />
+    </div>
 
-          </AnimatePresence>
+    {/* ---------- WHAT YOU'LL DISCOVER ---------- */}
+    <div>
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30">
+          <Compass className="w-5 h-5 text-cyan-400" />
+        </div>
+        <h3 className="text-2xl font-bold text-white">What You'll Discover</h3>
+      </div>
 
-        </main>
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid grid-cols-2 md:grid-cols-3 gap-3"
+      >
+        {[
+          { icon: Sun, label: 'Solar System' },
+          { icon: Sparkles, label: 'Milky Way Galaxy' },
+          { icon: Star, label: 'Stars' },
+          { icon: Globe, label: 'Exoplanets' },
+          { icon: Orbit, label: 'Black Holes' },
+          { icon: Zap, label: 'Comets' },
+          { icon: Layers, label: 'Nebulae' },
+          { icon: Rocket, label: 'Space Missions' },
+          { icon: BookOpen, label: 'Astronomy Articles' },
+        ].map(({ icon: Icon, label }) => (
+          <motion.div
+            key={label}
+            variants={staggerItem}
+            className={`flex items-center gap-3 p-4 rounded-xl border ${cardBg} hover:border-cyan-400/50 hover:-translate-y-0.5 transition-all duration-300 cursor-default`}
+          >
+            <Icon className="w-4 h-4 text-cyan-400 flex-shrink-0" strokeWidth={1.75} />
+            <span className="text-slate-300 text-sm font-medium">{label}</span>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
 
-        {/* Global Footer */}
-        <footer className={`border-t ${isDarkMode ? 'border-white/5 bg-[#010207]' : 'border-slate-200 bg-slate-50'} py-8 text-center text-slate-500 text-xs transition-colors duration-300`}>
-  <div className="max-w-7xl mx-auto px-6 flex flex-col gap-4">
+    {/* ---------- MISSION & VISION ---------- */}
+    <div className="grid md:grid-cols-2 gap-5">
+      <div className="relative rounded-2xl border border-cyan-500/20 bg-slate-900/40 p-7 overflow-hidden group hover:border-cyan-400/40 transition-colors duration-300">
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all duration-500" />
+        <div className="relative flex items-center gap-3 mb-4">
+          <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
+            <Rocket className="w-5 h-5 text-cyan-400" />
+          </div>
+          <h3 className="text-xl font-bold text-white">Our Mission</h3>
+        </div>
+        <p className="relative text-slate-300 leading-7 text-sm">
+          Make astronomy accessible to everyone through immersive 3D
+          technology, scientifically accurate information, and engaging
+          educational experiences that are inspiring, interactive, and free.
+        </p>
+      </div>
+
+      <div className="relative rounded-2xl border border-indigo-500/20 bg-slate-900/40 p-7 overflow-hidden group hover:border-indigo-400/40 transition-colors duration-300">
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all duration-500" />
+        <div className="relative flex items-center gap-3 mb-4">
+          <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30">
+            <Sparkles className="w-5 h-5 text-indigo-300" />
+          </div>
+          <h3 className="text-xl font-bold text-white">Our Vision</h3>
+        </div>
+        <p className="relative text-slate-300 leading-7 text-sm">
+          To become one of the world's largest interactive astronomy
+          platforms — bringing immersive visualization, verified science,
+          and education to learners worldwide.
+        </p>
+      </div>
+    </div>
+
+    {/* ---------- WHY CHOOSE SPACEVERSE ---------- */}
+    <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/40 p-7 md:p-9">
+      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Why Choose SpaceVerse?</h3>
+      <p className="text-slate-400 mb-8 max-w-2xl text-sm">
+        Unlike traditional astronomy sites, SpaceVerse combines interactive 3D
+        simulation, verified scientific information, and clean design into one
+        modern learning platform.
+      </p>
+
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
+        {[
+          { icon: Layers, title: 'True 3D Simulation', desc: 'Explore orbits, scale, and structure in real time.' },
+          { icon: Check, title: 'Verified Science', desc: 'Every figure checked against NASA, ESA, and IAU data.' },
+          { icon: Activity, title: 'Always Current', desc: 'Exoplanet counts update as new discoveries confirm.' },
+          { icon: Cpu, title: 'Works Anywhere', desc: 'Smooth on desktop, tablet, and phone alike.' },
+          { icon: Heart, title: 'Free, Always', desc: 'No paywall on any simulation, article, or dataset.' },
+          { icon: Users, title: 'Built for Learning', desc: 'For classrooms and self-study, first orbit to final year.' },
+        ].map(({ icon: Icon, title, desc }) => (
+          <motion.div
+            key={title}
+            variants={staggerItem}
+            className="p-5 rounded-xl bg-slate-950/40 border border-white/5 hover:border-cyan-500/30 transition-all duration-300"
+          >
+            <Icon className="w-5 h-5 text-cyan-400 mb-3" strokeWidth={1.75} />
+            <p className="text-white font-semibold text-sm mb-1.5">{title}</p>
+            <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+
+    {/* ---------- DID YOU KNOW ---------- */}
+    <div className="rounded-2xl border border-indigo-500/20 bg-slate-900/40 p-7 md:p-9">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/30">
+          <AlertCircle className="w-5 h-5 text-indigo-300" />
+        </div>
+        <h3 className="text-2xl font-bold text-white">Did You Know?</h3>
+      </div>
+
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid sm:grid-cols-2 gap-3"
+      >
+        {[
+          'The Milky Way contains over 100 billion stars.',
+          'More than 5,656 exoplanets have been confirmed.',
+          'The observable universe spans about 93 billion light-years.',
+          'Sagittarius A* is the supermassive black hole at our galaxy\u2019s center.',
+        ].map((fact) => (
+          <motion.div
+            key={fact}
+            variants={staggerItem}
+            className="flex items-start gap-3 p-4 rounded-xl bg-indigo-500/5 border border-indigo-500/15 hover:border-indigo-400/40 transition-colors duration-300"
+          >
+            <Star className="w-4 h-4 text-indigo-300 mt-0.5 flex-shrink-0" strokeWidth={1.75} />
+            <span className="text-slate-300 text-sm leading-relaxed">{fact}</span>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+
+    {/* ---------- TRUSTED SOURCES ---------- */}
+    <div className={`p-7 md:p-9 rounded-2xl border ${cardBg}`}>
+      <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
+        Trusted Sources
+      </span>
+      <h3 className="text-2xl md:text-3xl font-bold text-white mt-2 mb-6">
+        Scientific Sources We Trust
+      </h3>
+      <div className="grid sm:grid-cols-2 gap-3">
+        {[
+          { icon: Rocket, name: 'NASA', desc: 'Space missions, astronomy and planetary science' },
+          { icon: Globe, name: 'ESA', desc: 'European Space Agency research' },
+          { icon: Eye, name: 'Hubble Space Telescope', desc: 'Deep-field imaging and observation' },
+          { icon: Sparkles, name: 'James Webb Space Telescope', desc: 'Infrared imaging of the early universe' },
+          { icon: Orbit, name: 'International Astronomical Union', desc: 'Official naming and classification' },
+        ].map(({ icon: Icon, name, desc }) => (
+          <div
+            key={name}
+            className="flex items-start gap-3 rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20 hover:border-cyan-400/40 transition-colors duration-300"
+          >
+            <Icon className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" strokeWidth={1.75} />
+            <div>
+              <p className="text-slate-200 font-medium text-sm">{name}</p>
+              <p className="text-slate-500 text-xs mt-1">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+)}
+
+/* ---------------------------------------------------------
+   3) Enhanced footer — replace your existing <footer> with this
+--------------------------------------------------------- */
+
+<footer className={`relative border-t ${isDarkMode ? 'border-white/5 bg-[#010207]' : 'border-slate-200 bg-slate-50'} py-10 text-center text-slate-500 text-xs transition-colors duration-300 overflow-hidden`}>
+  {/* faint top glow line */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+
+  <div className="max-w-7xl mx-auto px-6 flex flex-col gap-5">
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
       <p className="font-sans font-normal">
         &copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.
       </p>
 
       <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-500 opacity-75" />
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-500" />
+        </span>
         <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
       </p>
     </div>
 
-    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] uppercase tracking-widest">
-      <a href="/privacy-policy.html" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-      <a href="/terms.html" className="hover:text-cyan-400 transition-colors">Terms</a>
-      <a href="/contact.html" className="hover:text-cyan-400 transition-colors">Contact</a>
-      <a href="/disclaimer.html" className="hover:text-cyan-400 transition-colors">Disclaimer</a>
+    <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 text-[11px] uppercase tracking-widest">
+      {[
+        { label: 'Privacy Policy', href: '/privacy-policy.html' },
+        { label: 'Terms', href: '/terms.html' },
+        { label: 'Contact', href: '/contact.html' },
+        { label: 'Disclaimer', href: '/disclaimer.html' },
+      ].map((link, i) => (
+        <React.Fragment key={link.label}>
+          <a
+            href={link.href}
+            className="relative px-3 py-1 text-slate-500 hover:text-cyan-300 transition-colors duration-300 after:content-[''] after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-px after:bg-cyan-400 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300"
+          >
+            {link.label}
+          </a>
+          {i < 3 && <span className="text-slate-700">•</span>}
+        </React.Fragment>
+      ))}
     </div>
-     </div>
-     </footer>
-     </div>
-
-      {/* FULL-SCREEN IMMERSIVE 3D SIMULATOR CANVAS MODAL */}
-      <AnimatePresence>
-        {selectedObject && (
-          <EmbedViewer 
-            object={selectedObject} 
-            onClose={() => setSelectedObject(null)}
-            onNavigate={handleNavigate}
-          />
-        )}
-      </AnimatePresence>
-
-    </div>
-  );
-}
+  </div>
+</footer>
