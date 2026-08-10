@@ -3577,169 +3577,262 @@ export default function App() {
               </motion.div>
             )}
 
-            {/* 8. ABOUT US (SpaceVerse Math & Mechanics) — cleaned up, de-duplicated */}
-{currentTab === 'about' && (
-  <motion.div
-    key="about"
-    initial={{ opacity: 0, y: 15 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -15 }}
-    className="space-y-10"
-  >
-    {/* Header */}
-    <div>
-      <h2 className="text-4xl font-extrabold tracking-tight text-white">
-        About SpaceVerse
-      </h2>
-      <p className="text-cyan-400 text-sm uppercase tracking-[0.25em] mt-2">
-        Interactive Astronomy • Space Encyclopedia • 3D Universe Simulator
-      </p>
-    </div>
+           {/* 8. ABOUT US (SpaceVerse Math & Mechanics) */}
+            {currentTab === 'about' && (
+              <motion.div
+                key="about"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="space-y-8"
+              >
+                <div>
+             <h2 className="text-4xl font-extrabold tracking-tight text-white">
+                    About SpaceVerse
+            </h2>
 
-    {/* Intro — one clear paragraph instead of three overlapping ones */}
-    <div className="rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-transparent p-6 md:p-8">
-      <p className="text-slate-300 leading-8 max-w-4xl">
-        <strong className="text-cyan-300">SpaceVerse</strong> is a
-        next-generation interactive 3D astronomy platform for students,
-        educators, researchers, and space enthusiasts. Explore scientifically
-        accurate models of the Solar System, galaxies, black holes, nebulae,
-        and exoplanets through immersive 3D visualization, verified
-        astronomical data, and articles that make complex space science easy
-        to understand.
-      </p>
-    </div>
+                  <p className="text-cyan-400 text-sm uppercase tracking-[0.25em] mt-2">
+                 Interactive Astronomy • Space Encyclopedia • 3D Universe Simulator
+                </p>
+                </div>
 
-    {/* Stats */}
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      {[
-        { value: '20+', label: 'Interactive Simulations' },
-        { value: '5,656+', label: 'Confirmed Exoplanets' },
-        { value: '8+', label: 'Scientific Categories' },
-        { value: '100%', label: 'Educational Content' },
-      ].map((stat) => (
-        <div
-          key={stat.label}
-          className="rounded-xl bg-slate-900/40 border border-white/5 p-5 text-center"
-        >
-          <p className="text-3xl font-bold text-cyan-400">{stat.value}</p>
-          <p className="text-slate-400 mt-2 text-sm">{stat.label}</p>
-        </div>
-      ))}
-    </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="mt-6 max-w-5xl">
 
-    {/* What you'll discover */}
-    <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/50 p-6 md:p-8">
-      <h3 className="text-2xl font-bold text-cyan-300">
-        🚀 What You'll Discover
-      </h3>
-      <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-slate-300">
-        {[
-          ['🌍', 'Solar System'],
-          ['🌌', 'Milky Way Galaxy'],
-          ['⭐', 'Stars'],
-          ['🪐', 'Exoplanets'],
-          ['🕳', 'Black Holes'],
-          ['☄️', 'Comets'],
-          ['🌠', 'Nebulae'],
-          ['🚀', 'Space Missions'],
-          ['📚', 'Astronomy Articles'],
-        ].map(([icon, label]) => (
-          <li key={label} className="flex items-center gap-2">
-            <span>{icon}</span> {label}
-          </li>
-        ))}
-      </ul>
-    </div>
+<p className="text-slate-400 mt-3 max-w-4xl leading-relaxed">
+SpaceVerse is a next-generation interactive astronomy encyclopedia and 3D universe simulator built for students, educators, researchers, and space enthusiasts. Explore scientifically accurate models of the Solar System, galaxies, black holes, nebulae, exoplanets, and space missions through immersive 3D visualization, verified astronomical data, and educational articles that make complex space science easy to understand.
+</p>
+<div className="mt-6 p-5 rounded-2xl bg-cyan-500/5 border border-cyan-500/20">
+  <p className="text-sm leading-8 text-slate-300">
+    <strong className="text-cyan-300">SpaceVerse</strong> is a next-generation interactive 3D astronomy platform designed to explore the universe through immersive scientific visualization. The website features realistic simulations of the Solar System, Milky Way Galaxy, black holes, exoplanets, nebulae, star systems, and space missions using modern web technologies and accurate astronomical information.
+  </p>
+</div>
 
-    {/* Mission & Vision — side by side instead of two full-width stacked blocks */}
-    <div className="grid md:grid-cols-2 gap-6">
-      <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/40 p-6 md:p-8">
-        <h3 className="text-2xl font-bold text-white mb-4">🚀 Our Mission</h3>
-        <p className="text-slate-300 leading-7">
-          Make astronomy accessible to everyone through immersive 3D
-          technology, scientifically accurate information, and engaging
-          educational experiences that are inspiring, interactive, and free.
-        </p>
-      </div>
-      <div className="rounded-2xl border border-indigo-500/20 bg-slate-900/40 p-6 md:p-8">
-        <h3 className="text-2xl font-bold text-white mb-4">🌌 Our Vision</h3>
-        <p className="text-slate-300 leading-7">
-          To become one of the world's largest interactive astronomy
-          platforms — bringing immersive visualization, verified science, and
-          education to learners worldwide.
-        </p>
-      </div>
-    </div>
+<p className="text-slate-400 mt-6 leading-8">
+Our platform allows visitors to explore planets, stars, galaxies, black holes, nebulae, exoplanets, and space missions using modern web technologies. Every article combines educational content, interactive visualization, and verified scientific knowledge to inspire curiosity about the cosmos.
+</p>
 
-    {/* Why choose — merged with the old "What Makes SpaceVerse Unique?" (same bullets, no need for two sections) */}
-    <div className="rounded-2xl border border-cyan-500/20 bg-slate-900/40 p-6 md:p-8">
-      <h3 className="text-3xl font-bold text-white mb-2">
-        ⭐ Why Choose SpaceVerse?
-      </h3>
-      <p className="text-slate-400 mb-6 max-w-3xl">
-        Unlike traditional astronomy sites, SpaceVerse combines interactive
-        3D simulation, verified scientific information, and clean design into
-        one modern learning platform.
-      </p>
-      <ul className="grid sm:grid-cols-2 gap-3 text-slate-300">
-        {[
-          'Interactive 3D Solar System',
-          'Realistic galaxy models',
-          'Black hole visualizations',
-          'Verified scientific information',
-          'Educational astronomy articles',
-          'Responsive across all devices',
-          'Constantly updated space data',
-        ].map((item) => (
-          <li key={item} className="flex items-start gap-2">
-            <span className="text-cyan-400 mt-0.5">✔</span> {item}
-          </li>
-        ))}
-      </ul>
-    </div>
+<div className="mt-8 rounded-2xl border border-cyan-500/20 bg-slate-900/50 p-6">
 
-    {/* Did you know */}
-    <div className="rounded-2xl border border-indigo-500/20 bg-slate-900/40 p-6 md:p-8">
-      <h3 className="text-2xl font-bold text-white mb-5">🌠 Did You Know?</h3>
-      <ul className="space-y-3 text-slate-300">
-        {[
-          '⭐ The Milky Way contains over 100 billion stars.',
-          '🪐 More than 5,656 exoplanets have been confirmed.',
-          '🌌 The observable universe spans about 93 billion light-years.',
-          '🕳 Sagittarius A* is the supermassive black hole at the center of our galaxy.',
-          '🚀 New space discoveries are made every year using advanced telescopes.',
-        ].map((fact) => (
-          <li key={fact}>{fact}</li>
-        ))}
-      </ul>
-    </div>
+<h3 className="text-2xl font-bold text-cyan-300">
+🚀 What You'll Discover
+</h3>
 
-    {/* Trusted sources — kept your `cardBg` theme variable, added a short description per source */}
-    <div className={`p-6 md:p-8 rounded-2xl border ${cardBg}`}>
-      <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
-        Trusted Sources
-      </span>
-      <h3 className="text-3xl font-bold text-white mt-2 mb-6">
+<ul className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-slate-300">
+
+<li>🌍 Solar System</li>
+<li>🌌 Milky Way Galaxy</li>
+<li>⭐ Stars</li>
+<li>🪐 Exoplanets</li>
+<li>🕳 Black Holes</li>
+<li>☄️ Comets</li>
+<li>🌠 Nebulae</li>
+<li>🚀 Space Missions</li>
+<li>📚 Astronomy Articles</li>
+
+</ul>
+
+</div>
+
+<div className="grid md:grid-cols-4 gap-6 mt-10">
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">20+</h2>
+<p className="text-slate-400 mt-2">Interactive Simulations</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">5656+</h2>
+<p className="text-slate-400 mt-2">Confirmed Exoplanets</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">8+</h2>
+<p className="text-slate-400 mt-2">Scientific Categories</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">100%</h2>
+<p className="text-slate-400 mt-2">Educational Content</p>
+</div>
+
+</div>
+
+</div>
+<div className="mt-14 rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🚀 Our Mission
+</h2>
+
+<p className="text-slate-300 leading-8">
+Our mission is to make astronomy accessible to everyone through immersive
+3D technology, scientifically accurate information, and engaging educational
+experiences. We believe learning about the universe should be inspiring,
+interactive, and free for everyone.
+</p>
+
+</div>
+<div className="mt-8 rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🌌 Our Vision
+</h2>
+
+<p className="text-slate-300 leading-8">
+Our vision is to become one of the world's largest interactive
+astronomy platforms by bringing together immersive 3D visualization,
+scientifically accurate information, and educational content for
+students, educators, researchers, and space enthusiasts worldwide.
+</p>
+
+</div>
+
+<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
+  <h2 className="text-4xl font-bold text-white mb-6">
+🚀 Why Choose SpaceVerse?
+</h2>
+
+<p className="text-slate-300 leading-8">
+
+Unlike traditional astronomy websites, SpaceVerse combines
+interactive 3D simulations, verified scientific information,
+beautiful visual design, and educational articles into one
+modern learning platform.
+
+Whether you're a student, educator, researcher, or simply curious
+about the universe, SpaceVerse makes complex astronomy easy
+to understand through immersive visualization.
+
+</p>
+</div>
+<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white mb-5">
+⭐ What Makes SpaceVerse Unique?
+</h2>
+
+<ul className="space-y-3 text-slate-300">
+
+<li>✔ Interactive 3D Solar System</li>
+
+<li>✔ Realistic Galaxy Models</li>
+
+<li>✔ Black Hole Visualizations</li>
+
+<li>✔ Verified Scientific Information</li>
+
+<li>✔ Educational Astronomy Articles</li>
+
+<li>✔ Responsive Across All Devices</li>
+
+<li>✔ Constantly Updated Space Data</li>
+
+</ul>
+
+</div>
+
+<div className="rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🌠 Did You Know?
+</h2>
+
+<ul className="space-y-4 text-slate-300">
+
+<li>⭐ The Milky Way contains over 100 billion stars.</li>
+
+<li>🪐 More than 5,656 exoplanets have been confirmed.</li>
+
+<li>🌌 The observable universe spans about 93 billion light-years.</li>
+
+<li>🕳 Sagittarius A* is the supermassive black hole at the center of our galaxy.</li>
+
+<li>🚀 New space discoveries are made every year using advanced telescopes.</li>
+
+</ul>
+
+</div>
+
+                          {/* Physics & Formulas */}
+  <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
+
+    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
+        TRUSTED SOURCES
+    </span>
+
+    <h3 className="text-3xl font-bold text-white mt-2 mb-6">
         Scientific Sources We Trust
-      </h3>
-      <div className="grid sm:grid-cols-2 gap-3">
-        {[
-          ['🚀', 'NASA', 'Space missions, astronomy and planetary science'],
-          ['🌍', 'ESA', 'European Space Agency research'],
-          ['🔭', 'Hubble Space Telescope', 'Deep-field imaging and observation'],
-          ['✨', 'James Webb Space Telescope', 'Infrared imaging of the early universe'],
-          ['🌌', 'International Astronomical Union', 'Official naming and classification'],
-        ].map(([icon, name, desc]) => (
-          <div
-            key={name}
-            className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20"
-          >
-            <p className="text-slate-200 font-medium">
-              {icon} {name}
-            </p>
-            <p className="text-slate-500 text-sm mt-1">{desc}</p>
-          </div>
-        ))}
-      </div>
+    </h3>
+
+    <div className="space-y-4">
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🚀 NASA — Space missions, astronomy and planetary science
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🌍 ESA — European Space Agency research
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🔭 Hubble Space Telescope
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            ✨ James Webb Space Telescope
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🌌 International Astronomical Union (IAU)
+        </div>
+
     </div>
-  </motion.div>
+
+</div>
+                </div>
+              </motion.div>
+            )}
+
+          </AnimatePresence>
+
+        </main>
+
+        {/* Global Footer */}
+        <footer className={`border-t ${isDarkMode ? 'border-white/5 bg-[#010207]' : 'border-slate-200 bg-slate-50'} py-8 text-center text-slate-500 text-xs transition-colors duration-300`}>
+  <div className="max-w-7xl mx-auto px-6 flex flex-col gap-4">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p className="font-sans font-normal">
+        &copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.
+      </p>
+
+      <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+        <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
+      </p>
+    </div>
+
+    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] uppercase tracking-widest">
+      <a href="/privacy-policy.html" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+      <a href="/terms.html" className="hover:text-cyan-400 transition-colors">Terms</a>
+      <a href="/contact.html" className="hover:text-cyan-400 transition-colors">Contact</a>
+      <a href="/disclaimer.html" className="hover:text-cyan-400 transition-colors">Disclaimer</a>
+    </div>
+     </div>
+     </footer>
+     </div>
+
+      {/* FULL-SCREEN IMMERSIVE 3D SIMULATOR CANVAS MODAL */}
+      <AnimatePresence>
+        {selectedObject && (
+          <EmbedViewer 
+            object={selectedObject} 
+            onClose={() => setSelectedObject(null)}
+            onNavigate={handleNavigate}
+          />
+        )}
+      </AnimatePresence>
+
+    </div>
+  );
+}
