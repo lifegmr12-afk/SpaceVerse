@@ -2435,7 +2435,7 @@ const missionsData: Mission[] = [
       'Discovered active volcanic moons (Io) and rings of Jupiter, Saturn, Uranus, and Neptune.',
       'Carrying the Golden Records, containing sounds, images, and greetings from Earth.'
     ],
-    image: 'https://space-verse-alpha.vercel.app/images/Voyager_1_&_2_Probes.png'
+    image: 'https://space-verse-alpha.vercel.app/images/Voyager_1_2_Probes.png'
   },
   {
     name: 'Gaia Star Mapping Mission',
@@ -3404,20 +3404,17 @@ export default function App() {
                       className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden group transition-all duration-300 flex flex-col justify-between`}
                     >
                       <div>
-  {/* Mission Image */}
-  <div className="w-full aspect-square sm:aspect-video rounded-2xl overflow-hidden mb-4 bg-slate-900/60 border border-white/5">
-    <img
-      src={mis.image}
-      alt={mis.name}
-      loading="lazy"
-      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-      onError={(e) => {
-        (e.currentTarget as HTMLImageElement).style.display = 'none';
-      }}
-    />
-  </div>
-</div>
-                      <div>
+                        {/* Mission Image */}
+                        <div className="w-full h-40 rounded-2xl overflow-hidden mb-4 bg-slate-900/60 border border-white/5">
+                          <img
+                            src={mis.image}
+                            alt={mis.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                          />
+                        </div>
+
                         {/* Status / Launch Badge */}
                         <div className="flex items-center justify-between gap-2 mb-4">
                           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{mis.agency}</span>
@@ -3571,7 +3568,7 @@ export default function App() {
                           <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
                         </div>
                       </div>
-                    </>
+                    </div>
                   ))}
                 </div>
               </motion.div>
