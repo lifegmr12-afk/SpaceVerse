@@ -715,19 +715,17 @@
         </div>
     </div>
 
-
-    <body>
-
     <!-- 3D Milky Way -->
 
     <button
-        id="show-ui-btn"
-        type="button"
-        onclick="showUI()"
-        aria-label="Open information panel"
-    >
-        ☰
-    </button>
+    id="open-info-btn"
+    type="button"
+    onclick="toggleInformation()"
+    aria-label="Open Milky Way information"
+    aria-expanded="false"
+>
+    ⓘ
+</button>
 
     <div id="ui-panel" aria-hidden="true">
 
@@ -753,8 +751,6 @@
         <!-- Fullscreen -->
 
     </div>
-
-    ...
 </body>
 
     <div id="ui-panel" aria-hidden="true">
@@ -1146,13 +1142,6 @@
                 </ul>
 
             </section>
-            <main id="milky-way-content">
-
-             <article class="mw-info">
-
-        </article>
-
-    </main>
 
     <!-- =====================================================
          MILKY WAY EDUCATIONAL CONTENT END
@@ -2233,7 +2222,6 @@
         window.showUI = function() {
     const panel = document.getElementById('ui-panel');
     const button = document.getElementById('show-ui-btn');
-
     if (!panel) return;
 
     panel.classList.add('visible');
