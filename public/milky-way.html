@@ -637,6 +637,49 @@
     }
 
 }
+/* =========================================
+   INFORMATION PANEL OPEN/CLOSE
+   ========================================= */
+
+#ui-panel {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#ui-panel.visible {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+#ui-panel:not(.visible) {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Information button */
+#show-ui-btn {
+    position: fixed;
+    left: 16px;
+    top: 136px;
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10000;
+
+    cursor: pointer;
+}
+
+/* Make sure the panel is above the 3D canvas */
+#ui-panel {
+    z-index: 9999;
+}
     </style>
     <script type="application/ld+json">
 {
@@ -673,17 +716,25 @@
     </div>
 
 
-    <button id="show-ui-btn" onclick="showUI()">☰</button>
-    <button id="open-info-btn"
-        type="button"
-        aria-label="Open Information"
-        aria-expanded="false"
-        onclick="toggleInformation()">
-    ⓘ
+    <button
+    id="show-ui-btn"
+    type="button"
+    onclick="showUI()"
+    aria-label="Open information panel"
+>
+    ☰
+</button>
+    <button
+    class="panel-close"
+    type="button"
+    onclick="hideUI()"
+    aria-label="Close information panel"
+>
+    ✕
 </button>
 
 
-    <div id="ui-panel">
+    <div id="ui-panel" aria-hidden="true">
 
         <div class="panel-header">
             <span class="panel-title">☉ Milky Way</span>
