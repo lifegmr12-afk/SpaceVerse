@@ -716,42 +716,38 @@
 
     <!-- 3D Milky Way -->
 
-    <button
-    id="open-info-btn"
-    type="button"
-    onclick="toggleInformation()"
-    aria-label="Open Milky Way information"
-    aria-expanded="false"
->
-    ⓘ
-</button>
-
     <div id="ui-panel" aria-hidden="true">
 
         <div class="panel-header">
             <span class="panel-title">☉ Milky Way</span>
-
-            <button
-                class="panel-close"
-                type="button"
-                onclick="hideUI()"
-                aria-label="Close information panel"
-            >
-                ✕
-            </button>
+            <button class="panel-close" onclick="hideUI()">✕</button>
         </div>
 
-        <!-- Stars -->
-        <!-- Particles -->
-        <!-- FPS -->
-        <!-- Display -->
-        <!-- Parameters -->
-        <!-- Reset -->
-        <!-- Fullscreen -->
+        <!-- YOUR EXISTING UI CONTINUES HERE -->
+
+        <div class="stat-row">
+            <span class="stat-label">Stars</span>
+            <span class="stat-value" id="stat-stars">0</span>
+        </div>
+
+        <div class="stat-row">
+            <span class="stat-label">Particles</span>
+            <span class="stat-value" id="stat-particles">0</span>
+        </div>
+
+        <div class="stat-row">
+            <span class="stat-label">FPS</span>
+            <span class="stat-value" id="stat-fps">—</span>
+        </div>
+
+        <!-- ...keep all your existing controls... -->
+
+        <div class="btn-row">
+            <button class="action-btn" onclick="resetCamera()">↺ Reset</button>
+            <button class="action-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        </div>
 
     </div>
-
-    
 
 
     <!-- =====================================================
