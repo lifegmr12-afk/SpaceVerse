@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>Alpha Centauri System - Interactive 3D Visualization</title>
+    <meta name="description" content="Explore the Alpha Centauri triple-star system in an interactive 3D visualization. Learn about Alpha Centauri A and B, Proxima Centauri, Proxima b and Proxima d, stellar orbits, distance, and the latest planet evidence." />
+    <meta name="author" content="SpaceVerse" />
+    <link rel="canonical" href="https://space-verse-alpha.vercel.app/alpha-centauri-system.html" />
+    <title>Alpha Centauri System — Stars, Proxima b, Proxima d & Interactive 3D Explorer | SpaceVerse</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebPage",
+      "name":"Alpha Centauri System",
+      "url":"https://space-verse-alpha.vercel.app/alpha-centauri-system.html",
+      "description":"An educational interactive guide to the Alpha Centauri triple-star system, its stellar components, known planets, orbital architecture and current planet evidence.",
+      "isPartOf":{"@type":"WebSite","name":"SpaceVerse","url":"https://space-verse-alpha.vercel.app/"}
+    }
+    </script>
     <style>
         /* ─── Reset & Base ─── */
         * {
@@ -26,6 +39,142 @@
         }
         canvas {
             display: block;
+        }
+
+
+
+        .candidate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(158, 203, 255, .28);
+            background: rgba(90, 150, 220, .08);
+            color: #9ecbff;
+            font-size: 10px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        /* ─── Floating Information Button ─── */
+        #floating-info-btn {
+            position: fixed;
+            top: 88px;
+            left: 22px;
+            z-index: 120;
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            border: 1px solid rgba(110, 180, 255, 0.45);
+            background:
+                radial-gradient(circle at 35% 30%, rgba(125, 190, 255, 0.20), transparent 52%),
+                rgba(5, 10, 24, 0.82);
+            color: #a9d7ff;
+            font: 600 21px/1 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow:
+                0 8px 28px rgba(0,0,0,.45),
+                inset 0 0 18px rgba(90,160,255,.06);
+            transition:
+                transform .28s cubic-bezier(.22,1,.36,1),
+                border-color .28s ease,
+                color .28s ease,
+                box-shadow .28s ease,
+                background .28s ease;
+            animation: infoFloat 3.8s ease-in-out infinite;
+        }
+
+        #floating-info-btn::before {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            border-radius: 17px;
+            border: 1px solid rgba(100, 180, 255, 0.10);
+            opacity: 0;
+            transform: scale(.82);
+            animation: infoPulse 3.8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        #floating-info-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            color: #fff;
+            border-color: rgba(130, 205, 255, .8);
+            background:
+                radial-gradient(circle at 35% 30%, rgba(125, 190, 255, 0.28), transparent 52%),
+                rgba(8, 18, 40, .92);
+            box-shadow:
+                0 12px 34px rgba(0,0,0,.52),
+                0 0 24px rgba(80,170,255,.18),
+                inset 0 0 18px rgba(90,160,255,.10);
+        }
+
+        #floating-info-btn:active {
+            transform: scale(.94);
+        }
+
+        #floating-info-btn .info-ring {
+            position: absolute;
+            inset: 7px;
+            border: 1px solid rgba(170, 220, 255, .30);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @keyframes infoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes infoPulse {
+            0%, 62%, 100% { opacity: 0; transform: scale(.82); }
+            72% { opacity: .7; transform: scale(1.05); }
+            82% { opacity: 0; transform: scale(1.22); }
+        }
+
+
+        #floating-info-btn.active {
+            border-color: rgba(150, 220, 255, .78);
+            color: #ffffff;
+            box-shadow:
+                0 10px 34px rgba(0,0,0,.5),
+                0 0 28px rgba(80,170,255,.22),
+                inset 0 0 20px rgba(90,160,255,.12);
+        }
+
+        #floating-info-btn.active::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            top: 5px;
+            right: 5px;
+            border-radius: 50%;
+            background: #8fd4ff;
+            box-shadow: 0 0 10px #8fd4ff;
+            animation: infoDot 1.6s ease-in-out infinite;
+        }
+
+        @keyframes infoDot {
+            0%, 100% { opacity: .45; transform: scale(.8); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        @media (max-width: 700px) {
+            #floating-info-btn {
+                top: 74px;
+                left: 14px;
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                font-size: 19px;
+            }
         }
 
         /* ─── Loading Screen ─── */
@@ -448,6 +597,173 @@
                 padding: 6px 14px;
             }
         }
+
+        /* ─── Educational Knowledge Panel ─── */
+        #knowledge-panel {
+            position: absolute;
+            top: 76px;
+            left: 28px;
+            width: min(620px, calc(100vw - 56px));
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            background: rgba(6, 8, 18, 0.88);
+            backdrop-filter: blur(24px) saturate(1.25);
+            -webkit-backdrop-filter: blur(24px) saturate(1.25);
+            border: 1px solid rgba(249, 215, 126, 0.12);
+            border-radius: 18px;
+            padding: 24px 26px;
+            box-shadow: 0 20px 80px rgba(0,0,0,.65);
+            transform: translateY(-10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease, transform .3s ease;
+            z-index: 120;
+        }
+        #knowledge-panel.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        #knowledge-panel h2 {
+            font-size: 25px;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        #knowledge-panel .kicker {
+            color: #f9d77e;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+        #knowledge-panel .lead {
+            color: rgba(255,255,255,.72);
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+        .knowledge-section {
+            border-top: 1px solid rgba(255,255,255,.07);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        .knowledge-section h3 {
+            color: #f5c96b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            margin-bottom: 9px;
+        }
+        .knowledge-section p, .knowledge-section li {
+            color: rgba(255,255,255,.62);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+        .knowledge-section ul {
+            padding-left: 18px;
+        }
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .status-card {
+            padding: 11px 12px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.06);
+        }
+        .status-card b {
+            display:block;
+            font-size: 11px;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+        .status-card span {
+            font-size: 10px;
+            color: rgba(255,255,255,.48);
+            line-height: 1.45;
+        }
+        .knowledge-close {
+            position:absolute;
+            top:12px;
+            right:14px;
+            width:30px;
+            height:30px;
+            border-radius:8px;
+            border:1px solid rgba(255,255,255,.08);
+            background:rgba(255,255,255,.04);
+            color:rgba(255,255,255,.65);
+            cursor:pointer;
+        }
+        .scale-note {
+            position: absolute;
+            left: 28px;
+            bottom: 92px;
+            padding: 8px 11px;
+            border-radius: 9px;
+            background: rgba(6,8,18,.66);
+            border: 1px solid rgba(255,255,255,.06);
+            color: rgba(255,255,255,.42);
+            font-size: 10px;
+            letter-spacing: .3px;
+            pointer-events: none;
+            z-index: 105;
+        }
+
+        #floating-info-btn.active {
+            border-color: rgba(150, 220, 255, .78);
+            color: #ffffff;
+            box-shadow:
+                0 10px 34px rgba(0,0,0,.5),
+                0 0 28px rgba(80,170,255,.22),
+                inset 0 0 20px rgba(90,160,255,.12);
+        }
+
+        #floating-info-btn.active::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            top: 5px;
+            right: 5px;
+            border-radius: 50%;
+            background: #8fd4ff;
+            box-shadow: 0 0 10px #8fd4ff;
+            animation: infoDot 1.6s ease-in-out infinite;
+        }
+
+        @keyframes infoDot {
+            0%, 100% { opacity: .45; transform: scale(.8); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        @media (max-width: 700px) {
+            #knowledge-panel {
+                top: 64px;
+                left: 12px;
+                width: calc(100vw - 24px);
+                max-height: calc(100vh - 105px);
+                padding: 20px;
+            }
+            .status-grid { grid-template-columns: 1fr; }
+            .scale-note {
+                name: 'Alpha Centauri Ab',
+                type: 'Planet Candidate',
+                parent: 'Alpha Centauri A',
+                status: 'Candidate',
+                description: 'A reported planet candidate associated with Alpha Centauri A. It is kept separate from the confirmed planets because its planetary nature remains uncertain.',
+                mass: 'Candidate / not securely established',
+                orbit: 'Candidate orbit around Alpha Centauri A',
+                note: 'Scientific status: candidate, not confirmed.'
+            },
+
+            { left: 12px; bottom: 78px; max-width: 210px; }
+        }
+
     </style>
 </head>
 <body>
@@ -462,17 +778,27 @@
     <!-- Main Container -->
     <div id="canvas-container"></div>
 
+
+    <!-- Floating System Information -->
+    <button id="floating-info-btn" type="button"
+            aria-label="Open Alpha Centauri system information"
+            title="Open System Information">
+        <span class="info-ring"></span>
+        <span aria-hidden="true">i</span>
+    </button>
+
     <!-- UI -->
     <div id="ui">
 
         <!-- Top Bar -->
         <div id="top-bar">
-            <span class="brand">✦ ALPHA CENTAURI</span>
+            <span class="brand">✦ ALPHA CENTAURI SYSTEM</span>
             <span class="sep"></span>
             <div class="control-group">
                 <button id="btn-pause" class="icon-btn" title="Pause/Play">⏸</button>
                 <button id="btn-reset" class="icon-btn" title="Reset View">⟲</button>
                 <button id="btn-search" class="icon-btn" title="Search">⌕</button>
+                
             </div>
             <span class="sep"></span>
             <div class="control-group">
@@ -488,6 +814,201 @@
             <button class="close-search" id="close-search">✕</button>
             <div id="search-results"></div>
         </div>
+
+        <!-- Educational Guide -->
+        <aside id="knowledge-panel" aria-label="Alpha Centauri system guide">
+            <button class="knowledge-close" id="knowledge-close" aria-label="Close guide">✕</button>
+            <div class="kicker">SPACEVERSE • SYSTEM GUIDE</div>
+            <h2>Alpha Centauri System</h2>
+            <p class="lead">
+                Alpha Centauri is our nearest stellar system: a hierarchical triple made of the
+                Sun-like pair Alpha Centauri A and B, plus the much farther red dwarf Proxima Centauri.
+                This guide separates confirmed planets from current evidence and explains what the
+                3D visualization is showing.
+            </p>
+
+            <section class="knowledge-section">
+                <h3>System architecture</h3>
+                <p>
+                    Alpha Centauri A and B form a close binary with an orbital period of about 80 years.
+                    Proxima Centauri is bound much farther away and takes hundreds of thousands of years
+                    to orbit the inner pair. The displayed Proxima orbit is intentionally compressed so
+                    all three stars can be explored in one interactive scene.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>What is known</h3>
+                <div class="status-grid">
+                    <div class="status-card"><b>Alpha Centauri A</b><span>G-type, Sun-like star; about 4.37 light-years away.</span></div>
+                    <div class="status-card"><b>Alpha Centauri B</b><span>K-type companion; cooler and less luminous than A.</span></div>
+                    <div class="status-card"><b>Proxima Centauri</b><span>M-type red dwarf and the closest individual star to the Sun.</span></div>
+                    <div class="status-card"><b>Proxima b</b><span>Confirmed planet; roughly Earth-mass, 11.2-day orbit.</span></div>
+                    <div class="status-card"><b>Proxima d</b><span>Confirmed small terrestrial planet; 5.1-day orbit.</span></div>
+                    <div class="status-card"><b>Alpha Cen A candidate</b><span>Recent JWST evidence points to a possible giant planet, but it is not yet confirmed.</span></div>
+                </div>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Why Proxima b is interesting</h3>
+                <p>
+                    Proxima b orbits within the star's habitable-zone distance, but that does not establish
+                    that it is habitable. Proxima is an active flare star, and intense radiation and stellar
+                    activity could strongly affect any atmosphere.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>How to use the explorer</h3>
+                <ul>
+                    <li>Click a star or planet to open its scientific data card.</li>
+                    <li>Use Search to jump directly to an object.</li>
+                    <li>Use Follow or First Person for close-up exploration.</li>
+                    <li>Toggle Orbits and Labels to simplify the scene.</li>
+                    <li>Use Cinematic mode for an automated system tour.</li>
+                </ul>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Sources & further reading</h3>
+                <ul>
+                    <li><a href="https://science.nasa.gov/exoplanet-catalog/proxima-centauri-b/" target="_blank" rel="noopener" style="color:#9bc7ff;">NASA — Proxima Centauri b</a></li>
+                    <li><a href="https://science.nasa.gov/exoplanet-catalog/proxima-centauri-d/" target="_blank" rel="noopener" style="color:#9bc7ff;">NASA — Proxima Centauri d</a></li>
+                    <li><a href="https://science.nasa.gov/missions/webb/nasas-webb-finds-new-evidence-for-planet-around-closest-solar-twin/" target="_blank" rel="noopener" style="color:#9bc7ff;">NASA Webb — Alpha Centauri A planet evidence</a></li>
+                    <li><a href="https://science.nasa.gov/missions/hubble/hubbles-best-image-of-alpha-centauri-a-and-b/" target="_blank" rel="noopener" style="color:#9bc7ff;">NASA Hubble — Alpha Centauri A & B</a></li>
+                </ul>
+            </section>
+
+
+            <section class="knowledge-section">
+                <h3>At a glance</h3>
+                <div class="status-grid">
+                    <div class="status-card"><b>Distance</b><span>About 4.24–4.37 light-years from the Sun, depending on the member.</span></div>
+                    <div class="status-card"><b>System type</b><span>A hierarchical triple-star system: a close A–B binary with Proxima farther out.</span></div>
+                    <div class="status-card"><b>Closest star</b><span>Proxima Centauri is the nearest individual star to the Solar System.</span></div>
+                    <div class="status-card"><b>Closest stellar pair</b><span>Alpha Centauri A and B orbit a shared center of mass.</span></div>
+                </div>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Alpha Centauri A</h3>
+                <p>
+                    Alpha Centauri A is a G-type main-sequence star and the brighter member of the close pair.
+                    Its temperature and overall stellar properties are broadly Sun-like, although it is somewhat
+                    more massive and luminous than the Sun. It is useful as a nearby comparison object when
+                    astronomers study stars similar to our own.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Alpha Centauri B</h3>
+                <p>
+                    Alpha Centauri B is a cooler K-type main-sequence star. It is less massive and less luminous
+                    than Alpha Centauri A. A and B orbit one another on an approximately 80-year timescale,
+                    making their changing separation observable with long-term astronomical measurements.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Proxima Centauri</h3>
+                <p>
+                    Proxima Centauri is a small M-type red dwarf. It is physically much farther from the A–B
+                    pair than A and B are from each other, even though all three stars belong to the same
+                    gravitationally associated system. Proxima is also an active flare star, so its brightness
+                    and radiation environment can change significantly.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Proxima Centauri b</h3>
+                <p>
+                    Proxima b is a confirmed exoplanet with a short orbital period of roughly 11.2 days.
+                    It receives an amount of stellar energy that places its orbit in the broad region often
+                    called the habitable zone. That label describes orbital heating conditions only; it does
+                    not prove that the planet has an atmosphere, liquid surface water, or life.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Proxima Centauri d</h3>
+                <p>
+                    Proxima d is a confirmed small planet on an even shorter orbit of about 5.1 days.
+                    Its small estimated mass makes it especially interesting for studies of low-mass planets
+                    around nearby red dwarfs. Its close orbit means it receives intense radiation compared
+                    with Earth.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Habitable-zone caution</h3>
+                <p>
+                    A planet being in a star's habitable zone is only a first screening criterion. Atmospheric
+                    composition, magnetic protection, stellar activity, surface conditions, and planetary
+                    history all matter. Proxima's frequent stellar activity makes the environment particularly
+                    important when evaluating the habitability of its planets.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Why this system matters</h3>
+                <p>
+                    Alpha Centauri is one of the most important nearby stellar laboratories because its stars
+                    are close enough for detailed observation. The system helps astronomers investigate stellar
+                    evolution, binary dynamics, exoplanet detection, red-dwarf activity, and the conditions
+                    around nearby planetary systems.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>How the 3D model represents reality</h3>
+                <p>
+                    The visualization uses a compressed interactive scale. The true separation of Proxima from
+                    Alpha Centauri A and B is enormous compared with the A–B separation, so displaying every
+                    distance literally would make the inner binary almost impossible to see. Star and planet
+                    sizes are also exaggerated for visibility and are not drawn to the same physical scale.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Alpha Centauri Ab (candidate)</h3>
+                <p>
+                    <strong>Alpha Centauri Ab</strong> is shown in the SpaceVerse visualization as a
+                    <strong>planet candidate</strong> associated with Alpha Centauri A. Its status is kept
+                    explicitly as “candidate” because the evidence does not justify presenting it as a
+                    confirmed exoplanet. The 3D marker and orbit are illustrative and are not drawn to
+                    physical scale.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Confirmed vs. candidate objects</h3>
+                <p>
+                    SpaceVerse distinguishes confirmed planets from objects that still require additional
+                    observations. The Alpha Centauri A planet candidate is intentionally labeled as a candidate
+                    in this guide rather than being presented as a confirmed discovery.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Observation notes</h3>
+                <p>
+                    Alpha Centauri is located in the southern sky and is a prominent nearby stellar target.
+                    Its apparent brightness and close angular separation make careful observation and suitable
+                    optics important when attempting to distinguish the individual stars of the A–B pair.
+                </p>
+            </section>
+
+            <section class="knowledge-section">
+                <h3>Important visualization note</h3>
+                <p>
+                    Stellar sizes, distances and planet sizes are not all shown to the same physical scale.
+                    The scene uses a compressed educational scale so the binary, Proxima and its planets can
+                    be viewed together without losing the interactive experience.
+                </p>
+            </section>
+        </aside>
+
+        <div class="scale-note">Interactive educational scale • Proxima's true separation is compressed for visibility</div>
 
         <!-- Bottom Bar -->
         <div id="bottom-bar">
@@ -557,7 +1078,7 @@
 
         // Camera
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
-        camera.position.set(18, 12, 26);
+        camera.position.set(22, 14, 34);
 
         // Renderer
         const renderer = new THREE.WebGLRenderer({
@@ -583,9 +1104,9 @@
 
         const bloomPass = new UnrealBloomPass(
             new THREE.Vector2(window.innerWidth, window.innerHeight),
-            0.6, // strength
-            0.4, // radius
-            0.15 // threshold
+            0.42, // strength
+            0.38, // radius
+            0.22 // threshold
         );
         composer.addPass(bloomPass);
 
@@ -599,7 +1120,7 @@
         controls.enableDamping = true;
         controls.dampingFactor = 0.08;
         controls.minDistance = 2;
-        controls.maxDistance = 300;
+        controls.maxDistance = 500;
         controls.autoRotate = false;
         controls.autoRotateSpeed = 0.3;
         controls.target.set(0, 0, 0);
@@ -631,7 +1152,7 @@
         // BACKGROUND STARS (twinkling)
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         function createStarField() {
-            const count = 12000;
+            const count = 4500;
             const positions = new Float32Array(count * 3);
             const colors = new Float32Array(count * 3);
             const sizes = new Float32Array(count);
@@ -759,8 +1280,8 @@
                 name: 'Proxima Centauri b',
                 parent: 'proxima',
                 type: 'Terrestrial',
-                mass: 1.17,
-                radius: 1.08,
+                mass: 1.055,
+                radius: 1.02,
                 temp: 234,
                 orbitalPeriod: '11.2 days',
                 distFromEarth: 4.24,
@@ -785,20 +1306,20 @@
                 period: 5.1,
                 fact: 'A sub-Earth mass planet orbiting very close to Proxima Centauri.'
             },
-            alphaAb: {
-                name: 'Alpha Centauri Ab (hypothetical)',
+            alphaACandidate: {
+                name: 'Alpha Centauri Ab (candidate)',
                 parent: 'alphaA',
-                type: 'Gas Giant',
-                mass: 2.5,
-                radius: 1.8,
-                temp: 400,
-                orbitalPeriod: '~10 years',
+                type: 'Candidate',
+                mass: null,
+                radius: null,
+                temp: null,
+                orbitalPeriod: 'Candidate; not established',
                 distFromEarth: 4.37,
-                color: 0xcc8844,
-                size: 0.45,
+                color: 0x8fc8ff,
+                size: 0.22,
                 orbitRadius: 5.0,
                 period: 10.0,
-                fact: 'Hypothetical gas giant in the Alpha Centauri A system. Not yet confirmed.'
+                fact: 'JWST observations reported in 2025 provide strong evidence for a possible giant planet around Alpha Centauri A, but the object still requires confirmation.'
             }
         };
 
@@ -947,9 +1468,9 @@
         }
 
         const starPositions = {
-            alphaA: new THREE.Vector3(-1.5, 0, 0),
-            alphaB: new THREE.Vector3(1.5, 0, 0),
-            proxima: new THREE.Vector3(28, 6, 12),
+            alphaA: new THREE.Vector3(-2.8, 0, 0),
+            alphaB: new THREE.Vector3(3.2, 0, 0),
+            proxima: new THREE.Vector3(44, 8, 16),
         };
 
         const aGroup = createStar(STAR_DATA.alphaA, 'alphaA');
@@ -960,6 +1481,38 @@
 
         const pGroup = createStar(STAR_DATA.proxima, 'proxima');
         pGroup.position.copy(starPositions.proxima);
+
+        // Subtle flare corona for active red dwarf Proxima Centauri.
+        const flareGeo = new THREE.SphereGeometry(1.5, 24, 24);
+        const flareMat = new THREE.ShaderMaterial({
+            uniforms: { uTime: { value: 0 }, uColor: { value: new THREE.Color(0xff3b18) } },
+            vertexShader: `
+                varying vec3 vNormal;
+                varying vec3 vViewDir;
+                void main() {
+                    vNormal = normalize(normalMatrix * normal);
+                    vec4 mv = modelViewMatrix * vec4(position,1.0);
+                    vViewDir = normalize(-mv.xyz);
+                    gl_Position = projectionMatrix * mv;
+                }`,
+            fragmentShader: `
+                uniform float uTime;
+                uniform vec3 uColor;
+                varying vec3 vNormal;
+                varying vec3 vViewDir;
+                void main() {
+                    float rim = 1.0 - max(0.0, dot(vNormal, vViewDir));
+                    float pulse = 0.7 + 0.3 * sin(uTime * 1.8);
+                    float alpha = pow(rim, 2.2) * 0.24 * pulse;
+                    gl_FragColor = vec4(uColor, alpha);
+                }`,
+            transparent: true,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+        });
+        const proximaFlare = new THREE.Mesh(flareGeo, flareMat);
+        pGroup.add(proximaFlare);
+        pGroup.userData.flare = flareMat;
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // ORBIT TRAILS
@@ -987,11 +1540,11 @@
             return line;
         }
 
-        const binOrbit = createOrbitLine(new THREE.Vector3(0, 0, 0), 3.2, 0xffaa55, 120, 0.25, 0.3);
+        const binOrbit = createOrbitLine(new THREE.Vector3(0, 0, 0), 6.0, 0xffb866, 160, 0.52, 0.3);
         starGroup.add(binOrbit);
         orbitLines.binary = binOrbit;
 
-        const proxOrbit = createOrbitLine(new THREE.Vector3(0, 0, 0), 30, 0xff5533, 200, 0.05, 0.8);
+        const proxOrbit = createOrbitLine(new THREE.Vector3(0, 0, 0), 48, 0xff5533, 240, 0.12, 0.8);
         starGroup.add(proxOrbit);
         orbitLines.proxima = proxOrbit;
 
@@ -1109,15 +1662,31 @@
 
         const proxB = createPlanet(PLANET_DATA.proximaB, 'proximaB', starPositions.proxima);
         const proxD = createPlanet(PLANET_DATA.proximaD, 'proximaD', starPositions.proxima);
-        const alphaAb = createPlanet(PLANET_DATA.alphaAb, 'alphaAb', starPositions.alphaA);
+
+        // Alpha Centauri Ab — reported planet candidate around Alpha Centauri A.
+        // This is an illustrative marker, NOT a confirmed exoplanet and NOT to scale.
+        const alphaCentauriAb = createPlanet(
+            PLANET_DATA.alphaACandidate,
+            'alphaACandidate',
+            starPositions.alphaA
+        );
+        alphaCentauriAb.userData.mesh.userData.isCandidate = true;
 
         const planetOrbitRefs = {};
         planetOrbitRefs.proximaB = createPlanetOrbit(starPositions.proxima, PLANET_DATA.proximaB.orbitRadius, 0x88aacc);
         starGroup.add(planetOrbitRefs.proximaB);
         planetOrbitRefs.proximaD = createPlanetOrbit(starPositions.proxima, PLANET_DATA.proximaD.orbitRadius, 0xccaa88);
         starGroup.add(planetOrbitRefs.proximaD);
-        planetOrbitRefs.alphaAb = createPlanetOrbit(starPositions.alphaA, PLANET_DATA.alphaAb.orbitRadius, 0xcc8844);
-        starGroup.add(planetOrbitRefs.alphaAb);
+
+        // Faint but visible reference orbit for Alpha Centauri Ab candidate.
+        planetOrbitRefs.alphaACandidate = createPlanetOrbit(
+            starPositions.alphaA,
+            PLANET_DATA.alphaACandidate.orbitRadius,
+            0x8fc8ff,
+            100
+        );
+        planetOrbitRefs.alphaACandidate.material.opacity = 0.28;
+        starGroup.add(planetOrbitRefs.alphaACandidate);
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // LABELS (CSS2D)
@@ -1174,8 +1743,14 @@
         labelGroup.add(labelRefs.proximaB);
         labelRefs.proximaD = createLabel('Proxima d', starPositions.proxima.clone().add(new THREE.Vector3(0, 0.8, 0)), '#ccaa88');
         labelGroup.add(labelRefs.proximaD);
-        labelRefs.alphaAb = createLabel('α Cen Ab (hyp.)', starPositions.alphaA.clone().add(new THREE.Vector3(0, 1, 0)), '#cc8844');
-        labelGroup.add(labelRefs.alphaAb);
+
+        labelRefs.alphaACandidate = createLabel(
+            'Alpha Centauri Ab • candidate',
+            starPositions.alphaA.clone().add(new THREE.Vector3(5, 0.8, 0)),
+            '#8fc8ff',
+            12
+        );
+        labelGroup.add(labelRefs.alphaACandidate);
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         // INTERACTION
@@ -1208,7 +1783,10 @@
 
         function getObjectData(id) {
             if (STAR_DATA[id]) return { ...STAR_DATA[id], type: 'star' };
-            if (PLANET_DATA[id]) return { ...PLANET_DATA[id], type: 'planet' };
+            if (PLANET_DATA[id]) {
+                if (id === 'alphaACandidate') return { ...PLANET_DATA[id], type: 'candidate' };
+                return { ...PLANET_DATA[id], type: 'planet' };
+            }
             return null;
         }
 
@@ -1219,7 +1797,9 @@
             const panel = document.getElementById('info-panel');
             document.getElementById('info-name').textContent = data.name;
             document.getElementById('info-sub').textContent =
-                data.type === 'star' ? `Star · ${data.class}` : `Exoplanet · ${data.type}`;
+                data.type === 'star' ? `Star · ${data.class}` :
+                data.type === 'candidate' ? 'Candidate · not confirmed' :
+                `Exoplanet · ${data.type}`;
 
             const props = document.getElementById('info-props');
             const rows = [];
@@ -1239,6 +1819,25 @@
             panel.classList.add('visible');
 
             state.selected = id;
+        }
+
+        function showCandidateInfo() {
+            const panel = document.getElementById('info-panel');
+            document.getElementById('info-name').textContent = 'Alpha Centauri Ab (candidate)';
+            document.getElementById('info-sub').textContent = 'Candidate · not yet confirmed';
+            document.getElementById('info-props').innerHTML = [
+                ['Host', 'Alpha Centauri A'],
+                ['Evidence', 'JWST / MIRI'],
+                ['Status', 'Candidate'],
+                ['Interpretation', 'Possible giant planet'],
+                ['Distance', '≈ 4.37 ly']
+            ].map(([label,value]) =>
+                `<span class="label">${label}</span><span class="value">${value}</span>`
+            ).join('');
+            document.getElementById('info-fact').textContent =
+                'Alpha Centauri Ab is presented here as a planet candidate associated with Alpha Centauri A. The 3D orbit and marker are illustrative and not to scale; further observations are required before the object can be treated as a confirmed planet.';
+            panel.classList.add('visible');
+            state.selected = 'alphaACandidate';
         }
 
         function hideInfo() {
@@ -1342,6 +1941,20 @@
 
         document.getElementById('info-close').addEventListener('click', hideInfo);
 
+        // Educational guide
+        const knowledgePanel = document.getElementById('knowledge-panel');
+        const floatingInfoButton = document.getElementById('floating-info-btn');
+
+        floatingInfoButton.addEventListener('click', () => {
+            knowledgePanel.classList.toggle('visible');
+            floatingInfoButton.classList.toggle('active', knowledgePanel.classList.contains('visible'));
+        });
+
+        document.getElementById('knowledge-close').addEventListener('click', () => {
+            knowledgePanel.classList.remove('visible');
+            floatingInfoButton.classList.remove('active');
+        });
+
         // Search
         const searchBox = document.getElementById('search-box');
         const searchInput = document.getElementById('search-input');
@@ -1369,9 +1982,13 @@
             }
 
             const allData = { ...STAR_DATA, ...PLANET_DATA };
-            const matches = Object.entries(allData).filter(([id, d]) =>
-                d.name.toLowerCase().includes(query)
-            );
+            const matches = Object.entries(allData).filter(([id, d]) => {
+                const name = d.name.toLowerCase();
+                const aliases = id === 'alphaACandidate'
+                    ? ' alpha centauri ab alpha centauri a planet candidate'
+                    : '';
+                return (name + aliases).includes(query);
+            });
 
             if (matches.length === 0) {
                 searchResults.innerHTML = '<div style="padding:10px;color:rgba(255,255,255,0.2);font-size:12px;">No results</div>';
@@ -1381,7 +1998,7 @@
 
             searchResults.innerHTML = matches.map(([id, d]) =>
                 `<div class="search-item" data-id="${id}">
-              ${d.name} (${d.type === 'star' ? 'Star' : 'Planet'})
+              ${d.name} (${d.type === 'star' ? 'Star' : d.type === 'candidate' ? 'Candidate' : 'Planet'})
             </div>`
             ).join('');
 
@@ -1399,6 +2016,15 @@
                         controls.target.copy(pos);
                         camera.position.copy(pos.clone().add(new THREE.Vector3(3, 2, 5)));
                         controls.update();
+                    } else if (id === 'alphaACandidate') {
+                        const obj = planetObjects.alphaACandidate;
+                        if (obj) {
+                            const pos = obj.position.clone();
+                            controls.target.copy(pos);
+                            camera.position.copy(pos.clone().add(new THREE.Vector3(2.2, 1.4, 3.2)));
+                            controls.update();
+                        }
+                        showCandidateInfo();
                     }
                 });
             });
@@ -1421,26 +2047,38 @@
 
             // Binary orbit
             const orbitAngle = state.time * 0.15;
-            const ecc = 0.25;
-            const aRad = 3.2;
-            const bRad = aRad * (1 - ecc);
-
+            const ecc = 0.52;
+            const semiMajor = 6.0;
+            const semiMinor = semiMajor * Math.sqrt(1 - ecc * ecc);
             const angleOffset = 0.3;
-            const ax = aRad * Math.cos(orbitAngle + angleOffset);
-            const az = bRad * Math.sin(orbitAngle + angleOffset);
-            const bx = -aRad * Math.cos(orbitAngle + angleOffset) * 0.7;
-            const bz = -bRad * Math.sin(orbitAngle + angleOffset) * 0.7;
+            const massA = 1.1;
+            const massB = 0.91;
+            const totalMass = massA + massB;
+            const aA = semiMajor * (massB / totalMass);
+            const aB = semiMajor * (massA / totalMass);
 
-            starObjects.alphaA.position.set(ax, 0, az);
-            starObjects.alphaB.position.set(bx, 0, bz);
+            const ca = Math.cos(orbitAngle + angleOffset);
+            const sa = Math.sin(orbitAngle + angleOffset);
+            const tilt = 0.32;
 
-            // Proxima slow orbit
+            const ax = aA * ca;
+            const az = aA * (semiMinor / semiMajor) * sa;
+            const bx = -aB * ca;
+            const bz = -aB * (semiMinor / semiMajor) * sa;
+
+            starObjects.alphaA.position.set(ax, az * Math.sin(tilt), az * Math.cos(tilt));
+            starObjects.alphaB.position.set(bx, bz * Math.sin(tilt), bz * Math.cos(tilt));
+
+            // Proxima's very long outer orbit is compressed for visualization.
             const proxAngle = state.time * 0.003;
-            const proxRad = 30;
+            const proxRad = 48;
+            const proxTilt = 0.18;
+            const px = proxRad * Math.cos(proxAngle + 0.8);
+            const pz = proxRad * Math.sin(proxAngle + 0.8);
             starObjects.proxima.position.set(
-                proxRad * Math.cos(proxAngle + 0.8),
-                6 + Math.sin(proxAngle * 0.7) * 0.5,
-                proxRad * Math.sin(proxAngle + 0.8)
+                px,
+                8 + pz * Math.sin(proxTilt),
+                pz * Math.cos(proxTilt)
             );
 
             // Planets
@@ -1466,22 +2104,27 @@
             );
             planetObjects.proximaD.userData.mesh.rotation.y += delta * 0.4;
 
-            // Alpha A b
+            // Alpha Centauri Ab candidate — illustrative orbit around the moving Alpha Centauri A.
             const abAngle = state.time * 0.12;
-            const abRad = PLANET_DATA.alphaAb.orbitRadius;
-            const aPos2 = starObjects.alphaA.position.clone();
-            planetObjects.alphaAb.position.set(
-                aPos2.x + abRad * Math.cos(abAngle + 0.5),
-                aPos2.y + 0.2 * Math.sin(abAngle * 0.3),
-                aPos2.z + abRad * Math.sin(abAngle + 0.5)
+            const abRad = PLANET_DATA.alphaACandidate.orbitRadius;
+            const alphaAPos = starObjects.alphaA.position.clone();
+            planetObjects.alphaACandidate.position.set(
+                alphaAPos.x + abRad * Math.cos(abAngle),
+                alphaAPos.y + 0.18 * Math.sin(abAngle * 0.8),
+                alphaAPos.z + abRad * Math.sin(abAngle)
             );
-            planetObjects.alphaAb.userData.mesh.rotation.y += delta * 0.3;
+            planetObjects.alphaACandidate.userData.mesh.rotation.y += delta * 0.35;
 
-            // Update planet orbit lines
+            // Small breathing effect makes the candidate marker easier to spot.
+            const abPulse = 1 + Math.sin(elapsed * 3.0) * 0.10;
+            planetObjects.alphaACandidate.scale.setScalar(abPulse);
+
+            // Update planet orbit lines. Proxima b/d are confirmed; the Alpha A
+            // candidate is represented only by a faint reference orbit.
             const orbitParents = [
                 { id: 'proximaB', parent: starObjects.proxima, rad: PLANET_DATA.proximaB.orbitRadius },
                 { id: 'proximaD', parent: starObjects.proxima, rad: PLANET_DATA.proximaD.orbitRadius },
-                { id: 'alphaAb', parent: starObjects.alphaA, rad: PLANET_DATA.alphaAb.orbitRadius },
+                { id: 'alphaACandidate', parent: starObjects.alphaA, rad: PLANET_DATA.alphaACandidate.orbitRadius },
             ];
 
             orbitParents.forEach(({ id, parent, rad }) => {
@@ -1507,7 +2150,7 @@
                 proxima: starObjects.proxima.position,
                 proximaB: planetObjects.proximaB.position,
                 proximaD: planetObjects.proximaD.position,
-                alphaAb: planetObjects.alphaAb.position,
+                alphaACandidate: planetObjects.alphaACandidate.position,
             };
 
             for (const [id, label] of Object.entries(labelRefs)) {
@@ -1523,6 +2166,9 @@
 
             // Twinkle stars
             starField.material.uniforms.uTime.value = elapsed;
+            if (starObjects.proxima?.userData.flare) {
+                starObjects.proxima.userData.flare.uniforms.uTime.value = elapsed;
+            }
 
             // Camera Modes
             if (state.camMode === 'follow' && state.followTarget) {
