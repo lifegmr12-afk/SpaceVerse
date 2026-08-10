@@ -1,16 +1,3 @@
-declare module 'react/jsx-runtime' {
-  export function jsx(type: any, props?: any, key?: string | number | null): any;
-  export function jsxs(type: any, props?: any, key?: string | number | null): any;
-  export function jsxDEV(
-    type: any,
-    props?: any,
-    key?: string | number | null,
-    isStaticChildren?: boolean,
-    source?: any,
-    self?: any
-  ): any;
-}
-
 /// <reference types="react" />
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -3429,6 +3416,8 @@ export default function App() {
       }}
     />
   </div>
+</div>
+                      <div>
                         {/* Status / Launch Badge */}
                         <div className="flex items-center justify-between gap-2 mb-4">
                           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{mis.agency}</span>
@@ -3582,7 +3571,7 @@ export default function App() {
                           <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
                         </div>
                       </div>
-                    </div>
+                    </>
                   ))}
                 </div>
               </motion.div>
