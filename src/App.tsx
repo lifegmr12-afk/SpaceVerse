@@ -3404,6 +3404,17 @@ export default function App() {
                       className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden group transition-all duration-300 flex flex-col justify-between`}
                     >
                       <div>
+                        {/* Mission Image */}
+                        <div className="w-full h-40 rounded-2xl overflow-hidden mb-4 bg-slate-900/60 border border-white/5">
+                          <img
+                            src={mis.image}
+                            alt={mis.name}
+                            loading="lazy"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                          />
+                        </div>
+
                         {/* Status / Launch Badge */}
                         <div className="flex items-center justify-between gap-2 mb-4">
                           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{mis.agency}</span>
