@@ -44,97 +44,67 @@ interface Scientist {
   bio: string;
   contribution: string;
   image: string;
+  field: string;
+  nationality: string;
+  majorDiscoveries: string[];
+  spaceFindings: string[];
+  methods: string[];
+  whyItMatters: string;
+  laterConfirmation: string[];
+  legacy: string;
 }
 
 const scientistsData: Scientist[] = [
   {
-    name: 'Nicolaus Copernicus',
-    era: '1473 – 1543',
-    quote: 'Finally we shall place the Sun himself at the center of the Universe.',
-    discovery: 'Heliocentric Model',
-    contribution:
-      'Developed the heliocentric model in which Earth and the other planets orbit the Sun. His work fundamentally changed humanity’s understanding of Earth’s place in the cosmos and helped launch the Scientific Revolution.',
-    bio:
-      'Polish Renaissance mathematician and astronomer whose heliocentric model replaced the dominant Earth-centered Ptolemaic system. His ideas became a foundation for the astronomical revolution that followed.',
-    image: 'https://space-verse-alpha.vercel.app/images/Nicolaus_Copernicus.png'
-  },
-
-  {
-    name: 'Galileo Galilei',
-    era: '1564 – 1642',
-    quote:
-      'We cannot teach people anything; we can only help them discover it within themselves.',
-    discovery: 'Telescopic Astronomy',
-    contribution:
-      'Used the telescope to make groundbreaking observations including the moons of Jupiter, the phases of Venus, sunspots, and the detailed surface of the Moon. These observations provided powerful evidence against the traditional geocentric model.',
-    bio:
-      'Italian astronomer, physicist, and mathematician often called the father of observational astronomy. His systematic use of the telescope transformed astronomy from naked-eye observation into an observational science.',
-    image: 'https://space-verse-alpha.vercel.app/images/Galileo_Galilei.png'
-  },
-
-  {
-    name: 'Johannes Kepler',
-    era: '1571 – 1630',
-    quote:
-      'I am merely thinking God’s thoughts after Him.',
-    discovery: 'Laws of Planetary Motion',
-    contribution:
-      'Discovered that planets travel in elliptical orbits rather than perfect circles, move at varying speeds, and follow a precise mathematical relationship between orbital period and distance from the Sun.',
-    bio:
-      'German mathematician, astronomer, and natural philosopher whose three laws of planetary motion provided the mathematical foundation that Isaac Newton later used to formulate universal gravitation.',
-    image: 'https://space-verse-alpha.vercel.app/images/Johannes_Kepler.png'
-  },
-
-  {
-    name: 'Isaac Newton',
-    era: '1643 – 1727',
-    quote:
-      'If I have seen further it is by standing on the shoulders of Giants.',
-    discovery: 'Universal Gravitation',
-    contribution:
-      'Formulated the laws of motion and universal gravitation, explaining the motion of planets, moons, comets, and objects on Earth within one mathematical framework. His work established classical celestial mechanics.',
-    bio:
-      'English mathematician, physicist, and astronomer whose Principia Mathematica transformed our understanding of motion and gravity. Newton’s framework dominated physics for centuries and remains highly useful today.',
-    image: 'https://space-verse-alpha.vercel.app/images/Isaac_Newton.png'
-  },
-
-  {
-    name: 'William Herschel',
-    era: '1738 – 1822',
-    quote:
-      'The undevout astronomer must be mad.',
-    discovery: 'Discovery of Uranus',
-    contribution:
-      'Discovered Uranus in 1781, the first planet discovered with a telescope. He also catalogued thousands of nebulae and star clusters and conducted pioneering studies of the structure of the Milky Way.',
-    bio:
-      'German-born British astronomer and composer who became one of the most productive observers in astronomical history. His discovery of Uranus expanded the known Solar System.',
-    image: 'https://space-verse-alpha.vercel.app/images/William_Herschel.png'
-  },
-
-  {
-    name: 'Henrietta Swan Leavitt',
-    era: '1868 – 1921',
-    quote:
-      'A star that pulsates regularly can be used as a cosmic measuring tool.',
-    discovery: 'Cepheid Period–Luminosity Relation',
-    contribution:
-      'Discovered the relationship between the pulsation period and intrinsic brightness of Cepheid variable stars. This became a fundamental method for measuring distances across the Universe.',
-    bio:
-      'American astronomer who worked at Harvard College Observatory. Her discovery provided one of the most important cosmic distance indicators and later enabled astronomers to establish the enormous scale of the Universe.',
-    image: 'https://space-verse-alpha.vercel.app/images/Henrietta_Leavitt.png'
-  },
-
-  {
     name: 'Albert Einstein',
     era: '1879 – 1955',
-    quote:
-      'The most incomprehensible thing about the world is that it is comprehensible.',
+    quote: 'The most incomprehensible thing about the world is that it is comprehensible.',
     discovery: 'General Theory of Relativity',
     contribution:
-      'Developed general relativity, describing gravity as the curvature of spacetime caused by matter and energy. The theory predicted phenomena including gravitational lensing, gravitational time dilation, black holes, and gravitational waves.',
+      'Formulated general relativity, showing that gravity is a consequence of the curvature of spacetime caused by mass and energy. His equations predicted phenomena including gravitational lensing, black holes, gravitational waves, and the gravitational redshift.',
     bio:
-      'German-born theoretical physicist whose theories of special and general relativity transformed our understanding of space, time, gravity, and the Universe. His equations remain central to modern cosmology and astrophysics.',
-    image: 'https://space-verse-alpha.vercel.app/images/Albert_Einstein.png'
+      'German-born theoretical physicist whose theories transformed our understanding of space, time, gravity, matter, and energy. His general theory of relativity became one of the fundamental frameworks of modern astrophysics and cosmology.',
+    image: 'https://space-verse-alpha.vercel.app/images/Albert_Einstein.png',
+
+    field: 'Theoretical Physics & Cosmology',
+    nationality: 'German-born Swiss-American',
+    
+    majorDiscoveries: [
+      'Special Theory of Relativity',
+      'General Theory of Relativity',
+      'Mass–energy equivalence (E = mc²)',
+      'Explanation of the photoelectric effect',
+      'Brownian motion analysis'
+    ],
+
+    spaceFindings: [
+      'Predicted that massive objects curve spacetime.',
+      'Predicted gravitational lensing, where gravity bends the path of light.',
+      'Provided the theoretical foundation for the modern description of black holes.',
+      'Predicted gravitational waves produced by accelerating massive objects.',
+      'Showed that time passes differently in different gravitational fields.',
+      'Introduced the cosmological constant while investigating models of the universe.'
+    ],
+
+    methods: [
+      'Mathematical modeling',
+      'Thought experiments',
+      'Relativistic physics',
+      'Theoretical analysis'
+    ],
+
+    whyItMatters:
+      'Einstein changed gravity from a force acting through space into a property of spacetime itself. Modern GPS systems, black-hole physics, gravitational-wave astronomy, and much of modern cosmology depend on relativistic physics.',
+
+    laterConfirmation: [
+      'Gravitational lensing was observed astronomically during the 1919 solar eclipse.',
+      'Gravitational waves were directly detected by LIGO in 2015.',
+      'Black-hole observations continue to strongly support predictions of general relativity.',
+      'The Event Horizon Telescope produced the first image of a black-hole shadow in 2019.'
+    ],
+
+    legacy:
+      'Einstein remains one of the most influential physicists in history. His theories continue to guide observations of black holes, neutron stars, gravitational waves, galaxies, and the evolution of the universe.'
   },
 
   {
@@ -142,12 +112,154 @@ const scientistsData: Scientist[] = [
     era: '1889 – 1953',
     quote:
       'Equipped with his five senses, man explores the universe around him and calls the adventure Science.',
-    discovery: 'Galaxies Beyond the Milky Way',
+    discovery: 'Galaxies Beyond the Milky Way & Evidence for Cosmic Expansion',
     contribution:
-      'Established that many objects previously classified as nebulae were actually separate galaxies far beyond the Milky Way. His observations also revealed a relationship between galaxy distance and recession velocity, contributing to our understanding of cosmic expansion.',
+      'Used observations from powerful telescopes to demonstrate that many objects previously classified as nebulae were actually separate galaxies far beyond the Milky Way. He also established a relationship between galaxy distance and apparent recession velocity that became known as Hubble’s law.',
     bio:
-      'American astronomer who transformed humanity’s view of the Universe by demonstrating its immense scale. The Hubble Space Telescope was named in his honor.',
-    image: 'https://space-verse-alpha.vercel.app/images/Edwin_Hubble.png'
+      'American astronomer whose observations fundamentally changed humanity’s view of the scale of the universe. His work helped establish that the Milky Way is only one galaxy among an enormous population of galaxies.',
+    image: 'https://space-verse-alpha.vercel.app/images/Edwin_Hubble.png',
+
+    field: 'Observational Astronomy & Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Galaxies beyond the Milky Way',
+      'Relationship between galaxy distance and recession velocity',
+      'Classification of galaxies',
+      'Evidence supporting an expanding universe'
+    ],
+
+    spaceFindings: [
+      'Showed that Andromeda and other spiral nebulae were independent galaxies.',
+      'Demonstrated that the observable universe is vastly larger than the Milky Way.',
+      'Found that more distant galaxies generally show larger redshifts.',
+      'Helped establish the observational foundation for modern extragalactic astronomy.',
+      'Developed a classification system for galaxies based on their visible structures.'
+    ],
+
+    methods: [
+      'Large optical telescopes',
+      'Photographic plates',
+      'Cepheid variable stars',
+      'Spectroscopy',
+      'Galaxy distance measurements'
+    ],
+
+    whyItMatters:
+      'Hubble’s observations transformed the universe from a concept largely centered on the Milky Way into a vast cosmic population of galaxies. His work laid important observational foundations for modern cosmology.',
+
+    laterConfirmation: [
+      'The Hubble Space Telescope dramatically expanded measurements of galaxies and cosmic distances.',
+      'Modern observations confirm that the universe is expanding.',
+      'Type Ia supernovae and other distance indicators have greatly refined measurements of cosmic expansion.',
+      'Modern cosmology has shown that cosmic expansion is accelerating.'
+    ],
+
+    legacy:
+      'The Hubble Space Telescope was named in his honor. His observations helped launch the modern study of galaxies and the large-scale structure of the universe.'
+  },
+
+  {
+    name: 'Vera Rubin',
+    era: '1928 – 2016',
+    quote:
+      'In a spiral galaxy, the ratio of dark-to-light matter is about ten to one.',
+    discovery: 'Strong Observational Evidence for Dark Matter',
+    contribution:
+      'Studied the rotation of spiral galaxies and found that stars far from galactic centers were orbiting much faster than expected from the amount of visible matter. These unexpectedly flat rotation curves provided powerful evidence that galaxies contain large quantities of unseen mass.',
+    bio:
+      'American astronomer whose careful measurements of galaxy rotation became some of the most influential observational evidence for dark matter. Her work helped establish dark matter as a central component of modern cosmology.',
+    image: 'https://space-verse-alpha.vercel.app/images/Vera_Rubin.png',
+
+    field: 'Observational Astronomy & Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Flat galaxy rotation curves',
+      'Strong evidence for dark matter',
+      'Detailed measurements of galaxy rotation',
+      'Evidence for widespread dark matter in galaxies'
+    ],
+
+    spaceFindings: [
+      'Found that stars in the outer regions of spiral galaxies rotate surprisingly rapidly.',
+      'Showed that galaxy rotation could not be explained by visible stars and gas alone.',
+      'Provided strong evidence that large halos of invisible matter surround galaxies.',
+      'Helped demonstrate that dark matter is not an unusual feature of one galaxy but a widespread cosmic phenomenon.'
+    ],
+
+    methods: [
+      'Optical spectroscopy',
+      'Galaxy rotation measurements',
+      'Doppler-shift measurements',
+      'Long-term astronomical observations'
+    ],
+
+    whyItMatters:
+      'Ordinary matter accounts for only a minority of the total matter in the universe. Rubin’s observations were crucial in establishing that unseen dark matter plays a major role in holding galaxies and larger cosmic structures together.',
+
+    laterConfirmation: [
+      'Gravitational lensing provides independent evidence for dark matter.',
+      'Measurements of the cosmic microwave background support the existence of dark matter.',
+      'Galaxy clusters reveal large amounts of mass that cannot be explained by visible matter.',
+      'Modern cosmological models require dark matter to reproduce the observed large-scale structure of the universe.'
+    ],
+
+    legacy:
+      'Vera Rubin became an iconic figure in observational cosmology. The Vera C. Rubin Observatory was named in her honor and is designed to conduct a major survey of the changing night sky.'
+  },
+
+  {
+    name: 'Stephen Hawking',
+    era: '1942 – 2018',
+    quote:
+      'We are just an advanced breed of monkeys on a minor planet of a very average star. But we can understand the Universe.',
+    discovery: 'Hawking Radiation & Black-Hole Thermodynamics',
+    contribution:
+      'Showed that quantum effects near black-hole event horizons imply that black holes should emit thermal radiation. This groundbreaking result connected general relativity, quantum theory, and thermodynamics.',
+    bio:
+      'British theoretical physicist and cosmologist who made fundamental contributions to the physics of black holes, cosmology, and the early universe. His work transformed black holes from purely gravitational objects into systems with temperature and entropy.',
+    image: 'https://space-verse-alpha.vercel.app/images/Stephen_Hawking.png',
+
+    field: 'Theoretical Physics, Cosmology & Black-Hole Physics',
+    nationality: 'British',
+
+    majorDiscoveries: [
+      'Hawking radiation',
+      'Black-hole thermodynamics',
+      'Black-hole entropy',
+      'Singularity theorems with Roger Penrose',
+      'Theoretical work on the early universe'
+    ],
+
+    spaceFindings: [
+      'Predicted that black holes can emit thermal radiation.',
+      'Showed that black holes can gradually lose mass through Hawking radiation.',
+      'Demonstrated that black holes have a temperature related to their mass.',
+      'Connected black-hole physics with the laws of thermodynamics.',
+      'Contributed to our understanding of singularities in general relativity.',
+      'Developed theoretical models concerning quantum effects in the early universe.'
+    ],
+
+    methods: [
+      'General relativity',
+      'Quantum field theory',
+      'Mathematical physics',
+      'Thermodynamics',
+      'Cosmological modeling'
+    ],
+
+    whyItMatters:
+      'Hawking radiation created one of the deepest problems in modern physics: how can information behave when quantum mechanics and black-hole gravity interact? The problem remains an active area of theoretical research.',
+
+    laterConfirmation: [
+      'Hawking radiation has not yet been directly observed from an astrophysical black hole.',
+      'Laboratory analog systems have demonstrated phenomena resembling Hawking radiation.',
+      'Modern black-hole observations continue to test predictions of general relativity and black-hole physics.'
+    ],
+
+    legacy:
+      'Hawking became one of the most recognizable scientists of the modern era. His books and public lectures brought black holes, cosmology, and the origin of the universe to a worldwide audience.'
   },
 
   {
@@ -157,88 +269,47 @@ const scientistsData: Scientist[] = [
       'The reward of the young scientist is the emotional thrill of being the first person in history to see something.',
     discovery: 'Chemical Composition of Stars',
     contribution:
-      'Demonstrated that stars are composed predominantly of hydrogen and helium by applying ionization physics to stellar spectra. Her work fundamentally changed the understanding of stellar composition.',
+      'Demonstrated through stellar spectra and ionization theory that stars are composed predominantly of hydrogen and helium. Her work fundamentally changed the understanding of stellar composition.',
     bio:
-      'British-born American astronomer whose pioneering doctoral research established the basic chemical composition of stars. She later became the first woman to head a department at Harvard College Observatory.',
-    image: 'https://space-verse-alpha.vercel.app/images/Cecilia_Payne-Gaposchkin.png'
-  },
+      'British-born American astronomer whose groundbreaking doctoral research transformed our understanding of what stars are made of. She showed that the enormous differences between stellar spectra are strongly related to temperature and ionization.',
+    image:
+      'https://space-verse-alpha.vercel.app/images/Cecilia_Payne-Gaposchkin.png',
 
-  {
-    name: 'Subrahmanyan Chandrasekhar',
-    era: '1910 – 1995',
-    quote:
-      'The pursuit of science is a beautiful journey into the unknown.',
-    discovery: 'Chandrasekhar Limit',
-    contribution:
-      'Calculated the maximum mass of a stable white dwarf, now known as the Chandrasekhar limit. His work helped establish the physical processes governing stellar evolution and the formation of neutron stars and black holes.',
-    bio:
-      'Indian-American astrophysicist and Nobel Prize winner whose mathematical work on stellar structure and evolution profoundly influenced modern astrophysics.',
-    image: 'https://space-verse-alpha.vercel.app/images/Subrahmanyan_Chandrasekhar.png'
-  },
+    field: 'Stellar Astronomy & Astrophysics',
+    nationality: 'British-born American',
 
-  {
-    name: 'George Gamow',
-    era: '1904 – 1968',
-    quote:
-      'Science is a process of discovery, not a collection of facts.',
-    discovery: 'Early Big Bang Cosmology',
-    contribution:
-      'Developed important theoretical ideas about the hot early Universe and predicted that the Universe should contain relic radiation left over from its early stages. This work helped lay foundations for modern Big Bang cosmology.',
-    bio:
-      'Ukrainian-American theoretical physicist and cosmologist known for influential work on nuclear physics, cosmology, and the early Universe.',
-    image: 'https://space-verse-alpha.vercel.app/images/George_Gamow.png'
-  },
+    majorDiscoveries: [
+      'Hydrogen and helium dominate stellar composition',
+      'Relationship between stellar spectra and temperature',
+      'Application of ionization theory to stellar atmospheres',
+      'Foundations of modern stellar classification'
+    ],
 
-  {
-    name: 'Fred Hoyle',
-    era: '1915 – 2001',
-    quote:
-      'We are all in the gutter, but some of us are looking at the stars.',
-    discovery: 'Stellar Nucleosynthesis',
-    contribution:
-      'Made major contributions to understanding how chemical elements are produced inside stars. His work, together with other researchers, helped establish stellar nucleosynthesis as the origin of many elements heavier than hydrogen and helium.',
-    bio:
-      'British astronomer and mathematician who made major contributions to stellar evolution and nucleosynthesis. He also coined the term "Big Bang" while discussing the competing cosmological model.',
-    image: 'https://space-verse-alpha.vercel.app/images/Fred_Hoyle.png'
-  },
+    spaceFindings: [
+      'Established that stars are composed mainly of hydrogen and helium.',
+      'Showed that stellar spectral differences are strongly connected to temperature and ionization.',
+      'Used spectroscopy to determine the physical properties of stars.',
+      'Helped establish the chemical foundation of modern stellar astrophysics.'
+    ],
 
-  {
-    name: 'Vera Rubin',
-    era: '1928 – 2016',
-    quote:
-      'In a spiral galaxy, the ratio of dark-to-light matter is about ten to one.',
-    discovery: 'Evidence for Dark Matter',
-    contribution:
-      'Careful measurements of galaxy rotation demonstrated that stars and gas in the outer regions of galaxies move much faster than expected from visible matter alone. Her work provided some of the strongest observational evidence for dark matter.',
-    bio:
-      'American astronomer whose pioneering observations of galaxy rotation transformed our understanding of the invisible mass that dominates galaxies. Her work became a cornerstone of modern dark-matter research.',
-    image: 'https://space-verse-alpha.vercel.app/images/Vera_Rubin.png'
-  },
+    methods: [
+      'Spectroscopy',
+      'Stellar atmosphere analysis',
+      'Ionization theory',
+      'Mathematical modeling'
+    ],
 
-  {
-    name: 'Stephen Hawking',
-    era: '1942 – 2018',
-    quote:
-      'However difficult life may seem, there is always something you can do and succeed at.',
-    discovery: 'Hawking Radiation',
-    contribution:
-      'Showed theoretically that black holes should emit thermal radiation because of quantum effects near their event horizons. This discovery connected black-hole physics, quantum theory, thermodynamics, and general relativity.',
-    bio:
-      'British theoretical physicist and cosmologist who made major contributions to black-hole physics and cosmology. His books and public lectures also brought difficult ideas about the Universe to a global audience.',
-    image: 'https://space-verse-alpha.vercel.app/images/Stephen_Hawking.png'
-  },
+    whyItMatters:
+      'Before Payne-Gaposchkin’s work, astronomers had an incorrect understanding of stellar composition. Her research established that hydrogen is the dominant element in stars and provided a foundation for understanding how stars form, evolve, and produce heavier elements.',
 
-  {
-    name: 'Jocelyn Bell Burnell',
-    era: '1943 – Present',
-    quote:
-      'Science is a collaborative enterprise.',
-    discovery: 'Discovery of Pulsars',
-    contribution:
-      'Discovered the first radio pulsars as a graduate student in 1967. Pulsars are rapidly rotating neutron stars that emit highly regular beams of electromagnetic radiation and have become powerful tools for studying extreme physics.',
-    bio:
-      'Northern Irish astrophysicist whose discovery of pulsars opened an entirely new field of neutron-star astronomy. She has also been a major advocate for diversity and inclusion in science.',
-    image: 'https://space-verse-alpha.vercel.app/images/Jocelyn_Bell_Burnell.png'
+    laterConfirmation: [
+      'Modern spectroscopy confirms hydrogen and helium dominate ordinary stars.',
+      'Stellar evolution models successfully explain how stars transform hydrogen into helium.',
+      'Observations of stellar populations throughout the Milky Way and other galaxies support her foundational conclusions.'
+    ],
+
+    legacy:
+      'Payne-Gaposchkin became one of the most influential stellar astronomers of the 20th century and helped open new opportunities for women in professional astronomy.'
   },
 
   {
@@ -246,103 +317,53 @@ const scientistsData: Scientist[] = [
     era: '1934 – 1996',
     quote:
       'Somewhere, something incredible is waiting to be known.',
-    discovery: 'Planetary Science & Astrobiology',
+    discovery: 'Planetary Atmospheres, Venus Climate & Astrobiology',
     contribution:
-      'Made major contributions to planetary science, including research into the atmospheres of Venus and Mars. He helped establish modern astrobiology and was a prominent advocate for the scientific search for life beyond Earth.',
+      'Made important contributions to the study of planetary atmospheres and demonstrated that Venus’s extremely high surface temperature can be explained by a powerful greenhouse effect. He also contributed to planetary science, astrobiology, and the scientific search for extraterrestrial life.',
     bio:
-      'American astronomer, planetary scientist, author, and science communicator. Through research and popular programs such as Cosmos, he inspired generations to explore the Universe scientifically.',
-    image: 'https://space-verse-alpha.vercel.app/images/Carl_Sagan.png'
-  },
+      'American astronomer, planetary scientist, astrophysicist, and science communicator. Sagan conducted research on planetary atmospheres and helped establish astrobiology as an interdisciplinary scientific field while inspiring millions of people to explore the cosmos.',
+    image: 'https://space-verse-alpha.vercel.app/images/Carl_Sagan.png',
 
-  {
-    name: 'Neil deGrasse Tyson',
-    era: '1958 – Present',
-    quote:
-      'The Universe is under no obligation to make sense to you.',
-    discovery: 'Modern Science Communication',
-    contribution:
-      'Contributed to research and public understanding of stellar formation, galactic structure, and planetary science while becoming one of the most prominent science communicators of the modern era.',
-    bio:
-      'American astrophysicist, author, and science communicator. He has played a major role in making astronomy and astrophysics accessible to the general public through books, television, lectures, and educational programs.',
-    image: 'https://space-verse-alpha.vercel.app/images/Neil_deGrasse_Tyson.png'
-  },
+    field: 'Planetary Science, Astrobiology & Astronomy',
+    nationality: 'American',
 
-  {
-    name: 'Katherine Johnson',
-    era: '1918 – 2020',
-    quote:
-      'Everything is possible. You just have to work for it.',
-    discovery: 'Orbital Flight Calculations',
-    contribution:
-      'Performed critical trajectory and orbital calculations for early American human-spaceflight missions, including Alan Shepard’s Freedom 7 mission and John Glenn’s orbital flight. Her mathematical work helped ensure the accuracy of NASA missions.',
-    bio:
-      'American mathematician whose calculations were crucial to NASA’s early space program. She became an enduring symbol of mathematical excellence and perseverance in space exploration.',
-    image: 'https://space-verse-alpha.vercel.app/images/Katherine_Johnson.png'
-  },
+    majorDiscoveries: [
+      'Venus greenhouse-effect research',
+      'Planetary atmospheric chemistry',
+      'Titan atmospheric research',
+      'Planetary habitability research',
+      'Contributions to astrobiology and SETI'
+    ],
 
-  {
-    name: 'Margaret Hamilton',
-    era: '1936 – Present',
-    quote:
-      'There was no choice but to be pioneers.',
-    discovery: 'Apollo Flight Software Engineering',
-    contribution:
-      'Led the team responsible for developing the Apollo spacecraft guidance software. Her engineering practices helped create highly reliable software capable of prioritizing critical tasks during unexpected system overloads.',
-    bio:
-      'American computer scientist and software engineer who pioneered software engineering practices. Her work was essential to the success of NASA’s Apollo missions and helped establish software engineering as a discipline.',
-    image: 'https://space-verse-alpha.vercel.app/images/Margaret_Hamilton.png'
-  },
+    spaceFindings: [
+      'Showed that Venus’s extreme surface temperature is strongly connected to its dense carbon-dioxide atmosphere and greenhouse effect.',
+      'Studied the atmospheres and climates of Venus, Mars, and Titan.',
+      'Investigated how planetary environments can change over time.',
+      'Contributed to the scientific search for extraterrestrial intelligence.',
+      'Helped develop ideas about the chemical conditions necessary for life.',
+      'Played an important role in interpreting data from several planetary missions.'
+    ],
 
-  {
-    name: 'Roger Penrose',
-    era: '1931 – Present',
-    quote:
-      'The Universe is not only stranger than we imagine, it is stranger than we can imagine.',
-    discovery: 'Black-Hole Singularity Theorems',
-    contribution:
-      'Developed mathematical techniques showing that singularities are an unavoidable consequence of gravitational collapse under general relativity. His work fundamentally advanced the mathematical understanding of black holes and spacetime.',
-    bio:
-      'British mathematical physicist and Nobel Prize winner whose work revolutionized our understanding of black holes, spacetime, and gravitational collapse.',
-    image: 'https://space-verse-alpha.vercel.app/images/Roger_Penrose.png'
-  },
+    methods: [
+      'Planetary atmospheric modeling',
+      'Spectroscopy',
+      'Comparative planetology',
+      'Laboratory experiments',
+      'Spacecraft data analysis'
+    ],
 
-  {
-    name: 'Andrea Ghez',
-    era: '1965 – Present',
-    quote:
-      'The center of our galaxy is a laboratory for extreme physics.',
-    discovery: 'Supermassive Black Hole at the Galactic Center',
-    contribution:
-      'Led decades of observations tracking stars orbiting the center of the Milky Way. These measurements provided compelling evidence for a supermassive black hole, Sagittarius A*, at the heart of our galaxy.',
-    bio:
-      'American astronomer and Nobel Prize winner whose high-resolution observations of the Galactic Center helped establish the existence of the Milky Way’s central supermassive black hole.',
-    image: 'https://space-verse-alpha.vercel.app/images/Andrea_Ghez.png'
-  },
+    whyItMatters:
+      'Sagan helped establish the idea that planets should be studied as complete physical and chemical systems. His work connected astronomy, planetary science, climate science, and the search for life beyond Earth.',
 
-  {
-    name: 'John Mather',
-    era: '1946 – Present',
-    quote:
-      'The Universe is a wonderful place to explore.',
-    discovery: 'Cosmic Microwave Background Spectrum',
-    contribution:
-      'Led the COBE satellite team whose measurements provided precise evidence that the cosmic microwave background has the spectrum expected from a hot early Universe. This work strongly supported Big Bang cosmology.',
-    bio:
-      'American astrophysicist and Nobel Prize winner who made fundamental contributions to observational cosmology and later played a leading role in the James Webb Space Telescope project.',
-    image: 'https://space-verse-alpha.vercel.app/images/John_Mather.png'
-  },
+    laterConfirmation: [
+      'Spacecraft observations confirmed the extreme atmospheric conditions on Venus.',
+      'Modern missions continue to study Venus’s runaway greenhouse environment.',
+      'Mars missions have greatly expanded the search for evidence of ancient habitability.',
+      'Modern astrobiology continues to investigate environments where life could exist beyond Earth.'
+    ],
 
-  {
-    name: 'George Smoot',
-    era: '1945 – Present',
-    quote:
-      'The Universe is a laboratory we cannot reproduce on Earth.',
-    discovery: 'Cosmic Microwave Background Anisotropies',
-    contribution:
-      'Used observations from the COBE satellite to detect tiny temperature variations in the cosmic microwave background. These fluctuations correspond to the seeds from which galaxies and large-scale cosmic structures developed.',
-    bio:
-      'American astrophysicist and Nobel Prize winner whose work on cosmic background radiation provided crucial evidence about the early structure and evolution of the Universe.',
-    image: 'https://space-verse-alpha.vercel.app/images/George_Smoot.png'
+    legacy:
+      'Sagan became one of history’s most influential science communicators. His work on planetary science and his efforts to promote the search for extraterrestrial life helped shape modern public interest in astronomy and astrobiology.'
   }
 ];
 // Space Missions Data
