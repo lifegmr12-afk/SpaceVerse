@@ -516,7 +516,6 @@
     overflow-y: auto;
 }
 
-
 /* OPEN STATE */
 
 #milky-way-content.info-open {
@@ -751,7 +750,6 @@
         <!-- Fullscreen -->
 
     </div>
-</body>
 
     <div id="ui-panel" aria-hidden="true">
 
@@ -856,6 +854,10 @@
                 </div>
 
             </section>
+                    </article>
+    </main>
+
+    <!-- MILKY WAY EDUCATIONAL CONTENT END -->
 
 
             <!-- WHAT IS THE MILKY WAY -->
@@ -1142,6 +1144,9 @@
                 </ul>
 
             </section>
+
+        </article>
+    </main>
 
     <!-- =====================================================
          MILKY WAY EDUCATIONAL CONTENT END
@@ -2387,26 +2392,58 @@ window.hideUI = function() {
 ========================================================= */
 
 function toggleInformation() {
+    const panel = document.getElementById('milky-way-content');
+    const button = document.getElementById('open-info-btn');
 
-    const panel = document.getElementById("milky-way-content");
-    const button = document.getElementById("open-info-btn");
+    if (!panel) {
+        console.error('Milky Way information panel not found.');
+        return;
+    }
 
-    if (!panel || !button) return;
+    if (!button) {
+        console.error('Milky Way information button not found.');
+        return;
+    }
 
-    const isOpen = panel.classList.toggle("info-open");
+    const isOpen = panel.classList.toggle('info-open');
 
     button.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
+        'aria-expanded',
+        isOpen ? 'true' : 'false'
     );
 
-    button.innerHTML = isOpen ? "✕" : "ⓘ";
+    button.innerHTML = isOpen ? '✕' : 'ⓘ';
 
     document.body.classList.toggle(
-        "information-open",
+        'information-open',
         isOpen
     );
 }
+
+function closeInformation() {
+    const panel = document.getElementById('milky-way-content');
+    const button = document.getElementById('open-info-btn');
+
+    if (!panel || !button) return;
+
+    panel.classList.remove('info-open');
+
+    button.setAttribute(
+        'aria-expanded',
+        'false'
+    );
+
+    button.innerHTML = 'ⓘ';
+
+    document.body.classList.remove('information-open');
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeInformation();
+    }
+});
+</script>
 
 
 /* Close when clicking the dark background */
