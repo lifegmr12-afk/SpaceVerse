@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { spaceObjects } from './data';
@@ -10,9 +11,29 @@ import {
   Home, Compass, Orbit, Layers, Sun, Globe, Zap, Users, Rocket, Box, Image, 
   Newspaper, Info, Heart, Moon, Search, Bell, ChevronRight, ChevronLeft, X, 
   Check, ExternalLink, Eye, Star, Menu, ArrowRight, Clock, Sparkles, Cpu, 
-  ArrowUpRight, Activity, Share2, BookOpen, AlertCircle, Database, Waves, 
-  Gauge, Code2, Telescope
+  ArrowUpRight, Activity, Share2, BookOpen, AlertCircle
 } from 'lucide-react';
+
+declare module 'react/jsx-runtime' {
+  export function jsx(type: any, props?: any, key?: string | number | null): any;
+  export function jsxs(type: any, props?: any, key?: string | number | null): any;
+  export function jsxDEV(
+    type: any,
+    props?: any,
+    key?: string | number | null,
+    isStaticChildren?: boolean,
+    source?: any,
+    self?: any
+  ): any;
+}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
 
 // Scientists Data
 interface Scientist {
@@ -23,65 +44,2340 @@ interface Scientist {
   bio: string;
   contribution: string;
   image: string;
+  field: string;
+  nationality: string;
+  majorDiscoveries: string[];
+  spaceFindings: string[];
+  methods: string[];
+  discoveryYears?: string[];
+  relatedObjects?: string[];
+  relatedMissions?: string[];
+  evidence?: string[];
+  whyItMatters: string;
+  laterConfirmation: string[];
+  legacy: string;
 }
 
 const scientistsData: Scientist[] = [
   {
+    name: 'Nicolaus Copernicus',
+    era: '1473 – 1543',
+    quote: 'In the middle of all sits the Sun.',
+    discovery: 'Heliocentric Model',
+    contribution:
+      'Proposed that Earth and the other planets orbit the Sun rather than placing Earth at the center of the universe.',
+    bio:
+      'Polish astronomer whose heliocentric model transformed humanity’s understanding of the Solar System and helped begin the Scientific Revolution.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Nicolaus_Copernicus.png',
+
+    field: 'Astronomy & Cosmology',
+    nationality: 'Polish',
+
+    majorDiscoveries: [
+      'Heliocentric model of the Solar System',
+      'Earth rotates on its axis',
+      'Earth revolves around the Sun',
+      'Earth is one of several planets orbiting the Sun'
+    ],
+
+    spaceFindings: [
+      'Placed the Sun near the center of the planetary system.',
+      'Explained the apparent daily motion of the sky through Earth’s rotation.',
+      'Explained the apparent annual motion of the Sun through Earth’s orbit.',
+      'Provided a simpler framework for understanding planetary motions.'
+    ],
+
+    methods: [
+      'Mathematical astronomy',
+      'Geometrical modeling',
+      'Careful analysis of astronomical observations'
+    ],
+
+    discoveryYears: [
+      '1543'
+    ],
+
+    relatedObjects: [
+      'Sun',
+      'Earth',
+      'Planets',
+      'Solar System'
+    ],
+
+    relatedMissions: [],
+
+    evidence: [
+      'Planetary observations showed that a heliocentric model could reproduce observed planetary motions.',
+      'Later telescopic discoveries provided evidence inconsistent with a simple Earth-centered universe.'
+    ],
+
+    laterConfirmation: [
+      'Galileo’s telescopic observations supported the heliocentric model.',
+      'Kepler’s laws provided a much more accurate mathematical description of planetary orbits.',
+      'Newton’s laws of motion and gravity provided the physical explanation for planetary orbits.'
+    ],
+
+    whyItMatters:
+      'The heliocentric model fundamentally changed humanity’s position in the cosmos and became a foundation for modern astronomy.',
+
+    legacy:
+      'Copernicus helped initiate a transformation from an Earth-centered cosmic model to the modern scientific understanding of the Solar System.'
+  },
+
+  {
+    name: 'Tycho Brahe',
+    era: '1546 – 1601',
+    quote:
+      'The mathematicians are in error when they think that the stars are fixed.',
+    discovery: 'Precision Pre-Telescopic Astronomy',
+    contribution:
+      'Produced exceptionally accurate naked-eye measurements of stars and planets that later enabled Johannes Kepler to discover the laws of planetary motion.',
+    bio:
+      'Danish astronomer who constructed sophisticated instruments and accumulated some of the most precise astronomical observations available before the invention of the telescope.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Tycho_Brahe.png',
+
+    field: 'Observational Astronomy',
+    nationality: 'Danish',
+
+    majorDiscoveries: [
+      'Precise stellar positions',
+      'Detailed planetary observations',
+      'Supernova of 1572',
+      'Comet of 1577'
+    ],
+
+    spaceFindings: [
+      'Observed the 1572 stellar explosion now recognized as a supernova.',
+      'Demonstrated that the 1572 object was far beyond Earth’s atmosphere.',
+      'Observed the 1577 comet and found evidence against the traditional idea of solid celestial spheres.',
+      'Created extensive records of planetary positions.'
+    ],
+
+    methods: [
+      'Large precision instruments',
+      'Naked-eye observations',
+      'Repeated positional measurements',
+      'Astronomical cataloging'
+    ],
+
+    discoveryYears: [
+      '1572',
+      '1577'
+    ],
+
+    relatedObjects: [
+      'SN 1572',
+      'Great Comet of 1577',
+      'Mars',
+      'Stars'
+    ],
+
+    relatedMissions: [],
+
+    evidence: [
+      'His observations showed extremely small stellar and planetary positional differences.',
+      'His measurements became critical input for Kepler’s later mathematical work.'
+    ],
+
+    laterConfirmation: [
+      'Modern observations identify the 1572 event as a Type Ia supernova.',
+      'Kepler used Brahe’s planetary observations to derive his laws of planetary motion.'
+    ],
+
+    whyItMatters:
+      'Accurate observations are the foundation of astronomy. Brahe demonstrated how precision measurement could reveal fundamental truths about the cosmos.',
+
+    legacy:
+      'His observations became one of the most important astronomical datasets of the pre-telescope era.'
+  },
+
+  {
+    name: 'Galileo Galilei',
+    era: '1564 – 1642',
+    quote:
+      'All truths are easy to understand once they are discovered; the point is to discover them.',
+    discovery: 'Telescopic Discoveries',
+    contribution:
+      'Used the telescope to observe mountains on the Moon, sunspots, the phases of Venus, Jupiter’s four largest moons, and countless previously unseen stars.',
+    bio:
+      'Italian astronomer, physicist, and mathematician whose telescopic observations revolutionized astronomy and provided major evidence for the Copernican model.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Galileo_Galilei.png',
+
+    field: 'Astronomy & Physics',
+    nationality: 'Italian',
+
+    majorDiscoveries: [
+      'Four largest moons of Jupiter',
+      'Phases of Venus',
+      'Sunspots',
+      'Lunar mountains and craters',
+      'Thousands of previously unseen stars'
+    ],
+
+    spaceFindings: [
+      'Discovered Io, Europa, Ganymede, and Callisto.',
+      'Observed that Venus passes through a complete sequence of phases.',
+      'Observed mountains and craters on the Moon.',
+      'Observed sunspots and demonstrated that the Sun is not a perfect unchanging sphere.',
+      'Revealed that the Milky Way contains enormous numbers of stars.'
+    ],
+
+    methods: [
+      'Telescopic observation',
+      'Repeated observations',
+      'Geometrical analysis',
+      'Experimental physics'
+    ],
+
+    discoveryYears: [
+      '1609',
+      '1610'
+    ],
+
+    relatedObjects: [
+      'Moon',
+      'Jupiter',
+      'Io',
+      'Europa',
+      'Ganymede',
+      'Callisto',
+      'Venus',
+      'Sun'
+    ],
+
+    relatedMissions: [
+      'Galileo spacecraft',
+      'Juno'
+    ],
+
+    evidence: [
+      'Telescopic observations directly revealed previously invisible structures.',
+      'The phases of Venus were difficult to explain with the traditional Ptolemaic model.',
+      'Jupiter’s moons demonstrated that not everything revolves around Earth.'
+    ],
+
+    laterConfirmation: [
+      'Spacecraft have extensively studied Jupiter’s four Galilean moons.',
+      'Modern missions have confirmed the complex geology and potential subsurface oceans of several Galilean moons.'
+    ],
+
+    whyItMatters:
+      'Galileo helped establish telescopic astronomy and demonstrated that observation could overturn long-standing assumptions about the universe.',
+
+    legacy:
+      'He is widely regarded as one of the founders of modern observational astronomy and experimental science.'
+  },
+
+  {
+    name: 'Johannes Kepler',
+    era: '1571 – 1630',
+    quote:
+      'I am stealing the golden vessels of the Egyptians to build a temple to my God.',
+    discovery: 'Three Laws of Planetary Motion',
+    contribution:
+      'Used Tycho Brahe’s observations to discover that planets travel in elliptical orbits and move at varying speeds according to precise mathematical laws.',
+    bio:
+      'German mathematician and astronomer whose laws of planetary motion transformed astronomy from geometric description into predictive mathematical science.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Johannes_Kepler.png',
+
+    field: 'Astronomy & Mathematics',
+    nationality: 'German',
+
+    majorDiscoveries: [
+      'Elliptical planetary orbits',
+      'Law of equal areas',
+      'Harmonic law of planetary motion'
+    ],
+
+    spaceFindings: [
+      'Showed that planets orbit the Sun in ellipses.',
+      'Established that planets move faster when closer to the Sun.',
+      'Found a mathematical relationship between orbital period and distance from the Sun.'
+    ],
+
+    methods: [
+      'Mathematical modeling',
+      'Analysis of Tycho Brahe’s observations',
+      'Geometrical calculations'
+    ],
+
+    discoveryYears: [
+      '1609',
+      '1619'
+    ],
+
+    relatedObjects: [
+      'Sun',
+      'Mercury',
+      'Venus',
+      'Earth',
+      'Mars',
+      'Jupiter',
+      'Saturn'
+    ],
+
+    relatedMissions: [
+      'Kepler Space Telescope'
+    ],
+
+    evidence: [
+      'Brahe’s high-precision observations of Mars could not be accurately explained by circular orbits.',
+      'Elliptical orbital calculations matched observations much more closely.'
+    ],
+
+    laterConfirmation: [
+      'Newton’s theory of gravity provided the physical explanation for Kepler’s laws.',
+      'Modern spacecraft navigation uses Keplerian orbital mechanics as a fundamental approximation.'
+    ],
+
+    whyItMatters:
+      'Kepler’s laws are still fundamental tools for understanding and calculating planetary and spacecraft orbits.',
+
+    legacy:
+      'His mathematical description of planetary motion became one of the foundations of celestial mechanics.'
+  },
+
+  {
+    name: 'Isaac Newton',
+    era: '1643 – 1727',
+    quote:
+      'If I have seen further it is by standing on the shoulders of giants.',
+    discovery: 'Universal Gravitation',
+    contribution:
+      'Developed the laws of motion and universal gravitation, providing the physical explanation for planetary orbits and many other celestial motions.',
+    bio:
+      'English physicist and mathematician whose laws of motion and universal gravitation established the foundation of classical celestial mechanics.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Isaac_Newton.png',
+
+    field: 'Physics, Mathematics & Astronomy',
+    nationality: 'English',
+
+    majorDiscoveries: [
+      'Law of universal gravitation',
+      'Three laws of motion',
+      'Foundations of celestial mechanics',
+      'Reflecting telescope'
+    ],
+
+    spaceFindings: [
+      'Explained why planets orbit the Sun.',
+      'Explained why moons remain gravitationally bound to planets.',
+      'Showed that the same gravity governing falling objects on Earth governs celestial bodies.',
+      'Provided mathematical tools for predicting orbital motion.'
+    ],
+
+    methods: [
+      'Mathematical physics',
+      'Calculus',
+      'Observation',
+      'Experimental investigation'
+    ],
+
+    discoveryYears: [
+      '1687'
+    ],
+
+    relatedObjects: [
+      'Sun',
+      'Planets',
+      'Moons',
+      'Comets'
+    ],
+
+    relatedMissions: [],
+
+    evidence: [
+      'Newtonian predictions successfully reproduced known planetary motions.',
+      'The theory accurately described many gravitational systems for centuries.'
+    ],
+
+    laterConfirmation: [
+      'Spacecraft trajectories are routinely calculated using Newtonian mechanics.',
+      'General relativity later refined Newtonian gravity under extreme conditions.'
+    ],
+
+    whyItMatters:
+      'Newton unified terrestrial and celestial mechanics under the same physical laws.',
+
+    legacy:
+      'Newton’s framework dominated physics for centuries and remains essential for most ordinary orbital calculations.'
+  },
+
+  {
+    name: 'Henrietta Swan Leavitt',
+    era: '1868 – 1921',
+    quote:
+      'A relation between the brightness and the period of variable stars.',
+    discovery: 'Cepheid Period–Luminosity Relation',
+    contribution:
+      'Discovered the relationship between the pulsation period and intrinsic brightness of Cepheid variable stars, creating a powerful cosmic distance-measuring tool.',
+    bio:
+      'American astronomer whose work enabled astronomers to measure distances far beyond the immediate stellar neighborhood.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Henrietta_Swan_Leavitt.png',
+
+    field: 'Stellar Astronomy & Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Cepheid period–luminosity relation',
+      'Standard-candle method'
+    ],
+
+    spaceFindings: [
+      'Demonstrated that Cepheid variables have predictable intrinsic brightnesses.',
+      'Provided a method for determining distances to stars and galaxies.',
+      'Made it possible to establish the enormous scale of the universe beyond nearby stars.'
+    ],
+
+    methods: [
+      'Photographic astronomy',
+      'Variable-star observations',
+      'Brightness measurements',
+      'Statistical analysis'
+    ],
+
+    discoveryYears: [
+      '1908',
+      '1912'
+    ],
+
+    relatedObjects: [
+      'Cepheid variable stars',
+      'Nearby galaxies',
+      'Andromeda Galaxy'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'Cepheid periods correlate strongly with their intrinsic luminosities.',
+      'Known distances within the Milky Way calibrated the relationship.'
+    ],
+
+    laterConfirmation: [
+      'Hubble used Cepheids to determine distances to galaxies.',
+      'Cepheids remain an important part of the cosmic distance ladder.',
+      'Modern space telescopes continue to refine Cepheid measurements.'
+    ],
+
+    whyItMatters:
+      'Leavitt’s discovery gave astronomers a cosmic measuring stick and helped make extragalactic astronomy possible.',
+
+    legacy:
+      'Her period–luminosity relation remains fundamental to measuring astronomical distances and determining the expansion rate of the universe.'
+  },
+
+  {
+    name: 'Arthur Eddington',
+    era: '1882 – 1944',
+    quote:
+      'Not only is the universe stranger than we imagine, it is stranger than we can imagine.',
+    discovery: 'Stellar Structure & Early Test of General Relativity',
+    contribution:
+      'Developed major theories of stellar interiors and helped demonstrate the validity of Einstein’s general relativity through observations of the 1919 solar eclipse.',
+    bio:
+      'British astrophysicist who connected theoretical physics with observations of stars and played an important role in the early testing of general relativity.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Arthur_Eddington.png',
+
+    field: 'Astrophysics & Relativity',
+    nationality: 'British',
+
+    majorDiscoveries: [
+      'Stellar structure theory',
+      'Mass–luminosity relationship',
+      'Eddington luminosity',
+      '1919 gravitational-deflection observations'
+    ],
+
+    spaceFindings: [
+      'Explained how pressure and gravity interact inside stars.',
+      'Showed that stellar luminosity depends strongly on stellar mass.',
+      'Helped establish that starlight can be deflected by gravity.',
+      'Developed the concept of a maximum luminosity related to radiation pressure.'
+    ],
+
+    methods: [
+      'Mathematical modeling',
+      'Stellar observations',
+      'Spectroscopy',
+      'Solar eclipse observations'
+    ],
+
+    discoveryYears: [
+      '1919',
+      '1920s'
+    ],
+
+    relatedObjects: [
+      'Stars',
+      'Sun',
+      'Binary stars'
+    ],
+
+    relatedMissions: [],
+
+    evidence: [
+      'The 1919 eclipse expedition measured apparent shifts in stars near the Sun.',
+      'Stellar models matched observed relationships between mass and luminosity.'
+    ],
+
+    laterConfirmation: [
+      'Modern gravitational lensing observations provide much stronger tests of Einstein’s prediction.',
+      'Modern stellar models continue to use principles developed from Eddington’s work.'
+    ],
+
+    whyItMatters:
+      'Eddington helped establish astrophysics as a field where physical laws can explain the internal structure and behavior of stars.',
+
+    legacy:
+      'His work connected relativity, stellar physics, and observational astronomy.'
+  },
+
+  {
     name: 'Albert Einstein',
     era: '1879 – 1955',
-    quote: 'Space and time are not conditions in which we live; they are modes in which we think.',
+    quote:
+      'The most incomprehensible thing about the world is that it is comprehensible.',
     discovery: 'General Theory of Relativity',
-    contribution: 'Formulated general relativity, demonstrating that gravity is the warping of space-time fabric by mass. He mathematically predicted gravitational lensing, black holes, and gravitational waves.',
-    bio: 'Theoretical physicist whose formulations reshaped modern cosmology. His field equations serve as the foundation of black hole geometry and modern orbital calculations.',
-    image: 'https://images.unsplash.com/photo-1447063513244-4e17b903e1c6?auto=format&fit=crop&w=400&q=80'
+    contribution:
+      'Developed general relativity, describing gravity as the curvature of spacetime produced by mass and energy.',
+    bio:
+      'German-born theoretical physicist whose theories transformed our understanding of space, time, gravity, light, and the universe.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Albert_Einstein.png',
+
+    field: 'Theoretical Physics & Cosmology',
+    nationality: 'German-born Swiss-American',
+
+    majorDiscoveries: [
+      'Special relativity',
+      'General relativity',
+      'Mass–energy equivalence',
+      'Photoelectric effect',
+      'Brownian motion'
+    ],
+
+    spaceFindings: [
+      'Predicted gravitational lensing.',
+      'Provided the theoretical basis for black-hole solutions.',
+      'Predicted gravitational waves.',
+      'Predicted gravitational time dilation.',
+      'Changed the theoretical understanding of the expanding universe.'
+    ],
+
+    methods: [
+      'Mathematical modeling',
+      'Thought experiments',
+      'Theoretical physics'
+    ],
+
+    discoveryYears: [
+      '1905',
+      '1915'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Neutron stars',
+      'Galaxies',
+      'Gravitational waves'
+    ],
+
+    relatedMissions: [
+      'LIGO',
+      'Virgo',
+      'Event Horizon Telescope',
+      'Gravity Probe B'
+    ],
+
+    evidence: [
+      'Light deflection by gravity',
+      'Mercury’s anomalous orbital precession',
+      'Gravitational redshift',
+      'Gravitational waves'
+    ],
+
+    laterConfirmation: [
+      'LIGO directly detected gravitational waves in 2015.',
+      'The Event Horizon Telescope observed a black-hole shadow.',
+      'Modern gravitational-lensing observations confirm spacetime curvature.'
+    ],
+
+    whyItMatters:
+      'General relativity is one of the central theories used to understand black holes, gravitational waves, neutron stars, cosmology, and precision satellite navigation.',
+
+    legacy:
+      'Einstein fundamentally changed humanity’s understanding of space and time.'
   },
-  {
-    name: 'Edwin Hubble',
-    era: '1889 – 1953',
-    quote: 'Equipped with his five senses, man explores the universe around him and calls the adventure Science.',
-    discovery: 'Expansion of the Universe (Hubble\'s Law)',
-    contribution: 'Proved that spiral nebulae are actually distant galaxies outside our Milky Way, and demonstrated that galaxies are moving away from us at speeds proportional to their distance.',
-    bio: 'American astronomer who revolutionized observational astronomy. The Hubble Space Telescope is named in his honor to commemorate his proof of the expanding cosmos.',
-    image: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=400&q=80'
-  },
-  {
-    name: 'Vera Rubin',
-    era: '1928 – 2016',
-    quote: 'In a spiral galaxy, the ratio of dark-to-light matter is about ten to one.',
-    discovery: 'Observational Evidence for Dark Matter',
-    contribution: 'Measured the flat rotation curves of spiral galaxies, proving that stars in the outer margins orbit as fast as those in the center, verifying the presence of invisible Dark Matter.',
-    bio: 'Astronomer who pioneered work on galaxy rotation rates. Her persistent measurements overcame massive academic skepticism and proved that 85% of the universe\'s mass is dark matter.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80'
-  },
-  {
-    name: 'Stephen Hawking',
-    era: '1942 – 2018',
-    quote: 'There is no boundary to the universe. Boundary is a human concept.',
-    discovery: 'Hawking Radiation & Singularity Theorems',
-    contribution: 'Showed that black holes can radiate thermal energy due to quantum mechanics near the event horizon, eventually evaporating. Fused general relativity and quantum mechanics.',
-    bio: 'Theoretical physicist and cosmologist who decoded the thermodynamics of black holes. His books brought quantum gravity concepts to millions globally.',
-    image: 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=400&q=80'
-  },
+
   {
     name: 'Cecilia Payne-Gaposchkin',
     era: '1900 – 1979',
-    quote: 'The reward of the young scientist is the emotional thrill of being the first person in history to see something.',
-    discovery: 'Hydrogen/Helium Composition of Stars',
-    contribution: 'Discovered that stars are composed primarily of hydrogen and helium. Related the spectral lines of stars to their physical temperatures using ionization physics.',
-    bio: 'British-born American astronomer. Her 1925 doctoral thesis was described by colleagues as the most brilliant PhD thesis ever written in astronomy, redefining stellar chemistry.',
-    image: 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?auto=format&fit=crop&w=400&q=80'
+    quote:
+      'The reward of the young scientist is the emotional thrill of being the first person in history to see something.',
+    discovery: 'Chemical Composition of Stars',
+    contribution:
+      'Established that stars are composed predominantly of hydrogen and helium and connected stellar spectra with temperature and ionization.',
+    bio:
+      'British-born American astronomer whose research fundamentally changed our understanding of stellar composition.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Cecilia_Payne-Gaposchkin.png',
+
+    field: 'Stellar Astrophysics',
+    nationality: 'British-born American',
+
+    majorDiscoveries: [
+      'Hydrogen and helium dominate stellar composition',
+      'Stellar spectral interpretation',
+      'Ionization-based stellar analysis'
+    ],
+
+    spaceFindings: [
+      'Established hydrogen as the dominant element in stars.',
+      'Showed that spectral differences are strongly related to stellar temperature.',
+      'Used ionization theory to interpret stellar atmospheres.'
+    ],
+
+    methods: [
+      'Spectroscopy',
+      'Ionization theory',
+      'Stellar atmosphere modeling'
+    ],
+
+    discoveryYears: [
+      '1925'
+    ],
+
+    relatedObjects: [
+      'Stars',
+      'Stellar atmospheres',
+      'Hydrogen',
+      'Helium'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'Stellar spectra contain strong hydrogen and helium signatures.',
+      'Spectral models matched observed stellar temperatures and compositions.'
+    ],
+
+    laterConfirmation: [
+      'Modern stellar spectroscopy confirms hydrogen and helium dominate ordinary stars.',
+      'Stellar evolution theory explains how stars convert hydrogen into heavier elements.'
+    ],
+
+    whyItMatters:
+      'Understanding stellar composition is essential for explaining how stars form, shine, evolve, and manufacture heavier elements.',
+
+    legacy:
+      'Her work established a foundation for modern stellar astrophysics.'
   },
+
+  {
+    name: 'Subrahmanyan Chandrasekhar',
+    era: '1910 – 1995',
+    quote:
+      'The pursuit of science is a journey into the unknown.',
+    discovery: 'Chandrasekhar Limit',
+    contribution:
+      'Demonstrated that a white dwarf cannot remain stable above a critical mass of roughly 1.4 times the mass of the Sun.',
+    bio:
+      'Indian-American astrophysicist whose theoretical work explained important aspects of stellar evolution and the fate of massive stars.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Subrahmanyan_Chandrasekhar.png',
+
+    field: 'Astrophysics & Stellar Evolution',
+    nationality: 'Indian-American',
+
+    majorDiscoveries: [
+      'Chandrasekhar limit',
+      'Theory of white dwarfs',
+      'Stellar structure',
+      'Black-hole mathematical theory'
+    ],
+
+    spaceFindings: [
+      'Established the maximum mass of a stable electron-degenerate white dwarf.',
+      'Showed how stellar mass influences the final state of stars.',
+      'Contributed mathematical descriptions of black holes and radiative transfer.'
+    ],
+
+    methods: [
+      'Quantum mechanics',
+      'Relativistic physics',
+      'Mathematical modeling',
+      'Stellar structure calculations'
+    ],
+
+    discoveryYears: [
+      '1930s'
+    ],
+
+    relatedObjects: [
+      'White dwarfs',
+      'Neutron stars',
+      'Supernovae',
+      'Black holes'
+    ],
+
+    relatedMissions: [
+      'Chandra X-ray Observatory'
+    ],
+
+    evidence: [
+      'Observed white-dwarf masses are consistent with the predicted mass limit.',
+      'Supernova theory depends strongly on the relationship between stellar mass and compact remnants.'
+    ],
+
+    laterConfirmation: [
+      'Observations of white dwarfs confirm the importance of electron degeneracy pressure.',
+      'Type Ia supernova models are connected to white-dwarf mass limits.',
+      'Modern compact-object observations continue to validate relativistic stellar models.'
+    ],
+
+    whyItMatters:
+      'The Chandrasekhar limit helps determine whether a dying star becomes a white dwarf or proceeds toward more extreme outcomes.',
+
+    legacy:
+      'His work became fundamental to modern stellar evolution and compact-object astrophysics.'
+  },
+
+  {
+    name: 'Georges Lemaître',
+    era: '1894 – 1966',
+    quote:
+      'The evolution of the world can be compared to a display of fireworks that has just begun.',
+    discovery: 'Expanding Universe & Primordial Cosmic Model',
+    contribution:
+      'Independently derived an expanding-universe solution from general relativity and developed an early version of the idea that the universe began from a much denser initial state.',
+    bio:
+      'Belgian physicist, astronomer, and priest who made foundational contributions to modern cosmology.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Georges_Lemaitre.png',
+
+    field: 'Cosmology & General Relativity',
+    nationality: 'Belgian',
+
+    majorDiscoveries: [
+      'Expanding-universe solution',
+      'Relationship between galaxy distance and velocity',
+      'Early hot dense universe model'
+    ],
+
+    spaceFindings: [
+      'Showed mathematically that the universe could be expanding.',
+      'Connected galaxy recession velocities with cosmic expansion.',
+      'Proposed that the universe originated from a much denser primordial state.'
+    ],
+
+    methods: [
+      'General relativity',
+      'Mathematical cosmology',
+      'Astronomical observations'
+    ],
+
+    discoveryYears: [
+      '1927',
+      '1931'
+    ],
+
+    relatedObjects: [
+      'Galaxies',
+      'Cosmic microwave background',
+      'Observable universe'
+    ],
+
+    relatedMissions: [
+      'COBE',
+      'WMAP',
+      'Planck'
+    ],
+
+    evidence: [
+      'Galaxy redshifts increase with distance.',
+      'The cosmic microwave background indicates a hot early universe.'
+    ],
+
+    laterConfirmation: [
+      'Cosmic microwave background observations strongly support the hot Big Bang model.',
+      'Modern cosmological surveys precisely measure cosmic expansion.'
+    ],
+
+    whyItMatters:
+      'Lemaître helped establish the modern view that the universe evolves over time rather than remaining static.',
+
+    legacy:
+      'His ideas became central to modern Big Bang cosmology.'
+  },
+
+  {
+    name: 'Fritz Zwicky',
+    era: '1898 – 1974',
+    quote:
+      'The universe is not only stranger than we imagine, it is stranger than we can imagine.',
+    discovery: 'Dark Matter Evidence in Galaxy Clusters',
+    contribution:
+      'Used galaxy velocities in the Coma Cluster to infer that far more mass was present than could be seen in visible galaxies.',
+    bio:
+      'Swiss-American astronomer and physicist who pioneered the study of supernovae, galaxy clusters, and unseen mass.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Fritz_Zwicky.png',
+
+    field: 'Astronomy & Astrophysics',
+    nationality: 'Swiss-American',
+
+    majorDiscoveries: [
+      'Early evidence for dark matter',
+      'Supernova classification',
+      'Galaxy clusters',
+      'Gravitational lensing prediction'
+    ],
+
+    spaceFindings: [
+      'Found unexpectedly high galaxy velocities in the Coma Cluster.',
+      'Proposed the existence of unseen matter to explain cluster dynamics.',
+      'Helped establish supernovae as distinct astronomical phenomena.',
+      'Predicted that galaxies could act as gravitational lenses.'
+    ],
+
+    methods: [
+      'Spectroscopy',
+      'Galaxy velocity measurements',
+      'Statistical astronomy',
+      'Theoretical modeling'
+    ],
+
+    discoveryYears: [
+      '1933',
+      '1930s'
+    ],
+
+    relatedObjects: [
+      'Coma Cluster',
+      'Supernovae',
+      'Galaxy clusters',
+      'Dark matter'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'Galaxy velocities within clusters indicate more gravitational mass than visible matter provides.',
+      'Gravitational lensing independently reveals unseen mass.'
+    ],
+
+    laterConfirmation: [
+      'Vera Rubin’s galaxy rotation measurements provided further evidence for dark matter.',
+      'Modern gravitational-lensing surveys map dark matter throughout galaxy clusters.'
+    ],
+
+    whyItMatters:
+      'Zwicky was among the first scientists to recognize that a large fraction of cosmic matter may be invisible.',
+
+    legacy:
+      'His work helped establish dark matter as one of modern astronomy’s most important mysteries.'
+  },
+
+  {
+    name: 'Edwin Hubble',
+    era: '1889 – 1953',
+    quote:
+      'Equipped with his five senses, man explores the universe around him and calls the adventure Science.',
+    discovery: 'Galaxies Beyond the Milky Way & Cosmic Expansion',
+    contribution:
+      'Demonstrated that many objects once called nebulae were separate galaxies and found a relationship between galaxy distance and recession velocity.',
+    bio:
+      'American astronomer whose observations transformed humanity’s understanding of the scale of the universe.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Edwin_Hubble.png',
+
+    field: 'Observational Astronomy & Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Galaxies beyond the Milky Way',
+      'Galaxy distance measurements',
+      'Galaxy classification',
+      'Evidence for cosmic expansion'
+    ],
+
+    spaceFindings: [
+      'Established that Andromeda is a separate galaxy.',
+      'Showed that the universe contains enormous numbers of galaxies.',
+      'Found a relationship between distance and galaxy recession velocity.',
+      'Developed an influential classification scheme for galaxies.'
+    ],
+
+    methods: [
+      'Large optical telescopes',
+      'Cepheid variables',
+      'Photographic plates',
+      'Spectroscopy'
+    ],
+
+    discoveryYears: [
+      '1923',
+      '1929'
+    ],
+
+    relatedObjects: [
+      'Andromeda Galaxy',
+      'Galaxies',
+      'Milky Way'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'Cepheid variable stars provided distance measurements.',
+      'Galaxy spectral redshifts revealed recession velocities.'
+    ],
+
+    laterConfirmation: [
+      'Modern observations confirm cosmic expansion.',
+      'The Hubble Space Telescope greatly improved extragalactic distance measurements.',
+      'Modern surveys show billions of galaxies across the observable universe.'
+    ],
+
+    whyItMatters:
+      'Hubble helped reveal that the Milky Way is only one galaxy in an enormous universe.',
+
+    legacy:
+      'The Hubble Space Telescope bears his name and has transformed observational cosmology.'
+  },
+
+  {
+    name: 'Vera Rubin',
+    era: '1928 – 2016',
+    quote:
+      'In a spiral galaxy, the ratio of dark-to-light matter is about ten to one.',
+    discovery: 'Galaxy Rotation Curves & Dark Matter',
+    contribution:
+      'Measured the rotation of spiral galaxies and found that their outer regions rotate much faster than expected from visible matter alone.',
+    bio:
+      'American astronomer whose observations provided some of the strongest evidence for dark matter on galactic scales.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Vera_Rubin.png',
+
+    field: 'Observational Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Flat galaxy rotation curves',
+      'Evidence for galactic dark-matter halos'
+    ],
+
+    spaceFindings: [
+      'Stars far from galaxy centers orbit at unexpectedly high speeds.',
+      'Visible matter alone cannot explain observed galaxy rotation.',
+      'Galaxies appear to be surrounded by massive invisible halos.'
+    ],
+
+    methods: [
+      'Optical spectroscopy',
+      'Doppler measurements',
+      'Galaxy rotation studies'
+    ],
+
+    discoveryYears: [
+      '1970s'
+    ],
+
+    relatedObjects: [
+      'Spiral galaxies',
+      'Dark matter halos'
+    ],
+
+    relatedMissions: [
+      'Vera C. Rubin Observatory'
+    ],
+
+    evidence: [
+      'Flat rotation curves',
+      'Galaxy-cluster dynamics',
+      'Gravitational lensing'
+    ],
+
+    laterConfirmation: [
+      'Cosmic microwave background measurements support dark matter.',
+      'Gravitational lensing independently maps unseen mass.',
+      'Large-scale structure simulations require dark matter.'
+    ],
+
+    whyItMatters:
+      'Dark matter is essential for explaining the formation and structure of galaxies and the large-scale universe.',
+
+    legacy:
+      'The Vera C. Rubin Observatory honors her legacy and will survey billions of astronomical objects.'
+  },
+
+  {
+    name: 'Stephen Hawking',
+    era: '1942 – 2018',
+    quote:
+      'We are just an advanced breed of monkeys on a minor planet of a very average star. But we can understand the Universe.',
+    discovery: 'Hawking Radiation',
+    contribution:
+      'Predicted that black holes should emit thermal radiation because of quantum effects near their event horizons.',
+    bio:
+      'British theoretical physicist and cosmologist whose work connected black-hole physics, quantum mechanics, thermodynamics, and cosmology.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Stephen_Hawking.png',
+
+    field: 'Theoretical Physics & Cosmology',
+    nationality: 'British',
+
+    majorDiscoveries: [
+      'Hawking radiation',
+      'Black-hole thermodynamics',
+      'Black-hole entropy',
+      'Singularity theorems'
+    ],
+
+    spaceFindings: [
+      'Black holes can have a temperature.',
+      'Black holes can lose energy through Hawking radiation.',
+      'Black holes can theoretically evaporate over extremely long timescales.',
+      'Black-hole entropy is related to the area of the event horizon.'
+    ],
+
+    methods: [
+      'Quantum field theory',
+      'General relativity',
+      'Mathematical physics',
+      'Thermodynamics'
+    ],
+
+    discoveryYears: [
+      '1974'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Event horizons',
+      'Early universe'
+    ],
+
+    relatedMissions: [
+      'Chandra X-ray Observatory',
+      'Event Horizon Telescope'
+    ],
+
+    evidence: [
+      'Hawking radiation remains primarily a theoretical prediction.',
+      'Black-hole thermodynamics has extensive theoretical support.'
+    ],
+
+    laterConfirmation: [
+      'Direct astrophysical detection of Hawking radiation has not yet been achieved.',
+      'Laboratory analog experiments have produced Hawking-like radiation phenomena.'
+    ],
+
+    whyItMatters:
+      'Hawking radiation exposes a deep connection between gravity, quantum mechanics, and thermodynamics.',
+
+    legacy:
+      'Hawking became one of the most influential theoretical physicists and science communicators of the modern era.'
+  },
+
+  {
+    name: 'Roger Penrose',
+    era: '1931 – present',
+    quote:
+      'The laws of nature are extraordinarily mathematical.',
+    discovery: 'Mathematical Theory of Black-Hole Formation',
+    contribution:
+      'Developed powerful mathematical methods showing that gravitational collapse can inevitably produce singularities under realistic conditions.',
+    bio:
+      'British mathematical physicist whose work transformed the mathematical understanding of black holes and spacetime.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Roger_Penrose.png',
+
+    field: 'Mathematical Physics & Relativity',
+    nationality: 'British',
+
+    majorDiscoveries: [
+      'Singularity theorems',
+      'Black-hole geometry',
+      'Penrose diagrams',
+      'Cosmic censorship ideas'
+    ],
+
+    spaceFindings: [
+      'Demonstrated mathematically that singularities can arise from gravitational collapse.',
+      'Developed methods for representing complex spacetime geometry.',
+      'Explored the structure of rotating black holes.'
+    ],
+
+    methods: [
+      'Differential geometry',
+      'General relativity',
+      'Mathematical analysis'
+    ],
+
+    discoveryYears: [
+      '1965',
+      '1960s–1970s'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Singularities',
+      'Spacetime'
+    ],
+
+    relatedMissions: [
+      'Event Horizon Telescope',
+      'LIGO',
+      'Virgo'
+    ],
+
+    evidence: [
+      'General relativity predicts gravitational collapse under appropriate conditions.',
+      'Astronomical observations reveal objects consistent with black holes.'
+    ],
+
+    laterConfirmation: [
+      'Black-hole gravitational-wave detections strongly support the existence of astrophysical black holes.',
+      'Event Horizon Telescope observations provide visual evidence of black-hole environments.'
+    ],
+
+    whyItMatters:
+      'Penrose’s mathematical work established that black holes are not merely mathematical curiosities but natural consequences of general relativity.',
+
+    legacy:
+      'His methods remain central to modern relativity and black-hole physics.'
+  },
+
+  {
+    name: 'John Archibald Wheeler',
+    era: '1911 – 2008',
+    quote:
+      'We are participators in bringing into being the universe.',
+    discovery: 'Modern Black-Hole Concept & Relativity',
+    contribution:
+      'Made major contributions to general relativity and popularized the term “black hole.” He also developed influential ideas about spacetime, quantum gravity, and the nature of physical reality.',
+    bio:
+      'American theoretical physicist who played a major role in developing modern black-hole physics.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/John_Archibald_Wheeler.png',
+
+    field: 'Theoretical Physics & Relativity',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Black-hole physics',
+      'Geometrodynamics',
+      'Gravitational collapse',
+      'Quantum gravity concepts'
+    ],
+
+    spaceFindings: [
+      'Helped develop the modern theoretical description of black holes.',
+      'Popularized the term black hole in the 1960s.',
+      'Investigated the relationship between matter and spacetime geometry.'
+    ],
+
+    methods: [
+      'General relativity',
+      'Mathematical physics',
+      'Thought experiments'
+    ],
+
+    discoveryYears: [
+      '1950s–1970s'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Neutron stars',
+      'Spacetime'
+    ],
+
+    relatedMissions: [
+      'LIGO',
+      'Event Horizon Telescope'
+    ],
+
+    evidence: [
+      'Black-hole candidates are observed through gravitational effects and radiation from surrounding matter.'
+    ],
+
+    laterConfirmation: [
+      'LIGO observations confirmed binary black-hole mergers.',
+      'The Event Horizon Telescope imaged the environment surrounding a supermassive black hole.'
+    ],
+
+    whyItMatters:
+      'Wheeler helped turn black holes into one of the central subjects of modern theoretical and observational astrophysics.',
+
+    legacy:
+      'His students and collaborators became leading figures across relativity, cosmology, and quantum gravity.'
+  },
+
   {
     name: 'Carl Sagan',
     era: '1934 – 1996',
-    quote: 'Somewhere, something incredible is waiting to be known.',
+    quote:
+      'Somewhere, something incredible is waiting to be known.',
     discovery: 'Planetary Atmospheres & Astrobiology',
-    contribution: 'Discovered Venus\'s extreme surface temperature was due to a runaway greenhouse effect, and championed search for extraterrestrial intelligence (SETI). Created the Voyager Golden Record.',
-    bio: 'Astronomer, astrophysicist, and supreme science communicator. His legacy is the popularization of cosmology as a beautiful, shared human adventure.',
-    image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=400&q=80'
+    contribution:
+      'Made major contributions to planetary science, atmospheric modeling, the study of Venus and Mars, and the scientific search for extraterrestrial life.',
+    bio:
+      'American astronomer, planetary scientist, astrophysicist, and science communicator who helped establish modern planetary science and popularized the search for life beyond Earth.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Carl_Sagan.png',
+
+    field: 'Planetary Science & Astrobiology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Venus greenhouse-effect research',
+      'Planetary atmospheric chemistry',
+      'Mars climate research',
+      'Titan atmospheric research',
+      'Contributions to SETI'
+    ],
+
+    spaceFindings: [
+      'Explained Venus’s extreme heat through its dense atmosphere and greenhouse effect.',
+      'Studied possible climate changes on Mars.',
+      'Investigated the chemistry of Titan’s atmosphere.',
+      'Contributed to scientific discussions about extraterrestrial life.'
+    ],
+
+    methods: [
+      'Atmospheric modeling',
+      'Spectroscopy',
+      'Planetary science',
+      'Spacecraft data analysis'
+    ],
+
+    discoveryYears: [
+      '1960s–1990s'
+    ],
+
+    relatedObjects: [
+      'Venus',
+      'Mars',
+      'Titan',
+      'Earth'
+    ],
+
+    relatedMissions: [
+      'Mariner',
+      'Viking',
+      'Voyager',
+      'Pioneer Venus'
+    ],
+
+    evidence: [
+      'Spacecraft measurements confirmed the extreme conditions on Venus.',
+      'Mars missions provided data supporting long-term climate change on Mars.'
+    ],
+
+    laterConfirmation: [
+      'Modern Venus missions continue to study its powerful greenhouse environment.',
+      'Mars missions continue to investigate ancient habitability.',
+      'Titan missions have confirmed the complex organic chemistry of its atmosphere.'
+    ],
+
+    whyItMatters:
+      'Sagan connected planetary science, climate science, and the search for extraterrestrial life.',
+
+    legacy:
+      'His scientific work and communication inspired generations of people to explore the cosmos.'
+  },
+
+  {
+    name: 'Michel Mayor',
+    era: '1942 – present',
+    quote:
+      'The discovery of the first planet orbiting a solar-type star changed our view of the universe.',
+    discovery: '51 Pegasi b',
+    contribution:
+      'Co-discovered 51 Pegasi b, the first confirmed exoplanet orbiting a Sun-like star.',
+    bio:
+      'Swiss astronomer whose discovery of the first confirmed exoplanet around a Sun-like star opened a new era of exoplanet astronomy.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Michel_Mayor.png',
+
+    field: 'Exoplanet Astronomy',
+    nationality: 'Swiss',
+
+    majorDiscoveries: [
+      '51 Pegasi b',
+      'Radial-velocity exoplanet detection'
+    ],
+
+    spaceFindings: [
+      'Demonstrated that planets exist around Sun-like stars.',
+      'Showed that planetary systems can be very different from our Solar System.',
+      'Helped launch modern observational exoplanet science.'
+    ],
+
+    methods: [
+      'High-resolution spectroscopy',
+      'Radial velocity measurements',
+      'Precision Doppler spectroscopy'
+    ],
+
+    discoveryYears: [
+      '1995'
+    ],
+
+    relatedObjects: [
+      '51 Pegasi',
+      '51 Pegasi b',
+      'Exoplanets'
+    ],
+
+    relatedMissions: [
+      'CHEOPS',
+      'Gaia',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'The star’s spectrum showed periodic Doppler shifts caused by the planet’s gravitational influence.'
+    ],
+
+    laterConfirmation: [
+      'Thousands of additional exoplanets have since been discovered.',
+      'Transit, direct-imaging, microlensing, and other techniques independently confirm planetary systems.'
+    ],
+
+    whyItMatters:
+      'The discovery proved that planets around other Sun-like stars are real and common enough to study systematically.',
+
+    legacy:
+      'Mayor shared the 2019 Nobel Prize in Physics for the discovery of an exoplanet orbiting a solar-type star.'
+  },
+
+  {
+    name: 'Didier Queloz',
+    era: '1966 – present',
+    quote:
+      'We opened a new window on the universe.',
+    discovery: '51 Pegasi b',
+    contribution:
+      'Co-discovered the first confirmed exoplanet orbiting a Sun-like star together with Michel Mayor.',
+    bio:
+      'Swiss astronomer whose work helped establish exoplanet science as a major branch of astronomy.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Didier_Queloz.png',
+
+    field: 'Exoplanet Science',
+    nationality: 'Swiss',
+
+    majorDiscoveries: [
+      '51 Pegasi b',
+      'Exoplanet detection through stellar radial velocity'
+    ],
+
+    spaceFindings: [
+      'Confirmed that planets can orbit stars similar to the Sun.',
+      'Helped reveal the extraordinary diversity of planetary systems.'
+    ],
+
+    methods: [
+      'Precision spectroscopy',
+      'Radial velocity measurements'
+    ],
+
+    discoveryYears: [
+      '1995'
+    ],
+
+    relatedObjects: [
+      '51 Pegasi',
+      '51 Pegasi b'
+    ],
+
+    relatedMissions: [
+      'CHEOPS',
+      'TESS',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'Periodic stellar velocity variations indicated gravitational influence from an orbiting planet.'
+    ],
+
+    laterConfirmation: [
+      'Thousands of exoplanets have now been confirmed.',
+      'Space telescopes have detected planets using transit measurements.'
+    ],
+
+    whyItMatters:
+      'The discovery transformed the search for planets outside the Solar System into a major observational science.',
+
+    legacy:
+      'Queloz shared the 2019 Nobel Prize in Physics for the discovery of 51 Pegasi b.'
+  },
+
+  {
+    name: 'Aleksander Wolszczan',
+    era: '1946 – present',
+    quote:
+      'The discovery showed that planetary systems can exist around exotic stars.',
+    discovery: 'First Confirmed Exoplanets Around a Pulsar',
+    contribution:
+      'Co-discovered planets orbiting the pulsar PSR B1257+12, providing the first confirmed evidence of planets beyond the Solar System.',
+    bio:
+      'Polish astronomer whose pulsar observations revealed one of the first known planetary systems beyond our Solar System.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Aleksander_Wolszczan.png',
+
+    field: 'Radio Astronomy & Exoplanets',
+    nationality: 'Polish',
+
+    majorDiscoveries: [
+      'Pulsar planets',
+      'PSR B1257+12 planetary system'
+    ],
+
+    spaceFindings: [
+      'Found planets orbiting a rapidly rotating neutron star.',
+      'Demonstrated that planetary systems can survive or form around stellar remnants.'
+    ],
+
+    methods: [
+      'Radio astronomy',
+      'Pulsar timing',
+      'Precision timing measurements'
+    ],
+
+    discoveryYears: [
+      '1992'
+    ],
+
+    relatedObjects: [
+      'PSR B1257+12',
+      'Pulsars',
+      'Neutron stars'
+    ],
+
+    relatedMissions: [],
+
+    evidence: [
+      'Regular variations in pulsar timing revealed the gravitational influence of orbiting planets.'
+    ],
+
+    laterConfirmation: [
+      'Additional pulsar planets have been discovered.',
+      'Modern exoplanet surveys demonstrate that planetary systems are widespread.'
+    ],
+
+    whyItMatters:
+      'The discovery showed that planets can exist in environments radically different from our Solar System.',
+
+    legacy:
+      'His work opened the study of planets around neutron stars and pulsars.'
+  },
+
+  {
+    name: 'Sara Seager',
+    era: '1971 – present',
+    quote:
+      'The search for life beyond Earth is one of humanity’s greatest scientific adventures.',
+    discovery: 'Exoplanet Atmospheres & Biosignature Theory',
+    contribution:
+      'Developed theoretical methods for studying exoplanet atmospheres and identifying possible chemical signatures of life.',
+    bio:
+      'Canadian-American astrophysicist known for pioneering work on exoplanets, planetary atmospheres, and the search for habitable worlds.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Sara_Seager.png',
+
+    field: 'Exoplanets & Astrobiology',
+    nationality: 'Canadian-American',
+
+    majorDiscoveries: [
+      'Exoplanet atmospheric models',
+      'Biosignature research',
+      'Exoplanet characterization methods'
+    ],
+
+    spaceFindings: [
+      'Developed methods for analyzing gases in distant planetary atmospheres.',
+      'Investigated which atmospheric chemicals could indicate planetary processes or possible life.',
+      'Advanced methods for identifying potentially habitable planets.'
+    ],
+
+    methods: [
+      'Atmospheric modeling',
+      'Spectroscopy',
+      'Transit spectroscopy',
+      'Astrobiological modeling'
+    ],
+
+    discoveryYears: [
+      '2000s–present'
+    ],
+
+    relatedObjects: [
+      'Exoplanets',
+      'Planetary atmospheres',
+      'Habitable zones'
+    ],
+
+    relatedMissions: [
+      'James Webb Space Telescope',
+      'TESS',
+      'PLATO'
+    ],
+
+    evidence: [
+      'Transit spectroscopy can reveal atmospheric absorption signatures.',
+      'Modern telescopes can identify molecules in some exoplanet atmospheres.'
+    ],
+
+    laterConfirmation: [
+      'JWST has begun detailed studies of exoplanet atmospheres.',
+      'Future missions may search for stronger biosignature candidates.'
+    ],
+
+    whyItMatters:
+      'Understanding exoplanet atmospheres is essential for determining whether distant worlds could support life.',
+
+    legacy:
+      'Seager is one of the leading scientists in modern exoplanet characterization and astrobiology.'
+  },
+
+  {
+    name: 'Andrea Ghez',
+    era: '1965 – present',
+    quote:
+      'Black holes are one of the most fascinating objects in the universe.',
+    discovery: 'Supermassive Black Hole at the Center of the Milky Way',
+    contribution:
+      'Led observations of stars orbiting the center of the Milky Way and provided compelling evidence for a supermassive black hole known as Sagittarius A*.',
+    bio:
+      'American astronomer whose high-resolution observations of the Galactic Center transformed our understanding of the object at the heart of the Milky Way.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Andrea_Ghez.png',
+
+    field: 'Observational Astronomy & Black Holes',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Stellar orbits around Sagittarius A*',
+      'Evidence for the Milky Way’s central supermassive black hole'
+    ],
+
+    spaceFindings: [
+      'Measured stars orbiting an extremely compact massive object.',
+      'Tracked stellar motions over decades.',
+      'Established the mass and compactness of Sagittarius A*.'
+    ],
+
+    methods: [
+      'Adaptive optics',
+      'Infrared astronomy',
+      'High-resolution imaging',
+      'Stellar orbital measurements'
+    ],
+
+    discoveryYears: [
+      '1990s–present'
+    ],
+
+    relatedObjects: [
+      'Sagittarius A*',
+      'Milky Way Galactic Center'
+    ],
+
+    relatedMissions: [
+      'Keck Observatory',
+      'Very Large Telescope',
+      'Event Horizon Telescope'
+    ],
+
+    evidence: [
+      'Rapid stellar orbits around an extremely compact massive object.',
+      'Measurements of stellar accelerations near Sagittarius A*.'
+    ],
+
+    laterConfirmation: [
+      'The Event Horizon Telescope produced an image of the environment around Sagittarius A* in 2022.',
+      'Independent observations by Reinhard Genzel’s team reached similar conclusions.'
+    ],
+
+    whyItMatters:
+      'The Galactic Center provides one of the strongest observational cases for a supermassive black hole.',
+
+    legacy:
+      'Ghez shared the 2020 Nobel Prize in Physics for the discovery of the supermassive compact object at the center of our galaxy.'
+  },
+
+  {
+    name: 'Reinhard Genzel',
+    era: '1952 – present',
+    quote:
+      'The center of our galaxy contains an extraordinary object.',
+    discovery: 'Sagittarius A* and the Galactic Center',
+    contribution:
+      'Led independent long-term observations of stars orbiting Sagittarius A*, providing compelling evidence for a supermassive black hole at the center of the Milky Way.',
+    bio:
+      'German astrophysicist whose infrared observations of the Galactic Center helped establish the presence of a supermassive black hole at the heart of the Milky Way.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Reinhard_Genzel.png',
+
+    field: 'Infrared Astronomy & Black Holes',
+    nationality: 'German',
+
+    majorDiscoveries: [
+      'Stellar motions around Sagittarius A*',
+      'Mass of the Galactic Center object'
+    ],
+
+    spaceFindings: [
+      'Tracked stars moving at extraordinary velocities around Sagittarius A*.',
+      'Demonstrated that the central mass is extremely compact.',
+      'Measured stellar orbits to determine the black hole’s mass.'
+    ],
+
+    methods: [
+      'Infrared astronomy',
+      'Adaptive optics',
+      'High-resolution spectroscopy',
+      'Long-term stellar tracking'
+    ],
+
+    discoveryYears: [
+      '1990s–present'
+    ],
+
+    relatedObjects: [
+      'Sagittarius A*',
+      'Milky Way'
+    ],
+
+    relatedMissions: [
+      'Very Large Telescope',
+      'Keck Observatory',
+      'Event Horizon Telescope'
+    ],
+
+    evidence: [
+      'Fast stellar orbits',
+      'Stellar accelerations',
+      'Compact central mass'
+    ],
+
+    laterConfirmation: [
+      'Event Horizon Telescope observations provided independent visual evidence of the Galactic Center black-hole environment.',
+      'Measurements agree with general-relativistic predictions.'
+    ],
+
+    whyItMatters:
+      'Understanding Sagittarius A* helps astronomers understand how supermassive black holes interact with their host galaxies.',
+
+    legacy:
+      'Genzel shared the 2020 Nobel Prize in Physics for work revealing the supermassive compact object at the center of the Milky Way.'
+  },
+
+  {
+    name: 'Sheperd Doeleman',
+    era: '1967 – present',
+    quote:
+      'We are trying to see the unseeable.',
+    discovery: 'First Horizon-Scale Image of a Black Hole',
+    contribution:
+      'Led the Event Horizon Telescope collaboration that produced the first image of a black-hole shadow, M87*.',
+    bio:
+      'American astronomer and astrophysicist who helped develop the global Very Long Baseline Interferometry network required to image black-hole-scale structures.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Sheperd_Doeleman.png',
+
+    field: 'Radio Astronomy & Black-Hole Imaging',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'First image of a black-hole shadow',
+      'M87* horizon-scale structure',
+      'Event Horizon Telescope'
+    ],
+
+    spaceFindings: [
+      'Observed a ring-like structure surrounding the shadow of M87*.',
+      'Measured a size consistent with the expected scale of a supermassive black hole.',
+      'Demonstrated that Earth-sized virtual radio telescopes can image black-hole environments.'
+    ],
+
+    methods: [
+      'Very Long Baseline Interferometry',
+      'Millimeter-wave radio astronomy',
+      'Global telescope synchronization',
+      'Computational imaging'
+    ],
+
+    discoveryYears: [
+      '2019'
+    ],
+
+    relatedObjects: [
+      'M87*',
+      'Sagittarius A*',
+      'Black holes'
+    ],
+
+    relatedMissions: [
+      'Event Horizon Telescope'
+    ],
+
+    evidence: [
+      'The observed ring size and shape match predictions for emission surrounding a black hole.',
+      'Multiple independent imaging methods produced consistent results.'
+    ],
+
+    laterConfirmation: [
+      'The EHT produced an image of Sagittarius A* in 2022.',
+      'Polarization observations have revealed magnetic-field structure around black holes.'
+    ],
+
+    whyItMatters:
+      'The EHT transformed black holes from objects inferred indirectly into objects whose immediate environments can be directly imaged.',
+
+    legacy:
+      'Doeleman helped establish a new era of horizon-scale black-hole astronomy.'
+  },
+
+  {
+    name: 'Katie Bouman',
+    era: '1989 – present',
+    quote:
+      'We had to build a new way of seeing the universe.',
+    discovery: 'Computational Imaging of Black Holes',
+    contribution:
+      'Developed algorithms and computational techniques used in the Event Horizon Telescope imaging process.',
+    bio:
+      'American computer scientist and astronomer whose work contributed to reconstructing images from the sparse data collected by the global EHT network.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Katie_Bouman.png',
+
+    field: 'Computational Imaging & Astronomy',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Black-hole computational imaging',
+      'EHT imaging algorithms',
+      'Interferometric reconstruction techniques'
+    ],
+
+    spaceFindings: [
+      'Helped reconstruct the image of M87* from distributed radio telescope data.',
+      'Developed methods to test whether reconstructed structures were robust.',
+      'Contributed to computational techniques used for black-hole imaging.'
+    ],
+
+    methods: [
+      'Computational imaging',
+      'Machine learning',
+      'Interferometry',
+      'Mathematical reconstruction'
+    ],
+
+    discoveryYears: [
+      '2017–2019'
+    ],
+
+    relatedObjects: [
+      'M87*',
+      'Sagittarius A*'
+    ],
+
+    relatedMissions: [
+      'Event Horizon Telescope'
+    ],
+
+    evidence: [
+      'Independent imaging pipelines produced consistent ring-like structures around M87*.'
+    ],
+
+    laterConfirmation: [
+      'EHT observations of Sagittarius A* provided another major demonstration of the imaging techniques.',
+      'Polarization imaging added further information about magnetic fields near black holes.'
+    ],
+
+    whyItMatters:
+      'Astronomical instruments often collect incomplete data. Computational imaging makes it possible to reconstruct scientifically meaningful structures from those measurements.',
+
+    legacy:
+      'Her work helped demonstrate the critical role of computational science in modern astronomy.'
+  },
+
+  {
+    name: 'Rainer Weiss',
+    era: '1932 – present',
+    quote:
+      'The universe is sending us signals in gravitational waves.',
+    discovery: 'Gravitational-Wave Detection Technology',
+    contribution:
+      'Developed foundational concepts and technologies for laser interferometers capable of detecting extremely small changes in distance caused by gravitational waves.',
+    bio:
+      'German-American physicist and one of the principal architects of the LIGO gravitational-wave detector.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Rainer_Weiss.png',
+
+    field: 'Experimental Physics & Gravitational Waves',
+    nationality: 'German-American',
+
+    majorDiscoveries: [
+      'Laser interferometric gravitational-wave detection',
+      'LIGO detector design'
+    ],
+
+    spaceFindings: [
+      'Developed methods capable of measuring distortions far smaller than atomic scales.',
+      'Helped make direct gravitational-wave astronomy possible.'
+    ],
+
+    methods: [
+      'Laser interferometry',
+      'Precision measurement',
+      'Vacuum systems',
+      'Noise reduction'
+    ],
+
+    discoveryYears: [
+      '1970s–2010s'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Neutron stars',
+      'Gravitational waves'
+    ],
+
+    relatedMissions: [
+      'LIGO',
+      'Virgo',
+      'KAGRA'
+    ],
+
+    evidence: [
+      'LIGO detected a characteristic gravitational-wave signal from merging black holes in 2015.'
+    ],
+
+    laterConfirmation: [
+      'LIGO and Virgo have detected many black-hole mergers.',
+      'The 2017 neutron-star merger was detected in both gravitational waves and electromagnetic light.'
+    ],
+
+    whyItMatters:
+      'Gravitational waves provide an entirely new way to observe violent events that may be difficult or impossible to study using light alone.',
+
+    legacy:
+      'Weiss shared the 2017 Nobel Prize in Physics for decisive contributions to LIGO and gravitational-wave observation.'
+  },
+
+  {
+    name: 'Kip Thorne',
+    era: '1940 – present',
+    quote:
+      'The universe is full of surprises.',
+    discovery: 'Theoretical Gravitational-Wave Astrophysics',
+    contribution:
+      'Made major theoretical contributions to gravitational waves, black holes, relativistic astrophysics, and the predictions needed to interpret gravitational-wave signals.',
+    bio:
+      'American theoretical physicist who helped establish the theoretical framework behind gravitational-wave astronomy.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Kip_Thorne.png',
+
+    field: 'Relativity & Gravitational-Wave Physics',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Gravitational-wave theory',
+      'Black-hole astrophysics',
+      'Relativistic astrophysics'
+    ],
+
+    spaceFindings: [
+      'Predicted gravitational-wave signatures from compact-object mergers.',
+      'Developed models describing how black holes and neutron stars produce gravitational waves.',
+      'Helped establish theoretical tools for interpreting LIGO observations.'
+    ],
+
+    methods: [
+      'General relativity',
+      'Numerical relativity',
+      'Mathematical modeling',
+      'Computational physics'
+    ],
+
+    discoveryYears: [
+      '1970s–present'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Neutron stars',
+      'Gravitational waves'
+    ],
+
+    relatedMissions: [
+      'LIGO',
+      'Virgo',
+      'KAGRA'
+    ],
+
+    evidence: [
+      'The waveform of GW150914 matched theoretical predictions for merging black holes.'
+    ],
+
+    laterConfirmation: [
+      'Numerous gravitational-wave events have matched relativistic merger models.',
+      'Multi-messenger observations have confirmed predictions for neutron-star mergers.'
+    ],
+
+    whyItMatters:
+      'Without theoretical waveform models, gravitational-wave signals would be extremely difficult to interpret.',
+
+    legacy:
+      'Thorne shared the 2017 Nobel Prize in Physics and helped shape modern gravitational-wave astronomy.'
+  },
+
+  {
+    name: 'Barry Barish',
+    era: '1936 – present',
+    quote:
+      'We have opened a new window on the universe.',
+    discovery: 'Advanced LIGO',
+    contribution:
+      'Led major organizational and engineering efforts that transformed LIGO from a challenging experimental concept into a functioning observatory capable of detecting gravitational waves.',
+    bio:
+      'American experimental physicist who played a crucial leadership role in building the Advanced LIGO detector.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Barry_Barish.png',
+
+    field: 'Experimental Physics',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Advanced LIGO',
+      'Gravitational-wave observatory development'
+    ],
+
+    spaceFindings: [
+      'Helped create instruments sensitive enough to detect spacetime ripples.',
+      'Supported the transition from prototype gravitational-wave detection to gravitational-wave astronomy.'
+    ],
+
+    methods: [
+      'Laser interferometry',
+      'Large-scale experimental engineering',
+      'Precision instrumentation'
+    ],
+
+    discoveryYears: [
+      '1990s–2010s'
+    ],
+
+    relatedObjects: [
+      'Black holes',
+      'Neutron stars'
+    ],
+
+    relatedMissions: [
+      'LIGO',
+      'Virgo',
+      'KAGRA'
+    ],
+
+    evidence: [
+      'Advanced LIGO detected gravitational waves from black-hole mergers.'
+    ],
+
+    laterConfirmation: [
+      'Dozens of compact-object mergers have since been detected.',
+      'Gravitational-wave astronomy is now an established observational field.'
+    ],
+
+    whyItMatters:
+      'Barish helped make direct gravitational-wave observation technically and scientifically possible.',
+
+    legacy:
+      'He shared the 2017 Nobel Prize in Physics for decisive contributions to LIGO and gravitational-wave detection.'
+  },
+
+  {
+    name: 'Saul Perlmutter',
+    era: '1959 – present',
+    quote:
+      'The universe is accelerating.',
+    discovery: 'Accelerating Expansion of the Universe',
+    contribution:
+      'Led a team studying distant Type Ia supernovae and found evidence that cosmic expansion is accelerating rather than slowing under gravity alone.',
+    bio:
+      'American astrophysicist whose supernova observations revealed the unexpected acceleration of the universe.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Saul_Perlmutter.png',
+
+    field: 'Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Accelerating cosmic expansion',
+      'Observational evidence for dark energy'
+    ],
+
+    spaceFindings: [
+      'Distant supernovae appeared dimmer than expected in a decelerating universe.',
+      'The observations indicated that cosmic expansion is accelerating.',
+      'The discovery implied the existence of a component now called dark energy.'
+    ],
+
+    methods: [
+      'Type Ia supernova observations',
+      'CCD imaging',
+      'Cosmological distance measurements'
+    ],
+
+    discoveryYears: [
+      '1998'
+    ],
+
+    relatedObjects: [
+      'Type Ia supernovae',
+      'Galaxies',
+      'Dark energy'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'DESI',
+      'Euclid'
+    ],
+
+    evidence: [
+      'Distant Type Ia supernovae were systematically fainter than expected.'
+    ],
+
+    laterConfirmation: [
+      'Independent supernova teams found the same accelerating expansion.',
+      'Cosmic microwave background and large-scale structure observations support dark energy.'
+    ],
+
+    whyItMatters:
+      'Most of the energy density of the present universe appears to be associated with dark energy, whose physical nature remains unknown.',
+
+    legacy:
+      'Perlmutter shared the 2011 Nobel Prize in Physics for the discovery of the accelerating expansion of the universe.'
+  },
+
+  {
+    name: 'Brian Schmidt',
+    era: '1967 – present',
+    quote:
+      'The universe is not just expanding; its expansion is accelerating.',
+    discovery: 'Accelerating Cosmic Expansion',
+    contribution:
+      'Led the High-Z Supernova Search Team, independently discovering that the expansion of the universe is accelerating.',
+    bio:
+      'Australian-American astrophysicist whose supernova research independently revealed cosmic acceleration.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Brian_Schmidt.png',
+
+    field: 'Observational Cosmology',
+    nationality: 'Australian-American',
+
+    majorDiscoveries: [
+      'Accelerating universe',
+      'Evidence for dark energy'
+    ],
+
+    spaceFindings: [
+      'Observed distant Type Ia supernovae.',
+      'Found that the universe is expanding faster today than it did in the past.'
+    ],
+
+    methods: [
+      'Supernova surveys',
+      'CCD imaging',
+      'Redshift measurements',
+      'Cosmological modeling'
+    ],
+
+    discoveryYears: [
+      '1998'
+    ],
+
+    relatedObjects: [
+      'Type Ia supernovae',
+      'Galaxies',
+      'Dark energy'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'Euclid',
+      'DESI'
+    ],
+
+    evidence: [
+      'Distant supernova brightness measurements showed unexpected cosmic acceleration.'
+    ],
+
+    laterConfirmation: [
+      'Independent teams reproduced the result.',
+      'Multiple cosmological observations support an accelerating universe.'
+    ],
+
+    whyItMatters:
+      'The discovery fundamentally changed the standard model of cosmology.',
+
+    legacy:
+      'Schmidt shared the 2011 Nobel Prize in Physics for discovering the accelerating expansion of the universe.'
+  },
+
+  {
+    name: 'Adam Riess',
+    era: '1969 – present',
+    quote:
+      'The universe is expanding faster than we expected.',
+    discovery: 'Accelerating Universe',
+    contribution:
+      'Played a leading role in the discovery that the expansion of the universe is accelerating through observations of distant Type Ia supernovae.',
+    bio:
+      'American astrophysicist whose precision cosmological measurements have also contributed to the modern Hubble-tension problem.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Adam_Riess.png',
+
+    field: 'Observational Cosmology',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Cosmic acceleration',
+      'Precision measurements of the Hubble constant'
+    ],
+
+    spaceFindings: [
+      'Used Type Ia supernovae as cosmic distance indicators.',
+      'Found evidence for accelerating cosmic expansion.',
+      'Led later efforts to precisely measure the present-day expansion rate.'
+    ],
+
+    methods: [
+      'Supernova cosmology',
+      'Cepheid calibration',
+      'Space-telescope observations'
+    ],
+
+    discoveryYears: [
+      '1998',
+      '2000s–present'
+    ],
+
+    relatedObjects: [
+      'Type Ia supernovae',
+      'Cepheid stars',
+      'Galaxies'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'James Webb Space Telescope'
+    ],
+
+    evidence: [
+      'Supernova distances reveal cosmic acceleration.',
+      'Cepheid-calibrated distance measurements provide an independent route to the Hubble constant.'
+    ],
+
+    laterConfirmation: [
+      'Multiple surveys confirm accelerated expansion.',
+      'JWST observations are being used to improve the cosmic distance ladder.'
+    ],
+
+    whyItMatters:
+      'Precision measurements of cosmic expansion help determine the composition and evolution of the universe.',
+
+    legacy:
+      'Riess shared the 2011 Nobel Prize in Physics and continues to investigate the expansion rate of the universe.'
+  },
+
+  {
+    name: 'Katherine Johnson',
+    era: '1918 – 2020',
+    quote:
+      'Everything is physics and math.',
+    discovery: 'Orbital Trajectory Calculations',
+    contribution:
+      'Performed critical mathematical calculations for early American human-spaceflight missions, including orbital trajectories and re-entry calculations.',
+    bio:
+      'American mathematician whose calculations contributed to the success of several NASA human-spaceflight missions.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Katherine_Johnson.png',
+
+    field: 'Orbital Mechanics & Applied Mathematics',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Spaceflight trajectory calculations',
+      'Orbital mechanics applications',
+      'Re-entry trajectory calculations'
+    ],
+
+    spaceFindings: [
+      'Calculated spacecraft trajectories.',
+      'Verified orbital calculations for human spaceflight.',
+      'Worked on trajectory calculations for lunar missions.'
+    ],
+
+    methods: [
+      'Analytical mathematics',
+      'Orbital mechanics',
+      'Trajectory calculations',
+      'Computational mathematics'
+    ],
+
+    discoveryYears: [
+      '1950s–1960s'
+    ],
+
+    relatedObjects: [
+      'Earth orbit',
+      'Moon',
+      'Spacecraft'
+    ],
+
+    relatedMissions: [
+      'Mercury',
+      'Apollo 11',
+      'Space Shuttle'
+    ],
+
+    evidence: [
+      'Her calculations were used in mission planning and trajectory verification.'
+    ],
+
+    laterConfirmation: [
+      'Successful orbital and lunar missions validated the trajectory calculations used by NASA.'
+    ],
+
+    whyItMatters:
+      'Accurate orbital mathematics is essential for safely navigating spacecraft through space.',
+
+    legacy:
+      'Johnson became an important symbol of mathematical excellence and helped open doors for women and African Americans in NASA’s scientific workforce.'
+  },
+
+  {
+    name: 'Margaret Hamilton',
+    era: '1936 – present',
+    quote:
+      'There was no second chance. We had to get it right.',
+    discovery: 'Apollo Flight Software Engineering',
+    contribution:
+      'Led development of software systems for NASA’s Apollo lunar missions, including software designed to handle unexpected computer workloads during landing.',
+    bio:
+      'American computer scientist and systems engineer whose work helped establish software engineering as a disciplined field and contributed to Apollo mission reliability.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Margaret_Hamilton.png',
+
+    field: 'Computer Science & Spaceflight',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Apollo guidance software',
+      'Priority-based software architecture',
+      'Software engineering practices'
+    ],
+
+    spaceFindings: [
+      'Developed software capable of prioritizing critical spacecraft tasks.',
+      'Helped create reliable software for navigation and lunar landing.',
+      'Demonstrated how robust software architecture can protect spacecraft during unexpected conditions.'
+    ],
+
+    methods: [
+      'Software engineering',
+      'Real-time computing',
+      'Systems engineering',
+      'Fault-tolerant design'
+    ],
+
+    discoveryYears: [
+      '1960s'
+    ],
+
+    relatedObjects: [
+      'Apollo spacecraft',
+      'Moon'
+    ],
+
+    relatedMissions: [
+      'Apollo 11',
+      'Apollo lunar missions'
+    ],
+
+    evidence: [
+      'Apollo 11 successfully landed on the Moon despite computer overload warnings during descent.'
+    ],
+
+    laterConfirmation: [
+      'Modern spacecraft continue to use fault-tolerant and priority-based software principles.'
+    ],
+
+    whyItMatters:
+      'Reliable software is as important as hardware when operating spacecraft where errors can be catastrophic.',
+
+    legacy:
+      'Hamilton helped establish modern software engineering and became an iconic figure in the history of space computing.'
+  },
+
+  {
+    name: 'Nancy Grace Roman',
+    era: '1925 – 2018',
+    quote:
+      'Astronomy is a science that gives us perspective.',
+    discovery: 'Foundation of NASA Space Astronomy',
+    contribution:
+      'Played a major leadership role in establishing NASA’s space astronomy program and was instrumental in developing the Hubble Space Telescope.',
+    bio:
+      'American astronomer and NASA executive widely known as the “Mother of Hubble” for her leadership in making a major space telescope program possible.',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Nancy_Grace_Roman.png',
+
+    field: 'Astronomy & Space Science Leadership',
+    nationality: 'American',
+
+    majorDiscoveries: [
+      'Stellar population studies',
+      'Space-based astronomy programs',
+      'Hubble Space Telescope development leadership'
+    ],
+
+    spaceFindings: [
+      'Studied stellar populations and the Milky Way.',
+      'Helped establish the scientific case for observing astronomy from space.',
+      'Led NASA efforts that eventually produced the Hubble Space Telescope.'
+    ],
+
+    methods: [
+      'Observational astronomy',
+      'Space telescope planning',
+      'Astronomical surveys'
+    ],
+
+    discoveryYears: [
+      '1950s–1970s'
+    ],
+
+    relatedObjects: [
+      'Stars',
+      'Milky Way',
+      'Galaxies'
+    ],
+
+    relatedMissions: [
+      'Hubble Space Telescope',
+      'Nancy Grace Roman Space Telescope'
+    ],
+
+    evidence: [
+      'Space-based telescopes avoid atmospheric distortion and absorb less atmospheric radiation.'
+    ],
+
+    laterConfirmation: [
+      'Hubble transformed observations of galaxies, stars, exoplanets, and cosmology.',
+      'NASA’s Roman Space Telescope carries her name and continues her vision for wide-field space astronomy.'
+    ],
+
+    whyItMatters:
+      'Space telescopes allow astronomers to observe wavelengths and structures that Earth’s atmosphere can obscure.',
+
+    legacy:
+      'The Nancy Grace Roman Space Telescope is named in her honor and will conduct major surveys of dark energy, exoplanets, and the infrared universe.'
   }
 ];
-
 // Space Missions Data
 interface Mission {
   name: string;
@@ -109,7 +2405,7 @@ const missionsData: Mission[] = [
       'Detected water vapour, carbon dioxide, and methane on exoplanets orbiting distant red stars.',
       'Imaged ancient spiral galaxies that formed just 350 million years after the Big Bang.'
     ],
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/James_Webb_Space_Telescope.png'
   },
   {
     name: 'Hubble Space Telescope (HST)',
@@ -124,7 +2420,7 @@ const missionsData: Mission[] = [
       'Captured the iconic "Pillars of Creation" and "Hubble Deep Field" images.',
       'Discovered that the expansion of the universe is accelerating, proving dark energy exists.'
     ],
-    image: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/Hubble_Space_Telescope.png'
   },
   {
     name: 'Voyager 1 & 2 Probes',
@@ -139,7 +2435,7 @@ const missionsData: Mission[] = [
       'Discovered active volcanic moons (Io) and rings of Jupiter, Saturn, Uranus, and Neptune.',
       'Carrying the Golden Records, containing sounds, images, and greetings from Earth.'
     ],
-    image: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/Voyager_1_&_2_Probes.png'
   },
   {
     name: 'Gaia Star Mapping Mission',
@@ -154,7 +2450,7 @@ const missionsData: Mission[] = [
       'Discovered multiple dormant stellar black holes including Gaia BH1 and BH2.',
       'Aided astronomers in understanding the historical mergers of the Milky Way.'
     ],
-    image: 'https://images.unsplash.com/photo-1538370965046-79c0d6907d47?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/Gaia_Star_Mapping_Mission.png'
   }
 ];
 
@@ -183,7 +2479,7 @@ export default function App() {
 
   const toggleFavorite = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    setFavorites(prev => 
+    setFavorites((prev: string[]): string[] => 
       prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]
     );
   };
@@ -257,6 +2553,16 @@ export default function App() {
     { id: 'star-systems-link', label: 'Star Systems', icon: <Sun className="w-4 h-4" />, action: () => { setCurrentTab('explore'); setActiveCategory('stellar-system'); setSearchQuery(''); } },
     { id: 'exoplanets-link', label: 'Exoplanets', icon: <Globe className="w-4 h-4" />, action: () => { setCurrentTab('explore'); setActiveCategory('stellar-system'); setSearchQuery('kepler-90'); } },
     { id: 'black-holes-link', label: 'Black Holes', icon: <Zap className="w-4 h-4" />, action: () => { setCurrentTab('explore'); setActiveCategory('black-hole'); setSearchQuery(''); } },
+
+  // ASTEROIDS
+  {
+    id: 'asteroids-link',
+    label: 'Asteroids',
+    icon: <Orbit className="w-4 h-4" />,
+    action: () => {
+      window.location.href = '/asteroids.html';
+    }
+  },
   ];
 
   const secondaryMenuItems = [
@@ -305,66 +2611,6 @@ export default function App() {
     { id: 1, title: 'Spectra update', message: 'JWST completed high-resolution multispectral scanning of TRAPPIST-1e.', time: 'Just now', type: 'info' },
     { id: 2, title: 'Coronal Peak', message: 'Severe solar flare event projected to peak in 4 hours. Magnetosphere monitoring active.', time: '2 hours ago', type: 'warning' },
     { id: 3, title: 'EHT Release', message: 'Event Horizon Telescope released new polarized magnetic field maps of Sagittarius A*.', time: '1 day ago', type: 'success' }
-  ];
-
-  // About Us — Platform Stats
-  const aboutStats = [
-    { icon: Globe, value: '12,400+', label: 'Celestial Objects Modeled' },
-    { icon: Cpu, value: '6', label: 'Physics Engines Running Live' },
-    { icon: Database, value: '150 TB+', label: 'Real Mission Telemetry Referenced' },
-    { icon: Gauge, value: '±0.02%', label: 'Orbital Simulation Error Margin' },
-  ];
-
-  // About Us — Data → Physics → Render Pipeline
-  const aboutProcess = [
-    {
-      icon: Database,
-      title: 'Ingest Verified Data',
-      desc: 'We pull raw measurements straight from NASA, ESA, and JPL open archives — JWST spectra, Gaia astrometry, Voyager telemetry — and normalize them into a single physics-ready schema.'
-    },
-    {
-      icon: Cpu,
-      title: 'Run the Physics',
-      desc: 'General relativity, Keplerian mechanics, and radiative transfer models compute real orbital paths, gravitational lensing, and light curves — no scripted animations, only equations.'
-    },
-    {
-      icon: Box,
-      title: 'Render in Real Time',
-      desc: 'Results stream into a WebGL / Three.js scene graph, so every object orbits, lenses, and rotates at the exact rate the underlying mathematics predicts.'
-    },
-  ];
-
-  // About Us — Physics Formulas Powering the Engine
-  const aboutFormulas = [
-    {
-      label: '1. SCHWARZSCHILD RADIUS',
-      tag: 'Singularity scale',
-      tagColor: 'text-rose-400',
-      formula: 'Rs = 2GM / c²',
-      desc: 'Calculates the event horizon boundary where escape velocity equals the speed of light c, depending entirely on black hole mass M and gravitational constant G.'
-    },
-    {
-      label: "2. KEPLER'S THIRD LAW",
-      tag: 'Orbital periods',
-      tagColor: 'text-amber-400',
-      formula: 'T² = (4π² / G(M₁+M₂)) · a³',
-      desc: 'The square of orbital period T is proportional to the cube of semi-major axis a, used directly to time Kepler-90 and TRAPPIST-1 simulated orbits.'
-    },
-    {
-      label: '3. GRAVITATIONAL REDSHIFT',
-      tag: 'Light near gravity wells',
-      tagColor: 'text-cyan-400',
-      formula: 'z = 1 / √(1 − Rs/r) − 1',
-      desc: 'Describes how light climbing out of a gravity well loses energy — the shift SpaceVerse applies when rendering light curves near black holes and neutron stars.'
-    },
-  ];
-
-  // About Us — Platform Capabilities
-  const aboutCapabilities = [
-    { icon: Code2, title: 'Open Physics Engine', desc: 'Every simulator runs on transparent, documented equations — never a black-box approximation.' },
-    { icon: Box, title: 'Three.js Rendering Core', desc: 'GPU-accelerated 3D scenes translate raw vectors into cinematic, explorable environments.' },
-    { icon: Activity, title: 'Live Observatory Feeds', desc: 'Notifications and news stay wired to real mission releases, never static placeholder text.' },
-    { icon: Heart, title: 'Built for Curiosity', desc: 'Designed for stargazers first and physics students second, with plain-language notes under every formula.' },
   ];
 
   // Dynamic Theme Colors
@@ -765,7 +3011,7 @@ export default function App() {
                     </h1>
                     
                     <p className={`text-sm sm:text-base ${textMuted} leading-relaxed mb-8 max-w-xl`}>
-                      Your gateway to the cosmos. Discover planets, stars, galaxies, and the mysteries beyond through real-time 3D telemetry and high-resolution multispectral plate scans.
+                      SpaceVerse is an interactive 3D astronomy website that helps users explore the universe through immersive visualizations and educational content. Discover the Solar System, planets, stars, galaxies, nebulae, black holes, and exoplanets with interactive 3D models, scientific facts, and space exploration resources. SpaceVerse combines astronomy education with modern web technology to make learning about the universe engaging for students, educators, and space enthusiasts.
                     </p>
 
                     {/* Integrated Telemetry Quick Stats directly beneath */}
@@ -1158,6 +3404,20 @@ export default function App() {
                       className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden group transition-all duration-300 flex flex-col justify-between`}
                     >
                       <div>
+  {/* Mission Image */}
+  <div className="w-full aspect-square sm:aspect-video rounded-2xl overflow-hidden mb-4 bg-slate-900/60 border border-white/5">
+    <img
+      src={mis.image}
+      alt={mis.name}
+      loading="lazy"
+      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      onError={(e) => {
+        (e.currentTarget as HTMLImageElement).style.display = 'none';
+      }}
+    />
+  </div>
+</div>
+                      <div>
                         {/* Status / Launch Badge */}
                         <div className="flex items-center justify-between gap-2 mb-4">
                           <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{mis.agency}</span>
@@ -1317,157 +3577,219 @@ export default function App() {
               </motion.div>
             )}
 
-            {/* 8. ABOUT US (SpaceVerse Math & Mechanics) */}
+           {/* 8. ABOUT US (SpaceVerse Math & Mechanics) */}
             {currentTab === 'about' && (
               <motion.div
                 key="about"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="space-y-10"
+                className="space-y-8"
               >
-                {/* Hero */}
-                <div className="relative">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">About SpaceVerse</span>
-                    <span className="h-px flex-1 bg-gradient-to-r from-cyan-500/40 via-indigo-500/20 to-transparent"></span>
-                  </div>
-                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white max-w-2xl leading-[1.15]">
-                    We turn raw astrophysics into something you can{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-400">
-                      orbit, zoom, and touch.
-                    </span>
-                  </h2>
-                  <p className={`text-sm ${textMuted} mt-4 max-w-xl leading-relaxed`}>
-                    SpaceVerse is a browser-native observatory that replaces static diagrams with living, physics-accurate 3D simulators — built from the same equations astronomers use, rendered at the speed of curiosity.
-                  </p>
-                </div>
-
-                {/* Stat Strip */}
-                <motion.div
-                  className="grid grid-cols-2 md:grid-cols-4 gap-4"
-                  initial="hidden"
-                  animate="show"
-                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
-                >
-                  {aboutStats.map((stat, i) => (
-                    <motion.div
-                      key={i}
-                      variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-                      className={`p-5 rounded-2xl border ${cardBg} relative overflow-hidden`}
-                    >
-                      <stat.icon className="w-4 h-4 text-cyan-400 mb-3" />
-                      <p className="text-xl sm:text-2xl font-bold text-white font-mono tracking-tight">{stat.value}</p>
-                      <p className="text-[10px] text-slate-500 mt-1.5 uppercase tracking-wide leading-snug">{stat.label}</p>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* Mission + How It Works */}
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                  {/* SpaceVerse Mission Card */}
-                  <div className={`lg:col-span-2 p-6 rounded-3xl border ${cardBg} relative overflow-hidden flex flex-col`}>
-                    <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-                      <Telescope className="w-4 h-4 text-cyan-400" />
-                    </div>
-                    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">Our Mission</span>
-                    <h3 className="text-lg font-bold text-white mt-1 mb-3">Public-Access Astrophysics</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                      SpaceVerse brings high-precision mathematical simulations out of scientific labs and into beautiful, interactive, high-fidelity browser engines. We believe visual comprehension is the fastest catalyst for scientific curiosity.
-                    </p>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      By integrating vector gravitational calculations, light refraction models, and multispectral wavelength charts, SpaceVerse serves as a dual laboratory for recreational stargazers and advanced physics students alike.
-                    </p>
-                    <div className="mt-5 pt-5 border-t border-white/5 flex items-center gap-2 text-[10px] font-mono text-slate-500 uppercase tracking-wide">
-                      <Sparkles className="w-3 h-3 text-indigo-400" />
-                      <span>Curiosity-first, equation-honest</span>
-                    </div>
-                  </div>
-
-                  {/* How It Works Pipeline */}
-                  <div className={`lg:col-span-3 p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
-                    <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">How It Works</span>
-                    <h3 className="text-lg font-bold text-white mt-1 mb-5">Data → Physics → Render</h3>
-
-                    <div>
-                      {aboutProcess.map((step, i) => (
-                        <div key={i} className="flex gap-4">
-                          <div className="flex flex-col items-center">
-                            <div className="w-8 h-8 shrink-0 rounded-full bg-slate-950/60 border border-cyan-500/30 flex items-center justify-center text-[10px] font-mono text-cyan-300">
-                              0{i + 1}
-                            </div>
-                            {i < aboutProcess.length - 1 && (
-                              <div className="w-px flex-1 bg-gradient-to-b from-white/15 to-transparent my-1"></div>
-                            )}
-                          </div>
-                          <div className={i < aboutProcess.length - 1 ? 'pb-5' : ''}>
-                            <h4 className="text-sm font-semibold text-white flex items-center gap-2">
-                              <step.icon className="w-3.5 h-3.5 text-cyan-400" />
-                              {step.title}
-                            </h4>
-                            <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">{step.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Physics & Formulas */}
                 <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-                    <span className="text-[10px] font-mono text-indigo-400 uppercase tracking-widest">Physical Formulas</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-5">Gravity, Orbits & Accretion Geometry</h3>
+             <h2 className="text-4xl font-extrabold tracking-tight text-white">
+                    About SpaceVerse
+            </h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {aboutFormulas.map((f, i) => (
-                      <div key={i} className={`p-4 rounded-2xl border ${cardBg} relative overflow-hidden`}>
-                        <div className="flex items-center justify-between mb-2 text-[10px] font-mono text-slate-400">
-                          <span>{f.label}</span>
-                        </div>
-                        <span className={`text-[10px] font-mono font-semibold ${f.tagColor}`}>{f.tag}</span>
-                        <div className="text-center py-4 my-2 rounded-xl bg-slate-950/40 border border-white/5 text-sm text-cyan-300 font-mono tracking-wide">
-                          {f.formula}
-                        </div>
-                        <p className="text-[10px] text-slate-500 leading-relaxed">{f.desc}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-cyan-400 text-sm uppercase tracking-[0.25em] mt-2">
+                 Interactive Astronomy • Space Encyclopedia • 3D Universe Simulator
+                </p>
                 </div>
 
-                {/* Capabilities */}
-                <div>
-                  <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">Platform Capabilities</span>
-                  <h3 className="text-lg font-bold text-white mt-1 mb-5">What's Under the Hood</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    {aboutCapabilities.map((cap, i) => (
-                      <div key={i} className={`p-5 rounded-2xl border ${cardBg} relative overflow-hidden group`}>
-                        <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/10 group-hover:border-cyan-500/30 transition-colors duration-300">
-                          <cap.icon className="w-4 h-4 text-indigo-300 group-hover:text-cyan-300 transition-colors duration-300" />
-                        </div>
-                        <h4 className="text-sm font-semibold text-white mb-1.5">{cap.title}</h4>
-                        <p className="text-[11px] text-slate-500 leading-relaxed">{cap.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="mt-6 max-w-5xl">
 
-                {/* Closing CTA Banner */}
-                <div className={`p-7 sm:p-8 rounded-3xl border ${bannerBg} flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden`}>
-                  <div className="relative">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5">Ready to fly through the data yourself?</h3>
-                    <p className="text-xs text-slate-400 max-w-md leading-relaxed">Jump into the Explorer and see the same equations render live across black holes, exoplanets, and galaxies.</p>
-                  </div>
-                  <button
-                    onClick={() => handleTabChange('explore')}
-                    className="shrink-0 flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 text-white text-xs font-semibold hover:shadow-[0_0_25px_rgba(6,182,212,0.35)] transition-all duration-300"
-                  >
-                    <Rocket className="w-4 h-4" />
-                    Launch the Explorer
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+<p className="text-slate-400 mt-3 max-w-4xl leading-relaxed">
+SpaceVerse is a next-generation interactive astronomy encyclopedia and 3D universe simulator built for students, educators, researchers, and space enthusiasts. Explore scientifically accurate models of the Solar System, galaxies, black holes, nebulae, exoplanets, and space missions through immersive 3D visualization, verified astronomical data, and educational articles that make complex space science easy to understand.
+</p>
+<div className="mt-6 p-5 rounded-2xl bg-cyan-500/5 border border-cyan-500/20">
+  <p className="text-sm leading-8 text-slate-300">
+    <strong className="text-cyan-300">SpaceVerse</strong> is a next-generation interactive 3D astronomy platform designed to explore the universe through immersive scientific visualization. The website features realistic simulations of the Solar System, Milky Way Galaxy, black holes, exoplanets, nebulae, star systems, and space missions using modern web technologies and accurate astronomical information.
+  </p>
+</div>
+
+<p className="text-slate-400 mt-6 leading-8">
+Our platform allows visitors to explore planets, stars, galaxies, black holes, nebulae, exoplanets, and space missions using modern web technologies. Every article combines educational content, interactive visualization, and verified scientific knowledge to inspire curiosity about the cosmos.
+</p>
+
+<div className="mt-8 rounded-2xl border border-cyan-500/20 bg-slate-900/50 p-6">
+
+<h3 className="text-2xl font-bold text-cyan-300">
+🚀 What You'll Discover
+</h3>
+
+<ul className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-slate-300">
+
+<li>🌍 Solar System</li>
+<li>🌌 Milky Way Galaxy</li>
+<li>⭐ Stars</li>
+<li>🪐 Exoplanets</li>
+<li>🕳 Black Holes</li>
+<li>☄️ Comets</li>
+<li>🌠 Nebulae</li>
+<li>🚀 Space Missions</li>
+<li>📚 Astronomy Articles</li>
+
+</ul>
+
+</div>
+
+<div className="grid md:grid-cols-4 gap-6 mt-10">
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">20+</h2>
+<p className="text-slate-400 mt-2">Interactive Simulations</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">5656+</h2>
+<p className="text-slate-400 mt-2">Confirmed Exoplanets</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">8+</h2>
+<p className="text-slate-400 mt-2">Scientific Categories</p>
+</div>
+
+<div className="rounded-xl bg-slate-900/40 p-5 text-center">
+<h2 className="text-3xl font-bold text-cyan-400">100%</h2>
+<p className="text-slate-400 mt-2">Educational Content</p>
+</div>
+
+</div>
+
+</div>
+<div className="mt-14 rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🚀 Our Mission
+</h2>
+
+<p className="text-slate-300 leading-8">
+Our mission is to make astronomy accessible to everyone through immersive
+3D technology, scientifically accurate information, and engaging educational
+experiences. We believe learning about the universe should be inspiring,
+interactive, and free for everyone.
+</p>
+
+</div>
+<div className="mt-8 rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🌌 Our Vision
+</h2>
+
+<p className="text-slate-300 leading-8">
+Our vision is to become one of the world's largest interactive
+astronomy platforms by bringing together immersive 3D visualization,
+scientifically accurate information, and educational content for
+students, educators, researchers, and space enthusiasts worldwide.
+</p>
+
+</div>
+
+<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
+  <h2 className="text-4xl font-bold text-white mb-6">
+🚀 Why Choose SpaceVerse?
+</h2>
+
+<p className="text-slate-300 leading-8">
+
+Unlike traditional astronomy websites, SpaceVerse combines
+interactive 3D simulations, verified scientific information,
+beautiful visual design, and educational articles into one
+modern learning platform.
+
+Whether you're a student, educator, researcher, or simply curious
+about the universe, SpaceVerse makes complex astronomy easy
+to understand through immersive visualization.
+
+</p>
+</div>
+<div className="rounded-3xl border border-cyan-500/20 bg-slate-900/40 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white mb-5">
+⭐ What Makes SpaceVerse Unique?
+</h2>
+
+<ul className="space-y-3 text-slate-300">
+
+<li>✔ Interactive 3D Solar System</li>
+
+<li>✔ Realistic Galaxy Models</li>
+
+<li>✔ Black Hole Visualizations</li>
+
+<li>✔ Verified Scientific Information</li>
+
+<li>✔ Educational Astronomy Articles</li>
+
+<li>✔ Responsive Across All Devices</li>
+
+<li>✔ Constantly Updated Space Data</li>
+
+</ul>
+
+</div>
+
+<div className="rounded-3xl border border-indigo-500/20 bg-slate-900/40 p-8 mt-8">
+
+<h2 className="text-3xl font-bold text-white mb-6">
+🌠 Did You Know?
+</h2>
+
+<ul className="space-y-4 text-slate-300">
+
+<li>⭐ The Milky Way contains over 100 billion stars.</li>
+
+<li>🪐 More than 5,656 exoplanets have been confirmed.</li>
+
+<li>🌌 The observable universe spans about 93 billion light-years.</li>
+
+<li>🕳 Sagittarius A* is the supermassive black hole at the center of our galaxy.</li>
+
+<li>🚀 New space discoveries are made every year using advanced telescopes.</li>
+
+</ul>
+
+</div>
+
+                          {/* Physics & Formulas */}
+  <div className={`p-6 rounded-3xl border ${cardBg} relative overflow-hidden`}>
+
+    <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
+        TRUSTED SOURCES
+    </span>
+
+    <h3 className="text-3xl font-bold text-white mt-2 mb-6">
+        Scientific Sources We Trust
+    </h3>
+
+    <div className="space-y-4">
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🚀 NASA — Space missions, astronomy and planetary science
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🌍 ESA — European Space Agency research
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🔭 Hubble Space Telescope
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            ✨ James Webb Space Telescope
+        </div>
+
+        <div className="rounded-xl bg-slate-900/40 p-4 border border-cyan-500/20">
+            🌌 International Astronomical Union (IAU)
+        </div>
+
+    </div>
+
+</div>
                 </div>
               </motion.div>
             )}
@@ -1478,16 +3800,27 @@ export default function App() {
 
         {/* Global Footer */}
         <footer className={`border-t ${isDarkMode ? 'border-white/5 bg-[#010207]' : 'border-slate-200 bg-slate-50'} py-8 text-center text-slate-500 text-xs transition-colors duration-300`}>
-          <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="font-sans font-normal">&copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.</p>
-            <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
-              <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
-            </p>
-          </div>
-        </footer>
+  <div className="max-w-7xl mx-auto px-6 flex flex-col gap-4">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p className="font-sans font-normal">
+        &copy; {new Date().getFullYear()} SpaceVerse Encyclopedia &bull; Professional Astrophysical Simulators.
+      </p>
 
-      </div>
+      <p className="font-mono text-[10px] text-slate-600 uppercase tracking-widest flex items-center gap-1.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+        <span>POWERED BY THREE.JS COGNITIVE GRAPHICS</span>
+      </p>
+    </div>
+
+    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[11px] uppercase tracking-widest">
+      <a href="/privacy-policy.html" className="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+      <a href="/terms.html" className="hover:text-cyan-400 transition-colors">Terms</a>
+      <a href="/contact.html" className="hover:text-cyan-400 transition-colors">Contact</a>
+      <a href="/disclaimer.html" className="hover:text-cyan-400 transition-colors">Disclaimer</a>
+    </div>
+     </div>
+     </footer>
+     </div>
 
       {/* FULL-SCREEN IMMERSIVE 3D SIMULATOR CANVAS MODAL */}
       <AnimatePresence>
