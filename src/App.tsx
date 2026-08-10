@@ -2448,7 +2448,7 @@ const missionsData: Mission[] = [
       'Discovered active volcanic moons (Io) and rings of Jupiter, Saturn, Uranus, and Neptune.',
       'Carrying the Golden Records, containing sounds, images, and greetings from Earth.'
     ],
-    image: 'https://space-verse-alpha.vercel.app/images/Voyager_1_2_Probes.png'
+    image: 'https://space-verse-alpha.vercel.app/images/Voyager_1_&_2_Probes.png'
   },
   {
     name: 'Gaia Star Mapping Mission',
