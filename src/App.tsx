@@ -14,26 +14,6 @@ import {
   ArrowUpRight, Activity, Share2, BookOpen, AlertCircle
 } from 'lucide-react';
 
-declare module 'react/jsx-runtime' {
-  export function jsx(type: any, props?: any, key?: string | number | null): any;
-  export function jsxs(type: any, props?: any, key?: string | number | null): any;
-  export function jsxDEV(
-    type: any,
-    props?: any,
-    key?: string | number | null,
-    isStaticChildren?: boolean,
-    source?: any,
-    self?: any
-  ): any;
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: any;
-    }
-  }
-}
 
 // Scientists Data
 interface Scientist {
