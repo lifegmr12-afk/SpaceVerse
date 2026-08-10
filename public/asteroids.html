@@ -106,7 +106,7 @@ href="https://fonts.gstatic.com"
 crossorigin>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap"
 rel="stylesheet">
 
 <!-- ========================= -->
@@ -130,6 +130,8 @@ scroll-behavior:smooth;
 html{
 
 overflow-x:hidden;
+
+scroll-padding-top:100px;
 
 }
 
@@ -2190,7 +2192,7 @@ min-height:auto;
    NEAR-EARTH ASTEROIDS
 ========================================================== */
 
-#near-earth-asteroids .glass-card{
+#near-earth-asteroids, #near-earth-asteroids-2 .glass-card{
 
 margin-top:30px;
 
@@ -2638,7 +2640,7 @@ min-height:auto;
    PART 3D-3
 ========================================================== */
 
-#planetary-defense,
+#planetary-defense, #planetary-defense-2,
 #asteroid-detection,
 #hazardous-asteroids,
 #survey-programs,
@@ -3178,8 +3180,8 @@ min-height:auto;
 PART 3E-3B-1
 ========================================================== */
 
-#hayabusa2-overview,
-#hayabusa2-facts,
+#hayabusa2-overview, #hayabusa2-overview-2,
+#hayabusa2-facts, #hayabusa2-facts-2,
 #hayabusa2-objectives,
 #hayabusa2-design,
 #hayabusa2-instruments,
@@ -3190,13 +3192,13 @@ margin-top:90px;
 
 }
 
-#hayabusa2-overview .glass-card{
+#hayabusa2-overview, #hayabusa2-overview-2 .glass-card{
 
 margin-top:30px;
 
 }
 
-#hayabusa2-facts .info-card,
+#hayabusa2-facts, #hayabusa2-facts-2 .info-card,
 #hayabusa2-objectives .info-card,
 #hayabusa2-design .info-card,
 #hayabusa2-instruments .info-card,
@@ -3242,7 +3244,7 @@ border-color:#ffb45c;
 
 @media(max-width:900px){
 
-#hayabusa2-facts .info-card,
+#hayabusa2-facts, #hayabusa2-facts-2 .info-card,
 #hayabusa2-objectives .info-card,
 #hayabusa2-design .info-card,
 #hayabusa2-instruments .info-card,
@@ -3571,10 +3573,10 @@ min-height:auto;
 PART 3E-4
 ========================================================== */
 
-#hayabusa2-overview,
+#hayabusa2-overview, #hayabusa2-overview-2,
 #hayabusa2-discoveries,
 #hayabusa2-future-exploration,
-#hayabusa2-facts,
+#hayabusa2-facts, #hayabusa2-facts-2,
 #hayabusa2-closing{
 
 margin-top:90px;
@@ -3589,14 +3591,14 @@ margin-top:30px;
 
 }
 
-#hayabusa2-overview .info-card,
+#hayabusa2-overview, #hayabusa2-overview-2 .info-card,
 #hayabusa2-discoveries .info-card{
 
 min-height:210px;
 
 }
 
-#hayabusa2-facts tbody tr:hover{
+#hayabusa2-facts, #hayabusa2-facts-2 tbody tr:hover{
 
 background:rgba(255,180,90,.08);
 
@@ -3604,7 +3606,7 @@ background:rgba(255,180,90,.08);
 
 @media(max-width:900px){
 
-#hayabusa2-overview .info-card,
+#hayabusa2-overview, #hayabusa2-overview-2 .info-card,
 #hayabusa2-discoveries .info-card{
 
 min-height:auto;
@@ -3709,20 +3711,20 @@ PART 4-3
 IMPORTANT NEAR-EARTH ASTEROIDS
 ========================================================== */
 
-#near-earth-asteroids,
+#near-earth-asteroids, #near-earth-asteroids-2,
 #nea-importance{
 
 margin-top:90px;
 
 }
 
-#near-earth-asteroids .info-card{
+#near-earth-asteroids, #near-earth-asteroids-2 .info-card{
 
 min-height:340px;
 
 }
 
-#near-earth-asteroids .feature-list{
+#near-earth-asteroids, #near-earth-asteroids-2 .feature-list{
 
 margin-top:18px;
 padding-left:18px;
@@ -3730,7 +3732,7 @@ line-height:1.9;
 
 }
 
-#near-earth-asteroids .feature-list li{
+#near-earth-asteroids, #near-earth-asteroids-2 .feature-list li{
 
 margin-bottom:6px;
 
@@ -3744,7 +3746,7 @@ min-height:180px;
 
 @media(max-width:900px){
 
-#near-earth-asteroids .info-card,
+#near-earth-asteroids, #near-earth-asteroids-2 .info-card,
 #nea-importance .info-card{
 
 min-height:auto;
@@ -4226,7 +4228,7 @@ PART 5-6
 PLANETARY DEFENSE
 ========================================================== */
 
-#planetary-defense,
+#planetary-defense, #planetary-defense-2,
 #defense-methods,
 #planetary-defense-facts{
 
@@ -4234,7 +4236,7 @@ margin-top:90px;
 
 }
 
-#planetary-defense .glass-card{
+#planetary-defense, #planetary-defense-2 .glass-card{
 
 margin-top:30px;
 
@@ -7534,7 +7536,7 @@ style="left:98%;top:18%;animation:asteroidFloat1 200s linear infinite;"></div>
                     Types
                 </a>
 
-                <a href="#largest">
+                <a href="#largest-intro">
                     Largest
                 </a>
 
@@ -7546,7 +7548,7 @@ style="left:98%;top:18%;animation:asteroidFloat1 200s linear infinite;"></div>
                     Gallery
                 </a>
 
-                <a href="#faq">
+                <a href="#asteroid-faq">
                     FAQ
                 </a>
 
@@ -7605,8 +7607,6 @@ ASTEROID TOPIC SEARCH
 
     </div>
 
-</div>
-
             <!-- ===========================
                  MOBILE MENU BUTTON
             ============================ -->
@@ -7655,7 +7655,7 @@ ASTEROID TOPIC SEARCH
         📚 Asteroid Types
     </a>
 
-    <a href="#largest">
+    <a href="#largest-intro">
         🌍 Largest Asteroids
     </a>
 
@@ -7667,7 +7667,7 @@ ASTEROID TOPIC SEARCH
         🖼 Gallery
     </a>
 
-    <a href="#faq">
+    <a href="#asteroid-faq">
         ❓ FAQ
     </a>
 
@@ -22485,7 +22485,7 @@ PART 3E-4
 HAYABUSA2 QUICK FACTS, DISCOVERIES & LEGACY
 ========================================================== -->
 
-<section id="hayabusa2-overview" class="section">
+<section id="hayabusa2-overview-2" class="section">
 
 <div class="container">
 
@@ -22638,7 +22638,7 @@ the early Solar System.
 MISSION FACTS
 ========================================================== -->
 
-<section id="hayabusa2-facts" class="section">
+<section id="hayabusa2-facts-2" class="section">
 
 <div class="container">
 
@@ -23137,7 +23137,7 @@ IMPORTANT NEAR-EARTH ASTEROIDS
 Eros • Bennu • Ryugu
 ========================================================== -->
 
-<section id="near-earth-asteroids" class="section">
+<section id="near-earth-asteroids-2" class="section">
 
 <div class="container">
 
@@ -23586,47 +23586,47 @@ paths below with your own high-quality asteroid images.
 <div class="gallery-grid">
 
 <div class="gallery-item">
-<img src="asteroids/vesta.jpg" alt="Vesta" loading="lazy">
+<img src="images/asteroids/vesta.jpg" alt="Vesta" loading="lazy">
 <div class="gallery-caption">🌑 Vesta</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/pallas.jpg" alt="Pallas" loading="lazy">
+<img src="images/asteroids/pallas.jpg" alt="Pallas" loading="lazy">
 <div class="gallery-caption">🌑 Pallas</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/hygiea.jpg" alt="Hygiea" loading="lazy">
+<img src="images/asteroids/hygiea.jpg" alt="Hygiea" loading="lazy">
 <div class="gallery-caption">🌑 Hygiea</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/psyche.jpg" alt="Psyche" loading="lazy">
+<img src="images/asteroids/psyche.jpg" alt="Psyche" loading="lazy">
 <div class="gallery-caption">🌑 Psyche</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/eros.jpg" alt="Eros" loading="lazy">
+<img src="images/asteroids/eros.jpg" alt="Eros" loading="lazy">
 <div class="gallery-caption">🌑 Eros</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/bennu.jpg" alt="Bennu" loading="lazy">
+<img src="images/asteroids/bennu.jpg" alt="Bennu" loading="lazy">
 <div class="gallery-caption">🌑 Bennu</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/ryugu.jpg" alt="Ryugu" loading="lazy">
+<img src="images/asteroids/ryugu.jpg" alt="Ryugu" loading="lazy">
 <div class="gallery-caption">🌑 Ryugu</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/ida.jpg" alt="Ida" loading="lazy">
+<img src="images/asteroids/ida.jpg" alt="Ida" loading="lazy">
 <div class="gallery-caption">🌑 Ida</div>
 </div>
 
 <div class="gallery-item">
-<img src="asteroids/gaspra.jpg" alt="Gaspra" loading="lazy">
+<img src="images/asteroids/gaspra.jpg" alt="Gaspra" loading="lazy">
 <div class="gallery-caption">🌑 Gaspra</div>
 </div>
 
@@ -24402,7 +24402,7 @@ PART 5-6
 PLANETARY DEFENSE
 ========================================================== -->
 
-<section id="planetary-defense" class="section">
+<section id="planetary-defense-2" class="section">
 
 <div class="container">
 
@@ -25413,33 +25413,6 @@ threshold:0.15
 });
 
 revealElements.forEach(el=>revealObserver.observe(el));
-
-/* ==========================================================
-SMOOTH SCROLL
-========================================================== */
-
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
-
-link.addEventListener("click",e=>{
-
-const target=document.querySelector(link.getAttribute("href"));
-
-if(target){
-
-e.preventDefault();
-
-target.scrollIntoView({
-
-behavior:"smooth",
-block:"start"
-
-});
-
-}
-
-});
-
-});
 
 /* ==========================================================
 CARD TILT EFFECT
@@ -26541,500 +26514,6 @@ AUTO-INDEX SYSTEM
 
 
 })();
-</script>
-<script>
-/* ==========================================================
-   SPACEVERSE ASTEROIDS SEARCH ENGINE
-========================================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const searchToggle =
-        document.getElementById("asteroidSearchToggle");
-
-    const searchPanel =
-        document.getElementById("asteroidSearchPanel");
-
-    const searchInput =
-        document.getElementById("asteroidSearchInput");
-
-    const searchResults =
-        document.getElementById("asteroidSearchResults");
-
-    const searchClose =
-        document.getElementById("asteroidSearchClose");
-
-
-    /* SAFETY CHECK */
-
-    if (
-        !searchToggle ||
-        !searchPanel ||
-        !searchInput ||
-        !searchResults ||
-        !searchClose
-    ) {
-        console.warn(
-            "SpaceVerse Search: required search elements were not found."
-        );
-
-        return;
-    }
-
-
-    /* ======================================================
-       BUILD SEARCH INDEX
-    ====================================================== */
-
-    const searchIndex = [];
-
-
-    /*
-       Search all important headings.
-    */
-
-    const headings =
-        document.querySelectorAll(
-            "main h1, main h2, main h3, main h4, section h1, section h2, section h3, section h4"
-        );
-
-
-    headings.forEach(function (heading, index) {
-
-        const title =
-            heading.textContent.trim();
-
-        if (!title) return;
-
-
-        /*
-           Find the best section to scroll to.
-        */
-
-        let target = heading.closest("section");
-
-
-        if (!target) {
-            target = heading;
-        }
-
-
-        /*
-           Create an ID automatically if needed.
-        */
-
-        if (!target.id) {
-
-            let id =
-                "search-topic-" + index;
-
-            target.id = id;
-        }
-
-
-        searchIndex.push({
-
-            title: title,
-
-            element: target,
-
-            type: "Topic"
-
-        });
-
-    });
-
-
-    /*
-       Also index explicit search topics.
-    */
-
-    document
-        .querySelectorAll("[data-search-topic]")
-        .forEach(function (element) {
-
-            const title =
-                element.getAttribute(
-                    "data-search-topic"
-                );
-
-            if (!title) return;
-
-
-            if (!element.id) {
-
-                element.id =
-                    "search-custom-" +
-                    searchIndex.length;
-
-            }
-
-
-            searchIndex.push({
-
-                title: title,
-
-                element: element,
-
-                type: "Topic"
-
-            });
-
-        });
-
-
-    /*
-       Remove duplicate topics.
-    */
-
-    const uniqueIndex = [];
-
-    const seen = new Set();
-
-
-    searchIndex.forEach(function (item) {
-
-        const key =
-            item.title.toLowerCase();
-
-        if (seen.has(key)) return;
-
-        seen.add(key);
-
-        uniqueIndex.push(item);
-
-    });
-
-
-    /* ======================================================
-       OPEN SEARCH
-    ====================================================== */
-
-    function openSearch() {
-
-        searchPanel.classList.add("active");
-
-        setTimeout(function () {
-
-            searchInput.focus();
-
-        }, 100);
-
-    }
-
-
-    /* ======================================================
-       CLOSE SEARCH
-    ====================================================== */
-
-    function closeSearch() {
-
-        searchPanel.classList.remove("active");
-
-        searchInput.value = "";
-
-        searchResults.innerHTML = "";
-
-    }
-
-
-    /* ======================================================
-       SEARCH
-    ====================================================== */
-
-    function performSearch() {
-
-        const query =
-            searchInput.value
-                .trim()
-                .toLowerCase();
-
-
-        searchResults.innerHTML = "";
-
-
-        /*
-           Nothing typed
-        */
-
-        if (!query) {
-
-            return;
-
-        }
-
-
-        /*
-           Find matching topics
-        */
-
-        const matches =
-            uniqueIndex.filter(function (item) {
-
-                return item.title
-                    .toLowerCase()
-                    .includes(query);
-
-            });
-
-
-        /*
-           No results
-        */
-
-        if (!matches.length) {
-
-            searchResults.innerHTML = `
-
-                <div class="asteroid-search-empty">
-
-                    🔭 No matching asteroid topic found.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        /*
-           Display results
-        */
-
-        matches
-            .slice(0, 30)
-            .forEach(function (item) {
-
-                const result =
-                    document.createElement("button");
-
-
-                result.type = "button";
-
-                result.className =
-                    "asteroid-search-result";
-
-
-                result.innerHTML = `
-
-                    <span class="asteroid-search-result-title">
-                        ${escapeSearchHTML(item.title)}
-                    </span>
-
-                    <span class="asteroid-search-result-type">
-                        ${item.type} →
-                    </span>
-
-                `;
-
-
-                /*
-                   CLICK RESULT
-                */
-
-                result.addEventListener(
-                    "click",
-                    function () {
-
-                        closeSearch();
-
-
-                        /*
-                           Account for sticky navbar.
-                        */
-
-                        const header =
-                            document.querySelector(
-                                "header, nav, .navbar, .site-header"
-                            );
-
-
-                        const offset =
-                            header
-                                ? header.offsetHeight + 20
-                                : 20;
-
-
-                        const targetTop =
-                            item.element.getBoundingClientRect().top +
-                            window.scrollY -
-                            offset;
-
-
-                        window.scrollTo({
-
-                            top: Math.max(
-                                0,
-                                targetTop
-                            ),
-
-                            behavior: "smooth"
-
-                        });
-
-
-                        /*
-                           Highlight the topic temporarily.
-                        */
-
-                        item.element.classList.add(
-                            "search-topic-highlight"
-                        );
-
-
-                        setTimeout(function () {
-
-                            item.element.classList.remove(
-                                "search-topic-highlight"
-                            );
-
-                        }, 1800);
-
-                    }
-                );
-
-
-                searchResults.appendChild(result);
-
-            });
-
-    }
-
-    /* ======================================================
-       ESCAPE HTML
-    ====================================================== */
-
-    function escapeSearchHTML(text) {
-
-        return text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-    }
-
-
-    /* ======================================================
-       EVENTS
-    ====================================================== */
-
-    searchToggle.addEventListener(
-        "click",
-        function (event) {
-
-            event.stopPropagation();
-
-            if (
-                searchPanel.classList.contains(
-                    "active"
-                )
-            ) {
-
-                closeSearch();
-
-            } else {
-
-                openSearch();
-
-            }
-
-        }
-    );
-
-
-    searchClose.addEventListener(
-        "click",
-        function () {
-
-            closeSearch();
-
-        }
-    );
-
-
-    searchInput.addEventListener(
-        "input",
-        performSearch
-    );
-
-
-    /*
-       Enter = first result
-    */
-
-    searchInput.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (event.key !== "Enter") return;
-
-
-            const firstResult =
-                searchResults.querySelector(
-                    ".asteroid-search-result"
-                );
-
-
-            if (firstResult) {
-
-                firstResult.click();
-
-            }
-
-        }
-    );
-
-
-    /*
-       ESC = close
-    */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (event.key === "Escape") {
-
-                closeSearch();
-
-            }
-
-        }
-    );
-
-
-    /*
-       Click outside = close
-    */
-
-    document.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                !searchPanel.contains(event.target) &&
-                !searchToggle.contains(event.target)
-            ) {
-
-                closeSearch();
-
-            }
-
-        }
-    );
-
-
-    console.log(
-        "SpaceVerse Search indexed " +
-        uniqueIndex.length +
-        " topics."
-    );
-
-});
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
