@@ -9,11 +9,6 @@
     content="Explore the Milky Way Galaxy through an interactive 3D visualization and a concise guide to its structure, spiral arms, stars, galactic center, Sagittarius A*, and our location in the galaxy."
 >
 
-<meta
-    name="keywords"
-    content="Milky Way Galaxy, Milky Way structure, spiral arms, Sagittarius A*, galactic center, Solar System location, SpaceVerse"
->
-
 <meta name="author" content="SpaceVerse">
 
 <link
@@ -25,6 +20,7 @@
 
         body {
             overflow: hidden;
+            overflow-y: auto;
             background: #000;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #fff;
@@ -353,93 +349,581 @@
             }
             #ui-panel.hidden { transform: translateY(-110%); }
         }
+        /* ==========================================
+   MILKY WAY EDUCATIONAL CONTENT
+========================================== */
+
+#milky-way-content {
+    position: relative;
+    z-index: 20;
+    width: min(900px, calc(100% - 32px));
+    margin: 100vh auto 0;
+    padding: 70px 0 100px;
+    color: #e8efff;
+}
+
+.mw-info {
+    background: rgba(5, 8, 22, 0.94);
+    border: 1px solid rgba(120, 160, 255, 0.16);
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.45);
+    backdrop-filter: blur(16px);
+}
+
+.mw-intro {
+    margin-bottom: 40px;
+}
+
+.mw-kicker {
+    color: #82b8ff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.mw-info h1 {
+    font-size: clamp(34px, 6vw, 58px);
+    line-height: 1.05;
+    margin-bottom: 18px;
+}
+
+.mw-info h2 {
+    margin: 42px 0 14px;
+    font-size: 25px;
+    color: #9fc8ff;
+}
+
+.mw-info h3 {
+    margin-bottom: 8px;
+    color: #b8d3ff;
+}
+
+.mw-info p {
+    color: rgba(220,230,250,.78);
+    line-height: 1.75;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+.mw-lead {
+    font-size: 17px !important;
+    max-width: 760px;
+}
+
+.mw-facts,
+.mw-structure-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.mw-facts > div,
+.mw-card {
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(60,90,160,.10);
+    border: 1px solid rgba(120,160,255,.12);
+}
+
+.mw-facts strong,
+.mw-facts span {
+    display: block;
+}
+
+.mw-facts strong {
+    margin-bottom: 6px;
+    color: #9fc8ff;
+}
+
+.mw-facts span {
+    color: rgba(220,230,250,.72);
+    font-size: 13px;
+}
+
+.mw-info details {
+    margin: 10px 0;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: rgba(60,90,160,.08);
+    border: 1px solid rgba(120,160,255,.10);
+}
+
+.mw-info summary {
+    cursor: pointer;
+    color: #b9d4ff;
+    font-weight: 600;
+}
+
+.mw-info details p {
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+#mw-references li {
+    margin: 10px 0;
+    color: rgba(220,230,250,.72);
+}
+
+@media (max-width: 600px) {
+
+    #milky-way-content {
+        width: calc(100% - 16px);
+        padding-top: 40px;
+    }
+
+    .mw-info {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .mw-facts,
+    .mw-structure-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Milky Way Galaxy — Structure, Stars and Sagittarius A*",
+  "description": "An educational guide to the Milky Way Galaxy combined with an interactive 3D visualization.",
+  "author": {
+    "@type": "Organization",
+    "name": "SpaceVerse"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SpaceVerse"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://space-verse-alpha.vercel.app/milky-way.html"
+  }
+}
+</script>
 </head>
+
 <body>
+
     <div id="loading">
         <div class="loading-title">Initializing Galaxy</div>
         <div class="loading-bar-container">
             <div class="loading-bar-fill" id="loading-fill"></div>
         </div>
-        <div class="loading-status" id="loading-status">Preparing renderer...</div>
+        <div class="loading-status" id="loading-status">
+            Preparing renderer...
+        </div>
     </div>
+
 
     <button id="show-ui-btn" onclick="showUI()">☰</button>
 
+
     <div id="ui-panel">
+
         <div class="panel-header">
             <span class="panel-title">☉ Milky Way</span>
             <button class="panel-close" onclick="hideUI()">✕</button>
         </div>
 
+        <!-- YOUR EXISTING UI CONTINUES HERE -->
+
         <div class="stat-row">
             <span class="stat-label">Stars</span>
             <span class="stat-value" id="stat-stars">0</span>
         </div>
+
         <div class="stat-row">
             <span class="stat-label">Particles</span>
             <span class="stat-value" id="stat-particles">0</span>
         </div>
+
         <div class="stat-row">
             <span class="stat-label">FPS</span>
             <span class="stat-value" id="stat-fps">—</span>
         </div>
 
-        <div class="section-divider"></div>
-        <div class="section-label">Display</div>
+        <!-- ...keep all your existing controls... -->
 
-        <div class="toggle-row">
-            <span class="toggle-label">Bloom</span>
-            <div class="toggle-switch active" id="toggle-bloom" onclick="toggleOption('bloom')"></div>
-        </div>
-        <div class="toggle-row">
-            <span class="toggle-label">Twinkle</span>
-            <div class="toggle-switch active" id="toggle-twinkle" onclick="toggleOption('twinkle')"></div>
-        </div>
-        <div class="toggle-row">
-            <span class="toggle-label">Dust</span>
-            <div class="toggle-switch active" id="toggle-dust" onclick="toggleOption('dust')"></div>
-        </div>
-        <div class="toggle-row">
-            <span class="toggle-label">Nebulae</span>
-            <div class="toggle-switch active" id="toggle-nebula" onclick="toggleOption('nebula')"></div>
-        </div>
-        <div class="toggle-row">
-            <span class="toggle-label">Auto Rotate</span>
-            <div class="toggle-switch active" id="toggle-rotate" onclick="toggleOption('rotate')"></div>
-        </div>
-
-        <div class="section-divider"></div>
-        <div class="section-label">Parameters</div>
-
-        <div class="slider-row">
-            <div class="slider-header">
-                <span class="slider-label">Rotation Speed</span>
-                <span class="slider-value" id="val-speed">1.0×</span>
-            </div>
-            <input type="range" id="slider-speed" min="0" max="3" step="0.1" value="1" oninput="updateSlider('speed')">
-        </div>
-        <div class="slider-row">
-            <div class="slider-header">
-                <span class="slider-label">Bloom Intensity</span>
-                <span class="slider-value" id="val-bloom">1.4</span>
-            </div>
-            <input type="range" id="slider-bloom" min="0" max="3" step="0.05" value="1.4" oninput="updateSlider('bloom')">
-        </div>
-        <div class="slider-row">
-            <div class="slider-header">
-                <span class="slider-label">Exposure</span>
-                <span class="slider-value" id="val-exposure">1.2</span>
-            </div>
-            <input type="range" id="slider-exposure" min="0.3" max="3" step="0.05" value="1.2" oninput="updateSlider('exposure')">
-        </div>
-
-        <div class="section-divider"></div>
         <div class="btn-row">
             <button class="action-btn" onclick="resetCamera()">↺ Reset</button>
             <button class="action-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
         </div>
+
     </div>
+
+
+    <!-- =====================================================
+         MILKY WAY EDUCATIONAL CONTENT START
+    ====================================================== -->
+
+    <main id="milky-way-content">
+
+        <article class="mw-info">
+
+            <header class="mw-intro">
+
+                <p class="mw-kicker">
+                    SPACEVERSE • GALAXY GUIDE
+                </p>
+
+                <h1>Milky Way Galaxy</h1>
+
+                <p class="mw-lead">
+                    The Milky Way is the barred spiral galaxy that contains
+                    our Solar System. Explore its structure, stars, spiral
+                    arms, galactic center, and supermassive black hole
+                    through the interactive 3D model.
+                </p>
+
+            </header>
+
+
+            <!-- AT A GLANCE -->
+
+            <section id="mw-overview">
+
+                <h2>Milky Way at a Glance</h2>
+
+                <div class="mw-facts">
+
+                    <div>
+                        <strong>Galaxy type</strong>
+                        <span>Barred spiral galaxy</span>
+                    </div>
+
+                    <div>
+                        <strong>Approximate diameter</strong>
+                        <span>About 100,000–120,000 light-years</span>
+                    </div>
+
+                    <div>
+                        <strong>Age</strong>
+                        <span>About 13.6 billion years</span>
+                    </div>
+
+                    <div>
+                        <strong>Our location</strong>
+                        <span>
+                            About 26,000 light-years from the galactic center
+                        </span>
+                    </div>
+
+                    <div>
+                        <strong>Central black hole</strong>
+                        <span>Sagittarius A*</span>
+                    </div>
+
+                    <div>
+                        <strong>Our galaxy group</strong>
+                        <span>Local Group</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- WHAT IS THE MILKY WAY -->
+
+            <section>
+
+                <h2>What Is the Milky Way?</h2>
+
+                <p>
+                    The Milky Way is a large barred spiral galaxy containing
+                    stars, planets, gas, dust, stellar remnants, and dark
+                    matter. From Earth, we see the galaxy as a broad band of
+                    diffuse light across the night sky because the Solar
+                    System is located inside its disk.
+                </p>
+
+                <p>
+                    Because we are inside the Milky Way, astronomers cannot
+                    photograph the entire galaxy from an outside viewpoint.
+                    Instead, they combine observations of stars, gas, dust,
+                    infrared light, radio waves and stellar motion to
+                    reconstruct its large-scale structure.
+                </p>
+
+            </section>
+
+
+            <!-- HOW ASTRONOMERS STUDY IT -->
+
+            <section>
+
+                <h2>How Do Astronomers Study the Milky Way?</h2>
+
+                <p>
+                    Studying the Milky Way is different from studying
+                    distant galaxies because Earth is located inside it.
+                    Dust can block visible light, while the galaxy's enormous
+                    scale makes its complete structure difficult to observe
+                    directly.
+                </p>
+
+                <p>
+                    Astronomers therefore combine different types of
+                    observations. Infrared observations can reveal stars
+                    hidden behind dust, radio observations trace cold gas
+                    and hydrogen, and measurements of stellar positions and
+                    velocities help map the galaxy's structure and rotation.
+                </p>
+
+            </section>
+
+
+            <!-- STRUCTURE -->
+
+            <section>
+
+                <h2>Structure of the Milky Way</h2>
+
+                <p>
+                    The Milky Way contains several major components: a
+                    flattened stellar disk, a central bulge and bar, spiral
+                    structure, a surrounding stellar halo, and an extended
+                    dark-matter halo.
+                </p>
+
+                <div class="mw-structure-grid">
+
+                    <div class="mw-card">
+
+                        <h3>Galactic Disk</h3>
+
+                        <p>
+                            A thin, rotating region containing much of the
+                            galaxy's stars, gas and dust.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mw-card">
+
+                        <h3>Central Bulge & Bar</h3>
+
+                        <p>
+                            A dense central region surrounding the Milky
+                            Way's innermost area.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mw-card">
+
+                        <h3>Spiral Arms</h3>
+
+                        <p>
+                            Regions of enhanced stellar and gas density
+                            extending through the galactic disk.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mw-card">
+
+                        <h3>Galactic Halo</h3>
+
+                        <p>
+                            A much larger, roughly spherical region
+                            surrounding the disk and containing old stars
+                            and globular clusters.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SAGITTARIUS A* -->
+
+            <section>
+
+                <h2>
+                    Sagittarius A*: The Milky Way's Central Black Hole
+                </h2>
+
+                <p>
+                    At the center of the Milky Way lies Sagittarius A*, a
+                    supermassive black hole. It has a mass of roughly four
+                    million Suns and is located about 26,000 light-years
+                    from Earth.
+                </p>
+
+                <p>
+                    Astronomers established the presence of this compact
+                    massive object by observing the rapid orbits of stars
+                    around the galactic center. These stellar motions
+                    provide strong evidence for an extremely massive object
+                    concentrated in a very small region.
+                </p>
+
+            </section>
+
+
+            <!-- OUR LOCATION -->
+
+            <section>
+
+                <h2>Where Is the Solar System?</h2>
+
+                <p>
+                    The Solar System lies within the Milky Way's disk,
+                    roughly 26,000 light-years from the galactic center.
+                    We are located in the Orion–Cygnus region, between major
+                    spiral-arm structures.
+                </p>
+
+                <p>
+                    Our position gives astronomers an unusual perspective:
+                    we can study individual stars in great detail while
+                    simultaneously trying to reconstruct the overall
+                    structure of our galaxy.
+                </p>
+
+            </section>
+
+
+            <!-- FAQ -->
+
+            <section id="mw-faq">
+
+                <h2>Milky Way FAQ</h2>
+
+                <details>
+
+                    <summary>How old is the Milky Way?</summary>
+
+                    <p>
+                        The Milky Way formed very early in cosmic history
+                        and is approximately 13.6 billion years old.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>How large is the Milky Way?</summary>
+
+                    <p>
+                        The visible stellar disk is commonly estimated to
+                        span roughly 100,000–120,000 light-years, although
+                        the galaxy's extended halo is much larger.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>What is at the center of the Milky Way?</summary>
+
+                    <p>
+                        Sagittarius A*, a supermassive black hole with a
+                        mass of about four million Suns, lies at the center.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>Where is Earth in the Milky Way?</summary>
+
+                    <p>
+                        Earth is in the Solar System, located roughly
+                        26,000 light-years from the galactic center within
+                        the galaxy's disk.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Can we photograph the Milky Way from outside?
+                    </summary>
+
+                    <p>
+                        No. We are inside the galaxy, so astronomers
+                        reconstruct its overall structure using observations
+                        from many wavelengths and measurements of stars and
+                        gas.
+                    </p>
+
+                </details>
+
+
+                <details>
+
+                    <summary>
+                        Will the Milky Way change in the future?
+                    </summary>
+
+                    <p>
+                        Yes. Galaxies evolve continuously through star
+                        formation, stellar evolution, interactions and
+                        mergers.
+                    </p>
+
+                </details>
+
+            </section>
+
+
+            <!-- REFERENCES -->
+
+            <section id="mw-references">
+
+                <h2>References & Further Reading</h2>
+
+                <ul>
+
+                    <li>
+                        NASA — Milky Way and galactic astronomy resources
+                    </li>
+
+                    <li>
+                        ESA — Gaia mission and Milky Way mapping
+                    </li>
+
+                    <li>
+                        Event Horizon Telescope Collaboration —
+                        Sagittarius A*
+                    </li>
+
+                    <li>
+                        SpaceVerse — Interactive Milky Way 3D visualization
+                    </li>
+
+                </ul>
+
+            </section>
+            <main id="milky-way-content">
+
+             <article class="mw-info">
+
+        </article>
+
+    </main>
+
+    <!-- =====================================================
+         MILKY WAY EDUCATIONAL CONTENT END
+    ====================================================== -->
+
 
     <script type="importmap">
     {
@@ -449,22 +933,6 @@
         }
     }
     </script>
-    <main id="milky-way-content">
-
-    <article class="mw-info">
-
-        <header class="mw-intro">
-            <p class="mw-kicker">SPACEVERSE • GALAXY GUIDE</p>
-
-            <h1>Milky Way Galaxy</h1>
-
-            <p class="mw-lead">
-                The Milky Way is the barred spiral galaxy that contains our
-                Solar System. Explore its structure, stars, spiral arms,
-                galactic center, and supermassive black hole through the
-                interactive 3D model.
-            </p>
-        </header>
 
     <script type="module">
         import * as THREE from 'three';
