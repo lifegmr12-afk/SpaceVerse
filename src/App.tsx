@@ -3569,7 +3569,7 @@ export default function App() {
                         <div className="flex items-center gap-1 cursor-pointer">
                           <span>Read Full Log</span>
                           <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
-                                                </div>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -3743,4 +3743,3 @@ export default function App() {
       </div>
     </div>
   </motion.div>
-)}
