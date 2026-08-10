@@ -1079,6 +1079,95 @@
         </article>
 
     </main>
+    <script>
+/* =========================================================
+   MILKY WAY INFORMATION PANEL
+========================================================= */
+
+function toggleInformation() {
+
+    const panel = document.getElementById("milky-way-content");
+    const button = document.getElementById("open-info-btn");
+
+    if (!panel || !button) return;
+
+    const isOpen = panel.classList.toggle("info-open");
+
+    button.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+    );
+
+    button.innerHTML = isOpen ? "✕" : "ⓘ";
+
+    document.body.classList.toggle(
+        "information-open",
+        isOpen
+    );
+}
+
+
+/* Close when clicking the dark background */
+
+document.addEventListener("click", function(event) {
+
+    const panel = document.getElementById("milky-way-content");
+    const article = panel?.querySelector(".mw-info");
+    const button = document.getElementById("open-info-btn");
+
+    if (!panel || !article || !button) return;
+
+    if (
+        panel.classList.contains("info-open") &&
+        event.target === panel
+    ) {
+
+        panel.classList.remove("info-open");
+
+        button.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        button.innerHTML = "ⓘ";
+
+        document.body.classList.remove(
+            "information-open"
+        );
+    }
+
+});
+
+
+/* ESC closes information */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key !== "Escape") return;
+
+    const panel = document.getElementById("milky-way-content");
+    const button = document.getElementById("open-info-btn");
+
+    if (!panel || !button) return;
+
+    if (panel.classList.contains("info-open")) {
+
+        panel.classList.remove("info-open");
+
+        button.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        button.innerHTML = "ⓘ";
+
+        document.body.classList.remove(
+            "information-open"
+        );
+    }
+
+});
+</script>
 
     <!-- =====================================================
          MILKY WAY EDUCATIONAL CONTENT END
