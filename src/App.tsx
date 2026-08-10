@@ -2405,7 +2405,7 @@ const missionsData: Mission[] = [
       'Detected water vapour, carbon dioxide, and methane on exoplanets orbiting distant red stars.',
       'Imaged ancient spiral galaxies that formed just 350 million years after the Big Bang.'
     ],
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/James_Webb_Space_Telescope.png'
   },
   {
     name: 'Hubble Space Telescope (HST)',
@@ -2420,7 +2420,7 @@ const missionsData: Mission[] = [
       'Captured the iconic "Pillars of Creation" and "Hubble Deep Field" images.',
       'Discovered that the expansion of the universe is accelerating, proving dark energy exists.'
     ],
-    image: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/Hubble_Space_Telescope.png'
   },
   {
     name: 'Voyager 1 & 2 Probes',
@@ -2435,7 +2435,7 @@ const missionsData: Mission[] = [
       'Discovered active volcanic moons (Io) and rings of Jupiter, Saturn, Uranus, and Neptune.',
       'Carrying the Golden Records, containing sounds, images, and greetings from Earth.'
     ],
-    image: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/Voyager_1_2_Probes.png'
   },
   {
     name: 'Gaia Star Mapping Mission',
@@ -2450,7 +2450,7 @@ const missionsData: Mission[] = [
       'Discovered multiple dormant stellar black holes including Gaia BH1 and BH2.',
       'Aided astronomers in understanding the historical mergers of the Milky Way.'
     ],
-    image: 'https://images.unsplash.com/photo-1538370965046-79c0d6907d47?auto=format&fit=crop&w=600&q=80'
+    image: 'https://space-verse-alpha.vercel.app/images/Gaia_Star_Mapping_Mission.png'
   }
 ];
 
