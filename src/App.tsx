@@ -2479,7 +2479,7 @@ export default function App() {
 
   const toggleFavorite = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    setFavorites((prev): any => 
+    setFavorites((prev: string[]): string[] => 
       prev.includes(id) ? prev.filter(f => f !== id) : [...prev, id]
     );
   };
