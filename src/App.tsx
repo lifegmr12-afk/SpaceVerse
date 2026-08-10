@@ -413,7 +413,7 @@ const scientistsData: Scientist[] = [
       'Discovered the relationship between the pulsation period and intrinsic brightness of Cepheid variable stars, creating a powerful cosmic distance-measuring tool.',
     bio:
       'American astronomer whose work enabled astronomers to measure distances far beyond the immediate stellar neighborhood.',
-    image: 'https://space-verse-alpha.vercel.app/scientists-images/Henrietta_Leavitt.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/Henrietta_Swan_Leavitt.png',
 
     field: 'Stellar Astronomy & Cosmology',
     nationality: 'American',
@@ -1163,7 +1163,7 @@ const scientistsData: Scientist[] = [
       'Made major contributions to general relativity and popularized the term “black hole.” He also developed influential ideas about spacetime, quantum gravity, and the nature of physical reality.',
     bio:
       'American theoretical physicist who played a major role in developing modern black-hole physics.',
-    image: 'https://space-verse-alpha.vercel.app/scientists-images/John_Wheeler.png',
+    image: 'https://space-verse-alpha.vercel.app/scientists-images/John_Archibald_Wheeler.png',
 
     field: 'Theoretical Physics & Relativity',
     nationality: 'American',
