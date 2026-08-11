@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-
-declare module 'react/jsx-runtime';
-
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   X, Sparkles, Eye, ZoomIn, Aperture, Calendar, Layers, 
@@ -313,7 +310,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Exoplanet Kepler-186f',
     category: 'planet',
     categoryLabel: 'Exoplanet',
-    image: 'https://space-verse-alpha.vercel.app/gallery/kepler186f.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/kepler-186f.png',
     telescope: 'Kepler Space Telescope',
     instrument: 'Photometer Cluster array',
     exposureTime: 'Transit Survey Combined',
@@ -335,7 +332,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Proxima Centauri b Telemetry',
     category: 'planet',
     categoryLabel: 'Exoplanet',
-    image: 'https://space-verse-alpha.vercel.app/gallery/proximab.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/proxima-centauri-b.png',
     telescope: 'VLT ESPRESSO Spectrograph',
     instrument: 'Radial Velocity Sensor',
     exposureTime: '140 Hours Integrated',
@@ -449,7 +446,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'The Whirlpool Galaxy (M51)',
     category: 'galaxy',
     categoryLabel: 'Grand-Design Spiral',
-    image: 'https://space-verse-alpha.vercel.app/gallery/whirlpool.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/gal-whirlpool.png',
     telescope: 'Hubble Space Telescope',
     instrument: 'WFC3 / Planetary Camera',
     exposureTime: '18.5 Hours Combined',
@@ -495,7 +492,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Orion Nebula Filaments',
     category: 'star',
     categoryLabel: 'Stellar Nursery',
-    image: 'https://space-verse-alpha.vercel.app/gallery/orion.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/neb-orion.png',
     telescope: 'James Webb Space Telescope',
     instrument: 'NIRCam / F212N Filter',
     exposureTime: '7.4 Hours Integration',
@@ -584,7 +581,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Sirius A: Intense Refraction',
     category: 'star',
     categoryLabel: 'Stellar Body',
-    image: 'https://space-verse-alpha.vercel.app/gallery/sirius.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/sirius-a.png',
     telescope: 'Hubble Space Telescope',
     instrument: 'STIS Spectrograph',
     exposureTime: '2.5 Hours Integration',
@@ -606,7 +603,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Sagittarius A* Accretion Disk',
     category: 'black-hole',
     categoryLabel: 'Singularity',
-    image: 'https://space-verse-alpha.vercel.app/gallery/sagittarius.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/sagittarius-a-star.png',
     telescope: 'Event Horizon Telescope Array',
     instrument: 'Millimeter VLBI Array',
     exposureTime: '120 Hours Continuous Scan',
@@ -628,7 +625,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Tail Profiles of Halley\'s Comet',
     category: 'asteroid',
     categoryLabel: 'Cometary Body',
-    image: 'https://space-verse-alpha.vercel.app/gallery/halley.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/halley-comet.png',
     telescope: 'SOFIA Airborne Observatory',
     instrument: 'FORCAST Infrared Spectrometer',
     exposureTime: 'High Altitude Flight (4.5 hr)',
