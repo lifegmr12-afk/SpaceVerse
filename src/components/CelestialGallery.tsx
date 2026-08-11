@@ -310,7 +310,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Exoplanet Kepler-186f',
     category: 'planet',
     categoryLabel: 'Exoplanet',
-    image: 'https://space-verse-alpha.vercel.app/gallery/kepler-186f.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/planet-kepler.png',
     telescope: 'Kepler Space Telescope',
     instrument: 'Photometer Cluster array',
     exposureTime: 'Transit Survey Combined',
