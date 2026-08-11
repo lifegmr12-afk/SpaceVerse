@@ -551,6 +551,415 @@
         #minimap { width: 170px; height: 170px; }
         #fab-group { display: none; }
     }
+
+/* ============================================================
+   SPACEVERSE KEPLER-90 SYSTEM INFORMATION UI
+   Added without modifying the existing Three.js scene/model.
+   ============================================================ */
+#kepler-system-info-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 120;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,229,255,.38);
+    color: #d9fbff;
+    background:
+        radial-gradient(circle at 35% 25%, rgba(0,229,255,.18), transparent 52%),
+        rgba(5,13,23,.78);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    box-shadow:
+        0 12px 32px rgba(0,0,0,.42),
+        0 0 22px rgba(0,229,255,.08),
+        inset 0 1px 0 rgba(255,255,255,.06);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: keplerInfoFloat 4s ease-in-out infinite;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+#kepler-system-info-btn::before {
+    content: "i";
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(205,250,255,.72);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eaffff;
+    font: 700 16px Georgia, serif;
+    position: relative;
+    z-index: 2;
+}
+#kepler-system-info-btn::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgba(0,229,255,.13);
+    border-radius: 18px;
+    animation: keplerInfoPulse 4s ease-in-out infinite;
+}
+#kepler-system-info-btn:hover,
+#kepler-system-info-btn.active {
+    transform: translateY(-2px) scale(1.05);
+    border-color: rgba(0,229,255,.78);
+    box-shadow:
+        0 14px 38px rgba(0,0,0,.5),
+        0 0 30px rgba(0,229,255,.18);
+}
+@keyframes keplerInfoFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+@keyframes keplerInfoPulse {
+    0%,62%,100% { opacity:0; transform:scale(.82); }
+    72% { opacity:.7; transform:scale(1.04); }
+    82% { opacity:0; transform:scale(1.22); }
+}
+
+#kepler-system-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(1080px, 94vw);
+    max-height: 88vh;
+    transform: translate(-50%,-50%) scale(.96);
+    z-index: 130;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: hidden;
+    border: 1px solid rgba(0,229,255,.25);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(0,229,255,.10), transparent 34%),
+        radial-gradient(circle at 100% 100%, rgba(95,85,255,.08), transparent 38%),
+        rgba(3,8,15,.965);
+    box-shadow:
+        0 35px 110px rgba(0,0,0,.7),
+        0 0 70px rgba(0,229,255,.06),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter: blur(26px) saturate(150%);
+    -webkit-backdrop-filter: blur(26px) saturate(150%);
+    transition: opacity .3s ease, transform .38s cubic-bezier(.2,.8,.2,1), visibility .3s;
+}
+#kepler-system-info.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+}
+#kepler-system-info-scroll {
+    max-height: 88vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,229,255,.42) transparent;
+}
+#kepler-system-info-scroll::-webkit-scrollbar { width: 5px; }
+#kepler-system-info-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0,229,255,.4);
+    border-radius: 99px;
+}
+.kepler-info-hero {
+    position: relative;
+    padding: 34px 38px 27px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    background: linear-gradient(135deg, rgba(0,229,255,.07), transparent 58%);
+}
+.kepler-info-kicker {
+    color: rgba(142,239,255,.72);
+    font-size: .67rem;
+    font-weight: 700;
+    letter-spacing: .17em;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+}
+.kepler-info-hero h2 {
+    margin: 0;
+    color: #ecfcff;
+    font-size: clamp(1.55rem,3vw,2.25rem);
+    font-weight: 300;
+    letter-spacing: -.02em;
+    background: linear-gradient(90deg,#bff8ff,#00e5ff,#a8c8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.kepler-info-lead {
+    max-width: 860px;
+    margin: 12px 0 0;
+    color: rgba(232,240,248,.67);
+    font-size: .88rem;
+    line-height: 1.78;
+}
+.kepler-info-close {
+    position:absolute;
+    top:17px;
+    right:18px;
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.045);
+    color:rgba(255,255,255,.72);
+    cursor:pointer;
+    font-size:1.35rem;
+    transition:.25s ease;
+}
+.kepler-info-close:hover {
+    color:#fff;
+    border-color:rgba(0,229,255,.58);
+    background:rgba(0,229,255,.10);
+    transform:rotate(4deg) scale(1.04);
+}
+.kepler-info-body { padding: 25px 30px 34px; }
+.kepler-info-section {
+    margin-top: 28px;
+    scroll-margin-top: 18px;
+}
+.kepler-info-section:first-child { margin-top:0; }
+.kepler-section-title {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:13px;
+    color:#fff;
+    font-size:1rem;
+    font-weight:600;
+}
+.kepler-section-title::before {
+    content:"";
+    width:4px;
+    height:20px;
+    border-radius:999px;
+    background:linear-gradient(#00e5ff,#688cff);
+    box-shadow:0 0 14px rgba(0,229,255,.45);
+}
+.kepler-info-section p {
+    margin:0;
+    color:rgba(232,240,248,.65);
+    font-size:.84rem;
+    line-height:1.78;
+}
+.kepler-facts {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+}
+.kepler-fact {
+    padding:14px;
+    border:1px solid rgba(255,255,255,.065);
+    border-radius:14px;
+    background:rgba(255,255,255,.025);
+}
+.kepler-fact span {
+    display:block;
+    color:rgba(255,255,255,.35);
+    font-size:.61rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+}
+.kepler-fact strong {
+    display:block;
+    color:rgba(255,255,255,.9);
+    font-size:.8rem;
+    line-height:1.4;
+}
+.kepler-jumps {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:16px;
+}
+.kepler-jumps a {
+    color:#c8faff;
+    text-decoration:none;
+    padding:7px 12px;
+    border-radius:999px;
+    border:1px solid rgba(0,229,255,.20);
+    background:rgba(0,229,255,.045);
+    font-size:.68rem;
+    transition:.2s ease;
+}
+.kepler-jumps a:hover {
+    color:#fff;
+    border-color:rgba(0,229,255,.55);
+    background:rgba(0,229,255,.12);
+    transform:translateY(-1px);
+}
+.kepler-planet-card {
+    --pc:#00e5ff;
+    position:relative;
+    margin-top:13px;
+    padding:17px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+    overflow:hidden;
+}
+.kepler-planet-card::before {
+    content:"";
+    position:absolute;
+    top:0; bottom:0; left:0;
+    width:3px;
+    background:var(--pc);
+    box-shadow:0 0 18px var(--pc);
+}
+.kepler-planet-head {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:12px;
+}
+.kepler-planet-name {
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#fff;
+    font-size:.94rem;
+    font-weight:600;
+}
+.kepler-planet-dot {
+    width:11px;height:11px;border-radius:50%;
+    background:var(--pc);
+    box-shadow:0 0 14px var(--pc);
+}
+.kepler-planet-type {
+    color:rgba(255,255,255,.40);
+    font-size:.61rem;
+    text-transform:uppercase;
+    letter-spacing:.07em;
+}
+.kepler-stats {
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:8px;
+}
+.kepler-stat {
+    padding:9px;
+    border-radius:10px;
+    background:rgba(0,0,0,.18);
+    border:1px solid rgba(255,255,255,.045);
+}
+.kepler-stat span {
+    display:block;
+    color:rgba(255,255,255,.32);
+    font-size:.56rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    margin-bottom:4px;
+}
+.kepler-stat strong {
+    color:rgba(255,255,255,.88);
+    font-size:.70rem;
+}
+.kepler-copy {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:9px;
+}
+.kepler-copy > div {
+    padding:11px 12px;
+    border-radius:11px;
+    background:rgba(255,255,255,.024);
+}
+.kepler-copy b {
+    display:block;
+    color:var(--pc);
+    font-size:.62rem;
+    text-transform:uppercase;
+    letter-spacing:.07em;
+    margin-bottom:5px;
+}
+.kepler-copy p {
+    color:rgba(255,255,255,.57);
+    font-size:.72rem;
+    line-height:1.62;
+}
+.kepler-grid3 {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+}
+.kepler-card {
+    padding:14px;
+    border:1px solid rgba(255,255,255,.065);
+    border-radius:14px;
+    background:rgba(255,255,255,.025);
+}
+.kepler-card h4 {
+    color:rgba(255,255,255,.9);
+    font-size:.79rem;
+    margin-bottom:7px;
+}
+.kepler-card p {
+    color:rgba(255,255,255,.57);
+    font-size:.73rem;
+    line-height:1.65;
+}
+.kepler-card.confirmed {
+    border-color:rgba(78,224,179,.17);
+    background:rgba(78,224,179,.025);
+}
+.kepler-card.uncertain {
+    border-color:rgba(255,190,84,.17);
+    background:rgba(255,190,84,.025);
+}
+.kepler-note {
+    margin-top:12px;
+    padding:12px 14px;
+    border-left:2px solid rgba(0,229,255,.55);
+    border-radius:2px 10px 10px 2px;
+    background:rgba(0,229,255,.035);
+    color:rgba(255,255,255,.55);
+    font-size:.72rem;
+    line-height:1.65;
+}
+.kepler-sources {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+.kepler-sources a {
+    color:#bfeeff;
+    text-decoration:none;
+    font-size:.68rem;
+    padding:8px 11px;
+    border-radius:9px;
+    border:1px solid rgba(0,229,255,.15);
+    background:rgba(0,229,255,.04);
+}
+.kepler-sources a:hover {
+    color:#fff;
+    border-color:rgba(0,229,255,.5);
+    background:rgba(0,229,255,.10);
+}
+@media (max-width:900px) {
+    .kepler-facts { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .kepler-stats { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .kepler-grid3 { grid-template-columns:1fr; }
+}
+@media (max-width:768px) {
+    #kepler-system-info-btn { top:14px; left:14px; width:42px; height:42px; border-radius:13px; }
+    #kepler-system-info { width:96%; max-height:91vh; border-radius:18px; }
+    #kepler-system-info-scroll { max-height:91vh; }
+    .kepler-info-hero { padding:27px 20px 20px; }
+    .kepler-info-body { padding:20px 15px 28px; }
+    .kepler-stats { grid-template-columns:1fr 1fr; }
+    .kepler-copy { grid-template-columns:1fr; }
+    .kepler-planet-card { padding:15px; }
+    .kepler-planet-head { align-items:flex-start; }
+    .kepler-planet-type { text-align:right; font-size:.55rem; }
+}
+
 </style>
 </head>
 <body>
@@ -577,6 +986,210 @@
         <span>Draco Constellation</span>
     </div>
 </div>
+
+
+<!-- SPACEVERSE KEPLER-90 SYSTEM INFORMATION -->
+<button id="kepler-system-info-btn" aria-label="Open Kepler-90 system information" title="Kepler-90 System Information"></button>
+
+<section id="kepler-system-info" aria-hidden="true" aria-label="Kepler-90 System Information">
+<button class="kepler-info-close" id="kepler-system-info-close" aria-label="Close information">×</button>
+<div id="kepler-system-info-scroll">
+<header class="kepler-info-hero">
+<div class="kepler-info-kicker">SPACEVERSE • SYSTEM GUIDE</div>
+<h2>Kepler-90 System</h2>
+<p class="kepler-info-lead">A compact eight-planet system around the Sun-like star Kepler-90 in Draco. Its discovery is famous because Kepler-90 became the first exoplanet system known to match our Solar System's eight-planet count. This panel separates measured properties from interpretation and unknowns.</p>
+</header>
+<div class="kepler-info-body">
+
+<section class="kepler-info-section" id="kepler-overview">
+<h3 class="kepler-section-title">System at a glance</h3>
+<div class="kepler-facts">
+<div class="kepler-fact"><span>Host star</span><strong>Kepler-90 • G-type star</strong></div>
+<div class="kepler-fact"><span>Distance</span><strong>~2,545 light-years</strong></div>
+<div class="kepler-fact"><span>Known planets</span><strong>8 confirmed</strong></div>
+<div class="kepler-fact"><span>Constellation</span><strong>Draco</strong></div>
+<div class="kepler-fact"><span>Architecture</span><strong>Compact, multi-planet</strong></div>
+<div class="kepler-fact"><span>Planet count</span><strong>Tied with our Solar System</strong></div>
+<div class="kepler-fact"><span>Discovery mission</span><strong>NASA Kepler / K2 data</strong></div>
+<div class="kepler-fact"><span>Famous discovery</span><strong>Kepler-90 i via ML</strong></div>
+</div>
+<div class="kepler-note"><strong>3D model note:</strong> Nothing in the existing Three.js scene, planet meshes, textures, orbital animation, camera controls, minimap, labels, post-processing or right-side controls has been replaced by this information UI.</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-star">
+<h3 class="kepler-section-title">The Kepler-90 star</h3>
+<div class="kepler-grid3">
+<div class="kepler-card"><h4>Sun-like host</h4><p>Kepler-90 is a G-type main-sequence star. NASA describes it as Sun-like and slightly larger/more massive than the Sun.</p></div>
+<div class="kepler-card"><h4>Planetary environment</h4><p>All eight known planets orbit much closer to Kepler-90 than the equivalent planets in our Solar System orbit the Sun, making the architecture extremely compact.</p></div>
+<div class="kepler-card"><h4>Why it matters</h4><p>The system provides a natural laboratory for studying how many planets can form, migrate and remain dynamically organized around one star.</p></div>
+</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-planets">
+<h3 class="kepler-section-title">All eight known planets</h3>
+<nav class="kepler-jumps"><a href="#kepler-planet-b">Kepler-90 b</a><a href="#kepler-planet-c">Kepler-90 c</a><a href="#kepler-planet-i">Kepler-90 i</a><a href="#kepler-planet-d">Kepler-90 d</a><a href="#kepler-planet-e">Kepler-90 e</a><a href="#kepler-planet-f">Kepler-90 f</a><a href="#kepler-planet-g">Kepler-90 g</a><a href="#kepler-planet-h">Kepler-90 h</a></nav>
+<article class="kepler-planet-card" id="kepler-planet-b" style="--pc:#d2691e">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 b</div><div class="kepler-planet-type">Super-Earth / hot rocky world • discovery 2013</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>1.31 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>2.27 M⊕</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~1.32 g</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.074 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>7.0 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>The innermost known planet is intensely irradiated and far too hot for Earth-like surface habitability.</p></div><div><b>What remains unknown</b><p>Its detailed atmosphere, surface mineralogy and internal structure are not directly measured. The 3D rendering is illustrative.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-c" style="--pc:#cd853f">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 c</div><div class="kepler-planet-type">Super-Earth / hot rocky world • discovery 2010</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>1.19 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>~2.5 M⊕*</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~1.76 g*</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.089 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>8.7 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 c is another close-in, strongly irradiated planet in the compact inner group.</p></div><div><b>What remains unknown</b><p>Its atmosphere and surface conditions are not directly characterized; mass values can vary between catalog solutions.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-i" style="--pc:#8fbc8f">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 i</div><div class="kepler-planet-type">Super-Earth • discovery 2017</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>1.32 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>2.3 M⊕</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~1.32 g</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.120138 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>14.4 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 i is the famous eighth planet found in archived Kepler data with machine-learning assistance. NASA's catalog lists it as a super-Earth discovered by transit.</p></div><div><b>What remains unknown</b><p>Its atmosphere and surface composition are unknown. It is strongly irradiated and is not considered a good habitability candidate.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-d" style="--pc:#87ceeb">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 d</div><div class="kepler-planet-type">Sub-Neptune / mini-Neptune • discovery 2010</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>~1.71 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>~6.0 M⊕*</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~2.05 g*</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.320 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>59.8 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 d is larger than the inner rocky worlds and belongs to the system's transition toward larger outer planets.</p></div><div><b>What remains unknown</b><p>The true atmospheric composition, interior structure and whether it has a distinct solid surface are not known from direct observation.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-e" style="--pc:#48d1cc">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 e</div><div class="kepler-planet-type">Sub-Neptune • discovery 2010</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>~1.82 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>~7.5 M⊕*</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~2.25 g*</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.420 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>91.9 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 e lies in the compact middle system and is larger than Earth, making a substantial gaseous envelope plausible.</p></div><div><b>What remains unknown</b><p>Its atmosphere, clouds, chemistry and deep interior are poorly constrained. The 3D clouds are a visualization, not a detection.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-f" style="--pc:#008b8b">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 f</div><div class="kepler-planet-type">Sub-Neptune • discovery 2010</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>~1.53 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>~5.0 M⊕*</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~2.13 g*</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.480 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>124.9 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 f is another outer, larger planet in the compact architecture.</p></div><div><b>What remains unknown</b><p>Its atmospheric composition, cloud structure and surface/interior state are uncertain; no evidence establishes oceans or habitability.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-g" style="--pc:#9acd32">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 g</div><div class="kepler-planet-type">Sub-Neptune • discovery 2010</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>~1.43 R⊕</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>~4.5 M⊕*</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>~2.18 g*</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>0.710 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>210.6 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 g is among the system's outer planets and receives substantially less irradiation than the inner worlds.</p></div><div><b>What remains unknown</b><p>It is not established as habitable. Atmospheric and surface conditions are currently poorly constrained.</p></div></div>
+</article><article class="kepler-planet-card" id="kepler-planet-h" style="--pc:#f4a460">
+<div class="kepler-planet-head"><div class="kepler-planet-name"><span class="kepler-planet-dot"></span>Kepler-90 h</div><div class="kepler-planet-type">Gas giant / Jovian world • discovery 2014</div></div>
+<div class="kepler-stats">
+<div class="kepler-stat"><span>Radius</span><strong>~1.20 R_J*</strong></div>
+<div class="kepler-stat"><span>Mass</span><strong>~12 M⊕*</strong></div>
+<div class="kepler-stat"><span>Gravity</span><strong>model estimate</strong></div>
+<div class="kepler-stat"><span>Orbit</span><strong>~1.01 AU</strong></div>
+<div class="kepler-stat"><span>Period</span><strong>331.6 d</strong></div>
+<div class="kepler-stat"><span>Method</span><strong>Transit</strong></div>
+</div>
+<div class="kepler-copy"><div><b>What is known</b><p>Kepler-90 h is the outermost known planet and orbits at roughly the Earth-Sun distance from its host star. NASA describes the system's outer planets as larger and more gaseous.</p></div><div><b>What remains unknown</b><p>Its atmosphere, rings and moons have not been directly observed. Any moon system shown by an artist or model should be treated as hypothetical.</p></div></div>
+</article>
+<div class="kepler-note"><strong>Data caution:</strong> The values marked with * are approximate project/catalog-style values and should not be treated as newly measured values. NASA's current catalog, for example, lists Kepler-90 b at 1.31 Earth radii, 2.27 Earth masses, 0.074 AU and a 7-day period, and Kepler-90 i at 1.32 Earth radii, 2.3 Earth masses, 0.120138 AU and a 14.4-day period. Different catalog solutions can be refined as observations improve.</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-architecture">
+<h3 class="kepler-section-title">Compact orbital architecture</h3>
+<div class="kepler-grid3">
+<div class="kepler-card confirmed"><h4>Rocky inner worlds</h4><p>The inner planets are relatively small and highly irradiated. NASA compares the overall layout with our Solar System: small planets inside and larger worlds farther out.</p></div>
+<div class="kepler-card confirmed"><h4>Large outer worlds</h4><p>The outer members are larger and more gaseous in character. Kepler-90 h is the outermost known planet and orbits at roughly the Earth-Sun distance.</p></div>
+<div class="kepler-card"><h4>Everything is compressed</h4><p>NASA notes that all eight planets could fit inside Earth's orbit around the Sun. The resemblance to our Solar System is therefore mainly in planet count and broad ordering, not scale.</p></div>
+</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-discovery">
+<h3 class="kepler-section-title">Discovery history</h3>
+<div class="kepler-grid3">
+<div class="kepler-card"><h4>Kepler finds the system</h4><p>Transit signals from multiple planets were identified in NASA Kepler observations. The planets were validated over several years as the system's architecture became clearer.</p></div>
+<div class="kepler-card"><h4>2017 breakthrough</h4><p>Researchers Christopher Shallue and Andrew Vanderburg used a neural-network approach to re-examine archived Kepler data and found the weak transit signal of Kepler-90 i.</p></div>
+<div class="kepler-card"><h4>Why AI mattered</h4><p>The Kepler archive contains enormous amounts of data. Machine learning demonstrated that previously missed planetary signals can be recovered from those archives, complementing traditional analysis.</p></div>
+</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-ai">
+<h3 class="kepler-section-title">Kepler-90 i and machine learning</h3>
+<p>Kepler-90 i is the system's famous eighth planet. NASA's catalog currently lists it as a super-Earth with a radius of about 1.32 Earths, a mass of about 2.3 Earths, a 14.4-day orbital period and an orbital radius of 0.120138 AU. Its discovery was announced in 2017 and used the transit method. It is a very hot world and is not considered a good candidate for life.</p>
+</section>
+
+<section class="kepler-info-section" id="kepler-habitability">
+<h3 class="kepler-section-title">Habitability & climate</h3>
+<div class="kepler-grid3">
+<div class="kepler-card uncertain"><h4>Not an Earth twin</h4><p>NASA says none of the Kepler-90 planets are considered good candidates for life. The compact system places the rocky inner worlds under intense stellar irradiation.</p></div>
+<div class="kepler-card"><h4>Habitable-zone caution</h4><p>A planet's location alone cannot establish habitability. Atmosphere, pressure, chemistry, surface conditions and long-term climate stability are all required to assess whether liquid water could persist.</p></div>
+<div class="kepler-card"><h4>Outer worlds</h4><p>The cooler outer planets are more distant, but their larger/gaseous nature makes them poor Earth-like targets. A hypothetical rocky moon would be a separate question and is not an observed feature.</p></div>
+</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-formation">
+<h3 class="kepler-section-title">Formation, migration & dynamics</h3>
+<p>Kepler-90's compact architecture is useful for studying planetary formation and migration. The fact that small planets occupy the inner region while larger planets lie farther out resembles the broad organization of our Solar System, but every orbit is much tighter. The exact formation history, migration pathways and long-term dynamical evolution are active areas of research rather than directly observed historical events.</p>
+</section>
+
+<section class="kepler-info-section" id="kepler-comparison">
+<h3 class="kepler-section-title">Kepler-90 vs. our Solar System</h3>
+<div class="kepler-grid3">
+<div class="kepler-card"><h4>Similar</h4><p>Both systems have eight known planets, with smaller inner worlds and larger outer worlds.</p></div>
+<div class="kepler-card"><h4>Different</h4><p>Kepler-90 is vastly more compact: NASA notes that all eight planets would fit inside Earth's orbit around the Sun.</p></div>
+<div class="kepler-card"><h4>Habitability</h4><p>Our Solar System contains Earth; NASA currently considers the known Kepler-90 planets too hot or otherwise unsuitable as strong life-search targets.</p></div>
+</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-unknowns">
+<h3 class="kepler-section-title">What we still do not know</h3>
+<div class="kepler-grid3">
+<div class="kepler-card uncertain"><h4>Atmospheres</h4><p>Detailed atmospheric compositions and cloud structures are not known for the planets from direct atmospheric spectroscopy.</p></div>
+<div class="kepler-card uncertain"><h4>Moons & rings</h4><p>No specific moons or rings have been confirmed in this system. Any such objects shown in an artistic visualization are hypothetical.</p></div>
+<div class="kepler-card uncertain"><h4>True interiors</h4><p>Mass-radius relationships constrain the planets, but their detailed cores, mantles, envelopes and compositions remain model-dependent.</p></div>
+</div>
+</section>
+
+<section class="kepler-info-section" id="kepler-sources">
+<h3 class="kepler-section-title">NASA sources</h3>
+<div class="kepler-sources">
+<a href="https://science.nasa.gov/universe/exoplanets/discovery-of-eight-planets-makes-alien-system-the-first-to-tie-with-our-solar-system/" target="_blank" rel="noopener">NASA • 8-planet discovery</a>
+<a href="https://science.nasa.gov/exoplanet-catalog/kepler-90-i/" target="_blank" rel="noopener">NASA • Kepler-90 i</a>
+<a href="https://science.nasa.gov/exoplanet-catalog/kepler-90b/" target="_blank" rel="noopener">NASA • Kepler-90 b</a>
+<a href="https://science.nasa.gov/exoplanets/other-stars-other-worlds/a-near-twin-of-our-solar-system-lets-take-a-closer-look/" target="_blank" rel="noopener">NASA • Kepler-90 overview</a>
+<a href="https://science.nasa.gov/mission/kepler/in-depth/" target="_blank" rel="noopener">NASA • Kepler mission</a>
+</div>
+<div class="kepler-note"><strong>Scientific-status note:</strong> Kepler-90 is important because of its eight-planet count, but “Solar System twin” should not be interpreted literally. NASA emphasizes that the systems differ strongly in scale and habitability.</div>
+</section>
+
+</div>
+</div>
+</section>
 
 <!-- INFO PANEL -->
 <div id="info-panel" class="ui-panel">
@@ -2049,34 +2662,55 @@ function solveKepler(M, e, iterations = 5) {
     return E;
 }
 
+// Keep every HTML label locked to its actual Three.js planet mesh.
+// The label position is recalculated from the planet's CURRENT world position,
+// never from its initial orbit coordinates or a cached screen position.
+const _labelWorldPosition = new THREE.Vector3();
+const _labelProjectedPosition = new THREE.Vector3();
+
 function updateLabels() {
     if (!showLabels) {
-        labelElements.forEach(l => l.style.opacity = '0');
+        labelElements.forEach(label => {
+            label.style.opacity = '0';
+        });
         return;
     }
-    
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    
+
+    const rect = renderer.domElement.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    if (width <= 0 || height <= 0) return;
+
     planets.forEach((p, i) => {
         const label = labelElements[i];
-        const pos = p.worldPos.clone();
-        pos.y += p.data.radius * SIZE_SCALE + 1.8;
-        
-        const projected = pos.clone().project(camera);
-        if (projected.z > 1 || projected.z < -1) {
+        if (!label || !p.mesh) return;
+
+        // IMPORTANT: read the planet's live world position every update.
+        // This makes the label follow the planet whether ORBITS is on/off,
+        // during time warp, camera movement, follow mode, or camera tours.
+        p.mesh.getWorldPosition(_labelWorldPosition);
+
+        _labelProjectedPosition.copy(_labelWorldPosition);
+        _labelProjectedPosition.y += p.data.radius * SIZE_SCALE + 1.8;
+        _labelProjectedPosition.project(camera);
+
+        // Hide labels behind the camera / outside the clip volume.
+        if (_labelProjectedPosition.z < -1 || _labelProjectedPosition.z > 1 ||
+            _labelProjectedPosition.x < -1.15 || _labelProjectedPosition.x > 1.15 ||
+            _labelProjectedPosition.y < -1.15 || _labelProjectedPosition.y > 1.15) {
             label.style.opacity = '0';
             return;
         }
-        
-        const x = (projected.x * 0.5 + 0.5) * width;
-        const y = (-projected.y * 0.5 + 0.5) * height;
-        const dist = camera.position.distanceTo(p.worldPos);
+
+        const x = rect.left + (_labelProjectedPosition.x * 0.5 + 0.5) * width;
+        const y = rect.top + (-_labelProjectedPosition.y * 0.5 + 0.5) * height;
+        const dist = camera.position.distanceTo(_labelWorldPosition);
         const opacity = Math.max(0, Math.min(1, 1 - (dist - 10) / 350));
-        const scale = Math.max(0.6, Math.min(1.3, 55 / dist));
-        
-        label.style.left = x + 'px';
-        label.style.top = y + 'px';
+        const scale = Math.max(0.6, Math.min(1.3, 55 / Math.max(dist, 1)));
+
+        label.style.left = `${x}px`;
+        label.style.top = `${y}px`;
         label.style.opacity = opacity;
         label.style.transform = `translate(-50%, -100%) scale(${scale})`;
     });
@@ -2205,13 +2839,14 @@ function animate() {
         bloomPass.strength = 1.3 * bloomFactor;
     }
     cinematicPass.uniforms.uTime.value = elapsedSimTime;
+
+    // Update controls/camera first, then project the LIVE planet positions.
+    // This prevents labels from visually lagging behind moving planets.
     controls.update();
+    updateLabels();
+    drawMinimap();
+
     composer.render();
-    
-    if (frameCount % 3 === 0) {
-        updateLabels();
-        drawMinimap();
-    }
 }
 
 // ============================================================
@@ -2263,5 +2898,52 @@ const loadInterval = setInterval(() => {
 animate();
 
 </script>
+
+<script>
+(() => {
+    const openBtn = document.getElementById('kepler-system-info-btn');
+    const panel = document.getElementById('kepler-system-info');
+    const closeBtn = document.getElementById('kepler-system-info-close');
+
+    if (!openBtn || !panel || !closeBtn) return;
+
+    const openInfo = () => {
+        panel.classList.add('visible');
+        panel.setAttribute('aria-hidden', 'false');
+        openBtn.classList.add('active');
+        document.body.classList.add('kepler-info-open');
+    };
+
+    const closeInfo = () => {
+        panel.classList.remove('visible');
+        panel.setAttribute('aria-hidden', 'true');
+        openBtn.classList.remove('active');
+        document.body.classList.remove('kepler-info-open');
+    };
+
+    openBtn.addEventListener('click', openInfo);
+    closeBtn.addEventListener('click', closeInfo);
+
+    panel.addEventListener('click', (event) => {
+        if (event.target === panel) closeInfo();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && panel.classList.contains('visible')) {
+            closeInfo();
+        }
+    });
+
+    panel.querySelectorAll('.kepler-jumps a').forEach(link => {
+        link.addEventListener('click', () => {
+            setTimeout(() => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+            }, 0);
+        });
+    });
+})();
+</script>
+
 </body>
 </html>
