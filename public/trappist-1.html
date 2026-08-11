@@ -73,60 +73,373 @@
             border-color: #ff5e3a; color: #ff5e3a;
         }
 
+        /* ─── SpaceVerse Information Experience ─── */
         #info-panel {
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 600px; max-height: 80vh;
-            background: rgba(20, 5, 10, 0.95);
-            border: 1px solid rgba(255, 94, 58, 0.3);
-            border-radius: 16px; padding: 40px;
-            z-index: 200; opacity: 0; pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto; backdrop-filter: blur(20px);
-            box-shadow: 0 0 60px rgba(255, 94, 58, 0.1), inset 0 0 60px rgba(0,0,0,0.5);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(.96);
+            width: min(1080px, 94vw);
+            max-width: 1080px;
+            max-height: 88vh;
+            padding: 0;
+            background:
+                radial-gradient(circle at 10% 0%, rgba(255, 94, 58, .11), transparent 34%),
+                radial-gradient(circle at 100% 100%, rgba(255, 42, 109, .08), transparent 38%),
+                rgba(10, 7, 15, .96);
+            border: 1px solid rgba(255, 94, 58, .28);
+            border-radius: 22px;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .35s ease, transform .4s cubic-bezier(.2,.8,.2,1);
+            overflow: hidden;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow:
+                0 30px 100px rgba(0,0,0,.65),
+                0 0 60px rgba(255, 70, 70, .08),
+                inset 0 1px 0 rgba(255,255,255,.05);
         }
         #info-panel.visible {
-            opacity: 1; pointer-events: all;
+            opacity: 1;
+            pointer-events: auto;
             transform: translate(-50%, -50%) scale(1);
         }
+        .info-shell {
+            max-height: 88vh;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255,94,58,.45) transparent;
+        }
+        .info-hero {
+            padding: 34px 38px 26px;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+            background: linear-gradient(135deg, rgba(255,94,58,.08), transparent 58%);
+        }
+        .info-kicker {
+            color: rgba(255,170,145,.85);
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
         #info-panel h1 {
-            font-size: 1.8rem; font-weight: 300; margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #ff5e3a, #ff2a6d);
+            margin: 0;
+            font-size: clamp(1.55rem, 3vw, 2.2rem);
+            font-weight: 300;
+            letter-spacing: -.02em;
+            background: linear-gradient(135deg, #ffd0c4, #ff6f50 45%, #ff5eaa);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        #info-panel h2 {
-            font-size: 0.9rem; font-weight: 400;
-            color: rgba(255,255,255,0.5); margin-bottom: 1.5rem;
-            letter-spacing: 0.1em; text-transform: uppercase;
+        #info-panel .info-lead {
+            max-width: 820px;
+            margin: 12px 0 0;
+            color: rgba(255,255,255,.68);
+            font-size: .9rem;
+            line-height: 1.75;
         }
-        .info-row {
-            display: flex; justify-content: space-between;
-            align-items: flex-start; padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        .info-close {
+            position: absolute;
+            top: 17px;
+            right: 18px;
+            z-index: 3;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.10);
+            background: rgba(255,255,255,.045);
+            color: rgba(255,255,255,.72);
+            font-size: 1.35rem;
+            cursor: pointer;
+            transition: .25s ease;
         }
-        .info-label {
-            font-size: 0.8rem; color: rgba(255, 94, 58, 0.8);
-            text-transform: uppercase; letter-spacing: 0.05em;
-            flex-shrink: 0; margin-right: 1rem;
+        .info-close:hover {
+            color: #fff;
+            border-color: rgba(255,94,58,.55);
+            background: rgba(255,94,58,.14);
+            transform: rotate(4deg) scale(1.04);
         }
-        .info-value {
-            font-size: 0.9rem; color: rgba(255,255,255,0.9);
-            text-align: right;
+        .info-body { padding: 26px 30px 34px; }
+        .info-section { margin-top: 28px; scroll-margin-top: 18px; }
+        .info-section:first-child { margin-top: 0; }
+        .info-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 13px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
         }
-        .info-description {
-            margin-top: 1.5rem; padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 94, 58, 0.2);
-            font-size: 0.85rem; line-height: 1.7;
-            color: rgba(255,255,255,0.7);
+        .info-section-title::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            border-radius: 999px;
+            background: linear-gradient(#ff5e3a, #ff2a6d);
+            box-shadow: 0 0 13px rgba(255,94,58,.4);
         }
-        .close-panel {
-            position: absolute; top: 15px; right: 20px;
-            background: none; border: none;
-            color: rgba(255,255,255,0.5); font-size: 1.5rem;
-            cursor: pointer; transition: color 0.3s;
+        .info-section p {
+            color: rgba(255,255,255,.67);
+            font-size: .86rem;
+            line-height: 1.78;
+            margin: 0;
         }
-        .close-panel:hover { color: #ff5e3a; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 10px;
+        }
+        .fact-card, .science-card {
+            padding: 14px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 14px;
+            background: rgba(255,255,255,.025);
+        }
+        .fact-card span, .science-card span {
+            display: block;
+            color: rgba(255,255,255,.38);
+            font-size: .64rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .fact-card strong {
+            display: block;
+            color: rgba(255,255,255,.9);
+            font-size: .82rem;
+            line-height: 1.4;
+        }
+        .planet-jump {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0 0 16px;
+        }
+        .planet-jump a {
+            color: #ffd0c4;
+            text-decoration: none;
+            border: 1px solid rgba(255,94,58,.24);
+            background: rgba(255,94,58,.06);
+            border-radius: 999px;
+            padding: 7px 12px;
+            font-size: .7rem;
+            transition: .2s ease;
+        }
+        .planet-jump a:hover {
+            color: #fff;
+            background: rgba(255,94,58,.16);
+            border-color: rgba(255,94,58,.55);
+            transform: translateY(-1px);
+        }
+        .planet-card {
+            position: relative;
+            margin-top: 14px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,.075);
+            border-radius: 17px;
+            background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+            overflow: hidden;
+        }
+        .planet-card::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--planet-color, #ff5e3a);
+            box-shadow: 0 0 18px var(--planet-color, #ff5e3a);
+        }
+        .planet-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 13px;
+        }
+        .planet-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: .98rem;
+            font-weight: 600;
+        }
+        .planet-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--planet-color);
+            box-shadow: 0 0 15px var(--planet-color);
+        }
+        .planet-status {
+            color: rgba(255,255,255,.42);
+            font-size: .63rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+        .planet-stats {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0,1fr));
+            gap: 8px;
+        }
+        .planet-stat {
+            padding: 10px;
+            border-radius: 11px;
+            background: rgba(0,0,0,.18);
+            border: 1px solid rgba(255,255,255,.045);
+        }
+        .planet-stat span {
+            display: block;
+            color: rgba(255,255,255,.34);
+            font-size: .58rem;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-bottom: 4px;
+        }
+        .planet-stat strong {
+            color: rgba(255,255,255,.88);
+            font-size: .72rem;
+            font-weight: 600;
+        }
+        .planet-copy {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .planet-copy > div {
+            padding: 12px;
+            border-radius: 11px;
+            background: rgba(255,255,255,.025);
+        }
+        .planet-copy b {
+            display: block;
+            font-size: .66rem;
+            color: var(--planet-color);
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            margin-bottom: 5px;
+        }
+        .planet-copy p {
+            font-size: .76rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,.58);
+        }
+        .science-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0,1fr));
+            gap: 10px;
+        }
+        .science-card h4 {
+            margin-bottom: 7px;
+            color: rgba(255,255,255,.88);
+            font-size: .8rem;
+        }
+        .science-card p {
+            font-size: .74rem;
+            line-height: 1.65;
+        }
+        .uncertainty {
+            border-color: rgba(255,194,91,.18);
+            background: rgba(255,194,91,.035);
+        }
+        .confirmed {
+            border-color: rgba(106,214,161,.16);
+            background: rgba(106,214,161,.03);
+        }
+        .source-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .source-list a {
+            color: #ffc5b6;
+            font-size: .72rem;
+            text-decoration: none;
+            padding: 8px 11px;
+            border-radius: 9px;
+            background: rgba(255,94,58,.055);
+            border: 1px solid rgba(255,94,58,.16);
+        }
+        .source-list a:hover { background: rgba(255,94,58,.13); color: #fff; }
+        .scale-note {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-left: 2px solid rgba(255,94,58,.55);
+            background: rgba(255,94,58,.035);
+            color: rgba(255,255,255,.55);
+            font-size: .74rem;
+            line-height: 1.65;
+        }
+
+        /* Existing information control becomes the small animated upper-left icon. */
+        #btn-info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 150;
+            width: 46px;
+            height: 46px;
+            padding: 0;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0;
+            color: #ffd2c6;
+            background:
+                radial-gradient(circle at 35% 30%, rgba(255,150,120,.18), transparent 52%),
+                rgba(25,10,15,.78);
+            border: 1px solid rgba(255,94,58,.38);
+            box-shadow: 0 10px 30px rgba(0,0,0,.38), inset 0 0 16px rgba(255,94,58,.04);
+            animation: infoFloat 3.8s ease-in-out infinite;
+        }
+        #btn-info::before {
+            content: "i";
+            width: 23px; height: 23px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,210,198,.55);
+            border-radius: 50%;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: Georgia, serif;
+            position: relative;
+            z-index: 2;
+        }
+        #btn-info::after {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            border: 1px solid rgba(255,94,58,.13);
+            border-radius: 18px;
+            animation: infoPulse 3.8s ease-in-out infinite;
+        }
+        #btn-info:hover {
+            color: #fff;
+            border-color: rgba(255,130,100,.78);
+            background: rgba(45,13,20,.9);
+            box-shadow: 0 12px 34px rgba(0,0,0,.5), 0 0 24px rgba(255,94,58,.18);
+            transform: translateY(-2px) scale(1.05);
+        }
+        #btn-info.active {
+            color: #fff;
+            border-color: rgba(255,160,135,.8);
+            box-shadow: 0 0 30px rgba(255,94,58,.2), 0 10px 30px rgba(0,0,0,.5);
+        }
+        @keyframes infoFloat {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        @keyframes infoPulse {
+            0%,62%,100% { opacity: 0; transform: scale(.82); }
+            72% { opacity: .75; transform: scale(1.04); }
+            82% { opacity: 0; transform: scale(1.22); }
+        }
 
         .scene-label {
             position: fixed; z-index: 50;
@@ -176,7 +489,37 @@
         #error-msg h3 { color: #f55; margin-bottom: 10px; }
         #error-msg p { color: #ccc; font-size: 0.9rem; line-height: 1.6; }
 
+
+        @media (max-width: 900px) {
+            .info-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+            .planet-stats { grid-template-columns: repeat(3, minmax(0,1fr)); }
+            .science-grid { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 768px) {
+
+            #btn-info {
+                top: 14px;
+                left: 14px;
+                width: 42px;
+                height: 42px;
+                border-radius: 13px;
+            }
+            #info-panel {
+                width: 96%;
+                max-height: 91vh;
+                border-radius: 18px;
+            }
+            .info-shell { max-height: 91vh; }
+            .info-hero { padding: 27px 20px 20px; }
+            .info-body { padding: 20px 15px 28px; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .planet-stats { grid-template-columns: 1fr 1fr; }
+            .planet-copy { grid-template-columns: 1fr; }
+            .planet-card { padding: 15px; }
+            .planet-head { align-items: flex-start; }
+            .planet-status { font-size: .56rem; text-align: right; }
+
             #controls {
                 top: auto; bottom: 20px; right: 10px;
                 flex-direction: row; flex-wrap: wrap;
@@ -223,20 +566,251 @@
     </div>
 
     <div id="info-panel">
-        <button class="close-panel" id="close-info">&times;</button>
-        <h1>TRAPPIST-1 System</h1>
-        <h2>Exoplanetary Star System</h2>
-        <div class="info-row"><span class="info-label">Star Type</span><span class="info-value">Ultra-cool Red Dwarf (M-dwarf)</span></div>
-        <div class="info-row"><span class="info-label">Location</span><span class="info-value">Constellation Aquarius</span></div>
-        <div class="info-row"><span class="info-label">Distance from Earth</span><span class="info-value">~40.7 light-years</span></div>
-        <div class="info-row"><span class="info-label">Planets Count</span><span class="info-value">7 Rocky Planets (TRAPPIST-1b to h)</span></div>
-        <div class="info-row"><span class="info-label">Habitable Zone Planets</span><span class="info-value">3 (TRAPPIST-1e, f, g)</span></div>
-        <div class="info-row"><span class="info-label">Star Mass</span><span class="info-value">~0.09 Solar Masses</span></div>
-        <div class="info-row"><span class="info-label">Age</span><span class="info-value">~7.6 billion years</span></div>
-        <div class="info-row"><span class="info-label">Discovery</span><span class="info-value">2016-2017 via Spitzer Space Telescope & Ground Observatories</span></div>
-        <div class="info-description">
-            <strong>Scientific Importance:</strong><br><br>
-            TRAPPIST-1 houses the largest chain of terrestrial, Earth-sized planets ever discovered in a single exoplanetary system. Because the host star is a dim red dwarf, the planets orbit extremely close to it. The system is a prime target for JWST to search for atmospheric water, biomarkers, and habitable environments.
+        <button class="info-close close-panel" id="close-info" aria-label="Close information">&times;</button>
+        <div class="info-shell">
+            <header class="info-hero">
+                <div class="info-kicker">SPACEVERSE • SYSTEM GUIDE</div>
+                <h1>TRAPPIST-1 System</h1>
+                <p class="info-lead">
+                    A compact system of seven Earth-sized worlds orbiting an ultra-cool red dwarf about
+                    40.7 light-years away in Aquarius. This guide separates measured properties from
+                    scientific interpretation and from questions that remain open.
+                </p>
+            </header>
+
+            <div class="info-body">
+                <section class="info-section" id="overview">
+                    <h3 class="info-section-title">System at a glance</h3>
+                    <div class="info-grid">
+                        <div class="fact-card"><span>Host star</span><strong>Ultra-cool M-dwarf</strong></div>
+                        <div class="fact-card"><span>Distance</span><strong>~40.7 light-years</strong></div>
+                        <div class="fact-card"><span>Planets</span><strong>7 known planets</strong></div>
+                        <div class="fact-card"><span>Planet class</span><strong>Earth-sized / rocky worlds</strong></div>
+                    </div>
+                    <div class="scale-note">
+                        <strong>Model note:</strong> the interactive 3D scene remains unchanged. Orbital
+                        distances and planet sizes in the visualization are deliberately exaggerated/compressed
+                        for visibility and exploration; they are not a physical-scale rendering.
+                    </div>
+                </section>
+
+                <section class="info-section" id="planets">
+                    <h3 class="info-section-title">Explore planets B → H</h3>
+                    <nav class="planet-jump" aria-label="Jump to planet">
+                        <a href="#planet-b">TRAPPIST-1 b</a><a href="#planet-c">TRAPPIST-1 c</a><a href="#planet-d">TRAPPIST-1 d</a><a href="#planet-e">TRAPPIST-1 e</a><a href="#planet-f">TRAPPIST-1 f</a><a href="#planet-g">TRAPPIST-1 g</a><a href="#planet-h">TRAPPIST-1 h</a>
+                    </nav>
+                    
+            <article class="planet-card" id="planet-b" style="--planet-color:#e7a36d">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 b</div>
+                    <div class="planet-status">Transit • discovered 2016</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>1.116 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>1.374 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 10.82 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.01154 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>1.5 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>0.01</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>Its measured size and mass place it among the rocky/super-Earth-sized members of the system. Webb observations found little evidence for a thick atmosphere and current data are consistent with a very hot world.</p></div>
+                    <div><b>What remains unknown</b><p>The detailed surface, interior structure, and any extremely thin residual atmosphere are still being investigated.</p></div>
+                </div>
+            </article>
+            <article class="planet-card" id="planet-c" style="--planet-color:#e28d72">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 c</div>
+                    <div class="planet-status">Transit • discovered 2016</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>1.097 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>1.308 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 10.66 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.0158 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>2.4 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>0.01</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>TRAPPIST-1 c is a rocky world receiving intense stellar irradiation. Webb observations have found little atmospheric evidence so far; if an atmosphere exists, it is likely very thin.</p></div>
+                    <div><b>What remains unknown</b><p>Its exact atmospheric composition and long-term surface evolution remain uncertain.</p></div>
+                </div>
+            </article>
+            <article class="planet-card" id="planet-d" style="--planet-color:#78b9cf">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 d</div>
+                    <div class="planet-status">Transit • discovered 2016</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>0.788 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>0.388 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 6.13 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.02227 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>4.0 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>0.01</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>TRAPPIST-1 d is smaller than Earth and lies near the system's inner temperate region. Webb data have narrowed the possible atmospheric scenarios and ruled out a thick hydrogen atmosphere.</p></div>
+                    <div><b>What remains unknown</b><p>Scientists are still working through the data to determine whether a secondary atmosphere exists and what it is made of.</p></div>
+                </div>
+            </article>
+            <article class="planet-card" id="planet-e" style="--planet-color:#6f8fe8">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 e</div>
+                    <div class="planet-status">Transit • discovered 2017</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>0.920 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>0.692 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 8.02 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.02925 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>6.1 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>0.01</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>TRAPPIST-1 e is one of the system's most important habitability targets because it receives stellar energy in the broad habitable-zone region. Webb observations have ruled out a thick hydrogen atmosphere.</p></div>
+                    <div><b>What remains unknown</b><p>Whether it retains a substantial secondary atmosphere, surface water, clouds, or other conditions compatible with habitability is not yet established.</p></div>
+                </div>
+            </article>
+            <article class="planet-card" id="planet-f" style="--planet-color:#b9d8ef">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 f</div>
+                    <div class="planet-status">Transit • discovered 2017</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>1.045 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>1.039 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 9.33 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.03849 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>9.2 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>0.01</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>TRAPPIST-1 f is a roughly Earth-sized outer planet receiving less stellar energy than e. Its bulk properties are measured well enough to classify it among the system's rocky/super-Earth-sized worlds.</p></div>
+                    <div><b>What remains unknown</b><p>Webb observations are still being analyzed for f, so atmospheric composition and surface conditions remain open questions.</p></div>
+                </div>
+            </article>
+            <article class="planet-card" id="planet-g" style="--planet-color:#9dbfc3">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 g</div>
+                    <div class="planet-status">Transit • discovered 2017</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>1.129 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>1.321 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 10.16 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.04683 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>12.4 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>Not listed</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>TRAPPIST-1 g is the largest-radius member in NASA's current catalog values and orbits near the outer part of the system's temperate region.</p></div>
+                    <div><b>What remains unknown</b><p>Webb observations of g are still being analyzed. Its atmosphere, clouds, surface conditions, and water inventory are not yet known.</p></div>
+                </div>
+            </article>
+            <article class="planet-card" id="planet-h" style="--planet-color:#e8c9df">
+                <div class="planet-head">
+                    <div class="planet-name"><span class="planet-dot"></span>TRAPPIST-1 h</div>
+                    <div class="planet-status">Transit • discovered 2017</div>
+                </div>
+                <div class="planet-stats">
+                    <div class="planet-stat"><span>Radius</span><strong>0.755 R⊕</strong></div>
+                    <div class="planet-stat"><span>Mass</span><strong>0.326 M⊕</strong></div>
+                    <div class="planet-stat"><span>Surface gravity</span><strong>≈ 5.61 m/s²</strong></div>
+                    <div class="planet-stat"><span>Orbital distance</span><strong>0.06189 AU</strong></div>
+                    <div class="planet-stat"><span>Orbital period</span><strong>18.8 days</strong></div>
+                    <div class="planet-stat"><span>Eccentricity</span><strong>0.01</strong></div>
+                </div>
+                <div class="planet-copy">
+                    <div><b>What scientists know</b><p>TRAPPIST-1 h is the outermost known planet and receives much less stellar energy than the inner planets. NASA describes it as a terrestrial world beyond the broad habitable-zone region.</p></div>
+                    <div><b>What remains unknown</b><p>Its atmosphere and surface composition remain poorly constrained, and Webb data are still being analyzed.</p></div>
+                </div>
+            </article>
+                </section>
+
+                <section class="info-section" id="jwst">
+                    <h3 class="info-section-title">James Webb Space Telescope findings</h3>
+                    <div class="science-grid">
+                        <div class="science-card confirmed">
+                            <h4>b & c</h4>
+                            <p>Published Webb results have found little evidence for thick atmospheres on both planets. Current results for b are consistent with a very hot, potentially bare-rock world; c, if it has an atmosphere, appears to have a very thin one.</p>
+                        </div>
+                        <div class="science-card uncertainty">
+                            <h4>d & e</h4>
+                            <p>Webb observations have ruled out thick hydrogen atmospheres, while the detailed atmospheric interpretations remain under study. More transits are needed to separate planetary signals from stellar activity.</p>
+                        </div>
+                        <div class="science-card">
+                            <h4>f, g & h</h4>
+                            <p>NASA's current summary says Webb observations have been collected for all seven planets, but published community results currently cover b, c, d and e; f, g and h remain under analysis.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="info-section" id="habitability">
+                    <h3 class="info-section-title">Habitable zone, water & composition</h3>
+                    <p>
+                        The broad habitable zone is the range of orbital distances where, under suitable
+                        atmospheric conditions, liquid water could potentially exist on a rocky surface.
+                        TRAPPIST-1 e is the strongest classic target in this system, with f and g also
+                        discussed in the broader habitable-zone context. Being in this zone does <strong>not</strong>
+                        prove that a planet has an atmosphere, oceans, or life.
+                    </p>
+                    <div class="science-grid" style="margin-top:10px">
+                        <div class="science-card"><h4>Water</h4><p>Water may be possible on some worlds, but the amount, state, and surface accessibility are not directly established by the orbital position alone.</p></div>
+                        <div class="science-card"><h4>Rocky interiors</h4><p>Mass, radius and density measurements indicate these are small terrestrial-type planets rather than gas giants.</p></div>
+                        <div class="science-card"><h4>Atmospheres</h4><p>The presence, composition and persistence of atmospheres are central open questions and major JWST targets.</p></div>
+                    </div>
+                </section>
+
+                <section class="info-section" id="stellar-activity">
+                    <h3 class="info-section-title">Stellar activity</h3>
+                    <p>
+                        TRAPPIST-1 is an active red dwarf with flares and star spots. Those variations can
+                        imprint signals on transit observations, making it harder to distinguish a planet's
+                        atmospheric signature from changes produced by the star itself. NASA notes that the
+                        activity is more intense than originally expected, so repeated observations are needed.
+                    </p>
+                </section>
+
+                <section class="info-section" id="tidal">
+                    <h3 class="info-section-title">Tidal effects & orbital architecture</h3>
+                    <div class="science-grid">
+                        <div class="science-card"><h4>Likely tidal locking</h4><p>The planets orbit extremely close to their low-luminosity star, making tidal effects important. Many models expect synchronous rotation, but atmospheric circulation can still redistribute heat.</p></div>
+                        <div class="science-card"><h4>Compact architecture</h4><p>All seven planetary orbits would fit well inside Mercury's orbit around the Sun. Their closely packed arrangement produces strong planet-to-planet gravitational interactions.</p></div>
+                        <div class="science-card"><h4>Orbital resonances</h4><p>The system's chain of near-resonant orbital periods is one reason TRAPPIST-1 is valuable for studying planetary dynamics and formation.</p></div>
+                    </div>
+                </section>
+
+                <section class="info-section" id="uncertainty">
+                    <h3 class="info-section-title">Confirmed facts vs. scientific uncertainty</h3>
+                    <div class="science-grid">
+                        <div class="science-card confirmed"><h4>Well established</h4><p>Seven planets are known; their transit detections, approximate masses, radii, orbital periods and orbital distances are measured from observations.</p></div>
+                        <div class="science-card uncertainty"><h4>Still being tested</h4><p>Atmospheric composition, clouds, surface pressure, surface water and long-term atmospheric survival require additional observations and modeling.</p></div>
+                        <div class="science-card uncertainty"><h4>Do not overinterpret</h4><p>“Habitable zone” is an orbital-energy criterion, not evidence that a planet is inhabited or definitely has liquid water.</p></div>
+                    </div>
+                </section>
+
+                <section class="info-section" id="sources">
+                    <h3 class="info-section-title">NASA sources</h3>
+                    <div class="source-list">
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-b/" target="_blank" rel="noopener">NASA • TRAPPIST-1 b</a>
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-c/" target="_blank" rel="noopener">NASA • TRAPPIST-1 c</a>
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-d/" target="_blank" rel="noopener">NASA • TRAPPIST-1 d</a>
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-e/" target="_blank" rel="noopener">NASA • TRAPPIST-1 e</a>
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-f/" target="_blank" rel="noopener">NASA • TRAPPIST-1 f</a>
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-g/" target="_blank" rel="noopener">NASA • TRAPPIST-1 g</a>
+                        <a href="https://science.nasa.gov/exoplanet-catalog/trappist-1-h/" target="_blank" rel="noopener">NASA • TRAPPIST-1 h</a>
+                        <a href="https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-is-webb-revealing-about-the-trappist-1-system/" target="_blank" rel="noopener">NASA • Webb & TRAPPIST-1</a>
+                    </div>
+                </section>
+
+                <div class="scale-note">
+                    <strong>Data note:</strong> Planet radius, mass, orbital distance, orbital period, discovery
+                    year and discovery method above follow NASA's current Exoplanet Catalog pages. Approximate
+                    surface gravity is derived from those NASA mass and radius values using
+                    <em>g ≈ g⊕ × mass / radius²</em>. Values can be refined as observations improve.
+                </div>
+            </div>
         </div>
     </div>
 
@@ -657,6 +1231,24 @@
             else document.exitFullscreen();
         });
     }
+
+
+        // Extra close affordances for the information panel.
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && state.infoPanelVisible) {
+                state.infoPanelVisible = false;
+                document.getElementById('info-panel').classList.remove('visible');
+                document.getElementById('btn-info').classList.remove('active');
+            }
+        });
+
+        document.getElementById('info-panel').addEventListener('click', (event) => {
+            if (event.target === document.getElementById('info-panel')) {
+                state.infoPanelVisible = false;
+                document.getElementById('info-panel').classList.remove('visible');
+                document.getElementById('btn-info').classList.remove('active');
+            }
+        });
 
     init();
     </script>
