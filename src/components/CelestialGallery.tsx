@@ -195,7 +195,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Mars: High Resolution Mosaic',
     category: 'planet',
     categoryLabel: 'Terrestrial Planet',
-    image: 'https://space-verse-alpha.vercel.app/images/mars.png',
+    image: 'https://space-verse-alpha.vercel.app/images/mars.jpg',
     telescope: 'Mars Reconnaissance Orbiter',
     instrument: 'HiRISE Imaging Sensor',
     exposureTime: 'Stitched Surface Scan',
