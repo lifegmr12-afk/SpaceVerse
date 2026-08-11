@@ -647,7 +647,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Dwarf Planet Ceres Map',
     category: 'asteroid',
     categoryLabel: 'Dwarf Planet',
-    image: 'https://space-verse-alpha.vercel.app/gallery/ceres.png',
+    image: 'https://space-verse-alpha.vercel.app/gallery/ast-ceres.png',
     telescope: 'Dawn Spacecraft Probe',
     instrument: 'Framing Camera (FC)',
     exposureTime: 'Orbital Reconnaissance Map',
