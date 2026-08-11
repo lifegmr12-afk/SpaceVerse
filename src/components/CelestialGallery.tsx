@@ -35,7 +35,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
     title: 'Spiral Galaxy (NGC 4414)',
     category: 'galaxy',
     categoryLabel: 'Spiral Galaxy',
-    image: galaxyImg,
+    image: 'https://space-verse-alpha.vercel.app/gallery/gal-spiral.png',
     telescope: 'Hubble Space Telescope',
     instrument: 'WFC3 / Infrared Channel',
     exposureTime: '24.5 Hours Combined',
