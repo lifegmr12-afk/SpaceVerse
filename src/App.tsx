@@ -1,11 +1,5 @@
-// @ts-nocheck
 /// <reference types="react" />
-import React, {
-  useState,
-  useMemo,
-  useEffect,
-  useRef
-} from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { spaceObjects } from './data';
 import { SpaceObject, SpaceObjectCategory } from './types';
@@ -31,7 +25,7 @@ declare module 'react/jsx-runtime' {
     source?: any,
     self?: any
   ): any;
-
+}
 
 declare global {
   namespace JSX {
@@ -2461,31 +2455,6 @@ const missionsData: Mission[] = [
 ];
 
 export default function App() {
-  useEffect(() => {
-  const unlockAudio = () => {
-    const video = bigBangVideoRef.current;
-    if (!video) return;
-
-    video.muted = false;
-    video.volume = 1;
-
-    video.play().catch(() => {});
-
-    window.removeEventListener('pointerdown', unlockAudio);
-    window.removeEventListener('keydown', unlockAudio);
-    window.removeEventListener('touchstart', unlockAudio);
-  };
-
-  window.addEventListener('pointerdown', unlockAudio, { once: true });
-  window.addEventListener('keydown', unlockAudio, { once: true });
-  window.addEventListener('touchstart', unlockAudio, { once: true });
-
-  return () => {
-    window.removeEventListener('pointerdown', unlockAudio);
-    window.removeEventListener('keydown', unlockAudio);
-    window.removeEventListener('touchstart', unlockAudio);
-  };
-}, []);
   // Navigation tabs
   // 'home', 'explore', 'scientists', 'missions', 'explorer3d', 'gallery', 'news', 'about'
   const [currentTab, setCurrentTab] = useState<string>('home');
@@ -2507,6 +2476,29 @@ export default function App() {
   const [showBigBangLoader, setShowBigBangLoader] = useState<boolean>(true);
   const [bigBangProgress, setBigBangProgress] = useState<number>(0);
   const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const unlockBigBangAudio = () => {
+      const video = bigBangVideoRef.current;
+      if (!video) return;
+
+      video.muted = false;
+      video.volume = 1;
+      void video.play().catch(() => {
+        // Browser may still block audible playback; do not block the loader.
+      });
+    };
+
+    window.addEventListener('pointerdown', unlockBigBangAudio, { once: true });
+    window.addEventListener('keydown', unlockBigBangAudio, { once: true });
+    window.addEventListener('touchstart', unlockBigBangAudio, { once: true });
+
+    return () => {
+      window.removeEventListener('pointerdown', unlockBigBangAudio);
+      window.removeEventListener('keydown', unlockBigBangAudio);
+      window.removeEventListener('touchstart', unlockBigBangAudio);
+    };
+  }, []);
 
   useEffect(() => {
     // Never leave visitors on the splash screen if video playback is blocked.
@@ -2679,175 +2671,116 @@ export default function App() {
   return (
     <>
       {showBigBangLoader && (
-  <div
-    className="fixed inset-0 z-[10000] overflow-hidden bg-black text-white"
-    role="dialog"
-    aria-label="SpaceVerse Big Bang loading screen"
-    aria-live="polite"
-  >
-    <video
-          ref={bigBangVideoRef}
-          className="absolute inset-0 h-full w-full object-cover"
-          src="/big-bang-loading.mp4"
-          poster="/big-bang-poster.jpg"
-          autoPlay
-          playsInline
-          preload="auto"
-
-          onTimeUpdate={(e: React.SyntheticEvent<HTMLVideoElement>) => {
-            const video = e.currentTarget;
-
-            if (video.duration && Number.isFinite(video.duration)) {
-              setBigBangProgress(
-                Math.min(
-                  100,
-                  (video.currentTime / video.duration) * 100
-                )
-              );
-            }
+        <div
+          className="fixed inset-0 z-[10000] overflow-hidden bg-black text-white"
+          role="dialog"
+          aria-label="SpaceVerse Big Bang loading screen"
+          aria-live="polite"
+          onPointerDown={() => {
+            const video = bigBangVideoRef.current;
+            if (!video) return;
+            video.muted = false;
+            video.volume = 1;
+            void video.play().catch(() => {});
           }}
-
-          onEnded={() => setShowBigBangLoader(false)}
-          onError={() => setShowBigBangLoader(false)}
-        />
-
-        {/* YOUR OVERLAYS AND BOTTOM TEXT GO HERE */}
-
-      </div>
-    )}
-
-    {/* YOUR EXISTING SPACEVERSE APP */}
-    <div className={`min-h-screen ${themeBg} ...`}>
-      ...
-    </div>
-  </>
-);
-
-    {/* =====================================================
-        CINEMATIC OVERLAY
-    ====================================================== */}
-
-    <div className="absolute inset-0 bg-black/20" />
-
-    <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/75" />
-
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,rgba(0,0,0,0.22)_65%,rgba(0,0,0,0.62)_100%)]" />
-
-
-    {/* =====================================================
-        SMALL BOTTOM UI
-    ====================================================== */}
-
-    <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-5 sm:pb-7">
-
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-black/35 px-4 py-3 shadow-2xl backdrop-blur-xl">
-
-
-        {/* STATUS */}
-
-        <div className="mb-2 flex items-center justify-center gap-2">
-
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
-
-          <span className="font-mono text-[8px] uppercase tracking-[0.24em] text-cyan-200/80">
-
-            SpaceVerse • Cosmic Initialization
-
-          </span>
-
-        </div>
-
-
-        {/* SMALL LOGO */}
-
-        <div className="flex justify-center">
-
-          <img
-            src="/logo1.png"
-            alt="SpaceVerse"
-            className="h-7 w-auto opacity-90 drop-shadow-[0_0_18px_rgba(34,211,238,0.35)] sm:h-8"
+        >
+          <video
+            ref={bigBangVideoRef}
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/big-bang-loading.mp4"
+            poster="/big-bang-poster.jpg"
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onTimeUpdate={(e) => {
+              const video = e.currentTarget;
+              if (video.duration && Number.isFinite(video.duration)) {
+                setBigBangProgress(
+                  Math.min(
+                    100,
+                    (video.currentTime / video.duration) * 100
+                  )
+                );
+              }
+            }}
+            onEnded={() => setShowBigBangLoader(false)}
+            onError={() => setShowBigBangLoader(false)}
+            onCanPlay={(e) => {
+              // Start immediately. If audible autoplay is allowed, it will keep
+              // audio; otherwise muted autoplay keeps the splash functional.
+              const video = e.currentTarget;
+              void video.play().catch(() => {});
+            }}
           />
 
-        </div>
+          {/* Cinematic overlays — keep the video dominant. */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/80" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.18)_68%,rgba(0,0,0,0.65)_100%)]" />
 
+          {/* Compact bottom UI */}
+          <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-3 pb-4 sm:pb-6">
+            <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-black/30 px-4 py-3 backdrop-blur-xl shadow-2xl">
 
-        {/* SMALL TITLE */}
+              <div className="flex items-center justify-center gap-2">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.9)]" />
+                <span className="font-mono text-[7px] uppercase tracking-[0.24em] text-cyan-200/70">
+                  SpaceVerse • Cosmic Initialization
+                </span>
+              </div>
 
-        <h1 className="mt-1 text-center text-base font-semibold uppercase tracking-[0.18em] text-white/95 sm:text-lg">
+              <div className="mt-1 flex justify-center">
+                <img
+                  src="/logo.png"
+                  alt="SpaceVerse"
+                  className="h-7 w-auto opacity-90 drop-shadow-[0_0_14px_rgba(34,211,238,0.28)]"
+                />
+              </div>
 
-          The Universe Begins
+              <h1 className="mt-1 text-center text-base font-semibold uppercase tracking-[0.17em] text-white/95 sm:text-lg">
+                The Universe Begins
+              </h1>
 
-        </h1>
+              <p className="mt-0.5 text-center text-[8px] leading-4 text-white/50">
+                From primordial fire to stars, galaxies, planets and worlds.
+              </p>
 
+              <div className="mt-2.5">
+                <div className="mb-1 flex items-center justify-between">
+                  <span className="font-mono text-[6px] uppercase tracking-[0.18em] text-white/35">
+                    Initializing SpaceVerse
+                  </span>
+                  <span className="font-mono text-[6px] text-white/40">
+                    {Math.round(bigBangProgress)}%
+                  </span>
+                </div>
 
-        {/* SMALL SUBTITLE */}
+                <div className="h-0.5 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 transition-[width] duration-150"
+                    style={{ width: `${Math.max(3, bigBangProgress)}%` }}
+                  />
+                </div>
+              </div>
 
-        <p className="mt-1 text-center text-[9px] leading-4 text-white/55 sm:text-[10px]">
+              <div className="mt-2.5 flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowBigBangLoader(false)}
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 font-mono text-[7px] uppercase tracking-[0.18em] text-white/60 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
+                >
+                  Skip Intro
+                </button>
+              </div>
 
-          From primordial fire to stars, galaxies, planets and worlds.
-
-        </p>
-
-
-        {/* PROGRESS */}
-
-        <div className="mt-3">
-
-          <div className="mb-1 flex items-center justify-between">
-
-            <span className="font-mono text-[7px] uppercase tracking-[0.18em] text-white/40">
-
-              Initializing SpaceVerse
-
-            </span>
-
-            <span className="font-mono text-[7px] text-white/45">
-
-              {Math.round(bigBangProgress)}%
-
-            </span>
-
+              <div className="mt-1.5 text-center font-mono text-[5px] uppercase tracking-[0.2em] text-white/20">
+                Tap / click anywhere to enable the original boom sound
+              </div>
+            </div>
           </div>
-
-
-          <div className="h-0.5 overflow-hidden rounded-full bg-white/10">
-
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 transition-[width] duration-150"
-              style={{
-                width: `${Math.max(3, bigBangProgress)}%`
-              }}
-            />
-
-          </div>
-
         </div>
+      )}
 
-
-        {/* CONTROLS */}
-
-        <div className="mt-3 flex items-center justify-center gap-2">
-
-
-          {/* SKIP */}
-
-        </div>
-
-
-        {/* FOOTER */}
-
-        <div className="mt-2 text-center font-mono text-[6px] uppercase tracking-[0.2em] text-white/25">
-
-          Explore the universe • SpaceVerse
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-)}
       <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
       
       {/* Majestic Immersive Spiral Galaxy Background (Top Right) */}
@@ -4069,6 +4002,6 @@ export default function App() {
       </AnimatePresence>
 
       </div>
-    </div>
+    </>
   );
 }
