@@ -1,12 +1,11 @@
 /// <reference types="react" />
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { spaceObjects } from './data';
 import { SpaceObject, SpaceObjectCategory } from './types';
 import CelestialGallery from './components/CelestialGallery';
 import EmbedViewer from './components/EmbedViewer';
 import ExploreGrid from './components/ExploreGrid';
-import galaxyImg from './assets/images/galaxy_gallery_1783173573878.jpg';
 import { 
   Home, Compass, Orbit, Layers, Sun, Globe, Zap, Users, Rocket, Box, Image, 
   Newspaper, Info, Heart, Moon, Search, Bell, ChevronRight, ChevronLeft, X, 
@@ -2472,6 +2471,40 @@ export default function App() {
   const [showLiveEvents, setShowLiveEvents] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
+  // Big Bang cinematic loading screen
+  const [showBigBangLoader, setShowBigBangLoader] = useState<boolean>(true);
+  const [bigBangProgress, setBigBangProgress] = useState<number>(0);
+  const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const unlockBigBangAudio = () => {
+      const video = bigBangVideoRef.current;
+      if (!video) return;
+
+      video.muted = false;
+      video.volume = 1;
+      void video.play().catch(() => {
+        // Browser may still block audible playback; do not block the loader.
+      });
+    };
+
+    window.addEventListener('pointerdown', unlockBigBangAudio, { once: true });
+    window.addEventListener('keydown', unlockBigBangAudio, { once: true });
+    window.addEventListener('touchstart', unlockBigBangAudio, { once: true });
+
+    return () => {
+      window.removeEventListener('pointerdown', unlockBigBangAudio);
+      window.removeEventListener('keydown', unlockBigBangAudio);
+      window.removeEventListener('touchstart', unlockBigBangAudio);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Never leave visitors on the splash screen if video playback is blocked.
+    const timeout = window.setTimeout(() => setShowBigBangLoader(false), 12000);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
   // Sync favorites
   useEffect(() => {
     localStorage.setItem('spaceverse_favorites', JSON.stringify(favorites));
@@ -2521,16 +2554,16 @@ export default function App() {
   const getFeaturedImage = (id: string) => {
     switch(id) {
       case 'solar-system':
-        return 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/solar-system-3d.png';
       case 'milky-way':
-        return 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.png';
       case 'trappist-1':
-        return 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/trappist-1-3d.png';
       case 'alpha-centauri':
-        return 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/alpha-centauri-3d.png';
       case 'sagittarius-a':
       default:
-        return 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/sagittarius-a-3d.png';
     }
   };
 
@@ -2635,130 +2668,356 @@ export default function App() {
     : "bg-gradient-to-br from-cyan-500/5 via-indigo-500/5 to-transparent border-slate-200";
 
   return (
-    <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
-      
-      {/* ============================================================
-          SPACEVERSE CINEMATIC 3D-STYLE COSMIC BACKGROUND
-          UI stays on top; this layer replaces the old photo background.
-         ============================================================ */}
-      {isDarkMode && (
-        <>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-            style={{
-              background:
-                'radial-gradient(circle at 77% 18%, rgba(76,61,181,.22), transparent 31%),' +
-                'radial-gradient(circle at 49% 64%, rgba(0,180,255,.12), transparent 29%),' +
-                'radial-gradient(circle at 25% 33%, rgba(111,71,255,.10), transparent 24%),' +
-                'linear-gradient(180deg,#02050e 0%,#030813 46%,#02040b 100%)'
+    <>
+      {showBigBangLoader && (
+        <div
+          className="fixed inset-0 z-[10000] overflow-hidden bg-black text-white"
+          role="dialog"
+          aria-label="SpaceVerse Big Bang loading screen"
+          aria-live="polite"
+          onPointerDown={() => {
+            const video = bigBangVideoRef.current;
+            if (!video) return;
+            video.muted = false;
+            video.volume = 1;
+            void video.play().catch(() => {});
+          }}
+        >
+          <video
+            ref={bigBangVideoRef}
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/big-bang-loading.mp4"
+            poster="/big-bang-poster.jpg"
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onTimeUpdate={(e) => {
+              const video = e.currentTarget;
+              if (video.duration && Number.isFinite(video.duration)) {
+                setBigBangProgress(
+                  Math.min(
+                    100,
+                    (video.currentTime / video.duration) * 100
+                  )
+                );
+              }
+            }}
+            onEnded={() => setShowBigBangLoader(false)}
+            onError={() => setShowBigBangLoader(false)}
+            onCanPlay={(e) => {
+              // Start immediately. If audible autoplay is allowed, it will keep
+              // audio; otherwise muted autoplay keeps the splash functional.
+              const video = e.currentTarget;
+              void video.play().catch(() => {});
             }}
           />
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0 opacity-70"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 12% 20%, rgba(255,255,255,.9) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 22% 72%, rgba(114,200,255,.9) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 38% 32%, rgba(255,255,255,.8) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 52% 14%, rgba(160,132,255,.9) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 66% 40%, rgba(255,255,255,.75) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 84% 26%, rgba(128,220,255,.85) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 91% 65%, rgba(255,255,255,.7) 0 1px, transparent 1.5px),' +
-                'radial-gradient(circle at 72% 79%, rgba(171,137,255,.7) 0 1px, transparent 1.5px)',
-              backgroundSize:
-                '320px 240px,280px 220px,360px 260px,300px 240px,' +
-                '420px 300px,340px 260px,390px 280px,300px 230px',
-              backgroundPosition:
-                '0 0,80px 30px,140px 70px,40px 120px,180px 20px,90px 130px,220px 110px,30px 60px'
-            }}
-          />
+          {/* Cinematic overlays — keep the video dominant. */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/80" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.18)_68%,rgba(0,0,0,0.65)_100%)]" />
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute right-[-100px] top-[-55px] z-0 h-[620px] w-[900px] overflow-hidden opacity-70 mix-blend-screen hidden lg:block"
-            style={{
-              backgroundImage: `url('${galaxyImg}')`,
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              filter: 'saturate(1.18) brightness(.92) contrast(1.08)',
-              maskImage:
-                'radial-gradient(circle at 52% 45%, #000 0%, rgba(0,0,0,.94) 48%, rgba(0,0,0,.36) 78%, transparent 100%)',
-              WebkitMaskImage:
-                'radial-gradient(circle at 52% 45%, #000 0%, rgba(0,0,0,.94) 48%, rgba(0,0,0,.36) 78%, transparent 100%)'
-            }}
-          />
+          {/* Compact bottom UI */}
+          <div className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-3 pb-4 sm:pb-6">
+            <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-black/30 px-4 py-3 backdrop-blur-xl shadow-2xl">
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute right-[4%] top-[7%] z-0 h-[470px] w-[700px] rounded-full opacity-75 blur-3xl"
-            style={{
-              background:
-                'radial-gradient(ellipse at 52% 43%, rgba(125,88,255,.23) 0%, rgba(35,188,255,.12) 30%, rgba(0,0,0,0) 74%)'
-            }}
-          />
+              <div className="flex items-center justify-center gap-2">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(103,232,249,0.9)]" />
+                <span className="font-mono text-[7px] uppercase tracking-[0.24em] text-cyan-200/70">
+                  SpaceVerse • Cosmic Initialization
+                </span>
+              </div>
 
-          {/* Blue planetary horizon */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-[-19%] top-[31%] z-0 h-[640px] w-[1080px] rounded-[50%] border-t-[4px] border-cyan-200/70 shadow-[0_-18px_70px_rgba(53,196,255,.46)] hidden lg:block"
-            style={{
-              background:
-                'radial-gradient(ellipse at 60% 100%, rgba(4,14,28,.99) 0 55%, rgba(3,12,24,.92) 64%, rgba(17,86,132,.35) 74%, transparent 79%)',
-              transform: 'rotate(8deg)',
-              opacity: .9
-            }}
-          />
+              <div className="mt-1 flex justify-center">
+                <img
+                  src="/logo.png"
+                  alt="SpaceVerse"
+                  className="h-7 w-auto opacity-90 drop-shadow-[0_0_14px_rgba(34,211,238,0.28)]"
+                />
+              </div>
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-[-9%] top-[39%] z-0 h-[270px] w-[930px] rounded-[50%] blur-xl hidden lg:block"
-            style={{
-              borderTop: '2px solid rgba(80,210,255,.78)',
-              boxShadow: '0 -10px 35px rgba(47,179,255,.32)',
-              transform: 'rotate(8deg)',
-              opacity: .65
-            }}
-          />
+              <h1 className="mt-1 text-center text-base font-semibold uppercase tracking-[0.17em] text-white/95 sm:text-lg">
+                The Universe Begins
+              </h1>
 
-          {/* Futuristic orbital station */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-[17%] right-[17%] z-0 h-[150px] w-[380px] rounded-full border border-cyan-300/25 bg-cyan-400/[0.025] shadow-[0_0_60px_rgba(33,203,255,.16)] hidden lg:block"
-            style={{ transform: 'perspective(700px) rotateX(62deg)' }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-[18.5%] right-[24%] z-0 h-[80px] w-[270px] rounded-full border border-cyan-200/40 bg-gradient-to-b from-cyan-300/[0.08] to-transparent shadow-[0_0_35px_rgba(35,190,255,.2)] hidden lg:block"
-            style={{ transform: 'perspective(600px) rotateX(62deg)' }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-[19.5%] right-[32%] z-0 h-[34px] w-[115px] rounded-full border border-blue-200/55 bg-blue-400/10 shadow-[0_0_28px_rgba(80,160,255,.28)] hidden lg:block"
-            style={{ transform: 'perspective(500px) rotateX(62deg)' }}
-          />
+              <p className="mt-0.5 text-center text-[8px] leading-4 text-white/50">
+                From primordial fire to stars, galaxies, planets and worlds.
+              </p>
 
-          {/* Asteroid silhouettes */}
-          <div className="pointer-events-none absolute right-[6%] top-[45%] z-0 h-10 w-10 rotate-12 rounded-[34%] bg-gradient-to-br from-slate-700/90 to-slate-950/95 shadow-[0_10px_30px_rgba(0,0,0,.55)]" />
-          <div className="pointer-events-none absolute right-[11%] top-[56%] z-0 h-16 w-12 -rotate-12 rounded-[42%] bg-gradient-to-br from-slate-600/90 to-slate-950/95 shadow-[0_10px_35px_rgba(0,0,0,.6)]" />
-          <div className="pointer-events-none absolute left-[53%] top-[50%] z-0 h-7 w-8 rotate-45 rounded-[38%] bg-gradient-to-br from-slate-600/75 to-slate-950/95" />
-          <div className="pointer-events-none absolute right-[3%] bottom-[20%] z-0 h-20 w-14 rotate-[24deg] rounded-[40%] bg-gradient-to-br from-slate-700/70 to-slate-950/95" />
+              <div className="mt-2.5">
+                <div className="mb-1 flex items-center justify-between">
+                  <span className="font-mono text-[6px] uppercase tracking-[0.18em] text-white/35">
+                    Initializing SpaceVerse
+                  </span>
+                  <span className="font-mono text-[6px] text-white/40">
+                    {Math.round(bigBangProgress)}%
+                  </span>
+                </div>
 
-          {/* Readability vignette */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-0"
-            style={{
-              background:
-                'linear-gradient(90deg,rgba(1,5,13,.76) 0%,rgba(1,5,13,.22) 23%,transparent 50%,rgba(1,5,13,.12) 100%),' +
-                'linear-gradient(180deg,rgba(0,0,0,.20) 0%,transparent 34%,rgba(0,0,0,.52) 100%)'
-            }}
-          />
-        </>
+                <div className="h-0.5 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 transition-[width] duration-150"
+                    style={{ width: `${Math.max(3, bigBangProgress)}%` }}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-2.5 flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => setShowBigBangLoader(false)}
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 font-mono text-[7px] uppercase tracking-[0.18em] text-white/60 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
+                >
+                  Skip Intro
+                </button>
+              </div>
+
+              <div className="mt-1.5 text-center font-mono text-[5px] uppercase tracking-[0.2em] text-white/20">
+                Tap / click anywhere to enable the original boom sound
+              </div>
+            </div>
+          </div>
+        </div>
       )}
+
+      <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
+      
+      {/* =========================================================
+    SPACEVERSE — PREMIUM 3D COSMIC BACKGROUND
+    ========================================================= */}
+{isDarkMode && (
+  <div
+    className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
+    aria-hidden="true"
+  >
+
+    {/* Deep space */}
+    <div className="absolute inset-0 bg-[#01040b]" />
+
+    {/* =====================================================
+        STAR FIELD
+        ===================================================== */}
+    <div
+      className="absolute inset-0 opacity-80"
+      style={{
+        backgroundImage: `
+          radial-gradient(circle at 12% 18%, rgba(255,255,255,.85) 0 1px, transparent 1.5px),
+          radial-gradient(circle at 28% 34%, rgba(103,232,249,.62) 0 .8px, transparent 1.3px),
+          radial-gradient(circle at 44% 14%, rgba(255,255,255,.72) 0 1px, transparent 1.6px),
+          radial-gradient(circle at 61% 28%, rgba(167,139,250,.55) 0 .9px, transparent 1.4px),
+          radial-gradient(circle at 78% 16%, rgba(255,255,255,.78) 0 1px, transparent 1.6px),
+          radial-gradient(circle at 91% 36%, rgba(103,232,249,.55) 0 .8px, transparent 1.4px),
+          radial-gradient(circle at 18% 66%, rgba(255,255,255,.55) 0 .8px, transparent 1.4px),
+          radial-gradient(circle at 37% 82%, rgba(167,139,250,.48) 0 .8px, transparent 1.4px),
+          radial-gradient(circle at 57% 70%, rgba(255,255,255,.55) 0 .8px, transparent 1.4px),
+          radial-gradient(circle at 84% 74%, rgba(103,232,249,.48) 0 .8px, transparent 1.4px)
+        `,
+        animation: 'spaceStars 22s linear infinite'
+      }}
+    />
+
+    <div
+      className="absolute inset-0 opacity-25"
+      style={{
+        backgroundImage:
+          'radial-gradient(circle, rgba(255,255,255,.55) 0 .6px, transparent .9px), radial-gradient(circle, rgba(56,189,248,.35) 0 .5px, transparent .85px)',
+        backgroundSize: '115px 115px, 73px 73px',
+        backgroundPosition: '9px 13px, 31px 7px'
+      }}
+    />
+
+
+    {/* =====================================================
+        UPPER-RIGHT SPIRAL GALAXY
+        ===================================================== */}
+    <div className="absolute right-[-9%] top-[-2%] h-[520px] w-[760px] opacity-95 sm:h-[610px] sm:w-[900px]">
+
+      <div
+        className="absolute inset-0 rounded-full blur-[2px]"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, rgba(255,240,210,.95) 0 3%, rgba(255,184,116,.58) 4%, transparent 10%),' +
+            'conic-gradient(from 210deg at 50% 50%, rgba(24,39,82,0) 0 8%, rgba(93,112,255,.32) 13%, rgba(255,102,183,.22) 19%, rgba(74,161,255,.34) 26%, rgba(18,29,66,0) 34%, rgba(120,83,255,.24) 43%, rgba(84,176,255,.24) 51%, rgba(20,29,65,0) 61%, rgba(255,126,174,.18) 69%, rgba(70,171,255,.28) 78%, rgba(20,29,65,0) 87%, rgba(120,83,255,.22) 95%, rgba(24,39,82,0) 100%)',
+          filter: 'saturate(125%) contrast(115%)'
+        }}
+      />
+
+      <div
+        className="absolute inset-[9%] rounded-full border border-cyan-300/10"
+        style={{
+          transform: 'rotate(-18deg) skewX(-8deg) scaleY(.78)'
+        }}
+      />
+
+      <div
+        className="absolute inset-[16%] rounded-full border border-violet-300/10"
+        style={{
+          transform: 'rotate(17deg) skewX(10deg) scaleY(.68)'
+        }}
+      />
+
+      {/* Galactic core */}
+      <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/85 blur-md shadow-[0_0_55px_rgba(255,224,188,.75)]" />
+
+    </div>
+
+
+    {/* =====================================================
+        MILKY WAY / NEBULA HAZE
+        ===================================================== */}
+    <div
+      className="absolute left-[18%] top-[30%] h-[230px] w-[68%] -rotate-[8deg] rounded-[50%] opacity-35 blur-[38px]"
+      style={{
+        background:
+          'linear-gradient(90deg, transparent, rgba(56,189,248,.2), rgba(168,85,247,.18), rgba(244,114,182,.14), rgba(56,189,248,.18), transparent)'
+      }}
+    />
+
+
+    {/* =====================================================
+        EARTH-LIKE PLANETARY HORIZON
+        ===================================================== */}
+    <div
+      className="absolute left-[-20%] top-[18%] h-[660px] w-[980px] rounded-[50%] opacity-90"
+      style={{
+        background:
+          'radial-gradient(ellipse at 58% 74%, rgba(7,18,42,.98) 0 57%, rgba(11,34,70,.98) 60%, rgba(24,85,151,.82) 64%, rgba(84,190,255,.52) 66%, rgba(125,211,252,.14) 68%, transparent 72%)',
+        transform: 'rotate(-10deg)',
+        boxShadow: '0 0 100px rgba(56,189,248,.14)'
+      }}
+    />
+
+    {/* Atmospheric rim */}
+    <div
+      className="absolute left-[-4%] top-[33%] h-[250px] w-[700px] rounded-[50%] opacity-50 blur-[10px]"
+      style={{
+        border: '22px solid rgba(56,189,248,.26)',
+        transform: 'rotate(-11deg)'
+      }}
+    />
+
+
+    {/* =====================================================
+        FUTURISTIC ORBITAL STATION
+        ===================================================== */}
+    <div className="absolute left-1/2 bottom-[-35px] h-[230px] w-[680px] -translate-x-1/2 sm:h-[280px] sm:w-[820px]">
+
+      {/* Main ring */}
+      <div
+        className="absolute left-1/2 top-[18%] h-[140px] w-[430px] -translate-x-1/2 rounded-[50%] border border-cyan-300/20 bg-[radial-gradient(ellipse_at_center,rgba(10,43,70,.75),rgba(2,8,20,.95)_68%,transparent_70%)] shadow-[0_0_60px_rgba(34,211,238,.09)]"
+        style={{
+          transform: 'translateX(-50%) rotateX(62deg)'
+        }}
+      >
+
+        <div className="absolute inset-[12%] rounded-[50%] border border-cyan-300/15" />
+
+        <div className="absolute inset-[25%] rounded-[50%] border border-blue-400/20" />
+
+        <div className="absolute inset-[39%] rounded-[50%] border-2 border-cyan-200/20 shadow-[0_0_24px_rgba(34,211,238,.12)]" />
+
+        <div className="absolute left-1/2 top-1/2 h-7 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/12 blur-md" />
+
+      </div>
+
+
+      {/* Central tower */}
+      <div className="absolute left-1/2 top-[6%] h-20 w-20 -translate-x-1/2 rounded-full border border-cyan-200/20 bg-[radial-gradient(circle_at_50%_45%,rgba(148,237,255,.22),rgba(4,13,26,.98)_58%)] shadow-[0_0_34px_rgba(34,211,238,.12)]">
+
+        <div className="absolute left-1/2 top-[-22px] h-[48px] w-px -translate-x-1/2 bg-cyan-300/30" />
+
+        <div className="absolute left-1/2 top-[-25px] h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-cyan-200 shadow-[0_0_10px_rgba(103,232,249,.95)] animate-pulse" />
+
+      </div>
+
+
+      {/* Station modules */}
+      {[
+        'left-[11%] top-[38%]',
+        'left-[23%] top-[22%]',
+        'right-[23%] top-[22%]',
+        'right-[11%] top-[38%]'
+      ].map((pos, i) => (
+
+        <div
+          key={i}
+          className={`absolute ${pos} h-10 w-16 rounded-lg border border-cyan-300/15 bg-slate-950/65 shadow-[0_0_25px_rgba(34,211,238,.07)]`}
+        >
+
+          <div className="absolute inset-2 rounded-md bg-gradient-to-br from-cyan-400/12 to-blue-500/5" />
+
+          <div className="absolute left-2 top-2 h-1.5 w-10 rounded-full bg-cyan-300/25" />
+
+        </div>
+
+      ))}
+
+    </div>
+
+
+    {/* =====================================================
+        HOLOGRAPHIC ORBIT RINGS
+        ===================================================== */}
+    <div className="absolute left-1/2 top-[49%] h-[420px] w-[700px] -translate-x-1/2 -translate-y-1/2 rotate-[-12deg] rounded-[50%] border border-blue-300/10" />
+
+    <div className="absolute left-[56%] top-[45%] h-[320px] w-[520px] -translate-x-1/2 -translate-y-1/2 rotate-[12deg] rounded-[50%] border border-violet-300/10" />
+
+
+    {/* =====================================================
+        FLOATING ASTEROIDS
+        ===================================================== */}
+
+    <div className="absolute left-[18%] top-[44%] h-6 w-8 rotate-[18deg] rounded-[44%] bg-gradient-to-br from-slate-400/60 to-slate-950/95 shadow-[0_0_18px_rgba(148,163,184,.10)]" />
+
+    <div className="absolute left-[39%] top-[25%] h-4 w-6 rotate-[-20deg] rounded-[45%] bg-slate-300/38" />
+
+    <div className="absolute right-[28%] top-[47%] h-8 w-10 rotate-[28deg] rounded-[45%] bg-gradient-to-br from-slate-300/55 to-slate-950/95" />
+
+    <div className="absolute right-[8%] bottom-[24%] h-12 w-14 rotate-[35deg] rounded-[45%] bg-gradient-to-br from-slate-300/42 to-slate-950/95 shadow-[0_0_24px_rgba(148,163,184,.10)]" />
+
+    <div className="absolute left-[31%] bottom-[17%] h-5 w-7 rotate-[8deg] rounded-[45%] bg-slate-200/20" />
+
+    <div className="absolute right-[42%] bottom-[13%] h-3 w-5 rotate-[26deg] rounded-[45%] bg-slate-300/22" />
+
+
+    {/* =====================================================
+        SMALL GLOWING STARS
+        ===================================================== */}
+
+    <span className="absolute left-[33%] top-[16%] h-1 w-1 rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(103,232,249,.95)] animate-pulse" />
+
+    <span className="absolute left-[69%] top-[24%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_18px_rgba(255,255,255,.95)] animate-pulse" />
+
+    <span className="absolute right-[24%] bottom-[25%] h-1 w-1 rounded-full bg-violet-200 shadow-[0_0_14px_rgba(196,181,253,.9)] animate-pulse" />
+
+
+    {/* =====================================================
+        BOTTOM DARK GRADIENT
+        ===================================================== */}
+    <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-t from-[#01040b] via-[#01040b]/55 to-transparent" />
+
+
+    {/* =====================================================
+        BACKGROUND MOTION
+        ===================================================== */}
+    <style>{`
+      @keyframes spaceStars {
+        0% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        50% {
+          transform: translate3d(-8px, 4px, 0) scale(1.015);
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+      }
+    `}</style>
+
+  </div>
+)}
 
       {/* MOBILE HEADER TOP-BAR */}
       <div className={`lg:hidden fixed top-0 left-0 right-0 h-16 ${isDarkMode ? 'bg-[#03050c]/90 border-white/5' : 'bg-white/90 border-slate-200'} border-b flex items-center justify-between px-4 z-40 backdrop-blur-md`}>
@@ -3252,17 +3511,28 @@ export default function App() {
                       <div 
                         key={obj.id}
                         onClick={() => setSelectedObject(obj)}
-                        className={`group relative rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/5' : 'border-slate-200'} bg-[#02040d] aspect-[4/5] cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(6,182,212,0.15)]`}
+                        className={`group relative rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-slate-200'} bg-[#02040d] aspect-[4/5] cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:border-cyan-400/35 ${isDarkMode ? 'shadow-[0_18px_55px_rgba(0,0,0,0.42)] hover:shadow-[0_20px_70px_rgba(34,211,238,0.20)]' : 'shadow-lg'}`}
                       >
-                        {/* High res background image */}
-                        <img 
-                          src={getFeaturedImage(obj.id)} 
-                          alt={obj.name}
-                          className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
-                          referrerPolicy="no-referrer"
-                        />
-                        {/* Gradient shade overlays */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#02040d] via-black/10 to-transparent"></div>
+                        {/* Cinematic 3D artwork */}
+                        <div className="absolute inset-0 overflow-hidden">
+                          <img
+                            src={getFeaturedImage(obj.id)}
+                            alt={obj.name}
+                            className="absolute inset-0 w-full h-full object-cover brightness-[1.32] contrast-[1.16] saturate-[1.38] opacity-95 scale-[1.02] group-hover:scale-110 group-hover:brightness-[1.48] group-hover:saturate-[1.52] transition-all duration-700 ease-out"
+                            referrerPolicy="no-referrer"
+                          />
+
+                          {/* Soft atmospheric light */}
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_28%,rgba(56,189,248,0.18),transparent_38%)] mix-blend-screen"></div>
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_24%,rgba(139,92,246,0.14),transparent_42%)] mix-blend-screen"></div>
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.06),transparent_48%)] mix-blend-screen"></div>
+
+                          {/* Bottom readability gradient, intentionally lighter */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#02040d]/78 via-[#02040d]/18 to-transparent"></div>
+
+                          {/* Edge light */}
+                          <div className="absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/10"></div>
+                        </div>
                         
                         {/* Dynamic Bookmarking star overlay */}
                         <button 
@@ -3948,6 +4218,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-    </div>
+      </div>
+    </>
   );
 }
