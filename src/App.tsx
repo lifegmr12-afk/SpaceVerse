@@ -31,7 +31,7 @@ declare module 'react/jsx-runtime' {
     source?: any,
     self?: any
   ): any;
-}
+
 
 declare global {
   namespace JSX {
@@ -4069,6 +4069,6 @@ export default function App() {
       </AnimatePresence>
 
       </div>
-    </>
+    </div>
   );
 }
