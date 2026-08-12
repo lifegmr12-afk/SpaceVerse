@@ -2554,16 +2554,16 @@ export default function App() {
   const getFeaturedImage = (id: string) => {
     switch(id) {
       case 'solar-system':
-        return 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.webp';
       case 'milky-way':
-        return 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.webp';
       case 'trappist-1':
-        return 'https://images.unsplash.com/photo-1543722530-d2c3201371e7?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/trappist-1.webp';
       case 'alpha-centauri':
-        return 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/alpha-centauri.webp';
       case 'sagittarius-a':
       default:
-        return 'https://images.unsplash.com/photo-1608178398319-48f814d0750c?auto=format&fit=crop&w=600&q=80';
+        return 'https://space-verse-alpha.vercel.app/space-objects/sagittarius-a.webp';
     }
   };
 
