@@ -2560,7 +2560,7 @@ export default function App() {
       case 'trappist-1':
         return 'https://space-verse-alpha.vercel.app/space-objects/trappist-1.webp';
       case 'alpha-centauri':
-        return 'https://space-verse-alpha.vercel.app/space-objects/alpha-centauri.webp';
+        return 'https://space-verse-alpha.vercel.app/space-objects/alpha-centauri-3d.webp';
       case 'sagittarius-a':
       default:
         return 'https://space-verse-alpha.vercel.app/space-objects/sagittarius-a.webp';
