@@ -3511,17 +3511,28 @@ export default function App() {
                       <div 
                         key={obj.id}
                         onClick={() => setSelectedObject(obj)}
-                        className={`group relative rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/5' : 'border-slate-200'} bg-[#02040d] aspect-[4/5] cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(6,182,212,0.15)]`}
+                        className={`group relative rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-slate-200'} bg-[#02040d] aspect-[4/5] cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:border-cyan-400/35 ${isDarkMode ? 'shadow-[0_18px_55px_rgba(0,0,0,0.42)] hover:shadow-[0_20px_70px_rgba(34,211,238,0.20)]' : 'shadow-lg'}`}
                       >
-                        {/* High res background image */}
-                        <img 
-                          src={getFeaturedImage(obj.id)} 
-                          alt={obj.name}
-                          className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
-                          referrerPolicy="no-referrer"
-                        />
-                        {/* Gradient shade overlays */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#02040d] via-black/10 to-transparent"></div>
+                        {/* Cinematic 3D artwork */}
+                        <div className="absolute inset-0 overflow-hidden">
+                          <img
+                            src={getFeaturedImage(obj.id)}
+                            alt={obj.name}
+                            className="absolute inset-0 w-full h-full object-cover brightness-[1.32] contrast-[1.16] saturate-[1.38] opacity-95 scale-[1.02] group-hover:scale-110 group-hover:brightness-[1.48] group-hover:saturate-[1.52] transition-all duration-700 ease-out"
+                            referrerPolicy="no-referrer"
+                          />
+
+                          {/* Soft atmospheric light */}
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_65%_28%,rgba(56,189,248,0.18),transparent_38%)] mix-blend-screen"></div>
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_24%,rgba(139,92,246,0.14),transparent_42%)] mix-blend-screen"></div>
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.06),transparent_48%)] mix-blend-screen"></div>
+
+                          {/* Bottom readability gradient, intentionally lighter */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#02040d]/78 via-[#02040d]/18 to-transparent"></div>
+
+                          {/* Edge light */}
+                          <div className="absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/10"></div>
+                        </div>
                         
                         {/* Dynamic Bookmarking star overlay */}
                         <button 
