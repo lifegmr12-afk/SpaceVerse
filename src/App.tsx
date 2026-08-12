@@ -2566,7 +2566,7 @@ export default function App() {
   ];
 
   const secondaryMenuItems = [
-    { id: 'scientists', label: 'Scientists', icon: <Users className="w-4 h-4" /> },
+    { id: 'scientists', label: 'Explore Scientists', icon: <Users className="w-4 h-4" /> },
     { id: 'missions', label: 'Space Missions', icon: <Rocket className="w-4 h-4" /> },
     { id: 'explorer3d', label: '3D Explorer', icon: <Box className="w-4 h-4" /> },
     { id: 'gallery', label: 'Gallery', icon: <Image className="w-4 h-4" /> },
@@ -2987,6 +2987,55 @@ export default function App() {
             
             {/* 1. HOME TAB */}
             {currentTab === 'home' && (
+
+          {/* Prominent Explore Scientists entry point */}
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <button
+              type="button"
+              onClick={() => handleTabChange('scientists')}
+              className="group relative w-full overflow-hidden rounded-3xl border border-cyan-400/20 bg-gradient-to-r from-cyan-950/50 via-indigo-950/40 to-purple-950/50 p-6 text-left shadow-[0_0_40px_rgba(34,211,238,0.08)] transition-all duration-300 hover:border-cyan-400/40 hover:shadow-[0_0_55px_rgba(34,211,238,0.14)] sm:p-8"
+            >
+              <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
+              <div className="absolute -bottom-24 left-1/3 h-56 w-56 rounded-full bg-purple-500/10 blur-3xl" />
+
+              <div className="relative z-10 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
+                    <Users className="h-7 w-7" />
+                  </div>
+                  <div>
+                    <div className="mb-1 text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-cyan-400">
+                      SPACEVERSE FEATURE
+                    </div>
+                    <h2 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
+                      Explore Scientists
+                    </h2>
+                    <p className={`mt-2 max-w-2xl text-sm leading-relaxed ${textMuted}`}>
+                      Explore the people who transformed our understanding of the universe.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex shrink-0 items-center gap-2 self-start rounded-xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-3 text-xs font-bold uppercase tracking-wider text-cyan-300 transition-all group-hover:bg-cyan-400/20 group-hover:text-white md:self-center">
+                  Explore Now
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </div>
+
+              <div className="relative z-10 mt-5 flex flex-wrap gap-2">
+                <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[9px] font-mono uppercase tracking-wider text-slate-400">
+                  {scientistsData.length}+ Scientists
+                </span>
+                <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[9px] font-mono uppercase tracking-wider text-slate-400">Discoveries</span>
+                <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[9px] font-mono uppercase tracking-wider text-slate-400">Missions</span>
+                <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[9px] font-mono uppercase tracking-wider text-slate-400">Space Objects</span>
+              </div>
+            </button>
+          </motion.section>
               <motion.div
                 key="home"
                 initial={{ opacity: 0, y: 15 }}
