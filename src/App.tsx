@@ -6,7 +6,6 @@ import { SpaceObject, SpaceObjectCategory } from './types';
 import CelestialGallery from './components/CelestialGallery';
 import EmbedViewer from './components/EmbedViewer';
 import ExploreGrid from './components/ExploreGrid';
-import galaxyImg from './assets/images/galaxy_gallery_1783173573878.jpg';
 import { 
   Home, Compass, Orbit, Layers, Sun, Globe, Zap, Users, Rocket, Box, Image, 
   Newspaper, Info, Heart, Moon, Search, Bell, ChevronRight, ChevronLeft, X, 
@@ -2783,34 +2782,94 @@ export default function App() {
 
       <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
       
-      {/* Majestic Immersive Spiral Galaxy Background (Top Right) */}
+      {/* 3D-STYLE COSMIC BACKGROUND */}
       {isDarkMode && (
-        <>
-          {/* Top Right Galaxy */}
-          <div 
-            className="absolute top-[-80px] right-[-100px] w-full max-w-[1300px] h-[800px] pointer-events-none select-none z-0 overflow-hidden opacity-85 mix-blend-screen hidden lg:block"
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Deep space base + layered stars */}
+          <div
+            className="absolute inset-0 opacity-95"
             style={{
-              backgroundImage: `url('${galaxyImg}')`,
-              backgroundSize: '100% auto',
-              backgroundPosition: 'top right',
-              backgroundRepeat: 'no-repeat',
-              maskImage: 'radial-gradient(circle at 75% 35%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0) 100%)',
-              WebkitMaskImage: 'radial-gradient(circle at 75% 35%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 45%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0) 100%)'
+              background:
+                'radial-gradient(circle at 76% 14%, rgba(56,189,248,0.10), transparent 24%),' +
+                'radial-gradient(circle at 48% 50%, rgba(79,70,229,0.10), transparent 34%),' +
+                'radial-gradient(circle at 18% 78%, rgba(168,85,247,0.07), transparent 28%),' +
+                'radial-gradient(circle at 35% 15%, rgba(59,130,246,0.08), transparent 22%),' +
+                '#020308'
             }}
           />
-          {/* Orbital Planet Limb Horizon on Left Side (glowing thin atmosphere) */}
-          <div 
-            className="absolute top-[80px] left-[-300px] w-[1000px] h-[900px] pointer-events-none select-none z-0 overflow-hidden opacity-75 mix-blend-screen hidden lg:block"
+
+          <div
+            className="absolute inset-0 opacity-55"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=1600&q=80')`,
-              backgroundSize: '100% auto',
-              backgroundPosition: 'left center',
-              backgroundRepeat: 'no-repeat',
-              maskImage: 'radial-gradient(circle at 25% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%)',
-              WebkitMaskImage: 'radial-gradient(circle at 25% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0) 100%)'
+              backgroundImage:
+                'radial-gradient(circle, rgba(255,255,255,0.65) 0.7px, transparent 0.9px), radial-gradient(circle, rgba(103,232,249,0.35) 0.6px, transparent 0.8px)',
+              backgroundSize: '125px 125px, 83px 83px',
+              backgroundPosition: '0 0, 31px 19px'
             }}
           />
-        </>
+
+          {/* Giant blue planetary limb */}
+          <div className="absolute -top-36 right-[-130px] h-[760px] w-[760px] rounded-full opacity-80 blur-[1px]"
+            style={{
+              background:
+                'radial-gradient(circle at 33% 40%, rgba(255,255,255,0.18) 0 2%, transparent 4%),' +
+                'radial-gradient(circle at 50% 45%, #0b1933 0 52%, #081426 58%, #071b38 65%, #0ea5e9 69%, rgba(14,165,233,0.25) 73%, transparent 77%)',
+              boxShadow: '0 0 120px rgba(56,189,248,0.16)',
+              transform: 'rotate(-18deg)'
+            }}
+          />
+
+          {/* Planet atmosphere rim */}
+          <div className="absolute -top-16 right-[140px] h-[460px] w-[900px] rounded-full opacity-40 blur-[8px]"
+            style={{
+              border: '26px solid rgba(56,189,248,0.35)',
+              transform: 'rotate(-14deg)'
+            }}
+          />
+
+          {/* Nebula ribbons */}
+          <div className="absolute left-[5%] top-[18%] h-[260px] w-[72%] opacity-30 blur-[34px]"
+            style={{
+              background: 'linear-gradient(90deg, transparent, rgba(14,165,233,0.28), rgba(168,85,247,0.18), rgba(244,63,94,0.16), transparent)',
+              transform: 'rotate(-9deg)'
+            }}
+          />
+          <div className="absolute left-[22%] bottom-[18%] h-[200px] w-[56%] opacity-22 blur-[30px]"
+            style={{
+              background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.25), rgba(34,211,238,0.18), transparent)',
+              transform: 'rotate(7deg)'
+            }}
+          />
+
+          {/* Central orbital observatory */}
+          <div className="absolute left-1/2 bottom-[-120px] h-[390px] w-[900px] -translate-x-1/2 rounded-[50%] border border-cyan-300/20 opacity-70 shadow-[0_-10px_80px_rgba(34,211,238,0.08)]"
+            style={{
+              background: 'radial-gradient(ellipse at center, rgba(8,47,73,0.45), rgba(2,8,23,0.85) 55%, transparent 72%)',
+              transform: 'translateX(-50%) rotateX(62deg)'
+            }}
+          >
+            <div className="absolute inset-[12%] rounded-[50%] border border-cyan-400/20" />
+            <div className="absolute inset-[25%] rounded-[50%] border border-blue-400/25" />
+            <div className="absolute inset-[38%] rounded-[50%] border-2 border-cyan-300/25 shadow-[0_0_28px_rgba(34,211,238,0.14)]" />
+            <div className="absolute left-1/2 top-1/2 h-12 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/15 blur-md" />
+            <div className="absolute left-1/2 top-1/2 h-8 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-200/30" />
+          </div>
+
+          {/* Orbit rings / holographic arcs */}
+          <div className="absolute left-[58%] top-[38%] h-[520px] w-[760px] -translate-x-1/2 -translate-y-1/2 rotate-[-13deg] rounded-[50%] border border-blue-300/10" />
+          <div className="absolute left-[58%] top-[38%] h-[360px] w-[560px] -translate-x-1/2 -translate-y-1/2 rotate-[8deg] rounded-[50%] border border-violet-300/10" />
+
+          {/* Floating asteroids */}
+          <div className="absolute left-[18%] top-[37%] h-5 w-7 rotate-[18deg] rounded-[45%] bg-gradient-to-br from-slate-400/55 to-slate-950/80 shadow-[0_0_18px_rgba(148,163,184,0.12)]" />
+          <div className="absolute right-[24%] top-[42%] h-7 w-9 rotate-[-25deg] rounded-[40%] bg-gradient-to-br from-slate-300/45 to-slate-950/85" />
+          <div className="absolute right-[8%] bottom-[20%] h-10 w-12 rotate-[35deg] rounded-[45%] bg-gradient-to-br from-slate-300/40 to-slate-950/90 shadow-[0_0_24px_rgba(148,163,184,0.10)]" />
+          <div className="absolute left-[34%] bottom-[12%] h-4 w-6 rotate-[-12deg] rounded-[40%] bg-slate-300/25" />
+
+          {/* Distant glowing stars */}
+          <span className="absolute left-[29%] top-[16%] h-1 w-1 rounded-full bg-cyan-200 shadow-[0_0_14px_rgba(103,232,249,0.9)] animate-pulse" />
+          <span className="absolute left-[64%] top-[22%] h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_18px_rgba(255,255,255,0.9)] animate-pulse" />
+          <span className="absolute right-[31%] bottom-[28%] h-1 w-1 rounded-full bg-violet-200 shadow-[0_0_14px_rgba(196,181,253,0.9)] animate-pulse" />
+        </div>
       )}
 
       {/* MOBILE HEADER TOP-BAR */}
