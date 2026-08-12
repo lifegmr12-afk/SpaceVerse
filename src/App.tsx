@@ -2472,6 +2472,16 @@ export default function App() {
   const [showLiveEvents, setShowLiveEvents] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
+  // Big Bang cinematic loading screen
+  const [showBigBangLoader, setShowBigBangLoader] = useState<boolean>(true);
+  const [bigBangProgress, setBigBangProgress] = useState<number>(0);
+
+  useEffect(() => {
+    // Never leave visitors on the splash screen if video playback is blocked.
+    const timeout = window.setTimeout(() => setShowBigBangLoader(false), 12000);
+    return () => window.clearTimeout(timeout);
+  }, []);
+
   // Sync favorites
   useEffect(() => {
     localStorage.setItem('spaceverse_favorites', JSON.stringify(favorites));
@@ -2635,7 +2645,82 @@ export default function App() {
     : "bg-gradient-to-br from-cyan-500/5 via-indigo-500/5 to-transparent border-slate-200";
 
   return (
-    <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
+    <>
+      {showBigBangLoader && (
+        <div
+          className="fixed inset-0 z-[10000] overflow-hidden bg-black text-white"
+          role="dialog"
+          aria-label="SpaceVerse loading screen"
+          aria-live="polite"
+        >
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/big-bang-loading.mp4"
+            poster="/big-bang-poster.jpg"
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onTimeUpdate={(e) => {
+              const v = e.currentTarget;
+              if (v.duration) setBigBangProgress(Math.min(100, (v.currentTime / v.duration) * 100));
+            }}
+            onEnded={() => setShowBigBangLoader(false)}
+            onError={() => setShowBigBangLoader(false)}
+          />
+
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.10),rgba(0,0,0,0.55)_58%,rgba(0,0,0,0.90))]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
+
+          <div className="relative z-10 flex min-h-full flex-col items-center justify-center px-6 text-center">
+            <div className="mb-6 flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-2 backdrop-blur-xl">
+              <div className="h-2 w-2 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)]" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-cyan-200/90">SpaceVerse • Cosmic Initialization</span>
+            </div>
+
+            <img
+              src="/logo.png"
+              alt="SpaceVerse"
+              className="mb-5 h-14 w-auto drop-shadow-[0_0_28px_rgba(34,211,238,0.28)] sm:h-16"
+            />
+
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-[0.18em] text-white drop-shadow-[0_0_28px_rgba(255,255,255,0.14)] sm:text-6xl">
+              THE UNIVERSE BEGINS
+            </h1>
+
+            <p className="mt-4 max-w-xl text-xs leading-6 text-slate-300/80 sm:text-sm">
+              From the primordial fire to stars, galaxies, planets and the worlds we explore today.
+            </p>
+
+            <div className="mt-8 w-full max-w-sm">
+              <div className="mb-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.22em] text-slate-300/70">
+                <span>Initializing SpaceVerse</span>
+                <span>{Math.round(bigBangProgress)}%</span>
+              </div>
+              <div className="h-1 overflow-hidden rounded-full bg-white/10 ring-1 ring-white/5">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400 shadow-[0_0_18px_rgba(103,232,249,0.55)] transition-[width] duration-150"
+                  style={{ width: `${Math.max(4, bigBangProgress)}%` }}
+                />
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setShowBigBangLoader(false)}
+              className="mt-7 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-300 backdrop-blur-xl transition hover:border-cyan-400/40 hover:bg-cyan-400/[0.08] hover:text-white"
+            >
+              Skip Intro
+            </button>
+          </div>
+
+          <div className="absolute bottom-5 left-0 right-0 z-10 text-center font-mono text-[8px] uppercase tracking-[0.26em] text-white/30">
+            Explore the universe • SpaceVerse
+          </div>
+        </div>
+      )}
+
+      <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
       
       {/* Majestic Immersive Spiral Galaxy Background (Top Right) */}
       {isDarkMode && (
@@ -3855,6 +3940,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-    </div>
+      </div>
+    </>
   );
 }
