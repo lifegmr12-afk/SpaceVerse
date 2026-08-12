@@ -2988,6 +2988,13 @@ export default function App() {
             {/* 1. HOME TAB */}
             {currentTab === 'home' && (
 
+          <motion.div
+                key="home"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="space-y-12"
+              >
           {/* Prominent Explore Scientists entry point */}
           <motion.section
             initial={{ opacity: 0, y: 16 }}
@@ -3036,13 +3043,7 @@ export default function App() {
               </div>
             </button>
           </motion.section>
-              <motion.div
-                key="home"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                className="space-y-12"
-              >
+    
                 {/* Immersive Title Hero Block */}
                 <section className={`p-8 sm:p-12 rounded-3xl ${bannerBg} border relative overflow-hidden group`}>
                   {/* Decorative background nebula glow */}
