@@ -2554,9 +2554,9 @@ export default function App() {
   const getFeaturedImage = (id: string) => {
     switch(id) {
       case 'solar-system':
-        return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.webp';
-      case 'milky-way':
         return 'https://space-verse-alpha.vercel.app/space-objects/solar-system-3d.webp';
+      case 'milky-way':
+        return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.webp';
       case 'trappist-1':
         return 'https://space-verse-alpha.vercel.app/space-objects/trappist-1-3d.webp';
       case 'alpha-centauri':
