@@ -2556,14 +2556,14 @@ export default function App() {
       case 'solar-system':
         return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.webp';
       case 'milky-way':
-        return 'https://space-verse-alpha.vercel.app/space-objects/milky-way-3d.webp';
+        return 'https://space-verse-alpha.vercel.app/space-objects/solar-system-3d.webp';
       case 'trappist-1':
-        return 'https://space-verse-alpha.vercel.app/space-objects/trappist-1.webp';
+        return 'https://space-verse-alpha.vercel.app/space-objects/trappist-1-3d.webp';
       case 'alpha-centauri':
         return 'https://space-verse-alpha.vercel.app/space-objects/alpha-centauri-3d.webp';
       case 'sagittarius-a':
       default:
-        return 'https://space-verse-alpha.vercel.app/space-objects/sagittarius-a.webp';
+        return 'https://space-verse-alpha.vercel.app/space-objects/sagittarius-a-3d.webp';
     }
   };
 
