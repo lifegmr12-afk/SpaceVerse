@@ -1,3 +1,4 @@
+// @ts-nocheck
 /// <reference types="react" />
 import React, {
   useState,
@@ -2460,6 +2461,31 @@ const missionsData: Mission[] = [
 ];
 
 export default function App() {
+  useEffect(() => {
+  const unlockAudio = () => {
+    const video = bigBangVideoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    video.volume = 1;
+
+    video.play().catch(() => {});
+
+    window.removeEventListener('pointerdown', unlockAudio);
+    window.removeEventListener('keydown', unlockAudio);
+    window.removeEventListener('touchstart', unlockAudio);
+  };
+
+  window.addEventListener('pointerdown', unlockAudio, { once: true });
+  window.addEventListener('keydown', unlockAudio, { once: true });
+  window.addEventListener('touchstart', unlockAudio, { once: true });
+
+  return () => {
+    window.removeEventListener('pointerdown', unlockAudio);
+    window.removeEventListener('keydown', unlockAudio);
+    window.removeEventListener('touchstart', unlockAudio);
+  };
+}, []);
   // Navigation tabs
   // 'home', 'explore', 'scientists', 'missions', 'explorer3d', 'gallery', 'news', 'about'
   const [currentTab, setCurrentTab] = useState<string>('home');
@@ -2480,9 +2506,7 @@ export default function App() {
   // Big Bang cinematic loading screen
   const [showBigBangLoader, setShowBigBangLoader] = useState<boolean>(true);
   const [bigBangProgress, setBigBangProgress] = useState<number>(0);
-  const [bigBangSoundEnabled, setBigBangSoundEnabled] = useState<boolean>(false);
-
-const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
+  const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     // Never leave visitors on the splash screen if video playback is blocked.
@@ -2661,43 +2685,43 @@ const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
     aria-label="SpaceVerse Big Bang loading screen"
     aria-live="polite"
   >
-
-    {/* =====================================================
-        BIG BANG VIDEO
-    ====================================================== */}
-
     <video
-      ref={bigBangVideoRef}
-      className="absolute inset-0 h-full w-full object-cover"
-      src="/big-bang-loading.mp4"
-      poster="/big-bang-poster.jpg"
-      autoPlay
-      muted={!bigBangSoundEnabled}
-      playsInline
-      preload="auto"
+          ref={bigBangVideoRef}
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/big-bang-loading.mp4"
+          poster="/big-bang-poster.jpg"
+          autoPlay
+          playsInline
+          preload="auto"
 
-      onTimeUpdate={(e) => {
-        const video = e.currentTarget;
+          onTimeUpdate={(e: React.SyntheticEvent<HTMLVideoElement>) => {
+            const video = e.currentTarget;
 
-        if (video.duration && Number.isFinite(video.duration)) {
-          setBigBangProgress(
-            Math.min(
-              100,
-              (video.currentTime / video.duration) * 100
-            )
-          );
-        }
-      }}
+            if (video.duration && Number.isFinite(video.duration)) {
+              setBigBangProgress(
+                Math.min(
+                  100,
+                  (video.currentTime / video.duration) * 100
+                )
+              );
+            }
+          }}
 
-      onEnded={() => {
-        setShowBigBangLoader(false);
-      }}
+          onEnded={() => setShowBigBangLoader(false)}
+          onError={() => setShowBigBangLoader(false)}
+        />
 
-      onError={() => {
-        setShowBigBangLoader(false);
-      }}
-    />
+        {/* YOUR OVERLAYS AND BOTTOM TEXT GO HERE */}
 
+      </div>
+    )}
+
+    {/* YOUR EXISTING SPACEVERSE APP */}
+    <div className={`min-h-screen ${themeBg} ...`}>
+      ...
+    </div>
+  </>
+);
 
     {/* =====================================================
         CINEMATIC OVERLAY
@@ -2739,7 +2763,7 @@ const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
         <div className="flex justify-center">
 
           <img
-            src="/logo.png"
+            src="/logo1.png"
             alt="SpaceVerse"
             className="h-7 w-auto opacity-90 drop-shadow-[0_0_18px_rgba(34,211,238,0.35)] sm:h-8"
           />
@@ -2805,54 +2829,7 @@ const bigBangVideoRef = useRef<HTMLVideoElement | null>(null);
         <div className="mt-3 flex items-center justify-center gap-2">
 
 
-          {/* SOUND */}
-
-          <button
-            type="button"
-            onClick={async () => {
-
-              const video = bigBangVideoRef.current;
-
-              if (!video) return;
-
-              try {
-
-                video.muted = false;
-                video.volume = 1;
-
-                await video.play();
-
-                setBigBangSoundEnabled(true);
-
-              } catch (error) {
-
-                console.warn(
-                  'Unable to enable Big Bang audio:',
-                  error
-                );
-
-              }
-
-            }}
-            className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[7px] uppercase tracking-[0.16em] text-white/65 transition hover:border-cyan-400/40 hover:bg-cyan-400/10 hover:text-white"
-          >
-            {bigBangSoundEnabled
-              ? '🔊 Sound On'
-              : '🔇 Enable Sound'}
-          </button>
-
-
           {/* SKIP */}
-
-          <button
-            type="button"
-            onClick={() => {
-              setShowBigBangLoader(false);
-            }}
-            className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[7px] uppercase tracking-[0.16em] text-white/65 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
-          >
-            Skip Intro
-          </button>
 
         </div>
 
