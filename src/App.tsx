@@ -3161,12 +3161,8 @@ export default function App() {
                 exit={{ opacity: 0, y: -15 }}
                 className="space-y-12"
               >
-                {/* Immersive Title Hero Block */}
-                <section className={`p-8 sm:p-12 rounded-3xl ${bannerBg} border relative overflow-hidden group`}>
-                  {/* Decorative background nebula glow */}
-                  <div className="absolute -top-12 -right-12 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-blue-600/15 transition-all duration-700"></div>
-                  <div className="absolute -bottom-12 -left-12 w-96 h-96 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-purple-600/15 transition-all duration-700"></div>
-
+                {/* Immersive Title Hero Block — transparent over the cosmic background */}
+                <section className="p-8 sm:p-12 relative overflow-hidden group">
                   <div className="relative z-10 max-w-3xl">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-950/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-6">
                       <Sparkles className="w-3.5 h-3.5 animate-pulse" />
