@@ -3101,10 +3101,13 @@ export default function App() {
                   : 'border-slate-200 bg-white/60 hover:border-cyan-500/30'
               }`}
             >
-              <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-cyan-300/30 bg-[radial-gradient(circle_at_35%_28%,rgba(255,255,255,.55),transparent_18%),radial-gradient(circle_at_55%_50%,rgba(56,189,248,.32),transparent_38%),linear-gradient(145deg,#0b1731,#07101f)] shadow-[0_0_18px_rgba(56,189,248,.15)]">
-                <span className="absolute inset-[3px] rounded-full border border-white/10" />
-                <Rocket className="relative z-10 h-4 w-4 text-cyan-200 group-hover:-translate-y-0.5 transition-transform" />
-                <span className="absolute -right-0.5 top-1 h-2 w-2 rounded-full bg-violet-300 shadow-[0_0_10px_rgba(167,139,250,.8)]" />
+              <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-cyan-300/30 bg-slate-950 shadow-[0_0_18px_rgba(56,189,248,.15)]">
+                <img
+                  src="/astronaut-avatar.png"
+                  alt="Astronaut avatar"
+                  className="h-full w-full object-cover"
+                />
+                <span className="pointer-events-none absolute inset-[2px] rounded-full border border-white/10" />
               </span>
 
               <span className="hidden md:block text-[10px] font-semibold tracking-[0.04em] text-white/90">
