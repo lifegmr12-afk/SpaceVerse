@@ -3174,8 +3174,9 @@ export default function App() {
                     </h1>
                     
                     <p className={`text-sm sm:text-base ${textMuted} leading-relaxed mb-8 max-w-xl`}>
-                      SpaceVerse is an interactive 3D astronomy website that helps users explore the universe through immersive visualizations and educational content. Discover the Solar System, planets, stars, galaxies, nebulae, black holes, and exoplanets with interactive 3D models, scientific facts, and space exploration resources. SpaceVerse combines astronomy education with modern web technology to make learning about the universe engaging for students, educators, and space enthusiasts.
-                    </p>
+                      Explore planets, stars, galaxies, black holes, and exoplanets through
+  interactive 3D experiences, scientific facts, and immersive space discovery.
+  </p>
 
                     {/* Integrated Telemetry Quick Stats directly beneath */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-white/5 pt-8 mb-8">
