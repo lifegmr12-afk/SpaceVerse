@@ -2795,20 +2795,23 @@ export default function App() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('/spaceverse-earth-milkyway-background.png')",
+              filter: 'brightness(1.18) saturate(1.10) contrast(1.03)',
+              transform: 'scale(0.96)',
+              transformOrigin: 'center',
             }}
           />
 
-          {/* Dark readability layer */}
-          <div className="absolute inset-0 bg-[#01040b]/28" />
+          {/* Soft readability layer — intentionally light so the Earth and Milky Way stay visible */}
+          <div className="absolute inset-0 bg-[#01040b]/6" />
 
-          {/* Gentle blue atmospheric tint */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(96,165,250,.12),transparent_38%),radial-gradient(circle_at_18%_72%,rgba(34,211,238,.08),transparent_36%)]" />
+          {/* Subtle blue/cyan atmospheric glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_18%,rgba(96,165,250,.10),transparent_34%),radial-gradient(circle_at_16%_72%,rgba(34,211,238,.06),transparent_32%)]" />
 
-          {/* Bottom fade so cards remain readable */}
-          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[#01040b]/92 via-[#01040b]/42 to-transparent" />
+          {/* Gentle bottom fade for UI readability */}
+          <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-[#01040b]/58 via-[#01040b]/16 to-transparent" />
 
-          {/* Subtle cinematic vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_38%,rgba(0,0,0,.24)_72%,rgba(0,0,0,.58)_100%)]" />
+          {/* Very light vignette — keeps the center bright */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_48%,rgba(0,0,0,.10)_78%,rgba(0,0,0,.24)_100%)]" />
 
           {/* Very subtle depth motion; does not replace or alter the image */}
           <div
