@@ -3186,7 +3186,7 @@ export default function App() {
                           <Globe className="w-3.5 h-3.5 text-cyan-400" />
                           <span>Planets</span>
                         </div>
-                        <span className="text-xl sm:text-2xl font-bold mt-1 block">8 Cataloged</span>
+                        <span className="text-xl sm:text-2xl font-bold mt-1 block">8Cataloged</span>
                       </div>
                       <div className="sm:border-r sm:border-white/10 sm:pr-4">
                         <div className="flex items-center gap-1.5 text-slate-500 text-[10px] font-mono uppercase tracking-widest">
