@@ -2783,170 +2783,49 @@ export default function App() {
       <div className={`min-h-screen ${themeBg} flex relative overflow-x-hidden transition-colors duration-500 selection:bg-cyan-500/20 selection:text-cyan-200`}>
       
       {/* =========================================================
-          SPACEVERSE — CINEMATIC 3D COSMIC BACKGROUND
-          UI remains above this layer; no data/card functionality changed.
+          SPACEVERSE — CINEMATIC EARTH + MILKY WAY BACKGROUND
           ========================================================= */}
       {isDarkMode && (
         <div
           className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
           aria-hidden="true"
         >
-          {/* Deep black/navy base */}
-          <div className="absolute inset-0 bg-[#01030a]" />
-
-          {/* Soft blue-violet cosmic haze */}
+          {/* User-provided cinematic background image */}
           <div
-            className="absolute inset-[-12%] opacity-75"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/spaceverse-earth-milkyway-background.png')",
+            }}
+          />
+
+          {/* Dark readability layer */}
+          <div className="absolute inset-0 bg-[#01040b]/28" />
+
+          {/* Gentle blue atmospheric tint */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(96,165,250,.12),transparent_38%),radial-gradient(circle_at_18%_72%,rgba(34,211,238,.08),transparent_36%)]" />
+
+          {/* Bottom fade so cards remain readable */}
+          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-[#01040b]/92 via-[#01040b]/42 to-transparent" />
+
+          {/* Subtle cinematic vignette */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_38%,rgba(0,0,0,.24)_72%,rgba(0,0,0,.58)_100%)]" />
+
+          {/* Very subtle depth motion; does not replace or alter the image */}
+          <div
+            className="absolute inset-[-2%] opacity-[0.12]"
             style={{
               background:
-                'radial-gradient(ellipse at 76% 18%, rgba(89,116,255,.26) 0%, rgba(103,75,199,.13) 20%, transparent 48%),' +
-                'radial-gradient(ellipse at 44% 48%, rgba(30,110,180,.12) 0%, transparent 52%),' +
-                'radial-gradient(ellipse at 88% 72%, rgba(76,36,156,.10) 0%, transparent 44%)',
-              filter: 'blur(18px)'
+                'radial-gradient(circle at 14% 24%, rgba(255,255,255,.65) 0 1px, transparent 1.5px), radial-gradient(circle at 82% 18%, rgba(125,211,252,.55) 0 .8px, transparent 1.4px), radial-gradient(circle at 64% 76%, rgba(167,139,250,.45) 0 .8px, transparent 1.4px)',
+              backgroundSize: '240px 240px, 190px 190px, 280px 280px',
+              animation: 'spaceverseBgDust 34s linear infinite',
             }}
           />
-
-          {/* Dense layered star field */}
-          <div
-            className="absolute inset-0 opacity-85"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 7% 11%, rgba(255,255,255,.92) 0 1px, transparent 1.5px),
-                radial-gradient(circle at 14% 31%, rgba(122,211,252,.72) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 23% 17%, rgba(255,255,255,.78) 0 .8px, transparent 1.5px),
-                radial-gradient(circle at 31% 43%, rgba(196,181,253,.62) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 39% 12%, rgba(255,255,255,.8) 0 .9px, transparent 1.5px),
-                radial-gradient(circle at 48% 26%, rgba(103,232,249,.64) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 56% 8%, rgba(255,255,255,.84) 0 1px, transparent 1.6px),
-                radial-gradient(circle at 63% 37%, rgba(167,139,250,.66) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 72% 14%, rgba(255,255,255,.9) 0 .9px, transparent 1.5px),
-                radial-gradient(circle at 81% 31%, rgba(125,211,252,.68) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 91% 19%, rgba(255,255,255,.82) 0 .9px, transparent 1.5px),
-                radial-gradient(circle at 11% 63%, rgba(255,255,255,.6) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 26% 76%, rgba(125,211,252,.55) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 44% 68%, rgba(255,255,255,.58) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 61% 80%, rgba(196,181,253,.55) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 78% 68%, rgba(103,232,249,.5) 0 .8px, transparent 1.4px),
-                radial-gradient(circle at 93% 82%, rgba(255,255,255,.58) 0 .8px, transparent 1.4px)
-              `,
-              backgroundSize: 'auto',
-              animation: 'spaceStars 28s ease-in-out infinite'
-            }}
-          />
-
-          <div
-            className="absolute inset-0 opacity-25"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle, rgba(255,255,255,.48) 0 .55px, transparent .9px), radial-gradient(circle, rgba(96,165,250,.28) 0 .55px, transparent .9px)',
-              backgroundSize: '118px 118px, 82px 82px',
-              backgroundPosition: '13px 7px, 37px 19px',
-              animation: 'spaceDrift 36s linear infinite'
-            }}
-          />
-
-          {/* Upper-right realistic-style Milky Way */}
-          <div className="absolute right-[-8%] top-[-5%] h-[560px] w-[820px] opacity-95 sm:h-[660px] sm:w-[980px]">
-            <div
-              className="absolute inset-0 rounded-[50%]"
-              style={{
-                background:
-                  'radial-gradient(ellipse at 50% 50%, rgba(255,249,232,.98) 0 2.5%, rgba(255,214,167,.7) 3.5%, rgba(255,168,111,.22) 8%, transparent 14%),' +
-                  'conic-gradient(from 205deg at 50% 50%, transparent 0 7%, rgba(73,140,255,.36) 12%, rgba(208,89,255,.25) 17%, rgba(85,190,255,.38) 24%, transparent 31%, rgba(123,92,255,.28) 39%, rgba(80,193,255,.3) 48%, transparent 58%, rgba(255,115,174,.2) 67%, rgba(74,181,255,.35) 77%, transparent 86%, rgba(139,91,255,.23) 94%, transparent 100%)',
-                transform: 'rotate(-9deg) scaleY(.72)',
-                filter: 'blur(8px) saturate(125%)',
-                boxShadow: '0 0 120px rgba(97,139,255,.18)'
-              }}
-            />
-            <div className="absolute inset-[11%] rounded-[50%] border border-blue-200/12" style={{ transform: 'rotate(-12deg) skewX(-10deg) scaleY(.72)' }} />
-            <div className="absolute inset-[19%] rounded-[50%] border border-violet-200/10" style={{ transform: 'rotate(17deg) skewX(8deg) scaleY(.64)' }} />
-            <div className="absolute inset-[30%] rounded-[50%] border border-cyan-200/10" style={{ transform: 'rotate(-20deg) scaleY(.55)' }} />
-            <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/75 blur-xl shadow-[0_0_75px_rgba(255,226,190,.78)]" />
-          </div>
-
-          {/* Broad galactic dust band behind the main UI */}
-          <div
-            className="absolute left-[16%] top-[18%] h-[260px] w-[74%] -rotate-[10deg] rounded-[50%] opacity-30 blur-[42px]"
-            style={{
-              background:
-                'linear-gradient(90deg, transparent, rgba(74,162,255,.14) 16%, rgba(168,85,247,.19) 38%, rgba(244,114,182,.15) 58%, rgba(56,189,248,.18) 82%, transparent)'
-            }}
-          />
-
-          {/* Blue planetary horizon sweeping from the lower-left */}
-          <div
-            className="absolute left-[-28%] top-[26%] h-[720px] w-[1060px] rounded-[50%]"
-            style={{
-              background:
-                'radial-gradient(ellipse at 64% 75%, rgba(1,8,22,.99) 0 56%, rgba(4,23,52,.98) 59%, rgba(15,63,119,.95) 62.5%, rgba(52,146,230,.82) 65%, rgba(103,205,255,.56) 67%, rgba(186,236,255,.16) 69%, transparent 73%)',
-              transform: 'rotate(-12deg)',
-              boxShadow: '0 0 130px rgba(40,148,255,.16)'
-            }}
-          />
-          <div
-            className="absolute left-[-7%] top-[41%] h-[250px] w-[760px] rounded-[50%] blur-[11px]"
-            style={{
-              border: '18px solid rgba(102,205,255,.24)',
-              transform: 'rotate(-12deg)'
-            }}
-          />
-
-          {/* Futuristic orbital observatory / platform */}
-          <div className="absolute left-1/2 bottom-[-22px] h-[250px] w-[760px] -translate-x-1/2 sm:h-[300px] sm:w-[920px]">
-            <div className="absolute left-1/2 top-[18%] h-[148px] w-[470px] -translate-x-1/2 rounded-[50%] border border-cyan-200/20 bg-[radial-gradient(ellipse_at_center,rgba(8,44,72,.8),rgba(2,9,22,.98)_67%,transparent_70%)] shadow-[0_0_72px_rgba(34,211,238,.12)]" style={{ transform: 'translateX(-50%) rotateX(62deg)' }}>
-              <div className="absolute inset-[10%] rounded-[50%] border border-cyan-200/12" />
-              <div className="absolute inset-[21%] rounded-[50%] border border-blue-300/14" />
-              <div className="absolute inset-[35%] rounded-[50%] border-2 border-cyan-100/16 shadow-[0_0_28px_rgba(34,211,238,.11)]" />
-              <div className="absolute left-1/2 top-1/2 h-8 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/10 blur-md" />
-            </div>
-            <div className="absolute left-1/2 top-[4%] h-20 w-20 -translate-x-1/2 rounded-full border border-cyan-200/22 bg-[radial-gradient(circle_at_50%_45%,rgba(148,237,255,.22),rgba(3,11,23,.98)_58%)] shadow-[0_0_38px_rgba(34,211,238,.14)]">
-              <div className="absolute left-1/2 top-[-22px] h-[48px] w-px -translate-x-1/2 bg-cyan-300/30" />
-              <div className="absolute left-1/2 top-[-25px] h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-cyan-200 shadow-[0_0_12px_rgba(103,232,249,.95)] animate-pulse" />
-            </div>
-            {[
-              'left-[10%] top-[39%]',
-              'left-[22%] top-[23%]',
-              'right-[22%] top-[23%]',
-              'right-[10%] top-[39%]'
-            ].map((pos, i) => (
-              <div key={i} className={`absolute ${pos} h-10 w-20 rounded-lg border border-cyan-200/13 bg-slate-950/72 shadow-[0_0_26px_rgba(34,211,238,.08)]`}>
-                <div className="absolute inset-2 rounded-md bg-gradient-to-br from-cyan-400/12 to-blue-500/5" />
-                <div className="absolute left-2 top-2 h-1.5 w-12 rounded-full bg-cyan-300/25" />
-                <div className="absolute right-2 bottom-2 h-1 w-1 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(34,211,238,.9)]" />
-              </div>
-            ))}
-          </div>
-
-          {/* Holographic orbital rings */}
-          <div className="absolute left-1/2 top-[50%] h-[420px] w-[760px] -translate-x-1/2 -translate-y-1/2 rotate-[-12deg] rounded-[50%] border border-blue-200/9" />
-          <div className="absolute left-[56%] top-[45%] h-[330px] w-[560px] -translate-x-1/2 -translate-y-1/2 rotate-[11deg] rounded-[50%] border border-violet-200/9" />
-
-          {/* Asteroid depth layer */}
-          {[
-            ['left-[12%] top-[42%]','h-6 w-8','rotate-[14deg]'],
-            ['left-[38%] top-[22%]','h-4 w-6','rotate-[-18deg]'],
-            ['right-[26%] top-[43%]','h-8 w-10','rotate-[25deg]'],
-            ['right-[6%] bottom-[24%]','h-12 w-14','rotate-[33deg]'],
-            ['left-[30%] bottom-[18%]','h-5 w-7','rotate-[7deg]'],
-            ['right-[43%] bottom-[14%]','h-3 w-5','rotate-[24deg]'],
-            ['right-[13%] top-[31%]','h-7 w-9','rotate-[-12deg]'],
-          ].map(([pos,size,rot], i) => (
-            <div key={i} className={`absolute ${pos} ${size} ${rot} rounded-[45%] bg-gradient-to-br from-slate-300/45 via-slate-600/20 to-slate-950/95 shadow-[0_0_24px_rgba(148,163,184,.08)]`} />
-          ))}
-
-          {/* Foreground cinematic vignette */}
-          <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-[#01030a] via-[#01030a]/60 to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-[24%] bg-gradient-to-b from-[#01030a]/65 to-transparent" />
 
           <style>{`
-            @keyframes spaceStars {
-              0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-              50% { transform: translate3d(-10px, 5px, 0) scale(1.012); }
-            }
-            @keyframes spaceDrift {
-              0% { transform: translate3d(0, 0, 0); }
-              50% { transform: translate3d(7px, -4px, 0); }
-              100% { transform: translate3d(0, 0, 0); }
+            @keyframes spaceverseBgDust {
+              0% { transform: translate3d(0,0,0); }
+              50% { transform: translate3d(-8px,4px,0); }
+              100% { transform: translate3d(0,0,0); }
             }
           `}</style>
         </div>
