@@ -3161,40 +3161,41 @@ export default function App() {
                 exit={{ opacity: 0, y: -15 }}
                 className="space-y-12"
               >
-                {/* Immersive Title Hero Block — transparent over the cosmic background */}
-                <section className="p-8 sm:p-12 relative overflow-hidden group">
-                  <div className="relative z-10 max-w-3xl">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-950/20 text-cyan-400 text-xs font-mono uppercase tracking-wider mb-6">
+                {/* Immersive Title Hero Block — refined, transparent over the cosmic background */}
+                <section className="relative overflow-hidden px-4 sm:px-6 lg:px-2 pt-5 sm:pt-7 pb-6 group">
+                  {/* A soft local readability gradient — not a box/card */}
+                  <div className="pointer-events-none absolute left-0 top-0 h-full w-[58%] bg-gradient-to-r from-[#020712]/26 via-[#020712]/8 to-transparent blur-2xl" />
+                  <div className="relative z-10 max-w-2xl">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-400/20 bg-cyan-950/15 text-cyan-300 text-[10px] sm:text-xs font-mono uppercase tracking-[0.18em] mb-5 shadow-[0_0_18px_rgba(34,211,238,.08)]">
                       <Sparkles className="w-3.5 h-3.5 animate-pulse" />
                       <span>Next-Gen Interactive Space Portal</span>
                     </span>
-                    
-                    <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight mb-4">
+
+                    <h1 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.02] mb-4 text-white drop-shadow-[0_6px_24px_rgba(0,0,0,.35)]">
                       Explore the <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">Universe</span>
                     </h1>
-                    
-                    <p className={`text-sm sm:text-base ${textMuted} leading-relaxed mb-8 max-w-xl`}>
-                      Explore planets, stars, galaxies, black holes, and exoplanets through
-  interactive 3D experiences, scientific facts, and immersive space discovery.
-  </p>
+
+                    <p className={`text-sm sm:text-base ${textMuted} leading-7 mb-7 max-w-lg drop-shadow-[0_3px_14px_rgba(0,0,0,.5)]`}>
+                      Explore planets, stars, galaxies, black holes, and exoplanets through interactive 3D experiences, scientific facts, and immersive space discovery.
+                    </p>
 
                     {/* Integrated Telemetry Quick Stats directly beneath */}
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-white/5 pt-8 mb-8">
-                      <div>
+                      <div className="sm:border-r sm:border-white/10 sm:pr-4">
                         <div className="flex items-center gap-1.5 text-slate-500 text-[10px] font-mono uppercase tracking-widest">
                           <Globe className="w-3.5 h-3.5 text-cyan-400" />
                           <span>Planets</span>
                         </div>
                         <span className="text-xl sm:text-2xl font-bold mt-1 block">8 Cataloged</span>
                       </div>
-                      <div>
+                      <div className="sm:border-r sm:border-white/10 sm:pr-4">
                         <div className="flex items-center gap-1.5 text-slate-500 text-[10px] font-mono uppercase tracking-widest">
                           <Sun className="w-3.5 h-3.5 text-amber-400" />
                           <span>Stars</span>
                         </div>
                         <span className="text-xl sm:text-2xl font-bold mt-1 block">100B+</span>
                       </div>
-                      <div>
+                      <div className="sm:border-r sm:border-white/10 sm:pr-4">
                         <div className="flex items-center gap-1.5 text-slate-500 text-[10px] font-mono uppercase tracking-widest">
                           <Layers className="w-3.5 h-3.5 text-indigo-400" />
                           <span>Galaxies</span>
@@ -3214,14 +3215,14 @@ export default function App() {
                     <div className="flex flex-wrap gap-4">
                       <button 
                         onClick={() => handleTabChange('explore')}
-                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold tracking-wider uppercase shadow-lg shadow-blue-600/10 hover:shadow-blue-600/25 transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold tracking-wider uppercase shadow-lg shadow-blue-600/20 hover:shadow-blue-600/35 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2 cursor-pointer"
                       >
                         <Compass className="w-4 h-4 text-cyan-200" />
                         <span>Start Exploring</span>
                       </button>
                       <button 
                         onClick={() => setSelectedObject(spaceObjects[0])}
-                        className="px-6 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white text-xs font-semibold tracking-wider uppercase border border-white/10 hover:border-cyan-500/30 transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                        className="px-6 py-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-white text-xs font-semibold tracking-wider uppercase border border-white/15 hover:border-cyan-500/40 backdrop-blur-[2px] transition-all duration-300 flex items-center gap-2 cursor-pointer"
                       >
                         <Box className="w-4 h-4 text-cyan-400" />
                         <span>3D Explorer</span>
