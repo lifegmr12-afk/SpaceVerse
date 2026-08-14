@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>TON 618 — Hyperluminous Quasar & Black Hole</title>
+    <meta name="description" content="Explore TON 618, a distant hyperluminous quasar powered by an extraordinarily massive black hole. Learn about its quick facts, structure, quasar activity, discovery, formation, scientific importance, current research, uncertainties, and interactive 3D model.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://space-verse-alpha.vercel.app/ton-618.html">
+    <title>TON 618: One of the Most Massive Known Black Holes | SpaceVerse</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -188,6 +191,268 @@
             #title-overlay { bottom: 80px; left: 15px; }
             #title-overlay h1 { font-size: 1.1rem; }
         }
+
+        /* =========================================================
+           TON 618 — SpaceVerse information experience
+           ========================================================= */
+        #ton-info-button {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 72, 174, 0.55);
+            background: rgba(16, 6, 23, 0.62);
+            color: #ffe4f3;
+            font-family: Georgia, serif;
+            font-size: 1.38rem;
+            cursor: pointer;
+            z-index: 220;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 0 28px rgba(255, 0, 127, 0.12);
+            transition: transform .25s ease, border-color .25s ease,
+                        box-shadow .25s ease, opacity .25s ease;
+        }
+
+        #ton-info-button::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 0, 127, 0.16);
+            animation: tonInfoPulse 2.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        #ton-info-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            border-color: rgba(255, 130, 205, 0.78);
+            box-shadow: 0 0 34px rgba(255, 0, 127, 0.22);
+        }
+
+        #ton-info-button.hidden-launcher {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(.88);
+        }
+
+        @keyframes tonInfoPulse {
+            0%, 100% { opacity: .25; transform: scale(.98); }
+            50% { opacity: .75; transform: scale(1.05); }
+        }
+
+        /* Hide the old information system visually, but KEEP its DOM IDs
+           because the original 3D model script still references them. */
+        #info-panel {
+            display: none !important;
+        }
+
+        #btn-info {
+            display: none !important;
+        }
+
+        #ton-info-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: min(860px, calc(100vw - 32px));
+            max-height: min(84vh, 920px);
+            padding: 30px 32px;
+            overflow-y: auto;
+            z-index: 210;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(.96);
+            transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+            background: rgba(7, 4, 18, 0.90);
+            border: 1px solid rgba(255, 0, 127, 0.24);
+            border-radius: 20px;
+            box-shadow:
+                0 25px 90px rgba(0,0,0,.55),
+                0 0 55px rgba(255,0,127,.08),
+                inset 0 0 70px rgba(0,0,0,.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 0, 127, 0.28) transparent;
+        }
+
+        #ton-info-overlay.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #ton-info-overlay::-webkit-scrollbar { width: 6px; }
+        #ton-info-overlay::-webkit-scrollbar-thumb {
+            background: rgba(255,0,127,.28);
+            border-radius: 999px;
+        }
+
+        .ton-article-kicker {
+            color: #ff6dc1;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .20em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        #ton-info-overlay h1 {
+            margin: 0 48px 10px 0;
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 2.55rem);
+            line-height: 1.08;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 20%, #ff77c8 72%, #ffd56a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ton-lead {
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: .93rem;
+            max-width: 780px;
+            margin-bottom: 22px;
+        }
+
+        #ton-info-overlay h2 {
+            color: #ffb2db;
+            font-size: 1rem;
+            margin: 26px 0 10px;
+            padding-top: 13px;
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        #ton-info-overlay p,
+        #ton-info-overlay li {
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: .88rem;
+        }
+
+        #ton-info-overlay ul {
+            margin: 8px 0 0 20px;
+        }
+
+        #ton-info-overlay li { margin: 5px 0; }
+
+        .ton-facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .ton-fact {
+            padding: 13px 14px;
+            border: 1px solid rgba(255, 0, 127, .13);
+            background: rgba(24, 7, 31, .46);
+            border-radius: 12px;
+        }
+
+        .ton-fact span {
+            display: block;
+            color: #8d7a91;
+            font-size: .62rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .ton-fact strong {
+            color: #f8fafc;
+            font-size: .82rem;
+            line-height: 1.4;
+        }
+
+        .ton-uncertainty {
+            border-left: 3px solid #f59e0b;
+            background: rgba(245,158,11,.07);
+            padding: 13px 15px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .ton-source-list a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        .ton-source-list a:hover { text-decoration: underline; }
+
+        .ton-related {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .ton-related a {
+            color: #ffd5ea;
+            text-decoration: none;
+            border: 1px solid rgba(255,0,127,.16);
+            background: rgba(255,0,127,.05);
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: .76rem;
+        }
+
+        .ton-article-close {
+            position: absolute;
+            top: 13px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(15, 8, 25, .72);
+            color: #cbd5e1;
+            font-size: 1.16rem;
+            cursor: pointer;
+            transition: color .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .ton-article-close:hover {
+            color: #fff;
+            border-color: rgba(255,120,200,.45);
+            transform: rotate(4deg);
+        }
+
+        .ton-read-model {
+            margin-top: 18px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255,0,127,.05);
+            border: 1px solid rgba(255,0,127,.12);
+            color: #fbcfe8 !important;
+        }
+
+        @media (max-width: 768px) {
+            #ton-info-button {
+                left: 12px;
+                top: 12px;
+                width: 44px;
+                height: 44px;
+            }
+
+            #ton-info-overlay {
+                width: calc(100vw - 24px);
+                max-height: 84vh;
+                padding: 22px 20px;
+                border-radius: 16px;
+            }
+
+            .ton-facts {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -241,6 +506,151 @@
         </div>
     </div>
 
+
+    <!-- TON 618: single information launcher -->
+    <button
+        id="ton-info-button"
+        type="button"
+        aria-label="Open TON 618 information"
+        title="Open TON 618 information"
+        aria-expanded="false"
+    >i</button>
+
+    <article id="ton-info-overlay" aria-hidden="true">
+        <button
+            id="ton-article-close"
+            class="ton-article-close"
+            type="button"
+            aria-label="Close TON 618 information"
+        >×</button>
+
+        <div class="ton-article-kicker">SpaceVerse • Black Hole & Quasar Guide</div>
+        <h1>TON 618 — one of the most massive known black holes</h1>
+
+        <p class="ton-lead">
+            TON 618 is an extremely distant, hyperluminous quasar powered by a supermassive
+            black hole. NASA currently highlights TON 618 at about 66 billion solar masses,
+            making it the most massive black hole listed on NASA's black-hole overview.
+            Because we see the quasar across billions of light-years, its observed light
+            provides a view of a very distant stage of cosmic history.
+        </p>
+
+        <h2>Quick Facts</h2>
+        <div class="ton-facts">
+            <div class="ton-fact"><span>Object type</span><strong>Hyperluminous quasar</strong></div>
+            <div class="ton-fact"><span>Black-hole mass</span><strong>~66 billion M☉ (estimated)</strong></div>
+            <div class="ton-fact"><span>Distance</span><strong>~10.4 billion light-years (commonly quoted)</strong></div>
+            <div class="ton-fact"><span>Constellation</span><strong>Canes Venatici</strong></div>
+            <div class="ton-fact"><span>Schwarzschild radius</span><strong>~195 billion km</strong></div>
+            <div class="ton-fact"><span>Event-horizon diameter</span><strong>~390 billion km</strong></div>
+            <div class="ton-fact"><span>Activity</span><strong>Actively accreting quasar</strong></div>
+            <div class="ton-fact"><span>Power source</span><strong>Rapidly accreting matter around the black hole</strong></div>
+        </div>
+
+        <h2>What is TON 618?</h2>
+        <p>
+            TON 618 is a quasar: the intensely bright central region of a distant galaxy,
+            powered by matter falling toward a supermassive black hole. The glowing
+            accretion flow and surrounding gas can outshine the combined light of the host
+            galaxy. In a quasar, the black hole itself is dark; the extraordinary brightness
+            comes from the hot matter and energetic regions around it.
+        </p>
+
+        <h2>Structure / Composition</h2>
+        <p>
+            The system is dominated by a supermassive black hole surrounded by an accretion
+            disk and rapidly moving gas. A broad-line region farther out produces strong
+            emission lines used by astronomers to study the quasar's motion and environment.
+            Relativistic outflow and jet activity can also occur around powerful quasars.
+            The SpaceVerse model represents these components as an educational visualization,
+            not a literal scale model of the entire quasar.
+        </p>
+
+        <h2>Formation and growth</h2>
+        <p>
+            The exact path by which a black hole as massive as TON 618 assembled remains an
+            important question in astrophysics. Supermassive black holes can grow through
+            repeated accretion of gas and mergers with other black holes or galaxies. The
+            existence of enormous black holes at large look-back times places strong constraints
+            on how quickly the first black-hole seeds could form and grow.
+        </p>
+
+        <h2>How scientists discovered it</h2>
+        <p>
+            TON 618 was identified through astronomical surveys and spectroscopy. It was
+            originally cataloged as a star-like blue source, but spectroscopy revealed the
+            characteristic broad emission lines of a distant quasar. The extreme redshift,
+            luminosity and line properties established that the object was vastly farther away
+            and more energetic than an ordinary star in the Milky Way.
+        </p>
+
+        <h2>Why it matters</h2>
+        <p>
+            TON 618 provides a natural laboratory for studying how the largest black holes
+            grow, how accretion converts gravitational energy into enormous luminosity, and
+            how powerful active galactic nuclei can influence their host environments. It is
+            also useful for thinking about the upper end of the black-hole mass distribution:
+            objects this massive challenge models of seed formation and long-term growth.
+        </p>
+
+        <h2>Current research</h2>
+        <p>
+            Current research on extreme quasars combines spectroscopy, large sky surveys,
+            high-resolution infrared observations and X-ray measurements to constrain black-hole
+            mass, accretion rate, outflows and host-galaxy properties. Modern work on early
+            supermassive black holes is also testing whether some black-hole seeds formed
+            unusually massive and whether rapid growth episodes can explain the most extreme
+            quasars.
+        </p>
+
+        <h2>What we know</h2>
+        <ul>
+            <li>TON 618 is an exceptionally luminous quasar powered by an active supermassive black hole.</li>
+            <li>NASA currently lists TON 618 at about 66 billion solar masses in its black-hole overview. citeturn444747search0</li>
+            <li>Its enormous mass means its Schwarzschild radius is on the order of hundreds of billions of kilometres.</li>
+            <li>The observed emission is produced by hot, rapidly moving matter around the black hole rather than by the black hole surface itself.</li>
+            <li>Because it is billions of light-years away, its observed light records a much earlier stage of cosmic history.</li>
+            <li>Mass estimates for extremely distant quasars rely on indirect measurements and astrophysical models.</li>
+        </ul>
+
+        <h2>What remains uncertain</h2>
+        <div class="ton-uncertainty">
+            <p>
+                The quoted mass of TON 618 is an estimate, not a direct measurement of an event
+                horizon. Different methods and assumptions can produce different values for
+                extremely distant quasars. The exact host-galaxy properties, spin, accretion
+                geometry, jet orientation, long-term growth history and the precise distance
+                are also subjects of ongoing study. SpaceVerse therefore presents the
+                headline mass as an estimate and avoids treating the 3D rendering as direct
+                observational imagery.
+            </p>
+        </div>
+
+        <h2>Interactive 3D Model</h2>
+        <p class="ton-read-model">
+            The existing TON 618 Three.js model remains the interactive scientific centerpiece:
+            orbit the camera, inspect the accretion disk, photon ring, jets and gravitational
+            lensing, toggle labels, change rotation, pause the simulation, reset the camera,
+            capture a screenshot and enter fullscreen.
+        </p>
+
+        <h2>Scientific Sources</h2>
+        <ul class="ton-source-list">
+            <li><a href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noopener noreferrer">NASA Science — Black Holes</a></li>
+            <li><a href="https://science.nasa.gov/mission/webb/science-overview/science-explainers/how-do-we-know-there-are-black-holes/" target="_blank" rel="noopener noreferrer">NASA Webb — How Do We Know There Are Black Holes?</a></li>
+            <li><a href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noopener noreferrer">NASA — Black-hole mass and quasar overview</a></li>
+        </ul>
+
+        <h2>Related SpaceVerse Objects</h2>
+        <div class="ton-related">
+            <a href="/gaia-bh1.html">Gaia BH1</a>
+            <a href="/phoenix-a-black-hole.html">Phoenix A</a>
+            <a href="/sagittarius-a.html">Sagittarius A*</a>
+            <a href="/milky-way.html">Milky Way Galaxy</a>
+            <a href="/kepler-90.html">Kepler-90 System</a>
+        </div>
+    </article>
+
     <div id="labels-container"></div>
 
     <script type="importmap">
@@ -250,6 +660,46 @@
             "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
         }
     }
+    </script>
+
+
+    <script>
+        (() => {
+            const launcher = document.getElementById('ton-info-button');
+            const overlay = document.getElementById('ton-info-overlay');
+            const closeButton = document.getElementById('ton-article-close');
+
+            if (!launcher || !overlay || !closeButton) return;
+
+            const openInfo = () => {
+                overlay.classList.add('open');
+                overlay.setAttribute('aria-hidden', 'false');
+                launcher.classList.add('hidden-launcher');
+                launcher.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeInfo = () => {
+                overlay.classList.remove('open');
+                overlay.setAttribute('aria-hidden', 'true');
+                launcher.classList.remove('hidden-launcher');
+                launcher.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            };
+
+            launcher.addEventListener('click', openInfo);
+            closeButton.addEventListener('click', closeInfo);
+
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) closeInfo();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && overlay.classList.contains('open')) {
+                    closeInfo();
+                }
+            });
+        })();
     </script>
 
     <script type="module">
