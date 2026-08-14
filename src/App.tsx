@@ -2470,6 +2470,7 @@ export default function App() {
   const [showNotifications, setShowNotifications] = useState<boolean>(false);
   const [showLiveEvents, setShowLiveEvents] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [knowledgePanel, setKnowledgePanel] = useState<'sources' | 'faq' | 'known-unknown' | 'related' | null>(null);
 
   // Big Bang cinematic loading screen
   const [showBigBangLoader, setShowBigBangLoader] = useState<boolean>(true);
@@ -2605,6 +2606,10 @@ export default function App() {
     { id: 'gallery', label: 'Gallery', icon: <Image className="w-4 h-4" /> },
     { id: 'news', label: 'News & Updates', icon: <Newspaper className="w-4 h-4" /> },
     { id: 'about', label: 'About Us', icon: <Info className="w-4 h-4" /> },
+    { id: 'scientific-sources', label: 'Scientific Sources', icon: <BookOpen className="w-4 h-4" />, action: () => setKnowledgePanel('sources') },
+    { id: 'faq', label: 'FAQ', icon: <AlertCircle className="w-4 h-4" />, action: () => setKnowledgePanel('faq') },
+    { id: 'known-unknown', label: 'Known / Unknown', icon: <Eye className="w-4 h-4" />, action: () => setKnowledgePanel('known-unknown') },
+    { id: 'related-objects', label: 'Related Objects', icon: <Share2 className="w-4 h-4" />, action: () => setKnowledgePanel('related') },
   ];
 
   // News Items Data
@@ -2776,6 +2781,135 @@ export default function App() {
                 Tap / click anywhere to enable the original boom sound
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {knowledgePanel && (
+        <div
+          className="fixed inset-0 z-[8500] flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-md"
+          onClick={() => setKnowledgePanel(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className={`relative w-full max-w-2xl max-h-[82vh] overflow-y-auto rounded-3xl border p-6 sm:p-8 shadow-2xl ${
+              isDarkMode
+                ? 'border-white/10 bg-[#050a18]/95 text-white'
+                : 'border-slate-200 bg-white/95 text-slate-900'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close panel"
+              onClick={() => setKnowledgePanel(null)}
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-400 transition hover:bg-white/5 hover:text-white"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            {knowledgePanel === 'sources' && (
+              <section>
+                <div className="mb-5 flex items-center gap-3">
+                  <BookOpen className="h-5 w-5 text-cyan-400" />
+                  <div>
+                    <h2 className="text-xl font-semibold">Scientific Sources</h2>
+                    <p className="mt-1 text-xs text-slate-400">Start with primary or authoritative astronomy sources.</p>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    ['NASA', 'https://science.nasa.gov/'],
+                    ['NASA Solar System Exploration', 'https://science.nasa.gov/solar-system/'],
+                    ['NASA Exoplanet Exploration', 'https://science.nasa.gov/exoplanets/'],
+                    ['ESA', 'https://www.esa.int/'],
+                    ['ESA Gaia Mission', 'https://www.cosmos.esa.int/web/gaia'],
+                    ['JPL', 'https://www.jpl.nasa.gov/'],
+                    ['IAU', 'https://www.iau.org/'],
+                    ['Event Horizon Telescope', 'https://eventhorizontelescope.org/'],
+                  ].map(([name, url]) => (
+                    <a key={name} href={url} target="_blank" rel="noreferrer" className={`rounded-2xl border p-4 transition ${isDarkMode ? 'border-white/10 bg-white/[0.03] hover:border-cyan-400/30 hover:bg-cyan-400/[0.05]' : 'border-slate-200 hover:border-cyan-400/40'}`}>
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-sm font-medium">{name}</span>
+                        <ExternalLink className="h-3.5 w-3.5 text-cyan-400" />
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {knowledgePanel === 'faq' && (
+              <section>
+                <div className="mb-5 flex items-center gap-3">
+                  <AlertCircle className="h-5 w-5 text-violet-400" />
+                  <div>
+                    <h2 className="text-xl font-semibold">SpaceVerse FAQ</h2>
+                    <p className="mt-1 text-xs text-slate-400">Common questions about exploring the site and its scientific content.</p>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    ['Are the 3D models scientifically exact?', 'They are educational visualizations. Distances, sizes, orbital speeds, and particle counts may be scaled or stylized so the systems remain understandable and interactive.'],
+                    ['Where does SpaceVerse get scientific information?', 'Major factual claims should be based on authoritative sources such as NASA, ESA, JPL, IAU, mission publications, and peer-reviewed research.'],
+                    ['Are estimates shown as facts?', 'No. SpaceVerse should distinguish confirmed observations, estimates, model-dependent values, and unresolved questions.'],
+                    ['Can I explore related objects?', 'Yes. Use Explore and the object pages to move between related planets, stars, galaxies, black holes, exoplanet systems, missions, and scientists.'],
+                  ].map(([q, a]) => (
+                    <details key={q} className={`rounded-2xl border p-4 ${isDarkMode ? 'border-white/10 bg-white/[0.03]' : 'border-slate-200'}`}>
+                      <summary className="cursor-pointer text-sm font-medium">{q}</summary>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">{a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {knowledgePanel === 'known-unknown' && (
+              <section>
+                <div className="mb-5 flex items-center gap-3">
+                  <Eye className="h-5 w-5 text-emerald-400" />
+                  <div>
+                    <h2 className="text-xl font-semibold">Known / Unknown</h2>
+                    <p className="mt-1 text-xs text-slate-400">A simple framework for reading SpaceVerse scientific information responsibly.</p>
+                  </div>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className={`rounded-2xl border p-5 ${isDarkMode ? 'border-emerald-400/15 bg-emerald-400/[0.04]' : 'border-emerald-200 bg-emerald-50'}`}>
+                    <h3 className="text-sm font-semibold text-emerald-300">Known / Observed</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">Measurements or observations supported by multiple observations, mission data, or well-established physical models.</p>
+                  </div>
+                  <div className={`rounded-2xl border p-5 ${isDarkMode ? 'border-amber-400/15 bg-amber-400/[0.04]' : 'border-amber-200 bg-amber-50'}`}>
+                    <h3 className="text-sm font-semibold text-amber-300">Unknown / Uncertain</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">Values or interpretations that depend on incomplete observations, model assumptions, measurement uncertainty, or active research.</p>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {knowledgePanel === 'related' && (
+              <section>
+                <div className="mb-5 flex items-center gap-3">
+                  <Share2 className="h-5 w-5 text-fuchsia-400" />
+                  <div>
+                    <h2 className="text-xl font-semibold">Related Objects</h2>
+                    <p className="mt-1 text-xs text-slate-400">Jump into some of the major objects already cataloged in SpaceVerse.</p>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {spaceObjects.slice(0, 8).map((obj) => (
+                    <button
+                      key={obj.id}
+                      type="button"
+                      onClick={() => { setKnowledgePanel(null); setSelectedObject(obj); }}
+                      className={`rounded-2xl border p-4 text-left transition ${isDarkMode ? 'border-white/10 bg-white/[0.03] hover:border-cyan-400/30 hover:bg-cyan-400/[0.05]' : 'border-slate-200 hover:border-cyan-400/40'}`}>
+                      <div className="text-sm font-medium">{obj.name}</div>
+                      <div className="mt-1 text-[11px] text-slate-500">{obj.categoryLabel}</div>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         </div>
       )}
