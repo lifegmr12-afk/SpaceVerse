@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Sagittarius A* — Interactive 3D Visualization</title>
+    <meta name="description" content="Explore Sagittarius A*, the supermassive black hole at the center of the Milky Way. Learn about its mass, distance, accretion flow, formation, discovery, Event Horizon Telescope observations, current research, scientific uncertainties, and interactive 3D model.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://space-verse-alpha.vercel.app/sagittarius-a.html">
+    <title>Sagittarius A*: Supermassive Black Hole at the Milky Way Center | SpaceVerse</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -188,6 +191,260 @@
             #title-overlay { bottom: 80px; left: 15px; }
             #title-overlay h1 { font-size: 1.1rem; }
         }
+
+        /* =========================================================
+           Sagittarius A* — SpaceVerse information experience
+           ========================================================= */
+        #sgr-info-button {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid rgba(34, 211, 238, 0.58);
+            background: rgba(5, 9, 20, 0.62);
+            color: #dffbff;
+            font-family: Georgia, serif;
+            font-size: 1.38rem;
+            cursor: pointer;
+            z-index: 220;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 0 28px rgba(0,229,255,.12);
+            transition: transform .25s ease, border-color .25s ease,
+                        box-shadow .25s ease, opacity .25s ease;
+        }
+
+        #sgr-info-button::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 16px;
+            border: 1px solid rgba(139,92,246,.18);
+            animation: sgrInfoPulse 2.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        #sgr-info-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            border-color: rgba(103,232,249,.82);
+            box-shadow: 0 0 34px rgba(0,229,255,.22);
+        }
+
+        #sgr-info-button.hidden-launcher {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(.88);
+        }
+
+        @keyframes sgrInfoPulse {
+            0%, 100% { opacity: .25; transform: scale(.98); }
+            50% { opacity: .75; transform: scale(1.05); }
+        }
+
+        /* Preserve the original info DOM for the existing Three.js code,
+           but hide the old UI so there is only one information experience. */
+        #info-panel,
+        #btn-info {
+            display: none !important;
+        }
+
+        #sgr-info-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: min(860px, calc(100vw - 32px));
+            max-height: min(84vh, 920px);
+            padding: 30px 32px;
+            overflow-y: auto;
+            z-index: 210;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(.96);
+            transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+            background: rgba(5, 9, 20, .90);
+            border: 1px solid rgba(0,229,255,.22);
+            border-radius: 20px;
+            box-shadow:
+                0 25px 90px rgba(0,0,0,.58),
+                0 0 55px rgba(0,229,255,.08),
+                inset 0 0 70px rgba(0,0,0,.18);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0,229,255,.28) transparent;
+        }
+
+        #sgr-info-overlay.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #sgr-info-overlay::-webkit-scrollbar { width: 6px; }
+        #sgr-info-overlay::-webkit-scrollbar-thumb {
+            background: rgba(0,229,255,.28);
+            border-radius: 999px;
+        }
+
+        .sgr-article-kicker {
+            color: #67e8f9;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .20em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        #sgr-info-overlay h1 {
+            margin: 0 48px 10px 0;
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 2.55rem);
+            line-height: 1.08;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 20%, #67e8f9 62%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sgr-lead {
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: .93rem;
+            max-width: 780px;
+            margin-bottom: 22px;
+        }
+
+        #sgr-info-overlay h2 {
+            color: #a5f3fc;
+            font-size: 1rem;
+            margin: 26px 0 10px;
+            padding-top: 13px;
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        #sgr-info-overlay p,
+        #sgr-info-overlay li {
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: .88rem;
+        }
+
+        #sgr-info-overlay ul { margin: 8px 0 0 20px; }
+        #sgr-info-overlay li { margin: 5px 0; }
+
+        .sgr-facts {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .sgr-fact {
+            padding: 13px 14px;
+            border: 1px solid rgba(0,229,255,.12);
+            background: rgba(10,16,30,.48);
+            border-radius: 12px;
+        }
+
+        .sgr-fact span {
+            display: block;
+            color: #64748b;
+            font-size: .62rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .sgr-fact strong {
+            color: #f8fafc;
+            font-size: .82rem;
+            line-height: 1.4;
+        }
+
+        .sgr-uncertainty {
+            border-left: 3px solid #f59e0b;
+            background: rgba(245,158,11,.07);
+            padding: 13px 15px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .sgr-source-list a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        .sgr-source-list a:hover { text-decoration: underline; }
+
+        .sgr-related {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .sgr-related a {
+            color: #dbeafe;
+            text-decoration: none;
+            border: 1px solid rgba(0,229,255,.15);
+            background: rgba(0,229,255,.04);
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: .76rem;
+        }
+
+        .sgr-model-note {
+            margin-top: 18px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(0,229,255,.04);
+            border: 1px solid rgba(0,229,255,.11);
+            color: #bae6fd !important;
+        }
+
+        .sgr-article-close {
+            position: absolute;
+            top: 13px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(8,12,24,.70);
+            color: #cbd5e1;
+            font-size: 1.16rem;
+            cursor: pointer;
+            transition: color .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .sgr-article-close:hover {
+            color: #fff;
+            border-color: rgba(103,232,249,.45);
+            transform: rotate(4deg);
+        }
+
+        @media (max-width: 768px) {
+            #sgr-info-button {
+                left: 12px;
+                top: 12px;
+                width: 44px;
+                height: 44px;
+            }
+
+            #sgr-info-overlay {
+                width: calc(100vw - 24px);
+                max-height: 84vh;
+                padding: 22px 20px;
+                border-radius: 16px;
+            }
+
+            .sgr-facts { grid-template-columns: 1fr; }
+        }
+
     </style>
 </head>
 <body>
@@ -241,6 +498,155 @@
         </div>
     </div>
 
+
+    <!-- Sagittarius A*: single information launcher -->
+    <button
+        id="sgr-info-button"
+        type="button"
+        aria-label="Open Sagittarius A* information"
+        title="Open Sagittarius A* information"
+        aria-expanded="false"
+    >i</button>
+
+    <article id="sgr-info-overlay" aria-hidden="true">
+        <button
+            id="sgr-article-close"
+            class="sgr-article-close"
+            type="button"
+            aria-label="Close Sagittarius A* information"
+        >×</button>
+
+        <div class="sgr-article-kicker">SpaceVerse • Black Hole Guide</div>
+        <h1>Sagittarius A* — the supermassive black hole at the heart of the Milky Way</h1>
+
+        <p class="sgr-lead">
+            Sagittarius A* (Sgr A*) is the supermassive black hole at the center of our galaxy.
+            It lies roughly 26,000–27,000 light-years from Earth in the direction of Sagittarius.
+            Although it is currently a relatively quiet galactic nucleus, the motion of nearby
+            stars and gas gives astronomers an exceptionally detailed view of gravity in the
+            strongest environment available in the Milky Way.
+        </p>
+
+        <h2>Quick Facts</h2>
+        <div class="sgr-facts">
+            <div class="sgr-fact"><span>Object type</span><strong>Supermassive black hole</strong></div>
+            <div class="sgr-fact"><span>Mass</span><strong>~4.0–4.3 million M☉</strong></div>
+            <div class="sgr-fact"><span>Distance</span><strong>~26,000–27,000 light-years</strong></div>
+            <div class="sgr-fact"><span>Location</span><strong>Galactic Center • Sagittarius</strong></div>
+            <div class="sgr-fact"><span>Schwarzschild radius</span><strong>~12 million km</strong></div>
+            <div class="sgr-fact"><span>Event-horizon diameter</span><strong>~24 million km</strong></div>
+            <div class="sgr-fact"><span>Activity</span><strong>Quiescent / low-luminosity</strong></div>
+            <div class="sgr-fact"><span>First EHT image</span><strong>Released 2022</strong></div>
+        </div>
+
+        <h2>What is Sagittarius A*?</h2>
+        <p>
+            Sagittarius A* is a compact object whose gravitational mass is millions of times
+            greater than the Sun's. It is not a normal star and has no visible solid surface.
+            The familiar name refers to the compact radio source and the black hole at the center
+            of the Milky Way. Unlike a luminous quasar, Sgr A* currently accretes relatively
+            little matter, so its immediate environment is far dimmer than those of the brightest
+            active galactic nuclei.
+        </p>
+
+        <h2>Structure / Composition</h2>
+        <p>
+            The black hole itself is surrounded by a hot, magnetized accretion flow made of
+            extremely thin plasma. Individual stars orbit at great speed around the galactic
+            center, while transient gas structures and flares can appear near the black hole.
+            The Event Horizon Telescope resolves emission from a region only a few times the
+            black hole's event-horizon scale, allowing scientists to study its shadow and
+            strongly lensed light.
+        </p>
+
+        <h2>Formation</h2>
+        <p>
+            The exact origin of the Milky Way's central black hole remains an active research
+            problem. It likely grew through a combination of early black-hole seeds, gas
+            accretion and mergers as the Milky Way assembled. The present-day mass reflects
+            billions of years of growth, while the details of its earliest seed and its full
+            merger history cannot be observed directly.
+        </p>
+
+        <h2>How scientists discovered it</h2>
+        <p>
+            Sgr A* was first identified as a compact radio source in the center of the Milky Way.
+            The strongest evidence for a massive black hole came from long-term observations of
+            individual stars, especially the fast-moving S stars. Their tightly bound orbits
+            reveal that about four million solar masses are concentrated in a tiny region.
+            Infrared and radio interferometry later allowed researchers to observe the immediate
+            environment and, in 2022, the Event Horizon Telescope published the first image of
+            Sgr A*'s ring-like emission.
+        </p>
+
+        <h2>Why it matters</h2>
+        <p>
+            Sagittarius A* is one of the best laboratories for testing general relativity and
+            black-hole astrophysics. Because it is in our own galaxy, scientists can follow
+            individual stars over many years rather than relying only on unresolved light from
+            distant galaxies. Its proximity also makes it possible to study magnetic fields,
+            plasma turbulence, accretion physics and extreme gravitational lensing in detail.
+        </p>
+
+        <h2>Current research</h2>
+        <p>
+            Current observations combine the Event Horizon Telescope, Chandra X-ray Observatory,
+            James Webb Space Telescope, Very Large Telescope and other facilities. Researchers
+            are studying the black hole's changing accretion flow, magnetic-field structure,
+            infrared and X-ray flares, stellar orbits, and the behavior of hot plasma near the
+            event horizon. New observing campaigns are also testing whether the observed ring
+            structure changes over time and how closely models match the data.
+        </p>
+
+        <h2>What we know</h2>
+        <ul>
+            <li>Sgr A* is a supermassive black hole at the center of the Milky Way.</li>
+            <li>Its mass is about four million times the mass of the Sun, based largely on stellar-orbit measurements.</li>
+            <li>It is roughly 26,000–27,000 light-years from Earth.</li>
+            <li>The surrounding accretion flow is relatively faint compared with active quasars.</li>
+            <li>Stars orbiting the galactic center provide direct dynamical evidence for the compact mass.</li>
+            <li>The Event Horizon Telescope released the first image of Sgr A* in 2022.</li>
+            <li>The observed emission ring is produced by hot plasma and strongly lensed light around the black hole.</li>
+        </ul>
+
+        <h2>What remains uncertain</h2>
+        <div class="sgr-uncertainty">
+            <p>
+                The exact black-hole spin, detailed magnetic-field topology, three-dimensional
+                structure of the accretion flow, and the black hole's long-term feeding history
+                are not fully determined. Even the apparent diameter and shape of the EHT ring
+                depend on the plasma model, scattering corrections, calibration and observing
+                conditions. SpaceVerse therefore presents its numerical values and 3D scene as
+                educational approximations rather than literal observational measurements.
+            </p>
+        </div>
+
+        <h2>Interactive 3D Model</h2>
+        <p class="sgr-model-note">
+            The existing Sagittarius A* Three.js model remains unchanged. It still contains
+            the original star field, nebulae, black-hole shader, accretion disk, photon ring,
+            relativistic outflow, gravitational-lensing effect, post-processing, labels,
+            camera controls, animation, theme switch, screenshot and fullscreen controls.
+        </p>
+
+        <h2>Scientific Sources</h2>
+        <ul class="sgr-source-list">
+            <li><a href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noopener noreferrer">NASA Science — Black Holes</a></li>
+            <li><a href="https://eventhorizontelescope.org/press-release/event-horizon-telescope-team-releases-first-image-black-hole-milky-way" target="_blank" rel="noopener noreferrer">Event Horizon Telescope — First Image of Sagittarius A*</a></li>
+            <li><a href="https://www.eso.org/public/news/eso2409/" target="_blank" rel="noopener noreferrer">ESO — Sagittarius A* and Galactic Center observations</a></li>
+            <li><a href="https://chandra.harvard.edu/photo/2022/sgra/" target="_blank" rel="noopener noreferrer">Chandra X-ray Observatory — Sagittarius A*</a></li>
+        </ul>
+
+        <h2>Related SpaceVerse Objects</h2>
+        <div class="sgr-related">
+            <a href="/gaia-bh1.html">Gaia BH1</a>
+            <a href="/phoenix-a-black-hole.html">Phoenix A</a>
+            <a href="/ton-618.html">TON 618</a>
+            <a href="/milky-way.html">Milky Way Galaxy</a>
+            <a href="/solar-system.html">Solar System</a>
+        </div>
+    </article>
+
     <div id="labels-container"></div>
 
     <script type="importmap">
@@ -250,6 +656,46 @@
             "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
         }
     }
+    </script>
+
+
+    <script>
+        (() => {
+            const launcher = document.getElementById('sgr-info-button');
+            const overlay = document.getElementById('sgr-info-overlay');
+            const closeButton = document.getElementById('sgr-article-close');
+
+            if (!launcher || !overlay || !closeButton) return;
+
+            const openInfo = () => {
+                overlay.classList.add('open');
+                overlay.setAttribute('aria-hidden', 'false');
+                launcher.classList.add('hidden-launcher');
+                launcher.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeInfo = () => {
+                overlay.classList.remove('open');
+                overlay.setAttribute('aria-hidden', 'true');
+                launcher.classList.remove('hidden-launcher');
+                launcher.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            };
+
+            launcher.addEventListener('click', openInfo);
+            closeButton.addEventListener('click', closeInfo);
+
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) closeInfo();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && overlay.classList.contains('open')) {
+                    closeInfo();
+                }
+            });
+        })();
     </script>
 
     <script type="module">
