@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Phoenix A - Supermassive Black Hole Visualization</title>
+    <title>Phoenix A: Supermassive Black Hole in the Phoenix Cluster | SpaceVerse</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -188,6 +188,289 @@
             #title-overlay { bottom: 80px; left: 15px; }
             #title-overlay h1 { font-size: 1.1rem; }
         }
+
+        /* =========================================================
+           SpaceVerse Phoenix A — unified scientific information UI
+           ========================================================= */
+        #phoenix-info-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 160;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border: 1px solid rgba(251, 146, 60, 0.45);
+            background:
+                radial-gradient(circle at 50% 35%, rgba(255,215,120,0.12), transparent 46%),
+                rgba(8, 8, 18, 0.72);
+            color: #ffe4a3;
+            font-family: Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow:
+                0 0 0 1px rgba(255, 180, 70, 0.04),
+                0 0 26px rgba(255, 140, 45, 0.14);
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
+            animation: phoenixInfoPulse 3.2s ease-in-out infinite;
+        }
+
+        #phoenix-info-button::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 19px;
+            border: 1px solid rgba(255, 165, 60, 0.12);
+            opacity: 0;
+            transform: scale(0.9);
+            animation: phoenixInfoRing 3.2s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        #phoenix-info-button:hover {
+            transform: translateY(-2px) scale(1.04);
+            border-color: rgba(255, 194, 91, 0.72);
+            box-shadow:
+                0 0 32px rgba(255, 133, 53, 0.24),
+                inset 0 0 20px rgba(255, 180, 70, 0.06);
+        }
+
+        #phoenix-info-button.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.86);
+        }
+
+        @keyframes phoenixInfoPulse {
+            0%, 100% { box-shadow: 0 0 0 1px rgba(255,180,70,.04), 0 0 22px rgba(255,140,45,.10); }
+            50% { box-shadow: 0 0 0 1px rgba(255,180,70,.07), 0 0 32px rgba(255,140,45,.20); }
+        }
+
+        @keyframes phoenixInfoRing {
+            0%, 100% { opacity: 0; transform: scale(0.9); }
+            40% { opacity: 0.8; transform: scale(1.03); }
+            70% { opacity: 0; transform: scale(1.12); }
+        }
+
+        #phoenix-content-extension {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 300;
+            width: min(880px, calc(100vw - 32px));
+            max-height: min(84vh, 940px);
+            overflow-y: auto;
+            padding: 34px 36px;
+            border: 1px solid rgba(251, 146, 60, 0.24);
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at 85% 10%, rgba(255, 153, 51, 0.05), transparent 30%),
+                rgba(5, 7, 16, 0.94);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow:
+                0 30px 100px rgba(0,0,0,0.58),
+                0 0 70px rgba(255, 107, 53, 0.08),
+                inset 0 0 50px rgba(0,0,0,0.34);
+            transform: translate(-50%, -50%) scale(0.96);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 153, 51, .32) transparent;
+        }
+
+        #phoenix-content-extension::-webkit-scrollbar { width: 6px; }
+        #phoenix-content-extension::-webkit-scrollbar-thumb {
+            background: rgba(255, 153, 51, .28);
+            border-radius: 99px;
+        }
+
+        #phoenix-content-extension.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #phoenix-content-extension .article-kicker {
+            color: #ffb35c;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .19em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        #phoenix-content-extension h1 {
+            margin: 0 50px 10px 0;
+            color: #f8fafc;
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            line-height: 1.05;
+            letter-spacing: -.02em;
+        }
+
+        #phoenix-content-extension .article-lead {
+            margin: 0 0 24px;
+            color: #cbd5e1;
+            line-height: 1.75;
+            font-size: .94rem;
+        }
+
+        #phoenix-content-extension h2 {
+            margin: 28px 0 10px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            color: #ffd18a;
+            font-size: 1.03rem;
+        }
+
+        #phoenix-content-extension p,
+        #phoenix-content-extension li {
+            color: #cbd5e1;
+            line-height: 1.72;
+            font-size: .89rem;
+        }
+
+        #phoenix-content-extension ul {
+            margin: 8px 0 0 18px;
+        }
+
+        #phoenix-content-extension li { margin: 5px 0; }
+
+        .phoenix-fact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .phoenix-fact-card {
+            padding: 13px 14px;
+            border: 1px solid rgba(251, 146, 60, 0.13);
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.42);
+        }
+
+        .phoenix-fact-card span {
+            display: block;
+            margin-bottom: 4px;
+            color: #7c879b;
+            font-size: .62rem;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+        }
+
+        .phoenix-fact-card strong {
+            color: #f8fafc;
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+        .phoenix-uncertainty {
+            margin-top: 10px;
+            padding: 13px 15px;
+            border-left: 3px solid #f59e0b;
+            border-radius: 0 10px 10px 0;
+            background: rgba(245, 158, 11, 0.07);
+        }
+
+        .phoenix-sources a,
+        .phoenix-related a {
+            color: #fdc47d;
+            text-decoration: none;
+        }
+
+        .phoenix-sources a:hover,
+        .phoenix-related a:hover { text-decoration: underline; }
+
+        .phoenix-related {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .phoenix-related a {
+            padding: 7px 11px;
+            border: 1px solid rgba(251,146,60,.16);
+            border-radius: 999px;
+            background: rgba(251,146,60,.05);
+            font-size: .75rem;
+        }
+
+        .phoenix-article-close {
+            position: absolute;
+            top: 14px;
+            right: 15px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(15,23,42,.65);
+            color: #cbd5e1;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all .2s ease;
+        }
+
+        .phoenix-article-close:hover {
+            color: #fff;
+            border-color: rgba(255, 175, 85, .45);
+            background: rgba(255, 153, 51, .08);
+        }
+
+        #phoenix-content-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 250;
+            background: rgba(0,0,0,.28);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+
+        #phoenix-content-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            #phoenix-info-button {
+                top: 14px;
+                left: 14px;
+                width: 44px;
+                height: 44px;
+            }
+
+            #phoenix-content-extension {
+                width: calc(100vw - 24px);
+                max-height: 86vh;
+                padding: 24px 20px;
+            }
+
+            .phoenix-fact-grid { grid-template-columns: 1fr; }
+
+            #phoenix-content-extension h1 {
+                font-size: 1.75rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -206,6 +489,17 @@
     <div id="canvas-container"></div>
     <div id="fps-counter">-- FPS</div>
 
+    <!-- Phoenix A unified information launcher -->
+    <button
+        id="phoenix-info-button"
+        type="button"
+        aria-label="Open Phoenix A information"
+        aria-expanded="false"
+        title="Open Phoenix A information"
+    >i</button>
+
+
+
     <div id="title-overlay">
         <h1>Phoenix A</h1>
         <p>Supermassive Black Hole &bull; 100 Billion Solar Masses</p>
@@ -216,30 +510,167 @@
         <button class="ctrl-btn active" id="btn-rotation">Auto Rotate: ON</button>
         <button class="ctrl-btn" id="btn-pause">Pause Animation</button>
         <button class="ctrl-btn" id="btn-reset">Reset Camera</button>
-        <button class="ctrl-btn" id="btn-info">Show Information</button>
+        <button class="ctrl-btn" id="btn-info" style="display:none" aria-hidden="true">Show Information</button>
         <button class="ctrl-btn" id="btn-theme">Ultra Dark</button>
         <button class="ctrl-btn" id="btn-screenshot">Screenshot</button>
         <button class="ctrl-btn" id="btn-fullscreen">Fullscreen</button>
     </div>
 
-    <div id="info-panel">
-        <button class="close-panel" id="close-info">&times;</button>
-        <h1>Phoenix A Black Hole</h1>
-        <h2>Supermassive Black Hole</h2>
-        <div class="info-row"><span class="info-label">Type</span><span class="info-value">Supermassive Black Hole</span></div>
-        <div class="info-row"><span class="info-label">Host Galaxy</span><span class="info-value">Phoenix A (Phoenix Cluster)</span></div>
-        <div class="info-row"><span class="info-label">Estimated Mass</span><span class="info-value">~100 billion solar masses</span></div>
-        <div class="info-row"><span class="info-label">Distance from Earth</span><span class="info-value">~5.8 billion light-years</span></div>
-        <div class="info-row"><span class="info-label">Constellation</span><span class="info-value">Phoenix</span></div>
-        <div class="info-row"><span class="info-label">Schwarzschild Radius</span><span class="info-value">~295 billion km</span></div>
-        <div class="info-row"><span class="info-label">Event Horizon Diameter</span><span class="info-value">~590 billion km</span></div>
-        <div class="info-row"><span class="info-label">Category</span><span class="info-value">Among the most massive known black holes</span></div>
-        <div class="info-row"><span class="info-label">Discovery</span><span class="info-value">Phoenix Cluster observations</span></div>
-        <div class="info-description">
-            <strong>Scientific Importance:</strong><br><br>
-            Phoenix A is believed to contain one of the largest known supermassive black holes in the observable universe. Its enormous gravitational influence affects the central galaxy and plays an important role in regulating gas cooling, star formation, and energetic feedback within the Phoenix Cluster.
-        </div>
+    <!-- Legacy information UI kept hidden so the existing 3D UI script remains compatible. -->
+    <div id="info-panel" style="display:none" aria-hidden="true">
+        <button class="close-panel" id="close-info" type="button">&times;</button>
     </div>
+
+
+
+    <div id="phoenix-content-overlay" aria-hidden="true"></div>
+
+    <article id="phoenix-content-extension" aria-hidden="true">
+        <button
+            id="phoenix-article-close"
+            class="phoenix-article-close"
+            type="button"
+            aria-label="Close Phoenix A information"
+            title="Close"
+        >×</button>
+
+        <div class="article-kicker">SpaceVerse • Black Hole Guide</div>
+        <h1>Phoenix A — Supermassive Black Hole at the Heart of the Phoenix Cluster</h1>
+
+        <p class="article-lead">
+            Phoenix A is the extreme central black hole in the galaxy at the heart of the
+            Phoenix Cluster, a massive galaxy cluster about 5.8 billion light-years from Earth.
+            The system is scientifically important because its powerful black-hole activity,
+            surrounding hot gas, and unusually rapid star formation provide a rare view of
+            how black-hole feedback can influence an entire cluster environment.
+        </p>
+
+        <h2>Quick Facts</h2>
+        <div class="phoenix-fact-grid">
+            <div class="phoenix-fact-card"><span>Object type</span><strong>Supermassive black hole / active galactic nucleus</strong></div>
+            <div class="phoenix-fact-card"><span>Host environment</span><strong>Phoenix Cluster (SPT-CLJ2344−4243)</strong></div>
+            <div class="phoenix-fact-card"><span>Distance</span><strong>~5.8 billion light-years</strong></div>
+            <div class="phoenix-fact-card"><span>Constellation</span><strong>Phoenix</strong></div>
+            <div class="phoenix-fact-card"><span>Mass</span><strong>Order of ~10 billion solar masses; estimates vary</strong></div>
+            <div class="phoenix-fact-card"><span>Role</span><strong>Power source of the central galaxy's jets and feedback</strong></div>
+            <div class="phoenix-fact-card"><span>Major observatories</span><strong>Chandra, Hubble, VLA, ALMA, JWST</strong></div>
+            <div class="phoenix-fact-card"><span>Scientific theme</span><strong>Black-hole feedback and extreme star formation</strong></div>
+        </div>
+
+        <h2>What is Phoenix A?</h2>
+        <p>
+            Phoenix A is the central supermassive black hole associated with the brightest
+            central galaxy of the Phoenix Cluster. It is not a freestanding object floating
+            in empty space: it is embedded in a dense, hot, multi-galaxy environment containing
+            enormous reservoirs of intracluster gas. Material falling toward the black hole can
+            power an active galactic nucleus, producing jets and other energetic feedback that
+            interact with the surrounding gas.
+        </p>
+
+        <h2>Structure / Composition</h2>
+        <p>
+            A black hole itself is described by its mass and spacetime geometry rather than a
+            solid surface or chemical composition. Around Phoenix A, the observable structure
+            includes a hot intracluster medium, an accretion-powered central engine, energetic
+            jets, radio-emitting structures and cooler filaments of gas. Chandra observations
+            revealed cavities in the hot gas associated with the black hole's outbursts, while
+            radio observations trace the jets that inflate those cavities.
+        </p>
+
+        <h2>Formation</h2>
+        <p>
+            Phoenix A's exact growth history is not directly observed. Like other supermassive
+            black holes, it likely grew through a combination of accretion and mergers over
+            cosmic time. Its exceptionally massive cluster environment provides a large
+            reservoir of gas and frequent gravitational interactions, but the relative
+            contributions of different growth channels remain an active research problem.
+        </p>
+
+        <h2>How scientists discovered and studied it</h2>
+        <p>
+            The Phoenix Cluster was first identified in Sunyaev–Zeldovich observations and was
+            subsequently studied at X-ray, optical, ultraviolet, millimeter and radio
+            wavelengths. NASA's Chandra X-ray Observatory revealed the extreme hot-gas and
+            cooling environment, while Hubble observations showed filaments of cooler gas and
+            star-forming structures. Radio observations with the Very Large Array and ALMA
+            traced energetic jets and cold gas, and newer Webb observations are helping
+            astronomers build a more complete picture of the cluster's star-formation cycle.
+        </p>
+
+        <h2>Why it matters</h2>
+        <p>
+            Phoenix is a remarkable test case for the relationship between black holes and
+            star formation. Normally, powerful black-hole outbursts can heat cluster gas and
+            prevent it from cooling enough to form stars. In Phoenix, observations show an
+            unusual regime in which black-hole activity is not fully suppressing cooling and,
+            in some regions, appears connected to enhanced cooling and star formation. Chandra
+            reported star formation in the central cluster at roughly hundreds of solar masses
+            per year, making the system one of the clearest laboratories for studying this
+            feedback cycle.
+        </p>
+
+        <h2>Current research</h2>
+        <p>
+            Current work combines data from Chandra, Hubble, radio observatories, ALMA and the
+            James Webb Space Telescope. Webb observations published in 2025 helped clarify how
+            the Phoenix Cluster is assembling and how cool gas and star formation are connected
+            to its broader environment. Researchers are continuing to study how the black hole's
+            jets transfer energy and momentum to hot gas, how gas cools into molecular reservoirs,
+            and how the balance between heating and cooling changes over time.
+        </p>
+
+        <h2>What we know</h2>
+        <ul>
+            <li>The Phoenix Cluster is about 5.8 billion light-years from Earth.</li>
+            <li>Its central galaxy hosts a very massive supermassive black hole.</li>
+            <li>The black hole powers energetic outflows and jets visible through radio and X-ray observations.</li>
+            <li>Chandra has detected cavities in the hot intracluster gas associated with those outbursts.</li>
+            <li>The Phoenix Cluster has an unusually high rate of central star formation for a massive galaxy cluster.</li>
+            <li>Multiwavelength observations show a complex interaction between hot gas, cooler filaments, jets and newly forming stars.</li>
+            <li>NASA's Webb observations are adding new detail to the cluster's gas and star-formation history.</li>
+        </ul>
+
+        <h2>What remains uncertain</h2>
+        <div class="phoenix-uncertainty">
+            <p>
+                Phoenix A is much better described as an extreme central active black hole than
+                as a precisely weighed “100-billion-solar-mass” object. Published estimates can
+                differ substantially depending on the assumptions and measurements used. NASA's
+                2025 Phoenix Cluster summary describes a black hole of roughly 10 billion solar
+                masses, while older studies and popular summaries have quoted substantially
+                larger values. SpaceVerse therefore presents the mass as an estimate rather
+                than a settled exact number. The detailed growth history, geometry of the
+                accretion flow and long-term balance between black-hole heating and cluster
+                cooling also remain active areas of research.
+            </p>
+        </div>
+
+        <h2>Interactive 3D Model</h2>
+        <p>
+            The existing SpaceVerse Phoenix A simulation remains the interactive centerpiece.
+            It includes the black-hole geometry, turbulent accretion disk, disk particles,
+            photon ring, relativistic jets, gravitational-lensing effect, star field,
+            nebula clouds, post-processing bloom and camera controls. This information upgrade
+            does not replace or modify that Three.js model.
+        </p>
+
+        <h2>Scientific Sources</h2>
+        <ul class="phoenix-sources">
+            <li><a href="https://chandra.harvard.edu/press/25_releases/press_021325.html" target="_blank" rel="noopener noreferrer">NASA/Chandra — Webb Maps Full Picture of How Phoenix Galaxy Cluster Forms (2025)</a></li>
+            <li><a href="https://www.chandra.harvard.edu/press/19_releases/press_111819.html" target="_blank" rel="noopener noreferrer">NASA/Chandra — A Weakened Black Hole Allows Its Galaxy to Awaken</a></li>
+            <li><a href="https://www.chandra.harvard.edu/photo/2012/phoenix/" target="_blank" rel="noopener noreferrer">NASA/Chandra — Phoenix Cluster observations and 2012 results</a></li>
+            <li><a href="https://www.chandra.harvard.edu/photo/2015/phoenix/" target="_blank" rel="noopener noreferrer">NASA/Chandra — Phoenix Cluster: A Fresh Perspective</a></li>
+        </ul>
+
+        <h2>Related SpaceVerse Objects</h2>
+        <div class="phoenix-related">
+            <a href="/gaia-bh1.html">Gaia BH1</a>
+            <a href="/sagittarius-a.html">Sagittarius A*</a>
+            <a href="/ton-618.html">TON 618</a>
+            <a href="/milky-way.html">Milky Way Galaxy</a>
+            <a href="/trappist-1.html">TRAPPIST-1 System</a>
+        </div>
+    </article>
 
     <div id="labels-container"></div>
 
@@ -252,7 +683,46 @@
     }
     </script>
 
-    <script type="module">
+    
+    <script>
+        (() => {
+            const button = document.getElementById('phoenix-info-button');
+            const article = document.getElementById('phoenix-content-extension');
+            const overlay = document.getElementById('phoenix-content-overlay');
+            const close = document.getElementById('phoenix-article-close');
+
+            const openInfo = () => {
+                if (!article) return;
+                article.classList.add('is-open');
+                overlay?.classList.add('is-open');
+                article.setAttribute('aria-hidden', 'false');
+                overlay?.setAttribute('aria-hidden', 'false');
+                button?.classList.add('is-hidden');
+                button?.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeInfo = () => {
+                article?.classList.remove('is-open');
+                overlay?.classList.remove('is-open');
+                article?.setAttribute('aria-hidden', 'true');
+                overlay?.setAttribute('aria-hidden', 'true');
+                button?.classList.remove('is-hidden');
+                button?.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            };
+
+            button?.addEventListener('click', openInfo);
+            close?.addEventListener('click', closeInfo);
+            overlay?.addEventListener('click', closeInfo);
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') closeInfo();
+            });
+        })();
+    </script>
+
+<script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
