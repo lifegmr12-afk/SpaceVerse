@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaia BH1 – Interactive 3D Black Hole Explorer</title>
+    <meta name="description" content="Explore Gaia BH1, a nearby dormant stellar-mass black hole about 1,560 light-years away in Ophiuchus. Learn about its companion star, orbit, discovery through Gaia astrometry, formation, current research, uncertainties, and interactive 3D model.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://space-verse-alpha.vercel.app/gaia-bh1.html">
+    <title>Gaia BH1: Closest Known Black Hole | Interactive 3D Explorer | SpaceVerse</title>
     
     <!-- Google Fonts for typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -176,6 +179,235 @@
             border-style: solid;
             border-color: rgba(255, 255, 255, 0.2) transparent transparent transparent;
         }
+
+        /* SpaceVerse scientific content extension */
+        /* Compact single-card info experience */
+        #info-panel {
+            display: none;
+        }
+        #info-panel .kicker { margin-bottom: 8px; }
+        #info-panel h1 { margin-bottom: 3px; }
+        #info-panel h2 { margin-bottom: 14px; }
+        #info-panel .info-grid { margin-bottom: 14px; }
+        #info-close-button {
+            position: absolute;
+            top: 10px;
+            right: 11px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(148,163,184,.18);
+            background: rgba(15,23,42,.55);
+            color: #cbd5e1;
+            font-size: 1.15rem;
+            cursor: pointer;
+        }
+        #info-close-button:hover { color: #fff; border-color: rgba(96,165,250,.4); }
+        #gaia-info-button {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid rgba(96,165,250,.45);
+            background: rgba(4,9,20,.60);
+            color: #dbeafe;
+            font-size: 1.35rem;
+            font-family: Georgia, serif;
+            cursor: pointer;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 0 28px rgba(96,165,250,.10);
+            z-index: 11;
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
+        }
+        #gaia-info-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            border-color: rgba(125,211,252,.65);
+            box-shadow: 0 0 30px rgba(96,165,250,.22);
+        }
+        #info-panel.is-hidden,
+        #gaia-info-button.is-hidden { pointer-events:none; }
+        #gaia-info-button.is-hidden { opacity:0; transform:scale(.88); }
+        #info-panel.is-hidden { opacity:0; transform:translate(-0px,-2px) scale(.98); pointer-events:none; }
+        #content-extension.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        #content-extension::before {
+            content: 'Gaia BH1 • Full Information';
+            display: block;
+            color: #64748b;
+            font-size: .66rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        #content-extension .article-close {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(148,163,184,.18);
+            background: rgba(15,23,42,.65);
+            color: #cbd5e1;
+            cursor: pointer;
+            font-size: 1.15rem;
+        }
+        #content-extension .article-close:hover { color: #fff; border-color: rgba(96,165,250,.4); }
+        #content-extension .source-list { padding-bottom: 18px; }
+        @media (max-width: 640px) {
+            #info-panel { left: 12px; top: 12px; width: min(320px, calc(100vw - 24px)); }
+            #gaia-info-button { left: 12px; top: 12px; width: 44px; height: 44px; }
+            #content-extension {
+                left: 50%;
+                top: 50%;
+                width: calc(100vw - 24px);
+                max-height: 84vh;
+                padding: 22px 20px;
+            }
+        }
+
+        #content-extension {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: min(820px, calc(100vw - 32px));
+            max-height: min(82vh, 900px);
+            overflow-y: auto;
+            padding: 30px 32px;
+            transform: translate(-50%, -50%) scale(.96);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+            background: rgba(4, 9, 20, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(96,165,250,0.16);
+            border-radius: 18px;
+            box-shadow: 0 18px 60px rgba(0,0,0,0.34);
+            z-index: 9;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(96,165,250,0.35) transparent;
+        }
+        #content-extension::-webkit-scrollbar { width: 6px; }
+        #content-extension::-webkit-scrollbar-thumb {
+            background: rgba(96,165,250,0.28);
+            border-radius: 999px;
+        }
+        #content-extension .kicker {
+            color: #60a5fa;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        #content-extension h1 {
+            color: #f8fafc;
+            font-size: clamp(1.7rem, 3vw, 2.35rem);
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+        #content-extension .lead {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+        #content-extension h2 {
+            color: #93c5fd;
+            font-size: 1.02rem;
+            margin: 26px 0 10px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        #content-extension p,
+        #content-extension li {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+        #content-extension ul {
+            margin: 8px 0 0 18px;
+        }
+        #content-extension li { margin: 5px 0; }
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .fact-card {
+            padding: 12px 13px;
+            border: 1px solid rgba(96,165,250,0.11);
+            background: rgba(15,23,42,0.42);
+            border-radius: 12px;
+        }
+        .fact-card span {
+            display: block;
+            color: #64748b;
+            font-size: 0.64rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 4px;
+        }
+        .fact-card strong {
+            color: #f8fafc;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+        .source-list a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+        .source-list a:hover { text-decoration: underline; }
+        .uncertainty {
+            border-left: 3px solid #f59e0b;
+            background: rgba(245,158,11,0.07);
+            padding: 12px 14px;
+            border-radius: 0 10px 10px 0;
+        }
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .related-links a {
+            color: #bfdbfe;
+            text-decoration: none;
+            border: 1px solid rgba(96,165,250,0.16);
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 0.76rem;
+            background: rgba(96,165,250,0.05);
+        }
+        @media (max-width: 980px) {
+            #content-extension {
+                left: 20px;
+                top: auto;
+                bottom: 20px;
+                width: min(650px, calc(100vw - 40px));
+                max-height: 46vh;
+            }
+        }
+        @media (max-width: 640px) {
+            #content-extension {
+                left: 12px;
+                bottom: 12px;
+                width: calc(100vw - 24px);
+                max-height: 48vh;
+                padding: 20px;
+            }
+            .fact-grid { grid-template-columns: 1fr; }
+        }
+
     </style>
 
     <!-- Import Map for Modern Three.js Modules -->
@@ -202,15 +434,54 @@
     <div id="label-star" class="label">G-Type Companion Star</div>
 
     <!-- Glassmorphism Panel -->
+    <!-- Compact Gaia BH1 information card -->
+    <button
+        id="gaia-info-button"
+        type="button"
+        aria-label="Open Gaia BH1 information"
+        aria-expanded="false"
+        title="Open Gaia BH1 information"
+    >i</button>
+
     <div id="info-panel">
+        <button
+            id="info-close-button"
+            type="button"
+            aria-label="Close Gaia BH1 information"
+            title="Close"
+        >×</button>
+
+        <div class="kicker">SpaceVerse • Black Hole Guide</div>
         <h1>Gaia BH1</h1>
-        <h2>Dormant Stellar-Mass Black Hole</h2>
+        <h2>Dormant stellar-mass black hole</h2>
 
         <div class="info-grid">
-            <div class="info-item">
-                <span class="info-label">Distance</span>
-                <span class="info-value">1,560 light-years</span>
-            </div>
+            <div class="info-item"><span class="info-label">Distance</span><span class="info-value">~1,560 light-years</span></div>
+            <div class="info-item"><span class="info-label">Location</span><span class="info-value">Ophiuchus</span></div>
+            <div class="info-item"><span class="info-label">Black-hole mass</span><span class="info-value">~9.8 solar masses</span></div>
+            <div class="info-item"><span class="info-label">Companion</span><span class="info-value">Sun-like G-type star</span></div>
+            <div class="info-item"><span class="info-label">Orbital period</span><span class="info-value">185.6 days</span></div>
+            <div class="info-item"><span class="info-label">Eccentricity</span><span class="info-value">~0.454</span></div>
+        </div>
+
+        <div class="interesting-fact">
+            <strong>Why Gaia BH1 is unusual:</strong><br>
+            Its presence was inferred from the motion of its visible companion rather than bright accretion emission.
+        </div>
+
+        <button id="read-more-button" type="button">
+            <span>ⓘ</span>
+            <span>Open full information</span>
+        </button>
+    </div>
+
+
+        <div class="interesting-fact">
+            <strong>Why Gaia BH1 is unusual:</strong><br>
+            The black hole is dormant, so it produces little or no bright accretion-driven radiation. Astronomers inferred its presence from the gravitational motion it induces in its visible companion star.
+        </div>
+    </div>
+
             <div class="info-item">
                 <span class="info-label">Mass</span>
                 <span class="info-value">~9–10 Solar Masses</span>
@@ -242,6 +513,181 @@
             Gaia BH1 emits almost no detectable light. Astronomers inferred its presence from the motion of its companion star, making it one of the first dormant stellar-mass black holes discovered through precision astrometry.
         </div>
     </div>
+
+
+    <!-- =========================================================
+         GAIA BH1 SCIENCE CONTENT
+         The interactive 3D model below remains unchanged.
+         ========================================================= -->
+    <article id="gaia-bh1-details">
+        <div id="content-extension">
+            <button class="article-close" id="article-close-button" type="button" aria-label="Close full information">×</button>
+            <div class="kicker">SpaceVerse • Black Hole Guide</div>
+            <h1>Gaia BH1 — the closest known black hole</h1>
+            <p class="lead">
+                Gaia BH1 is a dormant stellar-mass black hole in a binary system with a
+                Sun-like companion star. It lies about 1,560 light-years from Earth in the
+                direction of Ophiuchus. Its presence was revealed by the companion star's
+                orbital motion measured with high-precision astrometry and then tested with
+                spectroscopic radial-velocity observations.
+            </p>
+
+            <h2>Quick Facts</h2>
+            <div class="fact-grid">
+                <div class="fact-card"><span>Object type</span><strong>Dormant stellar-mass black hole</strong></div>
+                <div class="fact-card"><span>Distance</span><strong>~1,560 light-years</strong></div>
+                <div class="fact-card"><span>Constellation</span><strong>Ophiuchus</strong></div>
+                <div class="fact-card"><span>Black-hole mass</span><strong>~9.8 M☉</strong></div>
+                <div class="fact-card"><span>Companion</span><strong>Sun-like G-type star</strong></div>
+                <div class="fact-card"><span>Orbital period</span><strong>185.63 days</strong></div>
+                <div class="fact-card"><span>Eccentricity</span><strong>~0.454</strong></div>
+                <div class="fact-card"><span>Semi-major axis</span><strong>~1.41 AU</strong></div>
+            </div>
+
+            <h2>What is Gaia BH1?</h2>
+            <p>
+                Gaia BH1 is the compact remnant of a once-massive star. The black hole itself
+                has no visible surface, and the system is considered dormant because it is not
+                currently producing the strong accretion-powered radiation commonly associated
+                with active black-hole binaries. It is detectable because its gravity changes
+                the motion of its visible companion.
+            </p>
+
+            <h2>Structure / Composition</h2>
+            <p>
+                The system contains the black hole and a Sun-like G-type companion. The black
+                hole is estimated at roughly ten solar masses. The visible star remains outside
+                the event horizon and follows a wide, eccentric orbit. The SpaceVerse 3D model
+                is intentionally not to scale; the real size ratio would make the black hole
+                effectively invisible at a useful web viewing distance.
+            </p>
+
+            <h2>Formation</h2>
+            <p>
+                Gaia BH1 is expected to have formed when a much more massive progenitor star
+                exhausted its nuclear fuel and collapsed under gravity. In a binary system,
+                that collapse can leave a black-hole remnant orbiting a surviving companion.
+                The detailed pre-collapse mass-transfer history and orbital evolution are
+                inferred from stellar-evolution models rather than directly observed.
+            </p>
+
+            <h2>How scientists discovered it</h2>
+            <p>
+                Gaia's precise astrometry revealed that the visible star undergoes a periodic
+                wobble in the sky that cannot be explained by its normal motion alone. Follow-up
+                spectroscopy measured the companion's radial-velocity variations. Combining the
+                astrometric and spectroscopic orbital solutions showed that the unseen companion
+                is far too massive to be an ordinary star, leading to the Gaia BH1 black-hole
+                interpretation.
+            </p>
+
+            <h2>Why it matters</h2>
+            <p>
+                Gaia BH1 is important because it demonstrates that dormant black holes can be
+                discovered from gravitational influence rather than bright accretion emission.
+                ESA places Gaia BH1 about 1,560 light-years away and describes it as the nearest
+                known black hole. Such systems provide a way to study the hidden population of
+                stellar-mass black holes and test models of binary evolution.
+            </p>
+
+            <h2>Current research</h2>
+            <p>
+                Researchers continue refining the orbital solution and stellar parameters,
+                checking for astrometric or spectroscopic systematics, and comparing Gaia BH1
+                with other Gaia-selected black-hole binaries. Gaia BH2 and Gaia BH3 have expanded
+                this new family of systems, providing a broader sample for investigating black-hole
+                masses, binary histories and how frequently dormant black holes occur in the Milky Way.
+            </p>
+
+            <h2>What we know</h2>
+            <ul>
+                <li>Gaia BH1 is a dormant stellar-mass black-hole system in the direction of Ophiuchus.</li>
+                <li>It is about 1,560 light-years from Earth.</li>
+                <li>The published orbital solution gives a black-hole mass of about 9.8 solar masses.</li>
+                <li>The visible companion is a Sun-like G-type star.</li>
+                <li>The orbital period is about 185.6 days and the eccentricity is about 0.454.</li>
+                <li>Its detection combined Gaia astrometry with radial-velocity follow-up.</li>
+                <li>The system lacks the strong accretion-powered X-ray signature expected from an actively feeding binary.</li>
+            </ul>
+
+            <h2>What remains uncertain</h2>
+            <div class="uncertainty">
+                <p>
+                    The exact masses and orbital parameters carry measurement uncertainties and
+                    can be refined with improved observations. The detailed evolutionary history
+                    — including progenitor mass, mass transfer, orbital changes and the black
+                    hole's formation mechanism — is reconstructed from models rather than
+                    observed directly. The SpaceVerse visualization is therefore an educational
+                    simulation, not a literal scale reconstruction.
+                </p>
+            </div>
+
+            <h2>Interactive 3D Model</h2>
+            <p>
+                The interactive model visualizes the black hole, its companion star, orbital path,
+                faint photon ring and stylized surrounding dust. The existing Three.js scene,
+                controls, animation, lensing shader, orbit geometry and rendering pipeline have
+                not been changed by this content upgrade.
+            </p>
+
+            <h2>Scientific Sources</h2>
+            <ul class="source-list">
+                <li><a href="https://www.esa.int/Science_Exploration/Space_Science/Gaia/Gaia_discovers_a_new_family_of_black_holes" target="_blank" rel="noopener noreferrer">ESA Gaia — Gaia discovers a new family of black holes</a></li>
+                <li><a href="https://www.cosmos.esa.int/web/gaia/iow_20221104" target="_blank" rel="noopener noreferrer">ESA Gaia Cosmos — Gaia's first black hole discovery: Gaia-BH1</a></li>
+                <li><a href="https://science.nasa.gov/universe/black-holes/" target="_blank" rel="noopener noreferrer">NASA Science — Black Holes</a></li>
+                <li><a href="https://www.esa.int/ESA_Multimedia/Images/2024/04/Gaia_black_holes" target="_blank" rel="noopener noreferrer">ESA/Gaia/DPAC — Gaia black holes overview</a></li>
+            </ul>
+
+            <h2>Related SpaceVerse Objects</h2>
+            <div class="related-links">
+                <a href="/sagittarius-a.html">Sagittarius A*</a>
+                <a href="/ton-618.html">TON 618</a>
+                <a href="/phoenix-a-black-hole.html">Phoenix A</a>
+                <a href="/milky-way.html">Milky Way Galaxy</a>
+                <a href="/solar-system.html">Solar System</a>
+            </div>
+        </div>
+    </article>
+
+
+    <script>
+        (() => {
+            const infoButton = document.getElementById('gaia-info-button');
+            const infoPanel = document.getElementById('info-panel');
+            const readMore = document.getElementById('read-more-button');
+            const fullInfo = document.getElementById('content-extension');
+            const infoClose = document.getElementById('info-close-button');
+            const articleClose = document.getElementById('article-close-button');
+
+            const openFullInfo = () => {
+                if (!fullInfo) return;
+                fullInfo.classList.add('is-open');
+                infoButton?.classList.add('is-hidden');
+                if (infoButton) infoButton.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeFullInfo = () => {
+                if (!fullInfo) return;
+                fullInfo.classList.remove('is-open');
+                infoButton?.classList.remove('is-hidden');
+                if (infoButton) infoButton.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            };
+
+            infoButton?.addEventListener('click', openFullInfo);
+
+            readMore?.addEventListener('click', openFullInfo);
+            articleClose?.addEventListener('click', closeFullInfo);
+
+            window.openGaiaInformation = openFullInfo;
+            window.closeGaiaInformation = closeFullInfo;
+
+            // Start with the compact info card visible; the separate long article is closed.
+            infoPanel?.classList.remove('is-hidden');
+            infoButton?.classList.remove('is-hidden');
+        })();
+    </script>
 
     <!-- Application Script -->
     <script type="module">
