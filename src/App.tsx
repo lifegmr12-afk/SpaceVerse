@@ -2470,7 +2470,6 @@ export default function App() {
   const [showNotifications, setShowNotifications] = useState<boolean>(false);
   const [showLiveEvents, setShowLiveEvents] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const [knowledgePanel, setKnowledgePanel] = useState<'sources' | 'faq' | 'known-unknown' | 'related' | null>(null);
 
   // Big Bang cinematic loading screen
   const [showBigBangLoader, setShowBigBangLoader] = useState<boolean>(true);
@@ -2601,15 +2600,12 @@ export default function App() {
 
   const secondaryMenuItems = [
     { id: 'scientists', label: 'Scientists', icon: <Users className="w-4 h-4" /> },
+    { id: 'sources', label: 'Scientific Sources', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'missions', label: 'Space Missions', icon: <Rocket className="w-4 h-4" /> },
     { id: 'explorer3d', label: '3D Explorer', icon: <Box className="w-4 h-4" /> },
     { id: 'gallery', label: 'Gallery', icon: <Image className="w-4 h-4" /> },
     { id: 'news', label: 'News & Updates', icon: <Newspaper className="w-4 h-4" /> },
     { id: 'about', label: 'About Us', icon: <Info className="w-4 h-4" /> },
-    { id: 'scientific-sources', label: 'Scientific Sources', icon: <BookOpen className="w-4 h-4" />, action: () => setKnowledgePanel('sources') },
-    { id: 'faq', label: 'FAQ', icon: <AlertCircle className="w-4 h-4" />, action: () => setKnowledgePanel('faq') },
-    { id: 'known-unknown', label: 'Known / Unknown', icon: <Eye className="w-4 h-4" />, action: () => setKnowledgePanel('known-unknown') },
-    { id: 'related-objects', label: 'Related Objects', icon: <Share2 className="w-4 h-4" />, action: () => setKnowledgePanel('related') },
   ];
 
   // News Items Data
@@ -2781,135 +2777,6 @@ export default function App() {
                 Tap / click anywhere to enable the original boom sound
               </div>
             </div>
-          </div>
-        </div>
-      )}
-
-      {knowledgePanel && (
-        <div
-          className="fixed inset-0 z-[8500] flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-md"
-          onClick={() => setKnowledgePanel(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className={`relative w-full max-w-2xl max-h-[82vh] overflow-y-auto rounded-3xl border p-6 sm:p-8 shadow-2xl ${
-              isDarkMode
-                ? 'border-white/10 bg-[#050a18]/95 text-white'
-                : 'border-slate-200 bg-white/95 text-slate-900'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              aria-label="Close panel"
-              onClick={() => setKnowledgePanel(null)}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-400 transition hover:bg-white/5 hover:text-white"
-            >
-              <X className="h-4 w-4" />
-            </button>
-
-            {knowledgePanel === 'sources' && (
-              <section>
-                <div className="mb-5 flex items-center gap-3">
-                  <BookOpen className="h-5 w-5 text-cyan-400" />
-                  <div>
-                    <h2 className="text-xl font-semibold">Scientific Sources</h2>
-                    <p className="mt-1 text-xs text-slate-400">Start with primary or authoritative astronomy sources.</p>
-                  </div>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {[
-                    ['NASA', 'https://science.nasa.gov/'],
-                    ['NASA Solar System Exploration', 'https://science.nasa.gov/solar-system/'],
-                    ['NASA Exoplanet Exploration', 'https://science.nasa.gov/exoplanets/'],
-                    ['ESA', 'https://www.esa.int/'],
-                    ['ESA Gaia Mission', 'https://www.cosmos.esa.int/web/gaia'],
-                    ['JPL', 'https://www.jpl.nasa.gov/'],
-                    ['IAU', 'https://www.iau.org/'],
-                    ['Event Horizon Telescope', 'https://eventhorizontelescope.org/'],
-                  ].map(([name, url]) => (
-                    <a key={name} href={url} target="_blank" rel="noreferrer" className={`rounded-2xl border p-4 transition ${isDarkMode ? 'border-white/10 bg-white/[0.03] hover:border-cyan-400/30 hover:bg-cyan-400/[0.05]' : 'border-slate-200 hover:border-cyan-400/40'}`}>
-                      <div className="flex items-center justify-between gap-3">
-                        <span className="text-sm font-medium">{name}</span>
-                        <ExternalLink className="h-3.5 w-3.5 text-cyan-400" />
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {knowledgePanel === 'faq' && (
-              <section>
-                <div className="mb-5 flex items-center gap-3">
-                  <AlertCircle className="h-5 w-5 text-violet-400" />
-                  <div>
-                    <h2 className="text-xl font-semibold">SpaceVerse FAQ</h2>
-                    <p className="mt-1 text-xs text-slate-400">Common questions about exploring the site and its scientific content.</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  {[
-                    ['Are the 3D models scientifically exact?', 'They are educational visualizations. Distances, sizes, orbital speeds, and particle counts may be scaled or stylized so the systems remain understandable and interactive.'],
-                    ['Where does SpaceVerse get scientific information?', 'Major factual claims should be based on authoritative sources such as NASA, ESA, JPL, IAU, mission publications, and peer-reviewed research.'],
-                    ['Are estimates shown as facts?', 'No. SpaceVerse should distinguish confirmed observations, estimates, model-dependent values, and unresolved questions.'],
-                    ['Can I explore related objects?', 'Yes. Use Explore and the object pages to move between related planets, stars, galaxies, black holes, exoplanet systems, missions, and scientists.'],
-                  ].map(([q, a]) => (
-                    <details key={q} className={`rounded-2xl border p-4 ${isDarkMode ? 'border-white/10 bg-white/[0.03]' : 'border-slate-200'}`}>
-                      <summary className="cursor-pointer text-sm font-medium">{q}</summary>
-                      <p className="mt-2 text-sm leading-6 text-slate-400">{a}</p>
-                    </details>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {knowledgePanel === 'known-unknown' && (
-              <section>
-                <div className="mb-5 flex items-center gap-3">
-                  <Eye className="h-5 w-5 text-emerald-400" />
-                  <div>
-                    <h2 className="text-xl font-semibold">Known / Unknown</h2>
-                    <p className="mt-1 text-xs text-slate-400">A simple framework for reading SpaceVerse scientific information responsibly.</p>
-                  </div>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className={`rounded-2xl border p-5 ${isDarkMode ? 'border-emerald-400/15 bg-emerald-400/[0.04]' : 'border-emerald-200 bg-emerald-50'}`}>
-                    <h3 className="text-sm font-semibold text-emerald-300">Known / Observed</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">Measurements or observations supported by multiple observations, mission data, or well-established physical models.</p>
-                  </div>
-                  <div className={`rounded-2xl border p-5 ${isDarkMode ? 'border-amber-400/15 bg-amber-400/[0.04]' : 'border-amber-200 bg-amber-50'}`}>
-                    <h3 className="text-sm font-semibold text-amber-300">Unknown / Uncertain</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">Values or interpretations that depend on incomplete observations, model assumptions, measurement uncertainty, or active research.</p>
-                  </div>
-                </div>
-              </section>
-            )}
-
-            {knowledgePanel === 'related' && (
-              <section>
-                <div className="mb-5 flex items-center gap-3">
-                  <Share2 className="h-5 w-5 text-fuchsia-400" />
-                  <div>
-                    <h2 className="text-xl font-semibold">Related Objects</h2>
-                    <p className="mt-1 text-xs text-slate-400">Jump into some of the major objects already cataloged in SpaceVerse.</p>
-                  </div>
-                </div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {spaceObjects.slice(0, 8).map((obj) => (
-                    <button
-                      key={obj.id}
-                      type="button"
-                      onClick={() => { setKnowledgePanel(null); setSelectedObject(obj); }}
-                      className={`rounded-2xl border p-4 text-left transition ${isDarkMode ? 'border-white/10 bg-white/[0.03] hover:border-cyan-400/30 hover:bg-cyan-400/[0.05]' : 'border-slate-200 hover:border-cyan-400/40'}`}>
-                      <div className="text-sm font-medium">{obj.name}</div>
-                      <div className="mt-1 text-[11px] text-slate-500">{obj.categoryLabel}</div>
-                    </button>
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
         </div>
       )}
@@ -3928,7 +3795,74 @@ export default function App() {
               </motion.div>
             )}
 
-           {/* 8. ABOUT US (SpaceVerse Math & Mechanics) */}
+           {/* 8. SCIENTIFIC SOURCES */}
+            {currentTab === 'sources' && (
+              <motion.div
+                key="sources"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="space-y-8"
+              >
+                <section className="relative overflow-hidden rounded-3xl border border-cyan-500/15 bg-gradient-to-br from-slate-950/90 via-slate-900/65 to-indigo-950/35 p-8 lg:p-12">
+                  <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none" />
+                  <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none" />
+                  <div className="relative z-10 max-w-3xl">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/20 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-cyan-300">
+                      <BookOpen className="h-3.5 w-3.5" />
+                      Research & References
+                    </span>
+                    <h2 className="mt-5 text-3xl sm:text-4xl font-bold tracking-tight text-white">Scientific Sources</h2>
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+                      SpaceVerse uses authoritative astronomy resources to support educational explanations, object summaries, mission information, and scientific context.
+                    </p>
+                  </div>
+                </section>
+
+                <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[
+                    { name: 'NASA Science', desc: 'NASA astronomy, planetary science, galaxies, stars, black holes, and missions.', url: 'https://science.nasa.gov/' },
+                    { name: 'NASA Exoplanet Exploration', desc: 'Exoplanet discoveries, planetary systems, missions, and research summaries.', url: 'https://science.nasa.gov/exoplanets/' },
+                    { name: 'NASA JPL', desc: 'Mission engineering, Solar System exploration, planetary science, and spacecraft resources.', url: 'https://www.jpl.nasa.gov/' },
+                    { name: 'ESA', desc: 'European Space Agency astronomy missions, Gaia, Webb-related science, and space research.', url: 'https://www.esa.int/Science_Exploration/Space_Science' },
+                    { name: 'European Space Agency — Gaia', desc: 'Milky Way mapping, stellar positions, motions, and galactic archaeology.', url: 'https://www.esa.int/Science_Exploration/Space_Science/Gaia' },
+                    { name: 'IAU', desc: 'International Astronomical Union information on astronomical nomenclature and standards.', url: 'https://www.iau.org/' },
+                    { name: 'Event Horizon Telescope', desc: 'Black-hole imaging and research, including Sagittarius A*.', url: 'https://eventhorizontelescope.org/' },
+                    { name: 'NASA Webb Mission', desc: 'James Webb Space Telescope observations and current scientific discoveries.', url: 'https://science.nasa.gov/mission/webb/' },
+                    { name: 'NASA Solar System Exploration', desc: 'Planets, moons, asteroids, comets, dwarf planets, and Solar System missions.', url: 'https://science.nasa.gov/solar-system/' },
+                  ].map((source) => (
+                    <a
+                      key={source.name}
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group rounded-2xl border p-5 transition-all duration-300 ${cardBg} hover:-translate-y-0.5 hover:border-cyan-400/30 hover:bg-white/[0.04]`}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
+                          <BookOpen className="h-5 w-5" />
+                        </div>
+                        <ExternalLink className="h-4 w-4 text-slate-600 transition-colors group-hover:text-cyan-300" />
+                      </div>
+                      <h3 className="mt-4 text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{source.name}</h3>
+                      <p className="mt-2 text-xs leading-5 text-slate-400">{source.desc}</p>
+                    </a>
+                  ))}
+                </section>
+
+                <section className={`rounded-2xl border p-6 ${cardBg}`}>
+                  <div className="flex items-center gap-3">
+                    <AlertCircle className="h-5 w-5 text-cyan-300" />
+                    <h3 className="text-base font-bold text-white">How SpaceVerse Uses Sources</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">
+                    Scientific values and descriptions can change as new observations become available. SpaceVerse should distinguish measured observations, published estimates, model-dependent values, and open scientific questions rather than presenting uncertain values as absolute facts.
+                  </p>
+                </section>
+              </motion.div>
+            )}
+
+            {/* 9. ABOUT US (SpaceVerse Math & Mechanics) */}
             {currentTab === 'about' && (
               <motion.div
                 key="about"
