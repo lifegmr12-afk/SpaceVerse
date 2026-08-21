@@ -9,7 +9,17 @@
     content="Explore the Milky Way Galaxy through an interactive 3D visualization and a concise guide to its structure, spiral arms, stars, galactic center, Sagittarius A*, and our location in the galaxy."
 >
 
-<meta name="author" content="SpaceVerse">
+<meta name="author" content="SpaceVerse Editorial Team">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="theme-color" content="#02040b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Milky Way Galaxy — Structure, Stars, Sagittarius A* & Interactive 3D Explorer | SpaceVerse">
+<meta property="og:description" content="A research-based guide to the Milky Way's structure, spiral arms, stellar disk, halo, dark matter, Solar System location and Sagittarius A*, paired with an interactive 3D visualization.">
+<meta property="og:url" content="https://space-verse-alpha.vercel.app/milky-way.html">
+<meta property="og:site_name" content="SpaceVerse">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Milky Way Galaxy — SpaceVerse">
+<meta name="twitter:description" content="Explore the Milky Way's structure, stars, spiral arms, dark-matter halo and galactic center through an educational guide and interactive 3D model.">
 
 <link
     rel="canonical"
@@ -32,6 +42,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
+            z-index: 0;
         }
 
         /* ── Glassmorphism UI Panel ── */
@@ -354,42 +365,111 @@
 ========================================================= */
 
 #milky-way-content {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 80px 30px 30px;
-    background: rgba(0, 0, 0, 0.72);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-    overflow-y: auto;
-}
-
-#milky-way-content.info-open {
+    position: relative;
+    z-index: 20;
+    display: block;
+    width: 100%;
+    margin-top: 100vh;
+    padding: 48px 20px 96px;
+    background: transparent;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: none;
+    overflow: visible;
 }
 
+
 #milky-way-content .mw-info {
-    width: min(1000px, 94vw);
-    max-height: calc(100vh - 110px);
-    overflow-y: auto;
-    padding: 42px;
-    background: linear-gradient(145deg, rgba(10, 15, 32, 0.98), rgba(5, 8, 20, 0.98));
-    border: 1px solid rgba(100, 160, 255, 0.25);
+    width: min(1080px, 94vw);
+    margin: 0 auto;
+    max-height: none;
+    overflow: visible;
+    padding: clamp(28px, 4vw, 54px);
+    background: linear-gradient(145deg, rgba(5, 10, 24, 0.91), rgba(4, 7, 18, 0.88));
+    border: 1px solid rgba(100, 160, 255, 0.20);
     border-radius: 24px;
-    box-shadow: 0 30px 100px rgba(0,0,0,.65), 0 0 50px rgba(70,120,255,.08);
+    box-shadow: 0 28px 90px rgba(0,0,0,.48), 0 0 50px rgba(70,120,255,.06);
     color: #eaf2ff;
 }
+
+.mw-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin: 0 0 24px;
+    color: rgba(190,210,245,.62);
+    font-size: 12px;
+}
+
+.mw-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mw-article-note {
+    margin: 28px 0 10px;
+    padding: 16px 18px;
+    border-left: 3px solid #69a8ff;
+    border-radius: 10px;
+    background: rgba(70,120,255,.07);
+    color: rgba(222,232,252,.80);
+    line-height: 1.75;
+    font-size: 14px;
+}
+
+.mw-source-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.mw-source-list a {
+    color: #9cc7ff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.mw-source-list a:hover { color: #d9e9ff; }
+
+.mw-related {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.mw-related a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: #dce9ff;
+    background: rgba(70,100,160,.09);
+    border: 1px solid rgba(120,160,255,.11);
+    text-decoration: none;
+    transition: border-color .2s ease, transform .2s ease, background .2s ease;
+}
+
+.mw-related a:hover {
+    border-color: rgba(120,180,255,.32);
+    background: rgba(70,100,160,.16);
+    transform: translateY(-1px);
+}
+
+.mw-breadcrumbs {
+    width: min(1080px, 94vw);
+    margin: 0 auto 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    color: rgba(190,210,245,.58);
+    font-size: 12px;
+}
+
+.mw-breadcrumbs a { color: #9cc7ff; text-decoration: none; }
+.mw-breadcrumbs a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .mw-intro { margin-bottom: 40px; }
 .mw-kicker {
@@ -414,28 +494,187 @@
 .mw-info details p { margin-top: 12px; margin-bottom: 0; }
 #mw-references li { margin: 10px 0; color: rgba(220,230,250,.72); }
 
-/* Information button */
-#open-info-btn {
+
+
+/* =========================================================
+   SPACEVERSE GUIDE UI — PREMIUM EDUCATIONAL SURFACE
+========================================================= */
+.mw-guide-cue {
     position: fixed;
-    left: 24px;
-    top: 135px;
-    width: 48px;
-    height: 48px;
-    z-index: 1100;
-    border-radius: 14px;
-    border: 1px solid rgba(100,150,255,.35);
-    background: rgba(8,14,32,.90);
-    color: #8fc7ff;
-    font-size: 25px;
-    cursor: pointer;
-    display: flex;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 16;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,.4);
-    transition: transform .2s ease, background .2s ease, color .2s ease;
+    gap: 10px;
+    min-height: 46px;
+    padding: 10px 16px 10px 13px;
+    border: 1px solid rgba(117, 183, 255, .28);
+    border-radius: 999px;
+    color: #e9f4ff;
+    background: linear-gradient(135deg, rgba(5,13,32,.82), rgba(11,22,48,.68));
+    box-shadow: 0 14px 36px rgba(0,0,0,.38), 0 0 28px rgba(74,144,255,.10);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    transition: opacity .28s ease, transform .28s ease, border-color .2s ease, box-shadow .2s ease;
+    animation: mwCueFloat 2.6s ease-in-out infinite;
 }
-#open-info-btn:hover { transform: scale(1.08); background: rgba(30,70,140,.9); color: #fff; }
-#open-info-btn:active { transform: scale(.94); }
+.mw-guide-cue:hover {
+    border-color: rgba(117, 203, 255, .55);
+    box-shadow: 0 16px 42px rgba(0,0,0,.44), 0 0 34px rgba(74,144,255,.18);
+}
+.mw-guide-cue.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 14px);
+}
+.mw-guide-cue-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(109,199,255,.26);
+    background: rgba(56,189,248,.10);
+    color: #8fdcff;
+    font-size: 14px;
+}
+.mw-guide-cue-copy { display:flex; flex-direction:column; gap:2px; text-align:left; }
+.mw-guide-cue-copy strong { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.mw-guide-cue-copy span { font-size: 9px; color: rgba(205,224,250,.55); letter-spacing: .08em; text-transform: uppercase; }
+.mw-guide-cue-chevron { font-size: 16px; color:#8fdcff; animation: mwChevron 1.3s ease-in-out infinite; }
+
+@keyframes mwCueFloat { 0%,100%{ transform:translateX(-50%) translateY(0); } 50%{ transform:translateX(-50%) translateY(-5px); } }
+@keyframes mwChevron { 0%,100%{ transform:translateY(0); opacity:.7; } 50%{ transform:translateY(4px); opacity:1; } }
+
+.mw-guide-shell {
+    position: relative;
+    margin-bottom: 26px;
+    padding: 12px;
+    border: 1px solid rgba(100,160,255,.12);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(16,31,64,.38), rgba(4,9,20,.18));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+}
+.mw-guide-label {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding: 4px 6px 10px;
+}
+.mw-guide-label span:first-child {
+    font: 700 10px/1.1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:#7ec9ff;
+}
+.mw-guide-label span:last-child {
+    font-size:10px;
+    color:rgba(196,215,244,.48);
+}
+.mw-toc {
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:none;
+    padding-bottom:2px;
+}
+.mw-toc::-webkit-scrollbar { display:none; }
+.mw-toc a {
+    flex: 0 0 auto;
+    padding:8px 11px;
+    border-radius:999px;
+    border:1px solid rgba(120,160,255,.12);
+    background:rgba(77,113,177,.08);
+    color:rgba(214,229,251,.78);
+    text-decoration:none;
+    font-size:10px;
+    white-space:nowrap;
+    transition:all .18s ease;
+}
+.mw-toc a:hover, .mw-toc a.is-active {
+    color:#eff7ff;
+    border-color:rgba(95,195,255,.35);
+    background:rgba(56,189,248,.10);
+    box-shadow:0 0 18px rgba(56,189,248,.06);
+}
+
+.mw-section-intro {
+    margin: 34px 0 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(120,160,255,.08);
+}
+.mw-section-kicker {
+    display:block;
+    margin-bottom:7px;
+    color:#69b9ff;
+    font:700 9px/1.1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+.mw-info section { scroll-margin-top: 28px; }
+.mw-callout {
+    margin:16px 0;
+    padding:16px 18px;
+    border:1px solid rgba(88,181,255,.16);
+    border-left:3px solid rgba(88,181,255,.72);
+    border-radius:14px;
+    background:linear-gradient(135deg, rgba(56,189,248,.07), rgba(99,102,241,.045));
+    color:rgba(224,236,252,.78);
+    line-height:1.72;
+    font-size:14px;
+}
+.mw-model-banner {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    padding:18px;
+    margin-top:16px;
+    border:1px solid rgba(110,178,255,.14);
+    border-radius:16px;
+    background:rgba(10,20,43,.30);
+}
+.mw-model-banner strong { display:block; color:#eaf5ff; font-size:14px; }
+.mw-model-banner span { display:block; margin-top:4px; color:rgba(201,219,244,.58); font-size:11px; line-height:1.6; }
+.mw-model-banner button {
+    flex:0 0 auto;
+    min-height:38px;
+    padding:8px 13px;
+    border:1px solid rgba(95,195,255,.26);
+    border-radius:999px;
+    color:#dff5ff;
+    background:rgba(56,189,248,.08);
+    cursor:pointer;
+}
+.mw-progress {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:80;
+    height:2px;
+    background:rgba(255,255,255,.05);
+    pointer-events:none;
+}
+.mw-progress span {
+    display:block;
+    width:0;
+    height:100%;
+    background:linear-gradient(90deg,#22d3ee,#818cf8,#f0abfc);
+    box-shadow:0 0 12px rgba(99,102,241,.7);
+}
+
+@media (max-width: 720px) {
+    .mw-guide-cue { bottom:14px; min-height:42px; padding:8px 13px 8px 10px; }
+    .mw-guide-cue-copy strong { font-size:10px; }
+    .mw-guide-cue-copy span { font-size:8px; }
+    .mw-model-banner { align-items:flex-start; flex-direction:column; }
+}
 
 /* Simulator controls use the original show/hide system only. */
 #ui-panel.hidden { transform: translateX(-280px); opacity: 0; pointer-events: none; }
@@ -443,35 +682,410 @@
 
 
 @media (max-width: 768px) {
-    #milky-way-content { padding: 70px 12px 20px; }
-    #milky-way-content .mw-info { width: 100%; max-height: calc(100vh - 90px); padding: 24px 20px; border-radius: 18px; }
+    #milky-way-content { padding: 84px 12px 56px; }
+    #milky-way-content .mw-info { width: 100%; padding: 24px 20px; border-radius: 18px; }
     #mw-references li { overflow-wrap: anywhere; }
-    #open-info-btn { left: 16px; top: 125px; width: 44px; height: 44px; }
+    .mw-related { grid-template-columns: 1fr 1fr; }
 }
+
+@media (max-width: 520px) {
+    .mw-facts, .mw-structure-grid, .mw-related { grid-template-columns: 1fr; }
+    .mw-breadcrumbs { font-size: 11px; }
+}
+
     </style>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Milky Way Galaxy — Structure, Stars and Sagittarius A*",
-  "description": "An educational guide to the Milky Way Galaxy combined with an interactive 3D visualization.",
-  "author": {
-    "@type": "Organization",
-    "name": "SpaceVerse"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "SpaceVerse"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://space-verse-alpha.vercel.app/milky-way.html"
-  }
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Milky Way Galaxy — Structure, Stars and Sagittarius A*",
+      "description": "An educational guide to the Milky Way Galaxy combined with an interactive 3D visualization.",
+      "author": {
+        "@type": "Organization",
+        "name": "SpaceVerse Editorial Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SpaceVerse"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://space-verse-alpha.vercel.app/milky-way.html"
+      },
+      "dateModified": "2026-08-21",
+      "about": {
+        "@type": "Thing",
+        "name": "Milky Way Galaxy"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://space-verse-alpha.vercel.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Explore", "item": "https://space-verse-alpha.vercel.app/#explore" },
+        { "@type": "ListItem", "position": 3, "name": "Milky Way Galaxy", "item": "https://space-verse-alpha.vercel.app/milky-way.html" }
+      ]
+    }
+  ]
 }
 </script>
+
+<style>
+/* =========================================================
+   SPACEVERSE GUIDE V2 — AURORA / DEEP-SPACE STYLE
+   Distinct palette: cyan + violet + magenta + warm stellar gold.
+========================================================= */
+:root{
+    --sv-cyan:#67e8f9;
+    --sv-blue:#60a5fa;
+    --sv-violet:#a78bfa;
+    --sv-magenta:#f0abfc;
+    --sv-gold:#f6c86e;
+    --sv-panel:rgba(7,10,31,.72);
+    --sv-panel-2:rgba(16,12,45,.64);
+    --sv-line:rgba(139,92,246,.20);
+}
+
+.mw-guide-cue{
+    border:1px solid rgba(167,139,250,.34);
+    background:
+      radial-gradient(circle at 20% 20%, rgba(103,232,249,.16), transparent 38%),
+      linear-gradient(120deg, rgba(7,12,35,.90), rgba(29,13,51,.86));
+    box-shadow:
+      0 18px 48px rgba(0,0,0,.46),
+      0 0 30px rgba(167,139,250,.14),
+      inset 0 1px 0 rgba(255,255,255,.06);
+    animation: svCueOrbit 3.8s ease-in-out infinite;
+}
+.mw-guide-cue::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    border-radius:inherit;
+    padding:1px;
+    background:linear-gradient(90deg, rgba(103,232,249,.55), rgba(167,139,250,.75), rgba(240,171,252,.5), rgba(103,232,249,.55));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    opacity:.7;
+    animation:svBorderSweep 4.5s linear infinite;
+    pointer-events:none;
+}
+.mw-guide-cue-icon{
+    width:32px;height:32px;
+    border-color:rgba(103,232,249,.36);
+    background:linear-gradient(145deg, rgba(103,232,249,.16), rgba(167,139,250,.16));
+    color:#c6f7ff;
+    box-shadow:0 0 18px rgba(103,232,249,.10), inset 0 0 16px rgba(167,139,250,.08);
+}
+.mw-guide-cue-chevron{
+    color:#f0abfc;
+    animation:svChevronPulse 1.7s ease-in-out infinite;
+}
+
+@keyframes svCueOrbit{
+  0%,100%{transform:translateX(-50%) translateY(0) rotateX(0deg);}
+  50%{transform:translateX(-50%) translateY(-7px) rotateX(2deg);}
+}
+@keyframes svBorderSweep{
+  0%{filter:hue-rotate(0deg);opacity:.45}
+  50%{filter:hue-rotate(35deg);opacity:.95}
+  100%{filter:hue-rotate(0deg);opacity:.45}
+}
+@keyframes svChevronPulse{
+  0%,100%{transform:translateY(0);opacity:.65}
+  50%{transform:translateY(5px);opacity:1}
+}
+
+.mw-guide-shell{
+    position:sticky;
+    top:14px;
+    z-index:12;
+    margin:0 auto 30px;
+    padding:14px;
+    max-width:100%;
+    border:1px solid rgba(167,139,250,.22);
+    border-radius:22px;
+    background:
+      linear-gradient(135deg, rgba(8,13,37,.86), rgba(27,11,48,.74)),
+      radial-gradient(circle at 10% 0%, rgba(103,232,249,.08), transparent 35%);
+    box-shadow:
+      0 18px 55px rgba(0,0,0,.30),
+      0 0 36px rgba(139,92,246,.08),
+      inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    overflow:hidden;
+}
+.mw-guide-shell::after{
+    content:"";
+    position:absolute;
+    left:-15%;
+    top:-70%;
+    width:55%;
+    height:240%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.05), transparent);
+    transform:rotate(16deg);
+    animation:svGlassSweep 8s ease-in-out infinite;
+    pointer-events:none;
+}
+@keyframes svGlassSweep{
+  0%,35%{left:-55%;opacity:0}
+  45%{opacity:.7}
+  60%,100%{left:125%;opacity:0}
+}
+
+.mw-guide-label{
+    padding:3px 6px 11px;
+}
+.mw-guide-label span:first-child{
+    color:#e9d5ff;
+    text-shadow:0 0 16px rgba(167,139,250,.22);
+}
+.mw-guide-label span:last-child{
+    color:rgba(224,231,255,.48);
+}
+
+.mw-toc{
+    position:relative;
+    gap:7px;
+    padding:4px 1px 5px;
+}
+.mw-toc a{
+    position:relative;
+    padding:9px 12px;
+    border-radius:12px;
+    border:1px solid rgba(148,163,184,.10);
+    background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+    color:rgba(226,232,240,.70);
+    overflow:hidden;
+}
+.mw-toc a::before{
+    content:"";
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:4px;
+    height:2px;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--sv-cyan), var(--sv-violet), var(--sv-magenta));
+    transform:scaleX(0);
+    transform-origin:center;
+    transition:transform .28s ease;
+}
+.mw-toc a:hover{
+    color:#fff;
+    border-color:rgba(103,232,249,.25);
+    transform:translateY(-1px);
+    box-shadow:0 8px 22px rgba(0,0,0,.20);
+}
+.mw-toc a.is-active{
+    color:#fff;
+    border-color:rgba(167,139,250,.38);
+    background:
+      radial-gradient(circle at 20% 15%, rgba(103,232,249,.12), transparent 40%),
+      linear-gradient(135deg, rgba(89,70,150,.30), rgba(22,24,65,.34));
+    box-shadow:
+      0 8px 24px rgba(0,0,0,.24),
+      0 0 22px rgba(167,139,250,.08);
+}
+.mw-toc a.is-active::before{transform:scaleX(1);}
+
+.mw-info > section,
+.mw-info > .mw-section-intro{
+    position:relative;
+    opacity:1;
+    transform:translateY(0);
+    transition:opacity .7s ease, transform .7s cubic-bezier(.2,.75,.2,1);
+}
+.mw-info > section::before{
+    content:"";
+    position:absolute;
+    left:-20px;
+    top:8px;
+    width:4px;
+    height:calc(100% - 16px);
+    border-radius:999px;
+    background:linear-gradient(180deg, rgba(103,232,249,.0), rgba(103,232,249,.50), rgba(167,139,250,.38), rgba(240,171,252,.0));
+    opacity:.55;
+}
+.mw-info h2{
+    color:#f5f3ff;
+    letter-spacing:-.02em;
+    text-shadow:0 0 26px rgba(139,92,246,.10);
+}
+.mw-info h3{
+    color:#e9ddff;
+}
+
+.mw-section-intro{
+    position:relative;
+    margin:42px 0 14px;
+    padding:14px 0 14px 18px;
+    border-bottom:0;
+}
+.mw-section-intro::after{
+    content:"";
+    position:absolute;
+    left:18px;
+    right:0;
+    bottom:0;
+    height:1px;
+    background:linear-gradient(90deg, rgba(103,232,249,.34), rgba(167,139,250,.34), transparent);
+}
+.mw-section-kicker{
+    color:#c4b5fd;
+    text-shadow:0 0 18px rgba(167,139,250,.24);
+}
+.mw-callout{
+    border:1px solid rgba(167,139,250,.22);
+    border-left:3px solid rgba(240,171,252,.68);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(240,171,252,.08), transparent 45%),
+      linear-gradient(135deg, rgba(103,232,249,.06), rgba(139,92,246,.10), rgba(17,24,39,.16));
+    box-shadow:0 12px 30px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.03);
+}
+.mw-facts > div,
+.mw-card{
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(148,163,184,.10);
+    background:
+      radial-gradient(circle at 85% 20%, rgba(96,165,250,.10), transparent 36%),
+      linear-gradient(145deg, rgba(14,20,46,.72), rgba(21,11,41,.60));
+    box-shadow:0 12px 28px rgba(0,0,0,.16);
+    transition:transform .35s cubic-bezier(.2,.75,.2,1), border-color .25s ease, box-shadow .25s ease;
+}
+.mw-facts > div:hover,
+.mw-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(167,139,250,.30);
+    box-shadow:0 16px 34px rgba(0,0,0,.26), 0 0 24px rgba(139,92,246,.08);
+}
+.mw-facts > div::before,
+.mw-card::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    right:-70px;
+    top:-75px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(103,232,249,.16), transparent 68%);
+    filter:blur(4px);
+    transition:transform .5s ease;
+}
+.mw-facts > div:hover::before,
+.mw-card:hover::before{transform:scale(1.35);}
+
+.mw-model-banner{
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(103,232,249,.20);
+    background:
+      linear-gradient(120deg, rgba(103,232,249,.07), rgba(167,139,250,.09), rgba(240,171,252,.05)),
+      rgba(8,14,33,.55);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+.mw-model-banner::before{
+    content:"";
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:3px;
+    background:linear-gradient(180deg, var(--sv-cyan), var(--sv-violet), var(--sv-magenta));
+}
+.mw-model-banner button{
+    border:1px solid rgba(103,232,249,.30);
+    background:linear-gradient(135deg, rgba(6,182,212,.16), rgba(139,92,246,.18));
+    color:#f3f4ff;
+    box-shadow:0 0 18px rgba(103,232,249,.06);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.mw-model-banner button:hover{
+    transform:translateY(-2px);
+    border-color:rgba(240,171,252,.48);
+    box-shadow:0 10px 28px rgba(0,0,0,.24), 0 0 24px rgba(167,139,250,.12);
+}
+
+.mw-meta{
+    color:rgba(224,231,255,.55) !important;
+}
+.mw-meta span{
+    position:relative;
+}
+.mw-meta span + span::before{
+    content:"✦";
+    margin:0 9px;
+    color:rgba(167,139,250,.55);
+}
+
+.mw-breadcrumbs{
+    padding:10px 4px 4px;
+    color:rgba(191,219,254,.50);
+}
+.mw-breadcrumbs a:hover{color:#a5f3fc !important;}
+
+#mw-references a{
+    color:#a5f3fc !important;
+    text-decoration-thickness:1px;
+    text-underline-offset:3px;
+}
+
+@media (max-width: 900px){
+    .mw-guide-shell{position:relative;top:auto;}
+    .mw-info > section::before{left:-12px;}
+}
+@media (prefers-reduced-motion: reduce){
+    .mw-guide-cue,
+    .mw-guide-cue::before,
+    .mw-guide-cue-chevron,
+    .mw-guide-shell::after{
+        animation:none !important;
+    }
+    .mw-facts > div,
+    .mw-card,
+    .mw-model-banner button{
+        transition:none !important;
+    }
+}
+</style>
+
+
+<style>
+.sv-guide-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:2px 0 12px;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(240,171,252,.22);
+    background:linear-gradient(90deg, rgba(103,232,249,.08), rgba(240,171,252,.09));
+    color:rgba(241,245,249,.72);
+    font:700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 8px 20px rgba(0,0,0,.12);
+    animation:svBadgeGlow 3.6s ease-in-out infinite;
+}
+.sv-guide-badge-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:linear-gradient(135deg,#67e8f9,#f0abfc);
+    box-shadow:0 0 10px rgba(103,232,249,.65), 0 0 18px rgba(240,171,252,.35);
+}
+@keyframes svBadgeGlow{
+  0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 8px 20px rgba(0,0,0,.12);}
+  50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 0 28px rgba(167,139,250,.10);}
+}
+</style>
+
 </head>
 
 <body>
+
+    <div class="mw-progress" aria-hidden="true"><span id="mw-progress-bar"></span></div>
 
     <div id="loading">
         <div class="loading-title">Initializing Galaxy</div>
@@ -483,14 +1097,6 @@
         </div>
     </div>
 
-    <!-- Open the educational information panel -->
-    <button
-        id="open-info-btn"
-        type="button"
-        onclick="toggleInformation()"
-        aria-label="Open Milky Way information"
-        aria-expanded="false"
-    >ⓘ</button>
 
     <!-- Simulator controls -->
     <button
@@ -534,11 +1140,31 @@
     </div>
 
 
+    <!-- Scroll-to-guide cue: the 3D model remains the first experience, while the article is immediately below it. -->
+    <button
+        id="guide-scroll-btn"
+        class="mw-guide-cue"
+        type="button"
+        aria-label="Scroll to the Milky Way guide"
+        onclick="scrollToGuide()"
+    >
+        <span class="mw-guide-cue-icon">↓</span>
+        <span class="mw-guide-cue-copy">
+            <strong>Explore the guide</strong>
+            <span>Scroll for the science behind the model</span>
+        </span>
+        <span class="mw-guide-cue-chevron">⌄</span>
+    </button>
+
     <!-- =====================================================
          MILKY WAY EDUCATIONAL CONTENT START
     ====================================================== -->
 
-    <main id="milky-way-content" aria-hidden="true">
+    <main id="milky-way-content" aria-hidden="false">
+
+        <div class="mw-breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a><span>›</span><a href="/#explore">Explore</a><span>›</span><span>Milky Way Galaxy</span>
+        </div>
 
         <article class="mw-info">
 
@@ -547,18 +1173,60 @@
                 <p class="mw-kicker">
                     SPACEVERSE • GALAXY GUIDE
                 </p>
+                <div class="sv-guide-badge" aria-hidden="true">
+                    <span class="sv-guide-badge-dot"></span>
+                    <span>Interactive Science Edition</span>
+                </div>
 
                 <h1>Milky Way Galaxy</h1>
 
                 <p class="mw-lead">
                     The Milky Way is the barred spiral galaxy that contains
-                    our Solar System. Explore its structure, stars, spiral
-                    arms, galactic center, and supermassive black hole
-                    through the interactive 3D model.
+                    our Solar System. This guide explains its structure,
+                    spiral arms, stellar disk, halo, dark-matter environment,
+                    galactic center and Sagittarius A*, alongside the
+                    interactive 3D visualization.
                 </p>
+
+                <div class="mw-meta" aria-label="Article information">
+                    <span>SpaceVerse Editorial Team</span>
+                    <span>Educational astronomy guide</span>
+                    <span>Reviewed August 21, 2026</span>
+                </div>
+
+                <div class="mw-article-note">
+                    <strong>How to use this page:</strong> Explore the 3D model first,
+                    then scroll through the guide for the astronomy behind the
+                    visualization. The model is intentionally simplified for
+                    readability and is not a physical-scale map.
+                </div>
 
             </header>
 
+            <div class="mw-guide-shell" aria-label="Milky Way guide navigation">
+                <div class="mw-guide-label">
+                    <span>Guide navigation</span>
+                    <span><span id="mw-guide-progress-text">0%</span> • Use the sections to jump around</span>
+                </div>
+                <nav class="mw-toc" id="mw-toc">
+                    <a href="#mw-overview">Overview</a>
+                    <a href="#mw-classification">Classification</a>
+                    <a href="#mw-structure">Structure</a>
+                    <a href="#mw-bulge-bar">Bulge &amp; Bar</a>
+                    <a href="#mw-spiral-arms">Spiral Arms</a>
+                    <a href="#mw-disk">Disk</a>
+                    <a href="#mw-halo">Halo</a>
+                    <a href="#mw-dark-matter">Dark Matter</a>
+                    <a href="#mw-solar-system">Our Location</a>
+                    <a href="#mw-sgr-a">Sagittarius A*</a>
+                    <a href="#mw-star-formation">Star Formation</a>
+                    <a href="#mw-future">Future</a>
+                    <a href="#mw-andromeda">Andromeda</a>
+                    <a href="#mw-model">3D Model</a>
+                    <a href="#mw-faq">FAQ</a>
+                    <a href="#mw-references">Sources</a>
+                </nav>
+            </div>
 
             <!-- AT A GLANCE -->
 
@@ -600,6 +1268,35 @@
                         <span>Local Group</span>
                     </div>
 
+                </div>
+
+            </section>
+
+            <!-- INTERACTIVE MODEL -->
+            <section id="mw-interactive-model">
+                <h2>Interactive 3D Milky Way Model</h2>
+                <p>
+                    The live visualization above is designed as a companion to this article.
+                    It combines procedural stellar particles, a central bulge, spiral structure,
+                    diffuse dust, nebula-like regions and a central black-hole glow so visitors
+                    can explore the galaxy from different viewpoints.
+                </p>
+                <div class="mw-callout">
+                    <strong>Scale and accuracy note:</strong> the model is an educational
+                    representation. Particle counts, apparent brightness, distances and motion
+                    are adjusted for a web display; they are not direct measurements of the
+                    Milky Way's true density or dimensions.
+                </div>
+                </div>
+
+                <div class="mw-model-banner">
+                    <div>
+                        <strong>Ready to go deeper?</strong>
+                        <span>Use the guide navigation below to explore the Milky Way's structure, stars, dark-matter halo and galactic center.</span>
+                    </div>
+                    <button type="button" onclick="document.getElementById('mw-overview').scrollIntoView({behavior:'smooth', block:'start'});">
+                        Start the guide ↓
+                    </button>
                 </div>
 
             </section>
@@ -657,7 +1354,7 @@
 
             <!-- STRUCTURE -->
 
-            <section>
+            <section id="mw-structure">
 
                 <h2>Structure of the Milky Way</h2>
 
@@ -725,7 +1422,7 @@
 
             <!-- SAGITTARIUS A* -->
 
-            <section>
+            <section id="mw-sgr-a">
 
                 <h2>
                     Sagittarius A*: The Milky Way's Central Black Hole
@@ -751,7 +1448,7 @@
 
             <!-- OUR LOCATION -->
 
-            <section>
+            <section id="mw-solar-system">
 
                 <h2>Where Is the Solar System?</h2>
 
@@ -863,10 +1560,10 @@
             <section id="mw-andromeda">
                 <h2>Milky Way + Andromeda</h2>
                 <p>
-                    Andromeda (M31) is the nearest large galactic neighbor of the Milky Way at roughly 2.5 million light-years away. The two galaxies are gravitationally interacting, and NASA has long used computer simulations to illustrate a possible future merger. Earlier Hubble-based simulations described a major encounter on timescales of several billion years, while modern studies continue to refine the probability and timing as new measurements improve.
+                    Andromeda (M31) is the nearest large galactic neighbor of the Milky Way at roughly 2.5 million light-years away. The two galaxies are gravitationally interacting, but the probability and timing of a future merger remain sensitive to measurements of their positions, proper motions and the influence of other Local Group galaxies.
                 </p>
                 <div class="mw-callout">
-                    <strong>Important:</strong> a future galaxy merger does not mean stars will simply collide with one another. The enormous distances between stars make direct stellar collisions uncommon; the larger effect is the gravitational reshaping of the two galaxies.
+                    <strong>Current scientific picture:</strong> a 2025 peer-reviewed study using Hubble and Gaia measurements found the long-term outcome remains uncertain, with close to a 50% chance of no Milky Way–Andromeda merger within 10 billion years. A 2026 preprint using updated Gaia-based measurements reports a substantially higher merger probability in its preferred model. These results are not yet a settled consensus, so SpaceVerse presents the outcome as an active research question rather than a certainty.
                 </div>
             </section>
 
@@ -974,21 +1671,50 @@
 
             <section id="mw-references">
 
-                <h2>References & Further Reading</h2>
+                <h2>Scientific Sources</h2>
 
-                <ul>
+                <p>
+                    SpaceVerse is an independent educational project. The guide below uses
+                    primary or first-party scientific resources wherever practical. Source links
+                    are provided so readers can verify important claims and explore the research
+                    in more depth.
+                </p>
 
-                    <li><a href="https://science.nasa.gov/universe/galaxies/" target="_blank" rel="noopener noreferrer">NASA Science — Galaxies & the Milky Way</a></li>
-                    <li><a href="https://science.nasa.gov/resource/the-milky-way-galaxy/" target="_blank" rel="noopener noreferrer">NASA — The Milky Way Galaxy</a></li>
-                    <li><a href="https://science.nasa.gov/asset/webb/milky-way-and-our-location/" target="_blank" rel="noopener noreferrer">NASA — Milky Way and Our Location</a></li>
-                    <li><a href="https://svs.gsfc.nasa.gov/14935/" target="_blank" rel="noopener noreferrer">NASA SVS — Milky Way Anatomy</a></li>
-                    <li><a href="https://science.nasa.gov/asset/hubble/future-galaxy-merger/" target="_blank" rel="noopener noreferrer">NASA — Future Galaxy Merger</a></li>
-                    <li><a href="https://www.jpl.nasa.gov/news/astronomers-release-new-all-sky-map-of-milky-ways-outer-reaches/" target="_blank" rel="noopener noreferrer">NASA JPL — Milky Way Outer Halo Mapping</a></li>
-                    <li>SpaceVerse — Interactive Milky Way 3D visualization</li>
+                <div class="mw-source-list">
+                    <a href="https://science.nasa.gov/universe/galaxies/" target="_blank" rel="noopener noreferrer">NASA Science — Galaxies</a>
+                    <a href="https://science.nasa.gov/resource/the-milky-way-galaxy/" target="_blank" rel="noopener noreferrer">NASA — The Milky Way Galaxy</a>
+                    <a href="https://science.nasa.gov/asset/webb/milky-way-and-our-location/" target="_blank" rel="noopener noreferrer">NASA — Milky Way and Our Location</a>
+                    <a href="https://svs.gsfc.nasa.gov/14935/" target="_blank" rel="noopener noreferrer">NASA Scientific Visualization Studio — Milky Way Anatomy</a>
+                    <a href="https://www.jpl.nasa.gov/news/astronomers-release-new-all-sky-map-of-milky-ways-outer-reaches/" target="_blank" rel="noopener noreferrer">NASA JPL — Milky Way Outer Reaches</a>
+                    <a href="https://esahubble.org/news/heic2508/" target="_blank" rel="noopener noreferrer">ESA/Hubble — Milky Way–Andromeda collision uncertainty</a>
+                    <a href="https://www.nature.com/articles/s41550-025-02563-1" target="_blank" rel="noopener noreferrer">Nature Astronomy — No certainty of a Milky Way–Andromeda collision (2025)</a>
+                    <a href="https://arxiv.org/abs/2603.22863" target="_blank" rel="noopener noreferrer">arXiv — The Fate of the Milky Way–Andromeda System (2026 preprint)</a>
+                    <a href="https://www.nasa.gov/mission/webb/" target="_blank" rel="noopener noreferrer">NASA — James Webb Space Telescope mission</a>
+                </div>
 
-                </ul>
-                <p class="mw-updated">Content reviewed and expanded: August 14, 2026. Scientific statements should be checked against the linked primary sources as measurements are refined.</p>
+                <div class="mw-callout">
+                    <strong>Editorial note:</strong> values such as galaxy size, total mass, dark-matter
+                    distribution and future Local Group dynamics are estimates with uncertainties.
+                    Where current studies disagree, this page reports the uncertainty rather than
+                    presenting one model as settled fact.
+                </div>
 
+                <p class="mw-updated">Content reviewed: August 21, 2026. Sources and measurements may change as new observations and analyses become available.</p>
+
+            </section>
+
+            <!-- RELATED TOPICS -->
+            <section id="mw-related">
+                <h2>Related SpaceVerse Topics</h2>
+                <p>Continue exploring related astronomy topics through the SpaceVerse encyclopedia and interactive models.</p>
+                <div class="mw-related">
+                    <a href="/sagittarius-a.html">Sagittarius A*</a>
+                    <a href="/solar-system.html">Solar System</a>
+                    <a href="/gaia-bh1.html">Gaia BH1</a>
+                    <a href="/kepler-90.html">Kepler-90 System</a>
+                    <a href="/trappist-1.html">TRAPPIST-1 System</a>
+                    <a href="/alpha-centauri-system.html">Alpha Centauri</a>
+                </div>
             </section>
     <!-- =====================================================
          MILKY WAY EDUCATIONAL CONTENT END
@@ -2221,44 +2947,76 @@ window.hideUI = function() {
 
         init();
     </script>
-    <script>
-        /* =========================================================
-           MILKY WAY INFORMATION PANEL
-        ========================================================= */
-        const infoPanel = document.getElementById('milky-way-content');
-        const infoButton = document.getElementById('open-info-btn');
 
-        function closeInformation() {
-            if (!infoPanel || !infoButton) return;
-            infoPanel.classList.remove('info-open');
-            infoPanel.setAttribute('aria-hidden', 'true');
-            infoButton.setAttribute('aria-expanded', 'false');
-            infoButton.innerHTML = 'ⓘ';
-            document.body.classList.remove('information-open');
+<script>
+    function scrollToGuide() {
+        const guide = document.getElementById('milky-way-content');
+        if (guide) guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    (function setupGuideExperience() {
+        const cue = document.getElementById('guide-scroll-btn');
+        const progressBar = document.getElementById('mw-progress-bar');
+        const progressText = document.getElementById('mw-guide-progress-text');
+        const tocLinks = Array.from(document.querySelectorAll('#mw-toc a'));
+        const sections = tocLinks
+            .map(link => document.querySelector(link.getAttribute('href')))
+            .filter(Boolean);
+
+        function updateGuideUI() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            const percent = Math.min(100, Math.max(0, (scrollTop / scrollable) * 100));
+
+            if (progressBar) progressBar.style.width = percent + '%';
+            if (progressText) progressText.textContent = Math.round(percent) + '%';
+
+            if (cue) {
+                cue.classList.toggle('is-hidden', scrollTop > window.innerHeight * 0.20);
+            }
+
+            let active = null;
+            let bestDistance = Infinity;
+
+            for (const section of sections) {
+                const rect = section.getBoundingClientRect();
+                const distance = Math.abs(rect.top - 170);
+                if (rect.top <= 220 && distance < bestDistance) {
+                    bestDistance = distance;
+                    active = section.id;
+                }
+            }
+
+            tocLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === '#' + active;
+                link.classList.toggle('is-active', isActive);
+
+                if (isActive) {
+                    link.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'center'
+                    });
+                }
+            });
         }
 
-        window.toggleInformation = function() {
-            if (!infoPanel || !infoButton) return;
-            const open = !infoPanel.classList.contains('info-open');
-
-            if (open) {
-                infoPanel.classList.add('info-open');
-                infoPanel.setAttribute('aria-hidden', 'false');
-                infoButton.setAttribute('aria-expanded', 'true');
-                infoButton.innerHTML = '✕';
-                document.body.classList.add('information-open');
-            } else {
-                closeInformation();
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateGuideUI();
+                    ticking = false;
+                });
+                ticking = true;
             }
-        };
+        }, { passive: true });
 
-        infoPanel?.addEventListener('click', function(event) {
-            if (event.target === infoPanel) closeInformation();
-        });
+        window.addEventListener('resize', updateGuideUI);
+        updateGuideUI();
+    })();
 
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') closeInformation();
-        });
-    </script>
+</script>
+
 </body>
 </html>
