@@ -407,154 +407,6 @@
             }
             .fact-grid { grid-template-columns: 1fr; }
         }
-        /* Explore the Guide button */
-#gaia-guide-cue {
-    position: fixed;
-    left: 50%;
-    bottom: 22px;
-    transform: translateX(-50%);
-    z-index: 999;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    min-height: 46px;
-    padding: 10px 16px 10px 13px;
-
-    border: 1px solid rgba(96,165,250,.34);
-    border-radius: 999px;
-
-    color: #eaf4ff;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(4,10,24,.92),
-            rgba(11,20,45,.84)
-        );
-
-    box-shadow:
-        0 16px 44px rgba(0,0,0,.42),
-        0 0 28px rgba(96,165,250,.12);
-
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-
-    cursor: pointer;
-
-    transition:
-        opacity .25s ease,
-        transform .25s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
-
-    animation: gaiaCueFloat 2.8s ease-in-out infinite;
-}
-
-#gaia-guide-cue:hover {
-    border-color: rgba(125,211,252,.62);
-
-    box-shadow:
-        0 18px 48px rgba(0,0,0,.46),
-        0 0 34px rgba(96,165,250,.20);
-}
-
-#gaia-guide-cue.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 14px);
-}
-
-.gaia-guide-cue-icon {
-    width: 28px;
-    height: 28px;
-
-    display: inline-grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(125,211,252,.35);
-
-    background: rgba(59,130,246,.11);
-
-    color: #93c5fd;
-
-    font-size: 14px;
-}
-
-.gaia-guide-cue-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    text-align: left;
-}
-
-.gaia-guide-cue-copy strong {
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-}
-
-.gaia-guide-cue-copy span {
-    font-size: 9px;
-    color: rgba(205,224,250,.58);
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.gaia-guide-cue-chevron {
-    font-size: 16px;
-    color: #93c5fd;
-
-    animation: gaiaChevron 1.5s ease-in-out infinite;
-}
-
-@keyframes gaiaCueFloat {
-    0%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(-5px);
-    }
-}
-
-@keyframes gaiaChevron {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: .65;
-    }
-
-    50% {
-        transform: translateY(4px);
-        opacity: 1;
-    }
-}
-
-@media (max-width: 680px) {
-    #gaia-guide-cue {
-        bottom: 14px;
-        min-height: 42px;
-        padding: 8px 13px 8px 10px;
-    }
-
-    .gaia-guide-cue-copy strong {
-        font-size: 10px;
-    }
-
-    .gaia-guide-cue-copy span {
-        font-size: 8px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    #gaia-guide-cue,
-    .gaia-guide-cue-chevron {
-        animation: none !important;
-    }
-}
 
     </style>
 
@@ -580,22 +432,6 @@
     <!-- UI Labels -->
     <div id="label-bh" class="label">Gaia BH1 (Dormant)</div>
     <div id="label-star" class="label">G-Type Companion Star</div>
-    <!-- Explore the Guide -->
-<button
-    id="gaia-guide-cue"
-    type="button"
-    aria-label="Explore the Gaia BH1 guide"
-    onclick="document.getElementById('gaia-guide-content').scrollIntoView({behavior:'smooth', block:'start'});"
->
-    <span class="gaia-guide-cue-icon">↓</span>
-
-    <span class="gaia-guide-cue-copy">
-        <strong>EXPLORE THE GUIDE</strong>
-        <span>SCROLL FOR THE SCIENCE BEHIND THE MODEL</span>
-    </span>
-
-    <span class="gaia-guide-cue-chevron">⌄</span>
-</button>
 
     <!-- Glassmorphism Panel -->
     <!-- Compact Gaia BH1 information card -->
@@ -1342,21 +1178,5 @@
         }, 1500);
 
     </script>
-    <script>
-    const guideCue = document.getElementById('gaia-guide-cue');
-
-    if (guideCue) {
-        window.addEventListener(
-            'scroll',
-            () => {
-                guideCue.classList.toggle(
-                    'is-hidden',
-                    window.scrollY > window.innerHeight * 0.25
-                );
-            },
-            { passive: true }
-        );
-    }
-</script>
 </body>
 </html>
